@@ -59,7 +59,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextSearchArtefacts" />
 
     <Spinner
-        android:id="@+id/spinnerArtefactCategory"
+        android:id="@+id/spinnerInventoryArtefactCategory"
         android:layout_width="0dp"
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
@@ -81,6 +81,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerArtefactCategory" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerInventoryArtefactCategory" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
