@@ -25,10 +25,18 @@ public class Storage {
     public boolean DeleteCollection(Collection collection){ return this.collections.remove(collection); }
     //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Collections>
+    private final ArrayList<String> materials;
+    public ArrayList<String> Materials(){ return this.materials; }
+    public boolean AddMaterial(String material){ return this.materials.add(material); }
+    public boolean DeleteMaterial(String material){ return this.materials.remove(material); }
+    //</editor-fold>
+
     public Storage(){
         this.artefacts = new ArrayList<>();
         this.collectors = new ArrayList<>();
         this.collections = new ArrayList<>();
+        this.materials = new ArrayList<>();
     }
 
 }
