@@ -14,11 +14,9 @@ import android.widget.Toast;
 import com.example.artefacttrackerapp.Data.Storage;
 import com.example.artefacttrackerapp.R;
 
-import static com.example.artefacttrackerapp.Utilities.UtilityMethods.GetStorageFromIntent;
+import static com.example.artefacttrackerapp.Activities.MainActivity.storage;
 
 public class MaterialOptionsActivity extends AppCompatActivity {
-
-    private Storage storage;
 
     private EditText materialSearchField;
 
@@ -29,15 +27,13 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         init();
     }
 
-    private void init(){
+    @Override
+    public void onBackPressed(){
 
-        Intent intent = getIntent();
-        storage = GetStorageFromIntent(this, intent);
-        if (storage == null) {
-            Toast.makeText(getBaseContext(), "Error loading storage in MaterialOptionsActivity.class", Toast.LENGTH_LONG).show();
-            onBackPressed();
-            return;
-        }
+        super.onBackPressed();
+    }
+
+    private void init(){
 
         materialSearchField = findViewById(R.id.editTextSearchMaterials);
 
