@@ -22,7 +22,6 @@ public class MaterialOptionsActivity extends AppCompatActivity {
     }
 
     public void AddMaterial(View v){
-        Intent intent = new Intent(getBaseContext(), AddMaterialActivity.class);
-        startActivity(intent);
+
     }
 }
