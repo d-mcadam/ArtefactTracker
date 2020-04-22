@@ -19,4 +19,15 @@
     <string name="default_zero">0</string>
     <string name="save_text">Save</string>
     <string name="cancel_text">Cancel</string>
+
+    <string-array name="artefact_categories">
+        <item>Select one...</item>
+        <item>All</item>
+        <item>Agnostic</item>
+        <item>Armadyl</item>
+        <item>Bandos</item>
+        <item>Saradomin</item>
+        <item>Zamorak</item>
+        <item>Zaros</item>
+    </string-array>
 </resources>
