@@ -40,12 +40,6 @@ public class AddArtefactActivity extends AppCompatActivity {
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner = findViewById(R.id.spinnerAddArtefactCategory);
         categorySpinner.setAdapter(categoryAdapter);
-        categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) { CheckSaveEligibility(); }
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) { CheckSaveEligibility(); }
-        });
 
         artefactNameField = findViewById(R.id.editTextInputArtefactName);
         artefactNameField.addTextChangedListener(new TextWatcher() {
@@ -61,8 +55,7 @@ public class AddArtefactActivity extends AppCompatActivity {
 
     private void CheckSaveEligibility(){
         saveButton.setEnabled(
-                artefactNameField.getText().toString().trim().length() > 0 &&
-                categorySpinner.getSelectedItemPosition() > 0
+                artefactNameField.getText().toString().trim().length() > 0
         );
     }
 
