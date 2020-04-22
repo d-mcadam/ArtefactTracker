@@ -9,6 +9,8 @@
     <string name="main_menu_cronotes_label">Cronotes available:</string>
     <string name="main_menu_tetra_label">Tetra Pieces available:</string>
 
+    <string name="material_opt_search_hint">Search Materials</string>
+
     <string name="inventory_menu_search_hint">Search Artefacts</string>
     <string name="inventory_menu_category_label">Filter Category:</string>
 

@@ -16,6 +16,6 @@ public class MaterialOptionsActivity extends AppCompatActivity {
     }
 
     private void init(){
-        
+
     }
 }
