@@ -33,6 +33,4 @@
         <item>Zamorak</item>
         <item>Zaros</item>
     </string-array>
-//intent keys
-    <string name="intent_key_storage">STORAGE</string>
 </resources>
