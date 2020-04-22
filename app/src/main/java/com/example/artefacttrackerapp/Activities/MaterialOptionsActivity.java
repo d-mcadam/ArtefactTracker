@@ -57,13 +57,18 @@ public class MaterialOptionsActivity extends AppCompatActivity {
             .setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+
                 String inputText = inputField.getText().toString().trim();
+
                 for (String material : storage.Materials())
                     if (material.equals(inputText)){
-                        Toast.makeText(getBaseContext(), "Duplicate names detected.", Toast.LENGTH_LONG);
+                        Toast.makeText(getBaseContext(), "Duplicate names detected.", Toast.LENGTH_LONG).show();
                         return;
                     }
+
+                storage.AddMaterial(inputText);
                 Toast.makeText(getBaseContext(), "Added material: " + inputText, Toast.LENGTH_LONG).show();
+                materialSearchField.setText("");
             }
         }).setNegativeButton("Cancel", null);
 
