@@ -1,8 +1,9 @@
 package com.example.artefacttrackerapp.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class GameArtefact {
+public class GameArtefact implements Serializable {
 
     public final String title;
     public int quantity = 0;
