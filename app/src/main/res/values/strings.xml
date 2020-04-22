@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Artefact Tracker App</string>
-
+//main menu
     <string name="main_menu_materail_names_button">Material Options</string>
     <string name="main_menu_inventory_button">Inventory Management</string>
     <string name="main_menu_collection_button">Collection Logs</string>
@@ -8,24 +8,22 @@
     <string name="main_menu_available_label">Collections available:</string>
     <string name="main_menu_cronotes_label">Cronotes available:</string>
     <string name="main_menu_tetra_label">Tetra Pieces available:</string>
-
+//material options
     <string name="material_opt_search_hint">Search Materials</string>
-
-    <string name="add_material_title">Add a Material</string>
-    <string name="add_material_name_hint">Enter a name</string>
-
+    <string name="material_opt_name_hint">Enter a name</string>
+//inventory management
     <string name="inventory_menu_search_hint">Search Artefacts</string>
     <string name="inventory_menu_category_label">Filter Category:</string>
-
+//add artefact
     <string name="add_artefact_title">Add an Artefact</string>
     <string name="add_artefact_name_hint">Enter a name</string>
     <string name="add_artefact_category_label">Category:</string>
     <string name="add_artefact_add_requirement">Add a requirement</string>
-
+//generic
     <string name="default_zero">0</string>
     <string name="save_text">Save</string>
     <string name="cancel_text">Cancel</string>
-
+//arrays
     <string-array name="artefact_categories">
         <item>All</item>
         <item>Agnostic</item>
@@ -35,4 +33,6 @@
         <item>Zamorak</item>
         <item>Zaros</item>
     </string-array>
+//intent keys
+    <string name="intent_key_storage">STORAGE</string>
 </resources>
