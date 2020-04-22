@@ -16,6 +16,6 @@ public class AddMaterialActivity extends AppCompatActivity {
     }
 
     private void init(){
-        
+
     }
 }
