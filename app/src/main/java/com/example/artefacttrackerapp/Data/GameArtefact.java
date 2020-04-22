@@ -9,7 +9,7 @@ public class GameArtefact {
     public final String category;
     public final ArrayList<MaterialRequirement> requirements = new ArrayList<>();
 
-    public GameArtefact(String title, @GameArtefactCategory.Category String category){
+    public GameArtefact(String title, String category){
         this.title = title;
         this.category = category;
     }

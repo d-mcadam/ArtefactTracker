@@ -34,10 +34,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerArtefacyCategory" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerAddArtefactCategory" />
 
     <Spinner
-        android:id="@+id/spinnerArtefacyCategory"
+        android:id="@+id/spinnerAddArtefactCategory"
         android:layout_width="0dp"
         android:layout_height="22dp"
         android:layout_marginStart="16dp"
@@ -66,6 +66,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
+        android:onClick="AddMaterialRequirement"
         android:text="@string/add_artefact_add_requirement"
         android:textAllCaps="true"
         android:textStyle="bold"
@@ -92,6 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
+        android:enabled="false"
         android:text="@string/save_text"
         android:textAllCaps="true"
         android:textSize="18sp"

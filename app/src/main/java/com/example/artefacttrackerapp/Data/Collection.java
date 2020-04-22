@@ -6,14 +6,13 @@ public class Collection {
 
     public final String title;
     public final String collector;
-    public final ArrayList<String> artefacts;
+    public final ArrayList<String> artefacts = new ArrayList<>();
     public final String category;
     public Boolean completedOnce = false;
 
-    public Collection(String title, String collector, @GameArtefactCategory.Category String category){
+    public Collection(String title, String collector, String category){
         this.title = title;
         this.collector = collector;
-        this.artefacts = new ArrayList<>();
         this.category = category;
     }
 

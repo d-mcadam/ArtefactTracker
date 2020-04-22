@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Artefact Tracker App</string>
 
+    <string name="main_menu_materail_names_button">Material Options</string>
     <string name="main_menu_inventory_button">Inventory Management</string>
     <string name="main_menu_collection_button">Collection Logs</string>
     <string name="main_menu_unique_remaining_label">Unique collections remaining:</string>
@@ -19,4 +20,14 @@
     <string name="default_zero">0</string>
     <string name="save_text">Save</string>
     <string name="cancel_text">Cancel</string>
+
+    <string-array name="artefact_categories">
+        <item>All</item>
+        <item>Agnostic</item>
+        <item>Armadyl</item>
+        <item>Bandos</item>
+        <item>Saradomin</item>
+        <item>Zamorak</item>
+        <item>Zaros</item>
+    </string-array>
 </resources>
