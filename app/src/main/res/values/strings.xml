@@ -11,5 +11,7 @@
     <string name="inventory_menu_search_hint">Search Artefacts</string>
     <string name="inventory_menu_category_label">Filter Category:</string>
 
+    <string name="add_artefact_title">Add an Artefact</string>
+
     <string name="default_zero">0</string>
 </resources>
