@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Artefact Tracker App</string>
 
+    <string name="main_menu_materail_names_button">Material Options</string>
     <string name="main_menu_inventory_button">Inventory Management</string>
     <string name="main_menu_collection_button">Collection Logs</string>
     <string name="main_menu_unique_remaining_label">Unique collections remaining:</string>
