@@ -10,7 +10,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,6 +38,27 @@ public class AddArtefactActivity extends AppCompatActivity {
         init();
     }
 
+    @Override
+    public void onBackPressed(){
+        if (artefactNameField.getText().toString().trim().length() > 0 || requirementArrayList.size() > 0){
+            AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+            dialog.setCancelable(true);
+            dialog.setTitle("Unsaved data");
+            dialog.setMessage("You'll lose any unsaved data");
+            dialog.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    goBack();
+                }
+            });
+            dialog.setNegativeButton("Cancel", null);
+            dialog.create().show();
+        }else{
+            goBack();
+        }
+    }
+    private void goBack(){ super.onBackPressed(); }
+
     private void init(){
 
         saveButton = findViewById(R.id.buttonSaveArtefact);
@@ -62,7 +82,8 @@ public class AddArtefactActivity extends AppCompatActivity {
 
     private void CheckSaveEligibility(){
         saveButton.setEnabled(
-                artefactNameField.getText().toString().trim().length() > 0
+                artefactNameField.getText().toString().trim().length() > 0 &&
+                requirementArrayList.size() > 0
         );
     }
 
@@ -81,8 +102,6 @@ public class AddArtefactActivity extends AppCompatActivity {
         for (String m : storage.Materials()){
             if (!requirementArrayList.stream().anyMatch((i) -> i.title.equals(m))){
                 spinnerValues.add(m);
-            }else{
-                int i = 0;
             }
         }
 
@@ -114,6 +133,7 @@ public class AddArtefactActivity extends AppCompatActivity {
                                 MaterialRequirement materialRequirement = new MaterialRequirement(name, quantity);
 
                                 requirementArrayList.add(materialRequirement);
+                                CheckSaveEligibility();
 
                                 Toast.makeText(thisContext, "Saved requirement", Toast.LENGTH_LONG).show();
 
