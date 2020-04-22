@@ -21,7 +21,6 @@
     <string name="cancel_text">Cancel</string>
 
     <string-array name="artefact_categories">
-        <item>Select one...</item>
         <item>All</item>
         <item>Agnostic</item>
         <item>Armadyl</item>
