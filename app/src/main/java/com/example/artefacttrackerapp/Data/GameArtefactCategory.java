@@ -8,6 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 public class GameArtefactCategory {
 
     public static final String ALL = "All";
+    public static final String AGNOSTIC = "Agnostic";
     public static final String ARMADYL = "Armadyl";
     public static final String BANDOS = "Bandos";
     public static final String SARADOMIN = "Saradomin";
@@ -16,7 +17,7 @@ public class GameArtefactCategory {
 
     public GameArtefactCategory(@Category int category){}
 
-    @StringDef({ALL, ARMADYL, BANDOS, SARADOMIN, ZAMORAK, ZAROS})
+    @StringDef({ALL, AGNOSTIC, ARMADYL, BANDOS, SARADOMIN, ZAMORAK, ZAROS})
     @Retention(RetentionPolicy.SOURCE)
     public @interface Category{}
 
