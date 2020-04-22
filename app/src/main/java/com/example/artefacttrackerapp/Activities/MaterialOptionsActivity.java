@@ -27,12 +27,6 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         init();
     }
 
-    @Override
-    public void onBackPressed(){
-
-        super.onBackPressed();
-    }
-
     private void init(){
 
         materialSearchField = findViewById(R.id.editTextSearchMaterials);
