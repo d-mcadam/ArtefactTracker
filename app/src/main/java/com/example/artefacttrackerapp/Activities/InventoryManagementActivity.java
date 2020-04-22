@@ -5,10 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.example.artefacttrackerapp.R;
 
 public class InventoryManagementActivity extends AppCompatActivity {
+
+    private Spinner categorySpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +23,21 @@ public class InventoryManagementActivity extends AppCompatActivity {
     }
 
     private void init(){
+
+        ArrayAdapter<CharSequence> categoryAdapter = ArrayAdapter.createFromResource(this, R.array.artefact_categories, android.R.layout.simple_spinner_item);
+        categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categorySpinner = findViewById(R.id.spinnerInventoryArtefactCategory);
+        categorySpinner.setAdapter(categoryAdapter);
+        categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) { RefreshList(); }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) { RefreshList(); }
+        });
+
+    }
+
+    private void RefreshList(){
 
     }
 
