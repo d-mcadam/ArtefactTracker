@@ -21,6 +21,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void OpenMaterialOptions(View v){
+        Intent intent = new Intent(getBaseContext(), MaterialOptionsActivity.class);
+        startActivity(intent);
+    }
+
     public void OpenInventoryManagement(View v){
         Intent intent = new Intent(getBaseContext(), InventoryManagementActivity.class);
         startActivity(intent);
