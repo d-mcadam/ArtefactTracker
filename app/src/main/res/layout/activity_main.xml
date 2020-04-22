@@ -13,6 +13,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
+        android:onClick="OpenInventoryManagement"
         android:text="@string/main_menu_inventory_button"
         android:textAllCaps="true"
         android:textStyle="bold"
