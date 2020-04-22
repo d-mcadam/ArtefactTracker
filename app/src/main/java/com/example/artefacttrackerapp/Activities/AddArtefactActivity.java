@@ -12,5 +12,10 @@ public class AddArtefactActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_artefact);
+        init();
+    }
+
+    private void init(){
+
     }
 }
