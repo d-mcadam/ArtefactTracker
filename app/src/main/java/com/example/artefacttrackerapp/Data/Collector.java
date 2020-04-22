@@ -8,10 +8,10 @@ public class Collector {
     public final String location;
     public final ArrayList<String> collections;
 
-    public Collector(String name, String location, ArrayList<String> collections){
+    public Collector(String name, String location){
         this.name = name;
         this.location = location;
-        this.collections = collections;
+        this.collections = new ArrayList<>();
     }
 
 }
