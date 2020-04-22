@@ -5,15 +5,13 @@ import java.util.ArrayList;
 public class GameArtefact {
 
     public final String title;
-    public final int quantity;
+    public int quantity = 0;
     public final String category;
-    public final ArrayList<MaterialRequirement> requirements;
+    public final ArrayList<MaterialRequirement> requirements = new ArrayList<>();
 
-    public GameArtefact(String title, int quantity, @GameArtefactCategory.Category String category){
+    public GameArtefact(String title, @GameArtefactCategory.Category String category){
         this.title = title;
-        this.quantity = quantity;
         this.category = category;
-        this.requirements = new ArrayList<>();
     }
 
 }
