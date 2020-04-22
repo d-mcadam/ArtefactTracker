@@ -11,6 +11,8 @@
 
     <string name="material_opt_search_hint">Search Materials</string>
 
+    <string name="add_material_title">Add a Material</string>
+
     <string name="inventory_menu_search_hint">Search Artefacts</string>
     <string name="inventory_menu_category_label">Filter Category:</string>
 
