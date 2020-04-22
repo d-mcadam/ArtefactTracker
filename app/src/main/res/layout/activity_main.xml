@@ -138,6 +138,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
+        android:onClick="OpenMaterialOptions"
         android:text="@string/main_menu_materail_names_button"
         android:textAllCaps="true"
         android:textStyle="bold"
