@@ -3,7 +3,7 @@ package com.example.artefacttrackerapp.Data;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Storage implements Serializable {
+public class Storage {
 
     //<editor-fold defaultstate="collapsed" desc="Game Artefacts>
     private final ArrayList<GameArtefact> artefacts;

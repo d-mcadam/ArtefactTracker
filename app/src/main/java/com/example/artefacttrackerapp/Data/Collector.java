@@ -3,7 +3,7 @@ package com.example.artefacttrackerapp.Data;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Collector implements Serializable {
+public class Collector {
 
     public final String name;
     public final String location;
