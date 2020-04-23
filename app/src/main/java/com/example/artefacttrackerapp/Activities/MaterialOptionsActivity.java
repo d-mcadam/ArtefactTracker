@@ -43,7 +43,6 @@ public class MaterialOptionsActivity extends AppCompatActivity {
 
         materialAdapter = new MaterialAdapter(this, storage.Materials());
         materialRecyclerView.setAdapter(materialAdapter);
-
     }
 
     public void AddMaterial(View v){

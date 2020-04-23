@@ -22,7 +22,7 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.Materi
     public int selectedPosition = -1;
     private static final int viewHolderHeight = 129;
 
-    public MaterialAdapter(Context context, ArrayList<String> materialDataSet, int recyclerViewHeight){
+    public MaterialAdapter(Context context, ArrayList<String> materialDataSet){
         this.context = context;
         this.materialDataSet = materialDataSet;
     }
