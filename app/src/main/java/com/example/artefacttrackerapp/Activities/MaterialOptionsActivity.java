@@ -97,7 +97,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
 
                 final String inputText = inputField.getText().toString().trim();
 
-                if (storage.Materials().stream().anyMatch((m) -> m.equals(inputText))){
+                if (storage.Materials().stream().anyMatch(m -> m.equals(inputText))){
                     Toast.makeText(getBaseContext(), "Duplicate names detected.", Toast.LENGTH_LONG).show();
                     return;
                 }

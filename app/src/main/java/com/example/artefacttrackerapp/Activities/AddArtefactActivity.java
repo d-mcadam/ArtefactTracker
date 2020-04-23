@@ -172,9 +172,14 @@ public class AddArtefactActivity extends AppCompatActivity {
                 addMaterialDialog.setView(addMaterialDialogView)
                     .setPositiveButton("Save", (dialogInterface1, i1) -> {
 
-                        String material = addMaterialDialogField.getText().toString().trim();
+                        String inputText = addMaterialDialogField.getText().toString().trim();
 
-                        storage.AddMaterial(material);
+                        if (storage.Materials().stream().anyMatch(m -> m.equals(inputText))){
+                            Toast.makeText(getBaseContext(), "Duplicate names detected.", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+
+                        storage.AddMaterial(inputText);
 
                         AddMaterialRequirement(null);
 
