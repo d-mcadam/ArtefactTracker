@@ -93,9 +93,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         inputField.setText(materialSearchField.getText().toString().trim());
 
         dialog.setView(dialogView)
-            .setPositiveButton("Add", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
+            .setPositiveButton("Add", (dialogInterface, i) -> {
 
                 final String inputText = inputField.getText().toString().trim();
 
@@ -109,7 +107,6 @@ public class MaterialOptionsActivity extends AppCompatActivity {
                 materialAdapter.notifyDataSetChanged();
                 Toast.makeText(getBaseContext(), "Added material: " + inputText, Toast.LENGTH_LONG).show();
                 materialSearchField.setText("");
-            }
-        }).setNegativeButton("Cancel", null).create().show();
+            }).setNegativeButton("Cancel",  (dialogInterface, i) -> Toast.makeText(getBaseContext(), "Cancelled", Toast.LENGTH_LONG)).create().show();
     }
 }
