@@ -125,8 +125,8 @@ public class AddArtefactActivity extends AppCompatActivity {
 
         ArrayList<String> spinnerValues = new ArrayList<>();
         storage.Materials().stream()
-                .filter(m -> !requirementArrayList.stream().anyMatch(i -> i.title.equals(m)))
-                .forEach(m -> spinnerValues.add(m));
+                .filter(m -> requirementArrayList.stream().noneMatch(i -> i.title.equals(m)))
+                .forEach(spinnerValues::add);
 
         final Spinner nameDialogSpinner = nameDialogView.findViewById(R.id.spinnerMaterialNames);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(thisContext, R.layout.support_simple_spinner_dropdown_item, spinnerValues);

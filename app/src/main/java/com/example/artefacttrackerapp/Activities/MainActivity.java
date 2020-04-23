@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         materialTypeCountField.setText(String.valueOf(storage.Materials().size()));
         ownedArtefactCountField.setText(String.valueOf(storage.Artefacts().stream().map(a -> a.quantity).reduce(0, Integer::sum)));
 
-        storage.Artefacts().stream().forEach(a ->
+        storage.Artefacts().forEach(a ->
                 requiredMaterialCountField.setText(String.valueOf(
                         Integer.parseInt(requiredMaterialCountField.getText().toString()) +
                         (a.requirements.stream().map(r -> r.quantity).reduce(0, Integer::sum) * a.quantity)
