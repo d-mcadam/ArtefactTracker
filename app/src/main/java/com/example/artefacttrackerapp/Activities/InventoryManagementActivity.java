@@ -92,10 +92,12 @@ public class InventoryManagementActivity extends AppCompatActivity {
 
         displayList.clear();
 
-        if (artefactSearchField.getText().toString().trim().length() > 0){
+        if (artefactSearchField.getText().toString().trim().length() > 0 || categorySpinner.getSelectedItemPosition() > -1){
             storage.Artefacts().stream()
-                    .filter(a -> a.title.contains(artefactSearchField.getText().toString().trim()))
-                    .forEach(displayList::add);
+                    .filter(a ->
+                            a.title.contains(artefactSearchField.getText().toString().trim()) &&
+                            (categorySpinner.getSelectedItem().toString().equals("All") || a.category.equals("All") || a.category.equals(categorySpinner.getSelectedItem().toString()))
+                    ).forEach(displayList::add);
         }else{
             displayList.addAll(storage.Artefacts());
         }
