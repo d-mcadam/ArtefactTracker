@@ -107,6 +107,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
                 materialAdapter.notifyDataSetChanged();
                 Toast.makeText(getBaseContext(), "Added material: " + inputText, Toast.LENGTH_LONG).show();
                 materialSearchField.setText("");
+                
             }).setNegativeButton("Cancel",  (dialogInterface, i) -> Toast.makeText(getBaseContext(), "Cancelled", Toast.LENGTH_LONG)).create().show();
     }
 }
