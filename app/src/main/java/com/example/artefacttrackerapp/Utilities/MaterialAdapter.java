@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -51,8 +52,10 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.Materi
 
         holder.viewIsSelected = selectedPosition == thisViewsPosition;
 
-        holder.detailView.setText(materialDataSet.get(thisViewsPosition));
         holder.itemView.setBackgroundColor(holder.viewIsSelected ? context.getResources().getColor(R.color.colourRecyclerViewSelected, null) : Color.TRANSPARENT);
+        holder.detailView.setText(materialDataSet.get(thisViewsPosition));
+        holder.deleteButton.setVisibility(holder.viewIsSelected ? View.VISIBLE : View.INVISIBLE);
+        holder.deleteButton.setClickable(holder.viewIsSelected);
 
     }
 
@@ -63,12 +66,14 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.Materi
 
         public boolean viewIsSelected = false;
 
-        public TextView detailView;
+        public final TextView detailView;
+        public final ImageButton deleteButton;
 
         public MaterialViewHolder(@NonNull View itemView) {
             super(itemView);
             detailView = itemView.findViewById(R.id.textViewHolderMaterial);
             detailView.setHeight(viewHolderHeight);
+            deleteButton = itemView.findViewById(R.id.imageButtonHolderDeleteMaterial);
         }
 
     }
