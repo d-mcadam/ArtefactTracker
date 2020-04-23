@@ -37,9 +37,9 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle("Add a material");
 
-        final LayoutInflater inflater = getLayoutInflater();
+        LayoutInflater inflater = getLayoutInflater();
 
-        final View dialogView = inflater.inflate(R.layout.dialog_create_material, null);
+        View dialogView = inflater.inflate(R.layout.dialog_create_material, null);
         final EditText inputField = dialogView.findViewById(R.id.editTextInputMaterialName);
         inputField.setText(materialSearchField.getText().toString().trim());
 
@@ -48,20 +48,17 @@ public class MaterialOptionsActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-                String inputText = inputField.getText().toString().trim();
+                final String inputText = inputField.getText().toString().trim();
 
-                for (String material : storage.Materials())
-                    if (material.equals(inputText)){
-                        Toast.makeText(getBaseContext(), "Duplicate names detected.", Toast.LENGTH_LONG).show();
-                        return;
-                    }
+                if (storage.Materials().stream().anyMatch((m) -> m.equals(inputText))){
+                    Toast.makeText(getBaseContext(), "Duplicate names detected.", Toast.LENGTH_LONG).show();
+                    return;
+                }
 
                 storage.AddMaterial(inputText);
                 Toast.makeText(getBaseContext(), "Added material: " + inputText, Toast.LENGTH_LONG).show();
                 materialSearchField.setText("");
             }
-        }).setNegativeButton("Cancel", null);
-
-        dialog.create().show();
+        }).setNegativeButton("Cancel", null).create().show();
     }
 }
