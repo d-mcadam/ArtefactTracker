@@ -2,6 +2,8 @@ package com.example.artefacttrackerapp.Activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -11,12 +13,17 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.artefacttrackerapp.R;
+import com.example.artefacttrackerapp.Utilities.MaterialAdapter;
 
 import static com.example.artefacttrackerapp.Activities.MainActivity.storage;
 
 public class MaterialOptionsActivity extends AppCompatActivity {
 
     private EditText materialSearchField;
+
+    private RecyclerView materialRecyclerView;
+    private RecyclerView.Adapter materialAdapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +35,14 @@ public class MaterialOptionsActivity extends AppCompatActivity {
     private void init(){
 
         materialSearchField = findViewById(R.id.editTextSearchMaterials);
+
+        materialRecyclerView = findViewById(R.id.recyclerViewMaterialList);
+
+        layoutManager = new LinearLayoutManager(this);
+        materialRecyclerView.setLayoutManager(layoutManager);
+
+        materialAdapter = new MaterialAdapter(storage.Materials());
+        materialRecyclerView.setAdapter(materialAdapter);
 
     }
 
@@ -54,6 +69,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
                 }
 
                 storage.AddMaterial(inputText);
+                materialAdapter.notifyDataSetChanged();
                 Toast.makeText(getBaseContext(), "Added material: " + inputText, Toast.LENGTH_LONG).show();
                 materialSearchField.setText("");
             }
