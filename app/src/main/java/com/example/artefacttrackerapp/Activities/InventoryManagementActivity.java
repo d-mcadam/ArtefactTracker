@@ -81,6 +81,13 @@ public class InventoryManagementActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        artefactSearchField.setText("");
+        RefreshList();
+    }
+
     public void RefreshList(){
 
         displayList.clear();
@@ -100,6 +107,7 @@ public class InventoryManagementActivity extends AppCompatActivity {
 
     public void OpenAddArtefact(View v){
         Intent intent = new Intent(getBaseContext(), AddArtefactActivity.class);
+        intent.putExtra("STRING_INPUT", artefactSearchField.getText().toString().trim());
         startActivity(intent);
     }
 }
