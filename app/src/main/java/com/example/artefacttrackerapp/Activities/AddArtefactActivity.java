@@ -110,47 +110,31 @@ public class AddArtefactActivity extends AppCompatActivity {
         nameDialogSpinner.setAdapter(adapter);
 
         nameDialog.setView(nameDialogView)
-            .setPositiveButton("Next", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
+            .setPositiveButton("Next", (dialogInterface, i) -> {
 
-                    final String name = nameDialogSpinner.getSelectedItem().toString();
+                final String name = nameDialogSpinner.getSelectedItem().toString();
 
-                    AlertDialog.Builder qtyDialog = new AlertDialog.Builder(thisContext);
-                    qtyDialog.setTitle("Quantity Required");
+                AlertDialog.Builder qtyDialog = new AlertDialog.Builder(thisContext);
+                qtyDialog.setTitle("Quantity Required");
 
-                    View qtyDialogView = inflater.inflate(R.layout.dialog_material_quantity, null);
-                    final EditText qtyDialogField = qtyDialogView.findViewById(R.id.editTextMaterialReqQuantity);
+                View qtyDialogView = inflater.inflate(R.layout.dialog_material_quantity, null);
+                final EditText qtyDialogField = qtyDialogView.findViewById(R.id.editTextMaterialReqQuantity);
 
-                    qtyDialog.setView(qtyDialogView)
-                        .setPositiveButton("Save", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
+                qtyDialog.setView(qtyDialogView)
+                    .setPositiveButton("Save", (dialogInterface12, i1) -> {
 
-                                int quantity = Integer.parseInt(qtyDialogField.getText().toString().trim());
+                        int quantity = Integer.parseInt(qtyDialogField.getText().toString().trim());
 
-                                MaterialRequirement materialRequirement = new MaterialRequirement(name, quantity);
+                        MaterialRequirement materialRequirement = new MaterialRequirement(name, quantity);
 
-                                requirementArrayList.add(materialRequirement);
-                                CheckSaveEligibility();
+                        requirementArrayList.add(materialRequirement);
+                        CheckSaveEligibility();
 
-                                Toast.makeText(thisContext, "Saved requirement", Toast.LENGTH_LONG).show();
+                        Toast.makeText(thisContext, "Saved requirement", Toast.LENGTH_LONG).show();
 
-                            }
-                    }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG);
-                        }
-                    }).create().show();
+                    }).setNegativeButton("Cancel", (dialogInterface1, i1) -> Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG)).create().show();
 
-                }
-        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG);
-            }
-        }).create().show();
+            }).setNegativeButton("Cancel", (dialogInterface, i) -> Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG)).create().show();
 
     }
 
@@ -161,8 +145,13 @@ public class AddArtefactActivity extends AppCompatActivity {
 
         GameArtefact artefact = new GameArtefact(title, category);
 
-//        requirementArrayList.stream().forEach((m) -> );
-//        artefact.requirements.add()
+        artefact.requirements.addAll(requirementArrayList);
+
+        storage.AddArtefact(artefact);
+
+        int reqSize = artefact.requirements.size();
+        Toast.makeText(this, "Added Artefact with " + reqSize + " requirement" + (reqSize == 1 ? "" : "s"), Toast.LENGTH_LONG).show();
+        goBack();
 
     }
 }
