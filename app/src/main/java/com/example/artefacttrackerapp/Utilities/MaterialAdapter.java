@@ -11,9 +11,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.artefacttrackerapp.Activities.MaterialOptionsActivity;
 import com.example.artefacttrackerapp.R;
 
 import java.util.ArrayList;
+
+import static com.example.artefacttrackerapp.Activities.MainActivity.storage;
 
 public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MaterialViewHolder> {
 
@@ -39,6 +42,8 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.Materi
     @Override
     public void onBindViewHolder(@NonNull MaterialViewHolder holder, int thisViewsPosition) {
 
+        final String material = materialDataSet.get(thisViewsPosition);
+
         holder.itemView.setOnClickListener(view -> {
             notifyDataSetChanged();
 
@@ -48,6 +53,12 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.Materi
                 selectedPosition = thisViewsPosition;
 
             notifyDataSetChanged();
+        });
+
+        holder.deleteButton.setOnClickListener(view -> {
+            storage.DeleteMaterial(material);
+            this.selectedPosition = -1;
+            ((MaterialOptionsActivity)context).RefreshList();
         });
 
         holder.viewIsSelected = selectedPosition == thisViewsPosition;

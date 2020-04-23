@@ -65,7 +65,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         RefreshList();
     }
 
-    private void RefreshList(){
+    public void RefreshList(){
 
         displayList.clear();
 
