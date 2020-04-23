@@ -20,8 +20,9 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.Materi
     private final ArrayList<String> materialDataSet;
 
     public int selectedPosition = -1;
+    private static final int viewHolderHeight = 129;
 
-    public MaterialAdapter(Context context, ArrayList<String> materialDataSet){
+    public MaterialAdapter(Context context, ArrayList<String> materialDataSet, int recyclerViewHeight){
         this.context = context;
         this.materialDataSet = materialDataSet;
     }
@@ -30,7 +31,7 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.Materi
     @Override
     public MaterialViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_holder_material, parent, false);
-        v.getLayoutParams().height = parent.getMeasuredHeight() / 12;
+        v.getLayoutParams().height = viewHolderHeight;
         return new MaterialViewHolder(v);
     }
 
@@ -67,6 +68,7 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.Materi
         public MaterialViewHolder(@NonNull View itemView) {
             super(itemView);
             detailView = itemView.findViewById(R.id.textViewHolderMaterial);
+            detailView.setHeight(viewHolderHeight);
         }
 
     }
