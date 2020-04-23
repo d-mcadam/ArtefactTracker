@@ -36,4 +36,12 @@
         <item>Zamorak</item>
         <item>Zaros</item>
     </string-array>
+    <string-array name="collection_rewards">
+        <item>Any</item>
+        <item>Cronotes</item>
+        <item>Pylon batteries</item>
+        <item>Robust class</item>
+        <item>Tetra pieces</item>
+        <item>Stormguard blueprint fragments</item>
+    </string-array>
 </resources>
