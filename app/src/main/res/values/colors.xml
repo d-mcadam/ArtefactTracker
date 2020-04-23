@@ -4,6 +4,5 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
-    <color name="colourRecyclerViewUnselected">#E6E6E6</color>
-    <color name="colourRecyclerViewSelected">#969696</color>
+    <color name="colourRecyclerViewSelected">#BEBEBE</color>
 </resources>
