@@ -1,6 +1,5 @@
 package com.example.artefacttrackerapp.Data;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class GameArtefact {
@@ -14,5 +13,7 @@ public class GameArtefact {
         this.title = title;
         this.category = category;
     }
+
+    public final String Title(){ return this.title; }
 
 }
