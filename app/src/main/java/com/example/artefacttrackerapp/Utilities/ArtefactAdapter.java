@@ -1,5 +1,6 @@
 package com.example.artefacttrackerapp.Utilities;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -11,10 +12,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.artefacttrackerapp.Activities.InventoryManagementActivity;
 import com.example.artefacttrackerapp.Data.GameArtefact;
 import com.example.artefacttrackerapp.R;
 
 import java.util.ArrayList;
+
+import static com.example.artefacttrackerapp.Activities.MainActivity.storage;
 
 public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.ArtefactViewHolder> {
 
@@ -59,8 +63,21 @@ public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.Artefa
         });
 
         holder.minusQuantityButton.setOnClickListener(view -> {
-            artefact.quantity--;
-            notifyDataSetChanged();
+            if (artefact.quantity < 1){
+                AlertDialog.Builder warningDialog = new AlertDialog.Builder(context);
+                warningDialog.setTitle("Warning");
+                warningDialog.setMessage("You are about to delete the Artefact entry entirely");
+
+                warningDialog.setPositiveButton("Continue", (dialogInterface, i) -> {
+
+                    storage.DeleteArtefact(artefact);
+                    ((InventoryManagementActivity)context).RefreshList();
+
+                }).setNegativeButton("Cancel", null).create().show();
+            }else {
+                artefact.quantity--;
+                notifyDataSetChanged();
+            }
         });
 
         holder.viewIsSelected = selectedPosition == thisViewsPosition;
