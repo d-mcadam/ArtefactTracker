@@ -27,8 +27,8 @@
     <string name="save_text">Save</string>
     <string name="cancel_text">Cancel</string>
 //place holder strings
-    <string name="place_holder_material_requirement_title">%1$s:</string>
-    <string name="place_holder_material_requirement_quantity">%1$d</string>
+    <string name="place_holder_title">%1$s:</string>
+    <string name="place_holder_quantity">%1$d</string>
 //arrays
     <string-array name="artefact_categories">
         <item>All</item>
