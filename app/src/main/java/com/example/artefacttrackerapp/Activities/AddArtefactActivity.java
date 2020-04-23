@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -72,6 +73,9 @@ public class AddArtefactActivity extends AppCompatActivity {
 
     private void init(){
 
+        Intent intent = getIntent();
+        String inputName = intent.getStringExtra("STRING_INPUT");
+
         saveButton = findViewById(R.id.buttonSaveArtefact);
 
         //<editor-fold defaultstate="collapsed" desc="Category spinner">
@@ -91,6 +95,7 @@ public class AddArtefactActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) { CheckSaveEligibility(); }
         });
+        artefactNameField.setText(inputName);
         //</editor-fold>
 
         //<editor-fold defaultstate="collapsed" desc="Recycler view components">
@@ -196,6 +201,11 @@ public class AddArtefactActivity extends AppCompatActivity {
         GameArtefact artefact = new GameArtefact(title, category);
 
         artefact.requirements.addAll(requirementArrayList);
+
+        if (storage.Artefacts().stream().anyMatch(a -> a.title.equals(title))){
+            Toast.makeText(this, "Duplicate names detected", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         storage.AddArtefact(artefact);
 
