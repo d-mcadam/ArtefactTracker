@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -14,6 +16,8 @@ import android.widget.Toast;
 
 import com.example.artefacttrackerapp.R;
 import com.example.artefacttrackerapp.Utilities.MaterialAdapter;
+
+import java.util.ArrayList;
 
 import static com.example.artefacttrackerapp.Activities.MainActivity.storage;
 
@@ -25,6 +29,8 @@ public class MaterialOptionsActivity extends AppCompatActivity {
     private RecyclerView.Adapter materialAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
+    private final ArrayList<String> displayList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,15 +40,46 @@ public class MaterialOptionsActivity extends AppCompatActivity {
 
     private void init(){
 
+        //<editor-fold defaultstate="collapsed" desc="Search materials field">
         materialSearchField = findViewById(R.id.editTextSearchMaterials);
+        materialSearchField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { RefreshList(); }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) { RefreshList(); }
+            @Override
+            public void afterTextChanged(Editable editable) { RefreshList(); }
+        });
+        //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Recycler view components">
         materialRecyclerView = findViewById(R.id.recyclerViewMaterialList);
 
         layoutManager = new LinearLayoutManager(this);
         materialRecyclerView.setLayoutManager(layoutManager);
 
-        materialAdapter = new MaterialAdapter(this, storage.Materials());
+        materialAdapter = new MaterialAdapter(this, displayList);
         materialRecyclerView.setAdapter(materialAdapter);
+        //</editor-fold>
+
+        RefreshList();
+    }
+
+    private void RefreshList(){
+
+        displayList.clear();
+
+        if (materialSearchField.getText().toString().trim().length() > 0) {
+            storage.Materials().stream()
+                    .filter(m -> m.contains(materialSearchField.getText().toString().trim()))
+                    .forEach(m -> displayList.add(m));
+        }else{
+            displayList.addAll(storage.Materials());
+        }
+
+        ((MaterialAdapter)materialAdapter).selectedPosition = -1;
+        materialAdapter.notifyDataSetChanged();
+
     }
 
     public void AddMaterial(View v){
