@@ -113,7 +113,8 @@ public class AddArtefactActivity extends AppCompatActivity {
     public void CheckSaveEligibility(){
         saveButton.setEnabled(
                 artefactNameField.getText().toString().trim().length() > 0 &&
-                requirementArrayList.size() > 0
+                requirementArrayList.size() > 0 &&
+                storage.Artefacts().stream().noneMatch(a -> a.title.equals(artefactNameField.getText().toString().trim()))
         );
     }
 
@@ -201,11 +202,6 @@ public class AddArtefactActivity extends AppCompatActivity {
         GameArtefact artefact = new GameArtefact(title, category);
 
         artefact.requirements.addAll(requirementArrayList);
-
-        if (storage.Artefacts().stream().anyMatch(a -> a.title.equals(title))){
-            Toast.makeText(this, "Duplicate names detected", Toast.LENGTH_LONG).show();
-            return;
-        }
 
         storage.AddArtefact(artefact);
 
