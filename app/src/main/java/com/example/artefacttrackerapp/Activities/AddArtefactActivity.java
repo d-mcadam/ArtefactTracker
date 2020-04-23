@@ -18,12 +18,15 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.artefacttrackerapp.Data.Collection;
 import com.example.artefacttrackerapp.Data.GameArtefact;
 import com.example.artefacttrackerapp.Data.MaterialRequirement;
 import com.example.artefacttrackerapp.R;
 import com.example.artefacttrackerapp.Utilities.MaterialRequirementAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import static com.example.artefacttrackerapp.Activities.MainActivity.storage;
 
@@ -149,6 +152,7 @@ public class AddArtefactActivity extends AppCompatActivity {
                         MaterialRequirement materialRequirement = new MaterialRequirement(name, quantity);
 
                         requirementArrayList.add(materialRequirement);
+                        Collections.sort(requirementArrayList, Comparator.comparing(MaterialRequirement::Title));
                         ((MaterialRequirementAdapter)matReqAdapter).selectedPosition = -1;
                         matReqAdapter.notifyDataSetChanged();
                         CheckSaveEligibility();
@@ -157,8 +161,26 @@ public class AddArtefactActivity extends AppCompatActivity {
 
                     }).setNegativeButton("Cancel", (dialogInterface1, i1) -> Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG)).create().show();
 
-            }).setNegativeButton("Cancel", (dialogInterface, i) -> Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG)).create().show();
+            }).setNeutralButton("Add Material", (dialogInterface, i) -> {
 
+                AlertDialog.Builder addMaterialDialog = new AlertDialog.Builder(thisContext);
+                addMaterialDialog.setTitle("Add Material");
+
+                View addMaterialDialogView = inflater.inflate(R.layout.dialog_create_material, null);
+                final EditText addMaterialDialogField = addMaterialDialogView.findViewById(R.id.editTextInputMaterialName);
+
+                addMaterialDialog.setView(addMaterialDialogView)
+                    .setPositiveButton("Save", (dialogInterface1, i1) -> {
+
+                        String material = addMaterialDialogField.getText().toString().trim();
+
+                        storage.AddMaterial(material);
+
+                        AddMaterialRequirement(null);
+
+                    }).setNegativeButton("Cancel", (dialogInterface1, i1) -> Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG)).create().show();
+
+            }).setNegativeButton("Cancel", (dialogInterface, i) -> Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG)).create().show();
     }
 
     public void SaveArtefact(View v){
