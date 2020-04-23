@@ -41,7 +41,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         materialRecyclerView.setLayoutManager(layoutManager);
 
-        materialAdapter = new MaterialAdapter(storage.Materials());
+        materialAdapter = new MaterialAdapter(this, storage.Materials());
         materialRecyclerView.setAdapter(materialAdapter);
 
     }
@@ -69,6 +69,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
                 }
 
                 storage.AddMaterial(inputText);
+                ((MaterialAdapter)materialAdapter).selectedPosition = -1;
                 materialAdapter.notifyDataSetChanged();
                 Toast.makeText(getBaseContext(), "Added material: " + inputText, Toast.LENGTH_LONG).show();
                 materialSearchField.setText("");

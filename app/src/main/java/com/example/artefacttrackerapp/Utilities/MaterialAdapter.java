@@ -1,5 +1,7 @@
 package com.example.artefacttrackerapp.Utilities;
 
+import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +16,13 @@ import java.util.ArrayList;
 
 public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MaterialViewHolder> {
 
+    private final Context context;
     private final ArrayList<String> materialDataSet;
 
-    public MaterialAdapter(ArrayList<String> materialDataSet){
+    public int selectedPosition = -1;
+
+    public MaterialAdapter(Context context, ArrayList<String> materialDataSet){
+        this.context = context;
         this.materialDataSet = materialDataSet;
     }
 
@@ -29,9 +35,23 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.Materi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MaterialViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MaterialViewHolder holder, int thisViewsPosition) {
 
-        holder.detailView.setText(materialDataSet.get(position));
+        holder.itemView.setOnClickListener(view -> {
+            notifyDataSetChanged();
+
+            if (holder.viewIsSelected)
+                selectedPosition = -1;
+            else
+                selectedPosition = thisViewsPosition;
+
+            notifyDataSetChanged();
+        });
+
+        holder.viewIsSelected = selectedPosition == thisViewsPosition;
+
+        holder.detailView.setText(materialDataSet.get(thisViewsPosition));
+        holder.itemView.setBackgroundColor(holder.viewIsSelected ? context.getResources().getColor(R.color.colourRecyclerViewSelected, null) : Color.TRANSPARENT);
 
     }
 
@@ -40,10 +60,14 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.Materi
 
     public static class MaterialViewHolder extends RecyclerView.ViewHolder {
 
+        public boolean viewIsSelected = false;
+
         public TextView detailView;
+
         public MaterialViewHolder(@NonNull View itemView) {
             super(itemView);
             detailView = itemView.findViewById(R.id.textViewHolderMaterial);
         }
+
     }
 }
