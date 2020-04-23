@@ -64,8 +64,8 @@ public class MaterialRequirementAdapter extends RecyclerView.Adapter<MaterialReq
         holder.viewIsSelected = selectedPosition == thisViewsPosition;
 
         holder.itemView.setBackgroundColor(holder.viewIsSelected ? context.getColor(R.color.colourRecyclerViewSelected) : Color.TRANSPARENT);
-        holder.detailView.setText(context.getString(R.string.place_holder_material_requirement_title, matReq.title));
-        holder.qtyView.setText(context.getString(R.string.place_holder_material_requirement_quantity, matReq.quantity));
+        holder.detailView.setText(context.getString(R.string.place_holder_title, matReq.title));
+        holder.qtyView.setText(context.getString(R.string.place_holder_quantity, matReq.quantity));
         holder.deleteButton.setVisibility(holder.viewIsSelected ? View.VISIBLE : View.INVISIBLE);
         holder.deleteButton.setClickable(holder.viewIsSelected);
     }
