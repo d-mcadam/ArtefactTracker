@@ -64,7 +64,8 @@ public class MaterialRequirementAdapter extends RecyclerView.Adapter<MaterialReq
         holder.viewIsSelected = selectedPosition == thisViewsPosition;
 
         holder.itemView.setBackgroundColor(holder.viewIsSelected ? context.getColor(R.color.colourRecyclerViewSelected) : Color.TRANSPARENT);
-        holder.detailView.setText(context.getString(R.string.material_requirement_holder_display, matReq.title, matReq.quantity));
+        holder.detailView.setText(context.getString(R.string.place_holder_material_requirement_title, matReq.title));
+        holder.qtyView.setText(context.getString(R.string.place_holder_material_requirement_quantity, matReq.quantity));
         holder.deleteButton.setVisibility(holder.viewIsSelected ? View.VISIBLE : View.INVISIBLE);
         holder.deleteButton.setClickable(holder.viewIsSelected);
     }
@@ -77,12 +78,15 @@ public class MaterialRequirementAdapter extends RecyclerView.Adapter<MaterialReq
         public boolean viewIsSelected = false;
 
         public final TextView detailView;
+        public final TextView qtyView;
         public final ImageButton deleteButton;
 
         public MaterialRequirementViewHolder(@NonNull View itemView) {
             super(itemView);
             detailView = itemView.findViewById(R.id.textViewHolderMaterialRequirement);
             detailView.setHeight(viewHolderHeight);
+            qtyView = itemView.findViewById(R.id.textViewHolderMaterialQuantity);
+            qtyView.setHeight(viewHolderHeight);
             deleteButton = itemView.findViewById(R.id.imageButtonHolderDeleteMaterialRequirement);
         }
     }
