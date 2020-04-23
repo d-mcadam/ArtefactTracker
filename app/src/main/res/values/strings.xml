@@ -26,6 +26,8 @@
     <string name="default_zero">0</string>
     <string name="save_text">Save</string>
     <string name="cancel_text">Cancel</string>
+//place holder strings
+    <string name="material_requirement_holder_display">%1$s: %2$d</string>
 //arrays
     <string-array name="artefact_categories">
         <item>All</item>
