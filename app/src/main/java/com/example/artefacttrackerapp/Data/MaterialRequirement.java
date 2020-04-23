@@ -10,4 +10,6 @@ public class MaterialRequirement {
         this.quantity = quantity;
     }
 
+    public final String Title(){ return this.title; }
+
 }
