@@ -2,9 +2,12 @@ package com.example.artefacttrackerapp.Activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,11 +19,15 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.artefacttrackerapp.Data.Collection;
 import com.example.artefacttrackerapp.Data.GameArtefact;
 import com.example.artefacttrackerapp.Data.MaterialRequirement;
 import com.example.artefacttrackerapp.R;
+import com.example.artefacttrackerapp.Utilities.MaterialRequirementAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import static com.example.artefacttrackerapp.Activities.MainActivity.storage;
 
@@ -30,7 +37,11 @@ public class AddArtefactActivity extends AppCompatActivity {
     private Spinner categorySpinner;
     private EditText artefactNameField;
 
-    private final ArrayList<MaterialRequirement> requirementArrayList = new ArrayList<>();
+    private RecyclerView matReqRecyclerView;
+    private RecyclerView.Adapter matReqAdapter;
+    private RecyclerView.LayoutManager layoutManager;
+
+    public final ArrayList<MaterialRequirement> requirementArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,13 +73,19 @@ public class AddArtefactActivity extends AppCompatActivity {
 
     private void init(){
 
+        Intent intent = getIntent();
+        String inputName = intent.getStringExtra("STRING_INPUT");
+
         saveButton = findViewById(R.id.buttonSaveArtefact);
 
+        //<editor-fold defaultstate="collapsed" desc="Category spinner">
         ArrayAdapter<CharSequence> categoryAdapter = ArrayAdapter.createFromResource(this, R.array.artefact_categories, android.R.layout.simple_spinner_item);
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner = findViewById(R.id.spinnerAddArtefactCategory);
         categorySpinner.setAdapter(categoryAdapter);
+        //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Artefact name field">
         artefactNameField = findViewById(R.id.editTextInputArtefactName);
         artefactNameField.addTextChangedListener(new TextWatcher() {
             @Override
@@ -78,13 +95,26 @@ public class AddArtefactActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) { CheckSaveEligibility(); }
         });
+        artefactNameField.setText(inputName);
+        //</editor-fold>
+
+        //<editor-fold defaultstate="collapsed" desc="Recycler view components">
+        matReqRecyclerView = findViewById(R.id.recyclerViewRequirementList);
+
+        layoutManager = new LinearLayoutManager(this);
+        matReqRecyclerView.setLayoutManager(layoutManager);
+
+        matReqAdapter = new MaterialRequirementAdapter(this, requirementArrayList);
+        matReqRecyclerView.setAdapter(matReqAdapter);
+        //</editor-fold>
 
     }
 
-    private void CheckSaveEligibility(){
+    public void CheckSaveEligibility(){
         saveButton.setEnabled(
                 artefactNameField.getText().toString().trim().length() > 0 &&
-                requirementArrayList.size() > 0
+                requirementArrayList.size() > 0 &&
+                storage.Artefacts().stream().noneMatch(a -> a.title.equals(artefactNameField.getText().toString().trim()))
         );
     }
 
@@ -101,8 +131,8 @@ public class AddArtefactActivity extends AppCompatActivity {
 
         ArrayList<String> spinnerValues = new ArrayList<>();
         storage.Materials().stream()
-                .filter(m -> !requirementArrayList.stream().anyMatch(i -> i.title.equals(m)))
-                .forEach(m -> spinnerValues.add(m));
+                .filter(m -> requirementArrayList.stream().noneMatch(i -> i.title.equals(m)))
+                .forEach(spinnerValues::add);
 
         final Spinner nameDialogSpinner = nameDialogView.findViewById(R.id.spinnerMaterialNames);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(thisContext, R.layout.support_simple_spinner_dropdown_item, spinnerValues);
@@ -128,14 +158,40 @@ public class AddArtefactActivity extends AppCompatActivity {
                         MaterialRequirement materialRequirement = new MaterialRequirement(name, quantity);
 
                         requirementArrayList.add(materialRequirement);
+                        Collections.sort(requirementArrayList, Comparator.comparing(MaterialRequirement::Title));
+                        ((MaterialRequirementAdapter)matReqAdapter).selectedPosition = -1;
+                        matReqAdapter.notifyDataSetChanged();
                         CheckSaveEligibility();
 
                         Toast.makeText(thisContext, "Saved requirement", Toast.LENGTH_LONG).show();
 
                     }).setNegativeButton("Cancel", (dialogInterface1, i1) -> Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG)).create().show();
 
-            }).setNegativeButton("Cancel", (dialogInterface, i) -> Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG)).create().show();
+            }).setNeutralButton("Add Material", (dialogInterface, i) -> {
 
+                AlertDialog.Builder addMaterialDialog = new AlertDialog.Builder(thisContext);
+                addMaterialDialog.setTitle("Add Material");
+
+                View addMaterialDialogView = inflater.inflate(R.layout.dialog_create_material, null);
+                final EditText addMaterialDialogField = addMaterialDialogView.findViewById(R.id.editTextInputMaterialName);
+
+                addMaterialDialog.setView(addMaterialDialogView)
+                    .setPositiveButton("Save", (dialogInterface1, i1) -> {
+
+                        String inputText = addMaterialDialogField.getText().toString().trim();
+
+                        if (storage.Materials().stream().anyMatch(m -> m.equals(inputText))){
+                            Toast.makeText(getBaseContext(), "Duplicate names detected.", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+
+                        storage.AddMaterial(inputText);
+
+                        AddMaterialRequirement(null);
+
+                    }).setNegativeButton("Cancel", (dialogInterface1, i1) -> Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG)).create().show();
+
+            }).setNegativeButton("Cancel", (dialogInterface, i) -> Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG)).create().show();
     }
 
     public void SaveArtefact(View v){

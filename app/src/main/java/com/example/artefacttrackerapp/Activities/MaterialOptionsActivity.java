@@ -72,7 +72,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         if (materialSearchField.getText().toString().trim().length() > 0) {
             storage.Materials().stream()
                     .filter(m -> m.contains(materialSearchField.getText().toString().trim()))
-                    .forEach(m -> displayList.add(m));
+                    .forEach(displayList::add);
         }else{
             displayList.addAll(storage.Materials());
         }
@@ -93,13 +93,11 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         inputField.setText(materialSearchField.getText().toString().trim());
 
         dialog.setView(dialogView)
-            .setPositiveButton("Add", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
+            .setPositiveButton("Add", (dialogInterface, i) -> {
 
                 final String inputText = inputField.getText().toString().trim();
 
-                if (storage.Materials().stream().anyMatch((m) -> m.equals(inputText))){
+                if (storage.Materials().stream().anyMatch(m -> m.equals(inputText))){
                     Toast.makeText(getBaseContext(), "Duplicate names detected.", Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -109,7 +107,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
                 materialAdapter.notifyDataSetChanged();
                 Toast.makeText(getBaseContext(), "Added material: " + inputText, Toast.LENGTH_LONG).show();
                 materialSearchField.setText("");
-            }
-        }).setNegativeButton("Cancel", null).create().show();
+
+            }).setNegativeButton("Cancel",  (dialogInterface, i) -> Toast.makeText(getBaseContext(), "Cancelled", Toast.LENGTH_LONG)).create().show();
     }
 }

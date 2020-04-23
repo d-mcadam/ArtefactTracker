@@ -56,8 +56,8 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.Materi
         });
 
         holder.deleteButton.setOnClickListener(view -> {
-            storage.DeleteMaterial(material);
             this.selectedPosition = -1;
+            storage.DeleteMaterial(material);
             ((MaterialOptionsActivity)context).RefreshList();
         });
 
