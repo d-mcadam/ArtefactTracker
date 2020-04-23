@@ -14,4 +14,6 @@ public class GameArtefact {
         this.category = category;
     }
 
+    public final String Title(){ return this.title; }
+
 }

@@ -13,4 +13,6 @@ public class Collector {
         this.location = location;
     }
 
+    public final String Name(){ return this.name; }
+
 }

@@ -20,4 +20,6 @@ public class Collection {
 
     public void Completed(){ this.completedOnce = true; }
 
+    public final String Title(){ return this.title; }
+
 }
