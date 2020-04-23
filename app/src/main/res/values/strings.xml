@@ -8,6 +8,9 @@
     <string name="main_menu_available_label">Collections available:</string>
     <string name="main_menu_cronotes_label">Cronotes available:</string>
     <string name="main_menu_tetra_label">Tetra Pieces available:</string>
+    <string name="main_menu_material_db">Materials in Database:</string>
+    <string name="main_menu_artefact_db">Owned Artefacts:</string>
+    <string name="main_menu_material_requirement">Materials for owned Artefacts:</string>
 //material options
     <string name="material_opt_search_hint">Search Materials</string>
     <string name="material_opt_name_hint">Enter a name</string>
