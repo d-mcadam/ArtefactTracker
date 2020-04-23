@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.artefacttrackerapp.Data.GameArtefact;
 import com.example.artefacttrackerapp.Data.MaterialRequirement;
 import com.example.artefacttrackerapp.R;
 
@@ -99,11 +100,9 @@ public class AddArtefactActivity extends AppCompatActivity {
         View nameDialogView = inflater.inflate(R.layout.dialog_material_name, null);
 
         ArrayList<String> spinnerValues = new ArrayList<>();
-        for (String m : storage.Materials()){
-            if (!requirementArrayList.stream().anyMatch((i) -> i.title.equals(m))){
-                spinnerValues.add(m);
-            }
-        }
+        storage.Materials().stream()
+                .filter(m -> !requirementArrayList.stream().anyMatch(i -> i.title.equals(m)))
+                .forEach(m -> spinnerValues.add(m));
 
         final Spinner nameDialogSpinner = nameDialogView.findViewById(R.id.spinnerMaterialNames);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(thisContext, R.layout.support_simple_spinner_dropdown_item, spinnerValues);
@@ -152,6 +151,18 @@ public class AddArtefactActivity extends AppCompatActivity {
                 Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG);
             }
         }).create().show();
+
+    }
+
+    public void SaveArtefact(View v){
+
+        final String title = artefactNameField.getText().toString().trim();
+        final String category = categorySpinner.getSelectedItem().toString();
+
+        GameArtefact artefact = new GameArtefact(title, category);
+
+//        requirementArrayList.stream().forEach((m) -> );
+//        artefact.requirements.add()
 
     }
 }
