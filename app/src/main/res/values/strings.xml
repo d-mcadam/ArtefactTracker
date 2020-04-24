@@ -41,6 +41,10 @@
     <string name="create_collector_name_hint">Enter a name</string>
     <string name="create_collector_location_hint">Enter a location</string>
     <string name="search_collection_hint">Search Collections</string>
+    <string name="create_collection_holder_name_hint">Enter a name</string>
+    <string name="create_collection_holder_collector_label">Collector:</string>
+    <string name="create_collection_holder_reward_label">Reward:</string>
+    <string name="create_collection_holder_reward_qty_label">Reward quantity</string>
     //arrays
     <string-array name="artefact_categories">
         <item>All</item>
