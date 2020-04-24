@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Artefact Tracker App</string>
-//main menu
+    //main menu
     <string name="main_menu_materail_names_button">Material Options</string>
     <string name="main_menu_inventory_button">Inventory Management</string>
     <string name="main_menu_collection_button">Collection Logs</string>
@@ -11,25 +11,29 @@
     <string name="main_menu_material_db">Materials in Database:</string>
     <string name="main_menu_artefact_db">Owned Artefacts:</string>
     <string name="main_menu_material_requirement">Materials for owned Artefacts:</string>
-//material options
+    //material options
     <string name="material_opt_search_hint">Search Materials</string>
     <string name="material_opt_name_hint">Enter a name</string>
-//inventory management
+    //inventory management
     <string name="inventory_menu_search_hint">Search Artefacts</string>
     <string name="inventory_menu_category_label">Filter Category:</string>
-//add artefact
+    //add artefact
     <string name="add_artefact_title">Add an Artefact</string>
     <string name="add_artefact_name_hint">Enter a name</string>
     <string name="add_artefact_category_label">Category:</string>
     <string name="add_artefact_add_requirement">Add a requirement</string>
-//generic
+    //collection logs
+    <string name="collection_logs_collectors_button">Collectors</string>
+    <string name="collection_logs_collections_button">Collections</string>
+    <string name="collection_logs_collectible_button">Collectible Rewards</string>
+    //generic
     <string name="default_zero">0</string>
     <string name="save_text">Save</string>
     <string name="cancel_text">Cancel</string>
-//place holder strings
+    //place holder strings
     <string name="place_holder_title">%1$s:</string>
     <string name="place_holder_quantity">%1$d</string>
-//arrays
+    //arrays
     <string-array name="artefact_categories">
         <item>All</item>
         <item>Agnostic</item>
