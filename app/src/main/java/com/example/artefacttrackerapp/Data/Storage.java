@@ -63,6 +63,11 @@ public class Storage {
         this.collectors = new ArrayList<>();
         this.collections = new ArrayList<>();
         this.materials = new ArrayList<>();
+        createData();
+    }
+
+    private void createData(){
+
     }
 
 }
