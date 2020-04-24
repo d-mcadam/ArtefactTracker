@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.artefacttrackerapp.Data.GameArtefact;
+import com.example.artefacttrackerapp.Data.MaterialRequirement;
 import com.example.artefacttrackerapp.Data.Storage;
 import com.example.artefacttrackerapp.R;
 
@@ -50,13 +52,11 @@ public class MainActivity extends AppCompatActivity {
         materialTypeCountField.setText(String.valueOf(storage.Materials().size()));
         ownedArtefactCountField.setText(String.valueOf(storage.Artefacts().stream().map(a -> a.quantity).reduce(0, Integer::sum)));
 
-        requiredMaterialCountField.setText("0");
-        storage.Artefacts().forEach(a ->
-                requiredMaterialCountField.setText(String.valueOf(
-                        Integer.parseInt(requiredMaterialCountField.getText().toString()) +
-                        (a.requirements.stream().map(r -> r.quantity).reduce(0, Integer::sum) * a.quantity)
-                ))
-        );
+        int total = 0;
+        for (GameArtefact artefact : storage.Artefacts())
+            for (MaterialRequirement req : artefact.requirements)
+                total += req.quantity * artefact.quantity;
+        requiredMaterialCountField.setText(String.valueOf(total));
 
     }
 

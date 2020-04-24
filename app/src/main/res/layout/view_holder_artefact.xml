@@ -22,7 +22,7 @@
 
     <ImageButton
         android:id="@+id/imageButtonHolderMinusArtefact"
-        android:layout_width="wrap_content"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/holo_red_dark"
         android:clickable="false"
@@ -46,7 +46,7 @@
 
     <ImageButton
         android:id="@+id/imageButtonHolderAddArtefact"
-        android:layout_width="wrap_content"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/holo_green_light"
         app:layout_constraintEnd_toStartOf="@+id/imageButtonHolderMinusArtefact"
