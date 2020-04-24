@@ -38,6 +38,8 @@
     <string name="place_holder_quantity">%1$d</string>
     //hint texts
     <string name="search_collector_hint">Search Collectors</string>
+    <string name="create_collector_name_hint">Enter a name</string>
+    <string name="create_collector_location_hint">Enter a location</string>
     //arrays
     <string-array name="artefact_categories">
         <item>All</item>
