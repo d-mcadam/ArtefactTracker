@@ -90,7 +90,15 @@ public class CollectorActivity extends AppCompatActivity {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle("Collections on this Collector");
 
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_show_collector_logs, null);
 
+        dialog.setView(dialogView)
+                .setPositiveButton("OK", null)
+                .setNeutralButton("Create Collection", (dialogInterface, i) -> {
+
+
+
+                }).create().show();
     }
 
     public void AddCollector(View v){
