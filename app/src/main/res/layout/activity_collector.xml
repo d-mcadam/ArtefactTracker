@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MaterialOptionsActivity">
+    tools:context=".activities.CollectorActivity">
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/textView15"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
-        android:text="@string/main_menu_materail_names_button"
+        android:text="@string/collection_logs_collectors_button"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
         android:textSize="24sp"
@@ -23,32 +23,32 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextSearchMaterials"
+        android:id="@+id/editTextSearchCollectors"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:ems="10"
-        android:hint="@string/material_opt_search_hint"
+        android:hint="@string/search_collector_hint"
         android:inputType="textPersonName|textCapSentences|textAutoComplete"
-        app:layout_constraintEnd_toStartOf="@+id/imageButtonAddMaterial"
+        app:layout_constraintEnd_toStartOf="@+id/imageButtonAddCollector"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
     <ImageButton
-        android:id="@+id/imageButtonAddMaterial"
+        android:id="@+id/imageButtonAddCollector"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="27dp"
         android:layout_marginEnd="40dp"
-        android:onClick="AddMaterial"
+        android:onClick="AddCollector"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/textView15"
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewMaterialList"
+        android:id="@+id/recyclerViewCollectorList"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -58,5 +58,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButtonAddMaterial" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextSearchCollectors" />
 </androidx.constraintlayout.widget.ConstraintLayout>

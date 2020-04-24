@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.CollectionActivity">
+
+    <TextView
+        android:id="@+id/textViewLogsUniqueRemaining"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="42dp"
+        android:text="@string/default_zero"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintStart_toEndOf="@+id/textView23"
+        app:layout_constraintTop_toBottomOf="@+id/buttonRewards" />
+
+    <TextView
+        android:id="@+id/textViewLogsAvailableCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/default_zero"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintEnd_toEndOf="@+id/textViewLogsUniqueRemaining"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLogsUniqueRemaining" />
+
+    <TextView
+        android:id="@+id/textViewLogsCronotesCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/default_zero"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintEnd_toEndOf="@+id/textViewLogsAvailableCount"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLogsAvailableCount" />
+
+    <TextView
+        android:id="@+id/textViewLogsTetraCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/default_zero"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintEnd_toEndOf="@+id/textViewLogsCronotesCount"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLogsCronotesCount" />
+
+    <TextView
+        android:id="@+id/textViewLogsPylonCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/default_zero"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintEnd_toEndOf="@+id/textViewLogsTetraCount"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLogsTetraCount" />
+
+    <TextView
+        android:id="@+id/textViewLogsBlueprintCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/default_zero"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintEnd_toEndOf="@+id/textViewLogsGlassCount"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLogsGlassCount" />
+
+    <TextView
+        android:id="@+id/textViewLogsGlassCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/default_zero"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintEnd_toEndOf="@+id/textViewLogsPylonCount"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLogsPylonCount" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="42dp"
+        android:text="@string/main_menu_unique_remaining_label"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonRewards" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/main_menu_available_label"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintEnd_toEndOf="@+id/textView23"
+        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/main_menu_cronotes_label"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintEnd_toEndOf="@+id/textView24"
+        app:layout_constraintTop_toBottomOf="@+id/textView24" />
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/main_menu_tetra_label"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintEnd_toEndOf="@+id/textView25"
+        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/collection_log_pylon_label"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintEnd_toEndOf="@+id/textView25"
+        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/collection_log_blueprint_label"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintEnd_toEndOf="@+id/textView29"
+        app:layout_constraintTop_toBottomOf="@+id/textView29" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/collection_log_glass_label"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintEnd_toEndOf="@+id/textView27"
+        app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/main_menu_collection_button"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonCollectors"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:onClick="OpenCollectors"
+        android:text="@string/collection_logs_collectors_button"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <Button
+        android:id="@+id/buttonCollections"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:onClick="OpenCollections"
+        android:text="@string/collection_logs_collections_button"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCollectors" />
+
+    <Button
+        android:id="@+id/buttonRewards"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:onClick="OpenRewards"
+        android:text="@string/collection_logs_collectible_button"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCollections" />
+</androidx.constraintlayout.widget.ConstraintLayout>

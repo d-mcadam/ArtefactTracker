@@ -1,4 +1,4 @@
-package com.example.artefacttrackerapp.Activities;
+package com.example.artefacttrackerapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,22 +14,20 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.example.artefacttrackerapp.Data.GameArtefact;
+import com.example.artefacttrackerapp.data.GameArtefact;
 import com.example.artefacttrackerapp.R;
-import com.example.artefacttrackerapp.Utilities.ArtefactAdapter;
+import com.example.artefacttrackerapp.utilities.ArtefactAdapter;
 
 import java.util.ArrayList;
 
-import static com.example.artefacttrackerapp.Activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.activities.MainActivity.storage;
 
 public class InventoryManagementActivity extends AppCompatActivity {
 
     private EditText artefactSearchField;
     private Spinner categorySpinner;
 
-    private RecyclerView artefactRecyclerView;
     private RecyclerView.Adapter artefactAdapter;
-    private RecyclerView.LayoutManager layoutManager;
 
     private final ArrayList<GameArtefact> displayList = new ArrayList<>();
 
@@ -55,10 +53,9 @@ public class InventoryManagementActivity extends AppCompatActivity {
         //</editor-fold>
 
         //<editor-fold defaultstate="collapsed" desc="Recycler view components">
-        artefactRecyclerView = findViewById(R.id.recyclerViewInventoryList);
+        RecyclerView artefactRecyclerView = findViewById(R.id.recyclerViewInventoryList);
 
-        layoutManager = new LinearLayoutManager(this);
-        artefactRecyclerView.setLayoutManager(layoutManager);
+        artefactRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         artefactAdapter = new ArtefactAdapter(this, displayList);
         artefactRecyclerView.setAdapter(artefactAdapter);
@@ -92,15 +89,13 @@ public class InventoryManagementActivity extends AppCompatActivity {
 
         displayList.clear();
 
-        if (artefactSearchField.getText().toString().trim().length() > 0 || categorySpinner.getSelectedItemPosition() > -1){
-            storage.Artefacts().stream()
-                    .filter(a ->
-                            a.title.contains(artefactSearchField.getText().toString().trim()) &&
-                            (categorySpinner.getSelectedItem().toString().equals("All") || a.category.equals("All") || a.category.equals(categorySpinner.getSelectedItem().toString()))
-                    ).forEach(displayList::add);
-        }else{
-            displayList.addAll(storage.Artefacts());
-        }
+        String textSearch = artefactSearchField.getText().toString().trim();
+        String categorySearch = categorySpinner.getSelectedItem().toString();
+
+        storage.Artefacts().stream().filter(a ->
+            (textSearch.length() < 1 || a.title.contains(textSearch)) &&
+            (categorySpinner.getSelectedItemPosition() < 1 || a.category.equals(categorySearch))
+        ).forEach(displayList::add);
 
         ((ArtefactAdapter)artefactAdapter).selectedPosition = -1;
         artefactAdapter.notifyDataSetChanged();

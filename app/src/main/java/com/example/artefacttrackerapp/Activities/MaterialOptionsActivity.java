@@ -1,11 +1,10 @@
-package com.example.artefacttrackerapp.Activities;
+package com.example.artefacttrackerapp.activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,19 +14,17 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.artefacttrackerapp.R;
-import com.example.artefacttrackerapp.Utilities.MaterialAdapter;
+import com.example.artefacttrackerapp.utilities.MaterialAdapter;
 
 import java.util.ArrayList;
 
-import static com.example.artefacttrackerapp.Activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.activities.MainActivity.storage;
 
 public class MaterialOptionsActivity extends AppCompatActivity {
 
     private EditText materialSearchField;
 
-    private RecyclerView materialRecyclerView;
     private RecyclerView.Adapter materialAdapter;
-    private RecyclerView.LayoutManager layoutManager;
 
     private final ArrayList<String> displayList = new ArrayList<>();
 
@@ -53,10 +50,9 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         //</editor-fold>
 
         //<editor-fold defaultstate="collapsed" desc="Recycler view components">
-        materialRecyclerView = findViewById(R.id.recyclerViewMaterialList);
+        RecyclerView materialRecyclerView = findViewById(R.id.recyclerViewMaterialList);
 
-        layoutManager = new LinearLayoutManager(this);
-        materialRecyclerView.setLayoutManager(layoutManager);
+        materialRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         materialAdapter = new MaterialAdapter(this, displayList);
         materialRecyclerView.setAdapter(materialAdapter);
@@ -69,13 +65,11 @@ public class MaterialOptionsActivity extends AppCompatActivity {
 
         displayList.clear();
 
-        if (materialSearchField.getText().toString().trim().length() > 0) {
-            storage.Materials().stream()
-                    .filter(m -> m.contains(materialSearchField.getText().toString().trim()))
-                    .forEach(displayList::add);
-        }else{
-            displayList.addAll(storage.Materials());
-        }
+        String searchText = materialSearchField.getText().toString().trim();
+
+        storage.Materials().stream().filter(m ->
+                searchText.length() < 1 || m.contains(searchText)
+        ).forEach(displayList::add);
 
         ((MaterialAdapter)materialAdapter).selectedPosition = -1;
         materialAdapter.notifyDataSetChanged();
@@ -108,6 +102,6 @@ public class MaterialOptionsActivity extends AppCompatActivity {
                 Toast.makeText(getBaseContext(), "Added material: " + inputText, Toast.LENGTH_LONG).show();
                 materialSearchField.setText("");
 
-            }).setNegativeButton("Cancel",  (dialogInterface, i) -> Toast.makeText(getBaseContext(), "Cancelled", Toast.LENGTH_LONG)).create().show();
+            }).setNegativeButton("Cancel",  (dialogInterface, i) -> Toast.makeText(getBaseContext(), "Cancelled", Toast.LENGTH_LONG).show()).create().show();
     }
 }

@@ -1,4 +1,4 @@
-package com.example.artefacttrackerapp.Utilities;
+package com.example.artefacttrackerapp.utilities;
 
 public enum SearchOrderOption {
 

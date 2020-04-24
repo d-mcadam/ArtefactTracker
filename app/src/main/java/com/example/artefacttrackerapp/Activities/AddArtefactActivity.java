@@ -1,4 +1,4 @@
-package com.example.artefacttrackerapp.Activities;
+package com.example.artefacttrackerapp.activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,17 +19,16 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.artefacttrackerapp.Data.Collection;
-import com.example.artefacttrackerapp.Data.GameArtefact;
-import com.example.artefacttrackerapp.Data.MaterialRequirement;
+import com.example.artefacttrackerapp.data.GameArtefact;
+import com.example.artefacttrackerapp.data.MaterialRequirement;
 import com.example.artefacttrackerapp.R;
-import com.example.artefacttrackerapp.Utilities.MaterialRequirementAdapter;
+import com.example.artefacttrackerapp.utilities.MaterialRequirementAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import static com.example.artefacttrackerapp.Activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.activities.MainActivity.storage;
 
 public class AddArtefactActivity extends AppCompatActivity {
 
@@ -37,9 +36,7 @@ public class AddArtefactActivity extends AppCompatActivity {
     private Spinner categorySpinner;
     private EditText artefactNameField;
 
-    private RecyclerView matReqRecyclerView;
     private RecyclerView.Adapter matReqAdapter;
-    private RecyclerView.LayoutManager layoutManager;
 
     public final ArrayList<MaterialRequirement> requirementArrayList = new ArrayList<>();
 
@@ -99,10 +96,9 @@ public class AddArtefactActivity extends AppCompatActivity {
         //</editor-fold>
 
         //<editor-fold defaultstate="collapsed" desc="Recycler view components">
-        matReqRecyclerView = findViewById(R.id.recyclerViewRequirementList);
+        RecyclerView matReqRecyclerView = findViewById(R.id.recyclerViewRequirementList);
 
-        layoutManager = new LinearLayoutManager(this);
-        matReqRecyclerView.setLayoutManager(layoutManager);
+        matReqRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         matReqAdapter = new MaterialRequirementAdapter(this, requirementArrayList);
         matReqRecyclerView.setAdapter(matReqAdapter);

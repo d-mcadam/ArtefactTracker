@@ -1,4 +1,4 @@
-package com.example.artefacttrackerapp.Activities;
+package com.example.artefacttrackerapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,14 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.artefacttrackerapp.Data.GameArtefact;
-import com.example.artefacttrackerapp.Data.MaterialRequirement;
-import com.example.artefacttrackerapp.Data.Storage;
+import com.example.artefacttrackerapp.data.GameArtefact;
+import com.example.artefacttrackerapp.data.MaterialRequirement;
+import com.example.artefacttrackerapp.data.Storage;
 import com.example.artefacttrackerapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static Storage storage;
+    public static Storage storage = new Storage();
 
     private TextView uniqueRemainingCollectionsField;
     private TextView availableCollectibleField;
@@ -32,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init(){
-
-        storage = new Storage();
 
 //        uniqueRemainingCollectionsField = findViewById(R.id.textViewUniqueRemaining);
 //        availableCollectibleField = findViewById(R.id.textViewAvailableCount);
@@ -67,6 +65,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void OpenInventoryManagement(View v){
         Intent intent = new Intent(getBaseContext(), InventoryManagementActivity.class);
+        startActivity(intent);
+    }
+
+    public void OpenCollectionManagement(View v){
+        Intent intent = new Intent(getBaseContext(), CollectionActivity.class);
         startActivity(intent);
     }
 }
