@@ -79,10 +79,13 @@ public class CollectorActivity extends AppCompatActivity {
                     .filter(c ->
                             c.name.contains(collectorSearchField.getText().toString().trim()) ||
                             c.location.contains(collectorSearchField.getText().toString().trim())
-                    );
+                    ).forEach(displayList::add);
         }else{
             displayList.addAll(storage.Collectors());
         }
+
+        ((CollectorAdapter)collectorAdapter).selectedPosition = -1;
+        collectorAdapter.notifyDataSetChanged();
 
     }
 
@@ -99,17 +102,19 @@ public class CollectorActivity extends AppCompatActivity {
         dialog.setView(dialogView)
             .setPositiveButton("Add", (dialogInterface, i) -> {
 
-            final String inputName = inputFieldName.getText().toString().trim();
-            final String inputLocation = inputFieldLocation.getText().toString().trim();
+                final String inputName = inputFieldName.getText().toString().trim();
+                final String inputLocation = inputFieldLocation.getText().toString().trim();
 
-            if (storage.Collectors().stream().anyMatch(c -> c.name.equals(inputName))){
-                Toast.makeText(getBaseContext(), "Duplicate names detected", Toast.LENGTH_LONG).show();
-                return;
-            }
+                if (storage.Collectors().stream().anyMatch(c -> c.name.equals(inputName))){
+                    Toast.makeText(getBaseContext(), "Duplicate names detected", Toast.LENGTH_LONG).show();
+                    return;
+                }
 
-            storage.AddCollector(new Collector(inputName, inputLocation));
-            Toast.makeText(getBaseContext(), "Added collector: " + inputName + " @ " + inputLocation, Toast.LENGTH_LONG).show();
-            collectorSearchField.setText("");
+                storage.AddCollector(new Collector(inputName, inputLocation));
+                ((CollectorAdapter)collectorAdapter).selectedPosition = -1;
+                collectorAdapter.notifyDataSetChanged();
+                Toast.makeText(getBaseContext(), "Added collector: " + inputName + " @ " + inputLocation, Toast.LENGTH_LONG).show();
+                collectorSearchField.setText("");
 
         }).setNegativeButton("Cancel", (dialogInterface, i) -> Toast.makeText(getBaseContext(), "Cancelled", Toast.LENGTH_LONG).show()).create().show();
 
