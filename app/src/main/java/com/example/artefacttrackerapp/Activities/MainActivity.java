@@ -69,4 +69,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getBaseContext(), InventoryManagementActivity.class);
         startActivity(intent);
     }
+
+    public void OpenCollectionManagement(View v){
+        Intent intent = new Intent(getBaseContext(), CollectionActivity.class);
+        startActivity(intent);
+    }
 }

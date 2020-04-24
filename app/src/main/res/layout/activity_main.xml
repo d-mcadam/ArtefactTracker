@@ -28,6 +28,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
+        android:onClick="OpenCollectionManagement"
         android:text="@string/main_menu_collection_button"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
