@@ -15,7 +15,7 @@
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="@string/create_collection_holder_name_hint"
-        android:inputType="textPersonName"
+        android:inputType="textPersonName|textCapSentences|textAutoComplete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerHolderCreateCollectionCollector" />
