@@ -65,13 +65,11 @@ public class MaterialOptionsActivity extends AppCompatActivity {
 
         displayList.clear();
 
-        if (materialSearchField.getText().toString().trim().length() > 0) {
-            storage.Materials().stream()
-                    .filter(m -> m.contains(materialSearchField.getText().toString().trim()))
-                    .forEach(displayList::add);
-        }else{
-            displayList.addAll(storage.Materials());
-        }
+        String searchText = materialSearchField.getText().toString().trim();
+
+        storage.Materials().stream().filter(m ->
+                searchText.length() < 1 || m.contains(searchText)
+        ).forEach(displayList::add);
 
         ((MaterialAdapter)materialAdapter).selectedPosition = -1;
         materialAdapter.notifyDataSetChanged();

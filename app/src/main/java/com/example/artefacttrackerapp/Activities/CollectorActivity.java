@@ -67,15 +67,11 @@ public class CollectorActivity extends AppCompatActivity {
 
         displayList.clear();
 
-        if (collectorSearchField.getText().toString().trim().length() > 0){
-            storage.Collectors().stream()
-                    .filter(c ->
-                            c.name.contains(collectorSearchField.getText().toString().trim()) ||
-                            c.location.contains(collectorSearchField.getText().toString().trim())
-                    ).forEach(displayList::add);
-        }else{
-            displayList.addAll(storage.Collectors());
-        }
+        String searchText = collectorSearchField.getText().toString().trim();
+
+        storage.Collectors().stream().filter(c ->
+                searchText.length() < 1 || c.name.contains(searchText) || c.location.contains(searchText)
+        ).forEach(displayList::add);
 
         ((CollectorAdapter)collectorAdapter).selectedPosition = -1;
         collectorAdapter.notifyDataSetChanged();

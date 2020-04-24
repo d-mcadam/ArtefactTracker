@@ -89,15 +89,13 @@ public class InventoryManagementActivity extends AppCompatActivity {
 
         displayList.clear();
 
-        if (artefactSearchField.getText().toString().trim().length() > 0 || categorySpinner.getSelectedItemPosition() > -1){
-            storage.Artefacts().stream()
-                    .filter(a ->
-                            a.title.contains(artefactSearchField.getText().toString().trim()) &&
-                            (categorySpinner.getSelectedItem().toString().equals("All") || a.category.equals("All") || a.category.equals(categorySpinner.getSelectedItem().toString()))
-                    ).forEach(displayList::add);
-        }else{
-            displayList.addAll(storage.Artefacts());
-        }
+        String textSearch = artefactSearchField.getText().toString().trim();
+        String categorySearch = categorySpinner.getSelectedItem().toString();
+
+        storage.Artefacts().stream().filter(a ->
+            (textSearch.length() < 1 || a.title.contains(textSearch)) &&
+            (categorySpinner.getSelectedItemPosition() < 1 || a.category.equals(categorySearch))
+        ).forEach(displayList::add);
 
         ((ArtefactAdapter)artefactAdapter).selectedPosition = -1;
         artefactAdapter.notifyDataSetChanged();
