@@ -86,6 +86,13 @@ public class CollectorActivity extends AppCompatActivity {
 
     }
 
+    public void GenerateViewLogDialog(){
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle("Collections on this Collector");
+
+
+    }
+
     public void AddCollector(View v){
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle("Create a Collector");
