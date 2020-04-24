@@ -14,7 +14,7 @@
         android:layout_marginEnd="100dp"
         android:gravity="center_vertical|end"
         android:textColor="@android:color/background_dark"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/imageButtonHolderAddArtefact"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
 
     <ImageButton
         android:id="@+id/imageButtonHolderMinusArtefact"
-        android:layout_width="wrap_content"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/holo_red_dark"
         android:clickable="false"
@@ -38,7 +38,7 @@
         android:layout_marginStart="8dp"
         android:gravity="center_vertical"
         android:textColor="@android:color/background_dark"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/imageButtonHolderAddArtefact"
         app:layout_constraintStart_toEndOf="@+id/textViewHolderArtefactName"
@@ -46,7 +46,7 @@
 
     <ImageButton
         android:id="@+id/imageButtonHolderAddArtefact"
-        android:layout_width="wrap_content"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/holo_green_light"
         app:layout_constraintEnd_toStartOf="@+id/imageButtonHolderMinusArtefact"

@@ -13,7 +13,7 @@
         android:layout_marginStart="8dp"
         android:gravity="center_vertical"
         android:textColor="@android:color/background_dark"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/imageButtonHolderDeleteMaterial"
         app:layout_constraintStart_toStartOf="parent"
