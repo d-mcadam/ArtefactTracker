@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.artefacttrackerapp.R;
 import com.example.artefacttrackerapp.data.Collection;
 import com.example.artefacttrackerapp.utilities.CollectionAdapter;
+import com.example.artefacttrackerapp.utilities.SelectArtefactAdapter;
 
 import java.util.ArrayList;
 
@@ -168,12 +169,26 @@ public class CollectionLogActivity extends AppCompatActivity {
                 listDialog.setTitle("Select the Artefacts");
 
                 View listDialogView = getLayoutInflater().inflate(R.layout.dialog_collection_list, null);
+                final EditText inputSearchField = listDialogView.findViewById(R.id.editTextHolderCollectionListSearch);
 
-                storage.AddCollection(collection);
-                ((CollectionAdapter)collectionAdapter).selectedPosition = -1;
-                collectionAdapter.notifyDataSetChanged();
-                Toast.makeText(getBaseContext(), "Added Collection: " + inputName, Toast.LENGTH_LONG).show();
-                collectionSearchField.setText("");
+                final RecyclerView inputRecyclerView = listDialogView.findViewById(R.id.recyclerViewHolderCollectionLogList);
+                inputRecyclerView.setLayoutManager(new LinearLayoutManager(thisContext));
+
+                RecyclerView.Adapter inputRecyclerViewAdapter = new SelectArtefactAdapter(thisContext, storage.Artefacts());
+                inputRecyclerView.setAdapter(inputRecyclerViewAdapter);
+
+                listDialog.setView(listDialogView)
+                    .setPositiveButton("Save", (dialogInterface1, i1) -> {
+
+                        ((SelectArtefactAdapter)inputRecyclerViewAdapter).selectedData.forEach(a -> collection.artefacts.add(a.title));
+
+                        storage.AddCollection(collection);
+                        ((CollectionAdapter)collectionAdapter).selectedPosition = -1;
+                        collectionAdapter.notifyDataSetChanged();
+                        Toast.makeText(getBaseContext(), "Added Collection: " + inputName, Toast.LENGTH_LONG).show();
+                        collectionSearchField.setText("");
+
+                }).setNegativeButton("Cancel", (dialogInterface1, i1) -> Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG).show()).create().show();
 
         }).setNegativeButton("Cancel", (dialogInterface, i) -> Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG).show()).create().show();
     }
