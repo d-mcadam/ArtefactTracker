@@ -111,11 +111,15 @@ public class AddArtefactActivity extends AppCompatActivity {
     }
 
     public void CheckSaveEligibility(){
-        saveButton.setEnabled(
-                artefactNameField.getText().toString().trim().length() > 0 &&
-                requirementArrayList.size() > 0 &&
-                storage.Artefacts().stream().noneMatch(a -> a.title.equals(artefactNameField.getText().toString().trim()))
-        );
+        boolean nameFilledIn = artefactNameField.getText().toString().trim().length() > 0;
+        boolean requirementEntered = requirementArrayList.size() > 0;
+        boolean uniqueTitle = storage.Artefacts().stream().noneMatch(a -> a.title.equals(artefactNameField.getText().toString().trim()));
+
+        saveButton.setClickable(nameFilledIn && requirementEntered && uniqueTitle);
+        saveButton.setTextColor(getColor(saveButton.isClickable() ? R.color.colourBlackText : R.color.colourButtonDisabledText));
+
+        String tooltipText = !nameFilledIn ? "Name needs to be entered" : !requirementEntered ? "Needs at least one requirement entry." : !uniqueTitle ? "Title must be unique" : "Save artefact";
+        saveButton.setTooltipText(tooltipText);
     }
 
     public void AddMaterialRequirement(View v){
