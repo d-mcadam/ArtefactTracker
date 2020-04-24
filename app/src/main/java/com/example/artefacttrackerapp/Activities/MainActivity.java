@@ -14,7 +14,7 @@ import com.example.artefacttrackerapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static Storage storage;
+    public static Storage storage = new Storage();
 
     private TextView uniqueRemainingCollectionsField;
     private TextView availableCollectibleField;
@@ -32,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init(){
-
-        storage = new Storage();
 
 //        uniqueRemainingCollectionsField = findViewById(R.id.textViewUniqueRemaining);
 //        availableCollectibleField = findViewById(R.id.textViewAvailableCount);
