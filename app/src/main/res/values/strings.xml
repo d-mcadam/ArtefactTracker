@@ -36,6 +36,8 @@
     //place holder strings
     <string name="place_holder_title">%1$s:</string>
     <string name="place_holder_quantity">%1$d</string>
+    //hint texts
+    <string name="search_collector_hint">Search Collectors</string>
     //arrays
     <string-array name="artefact_categories">
         <item>All</item>
