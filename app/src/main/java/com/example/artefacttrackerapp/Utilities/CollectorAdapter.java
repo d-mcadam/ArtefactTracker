@@ -11,10 +11,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.artefacttrackerapp.Activities.CollectorActivity;
 import com.example.artefacttrackerapp.Data.Collector;
 import com.example.artefacttrackerapp.R;
 
 import java.util.ArrayList;
+
+import static com.example.artefacttrackerapp.Activities.MainActivity.storage;
 
 public class CollectorAdapter extends RecyclerView.Adapter<CollectorAdapter.CollectorViewHolder> {
 
@@ -54,11 +57,12 @@ public class CollectorAdapter extends RecyclerView.Adapter<CollectorAdapter.Coll
         });
 
         holder.viewLogButton.setOnClickListener(view -> {
-
+            ((CollectorActivity)context).GenerateViewLogDialog();
         });
 
         holder.deleteButton.setOnClickListener(view -> {
-
+            storage.DeleteCollector(collector);
+            ((CollectorActivity)context).RefreshList();
         });
 
         holder.viewIsSelected = selectedPosition == thisViewsPosition;
