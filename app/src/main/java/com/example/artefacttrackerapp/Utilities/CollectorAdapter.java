@@ -65,7 +65,7 @@ public class CollectorAdapter extends RecyclerView.Adapter<CollectorAdapter.Coll
 
         holder.itemView.setBackgroundColor(holder.viewIsSelected ? context.getColor(R.color.colourRecyclerViewSelected) : Color.TRANSPARENT);
 
-        holder.detailView.setText(context.getString(R.string.place_holder_title, collector.name));
+        holder.detailView.setText(context.getString(R.string.place_holder_title, new StringBuilder().append(collector.name).append(", ").append(collector.location).toString()));
         holder.logQtyView.setText(context.getString(R.string.place_holder_quantity, collector.collections.size()));
 
         holder.viewLogButton.setVisibility(holder.viewIsSelected ? View.VISIBLE : View.INVISIBLE);
