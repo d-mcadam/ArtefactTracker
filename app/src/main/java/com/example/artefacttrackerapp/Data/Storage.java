@@ -1,5 +1,7 @@
 package com.example.artefacttrackerapp.data;
 
+import com.example.artefacttrackerapp.R;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -67,6 +69,23 @@ public class Storage {
     }
 
     private void createData(){
+
+        for (int i = 1; i < 36; i++)
+            this.materials.add("Material " + i);
+
+        for (int i = 1; i < 101; i++)
+            this.artefacts.add(new GameArtefact("Artefact " + i, "All"));
+
+        for (int i = 1; i < 21; i++)
+            this.collectors.add(new Collector("Collector " + i, "Location " + i));
+
+        for (int i = 1; i < 51; i++)
+            this.collections.add(new Collection("Collection " + i, "Collector " + i, "All", "Any", 2));
+
+        for (Collector c1 : collectors)
+            for (Collection c2 : collections)
+                if (c2.collector.equals(c1.name))
+                    c1.collections.add(c2.title);
 
     }
 
