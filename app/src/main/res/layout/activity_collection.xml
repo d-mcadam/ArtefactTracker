@@ -7,7 +7,7 @@
     tools:context=".Activities.CollectionActivity">
 
     <TextView
-        android:id="@+id/textView37"
+        android:id="@+id/textViewLogsUniqueRemaining"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -18,64 +18,64 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonRewards" />
 
     <TextView
-        android:id="@+id/textView38"
+        android:id="@+id/textViewLogsAvailableCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/default_zero"
         android:textColor="@android:color/background_dark"
-        app:layout_constraintEnd_toEndOf="@+id/textView37"
-        app:layout_constraintTop_toBottomOf="@+id/textView37" />
+        app:layout_constraintEnd_toEndOf="@+id/textViewLogsUniqueRemaining"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLogsUniqueRemaining" />
 
     <TextView
-        android:id="@+id/textView39"
+        android:id="@+id/textViewLogsCronotesCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/default_zero"
         android:textColor="@android:color/background_dark"
-        app:layout_constraintEnd_toEndOf="@+id/textView38"
-        app:layout_constraintTop_toBottomOf="@+id/textView38" />
+        app:layout_constraintEnd_toEndOf="@+id/textViewLogsAvailableCount"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLogsAvailableCount" />
 
     <TextView
-        android:id="@+id/textView40"
+        android:id="@+id/textViewLogsTetraCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/default_zero"
         android:textColor="@android:color/background_dark"
-        app:layout_constraintEnd_toEndOf="@+id/textView39"
-        app:layout_constraintTop_toBottomOf="@+id/textView39" />
+        app:layout_constraintEnd_toEndOf="@+id/textViewLogsCronotesCount"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLogsCronotesCount" />
 
     <TextView
-        android:id="@+id/textView41"
+        android:id="@+id/textViewLogsPylonCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/default_zero"
         android:textColor="@android:color/background_dark"
-        app:layout_constraintEnd_toEndOf="@+id/textView40"
-        app:layout_constraintTop_toBottomOf="@+id/textView40" />
+        app:layout_constraintEnd_toEndOf="@+id/textViewLogsTetraCount"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLogsTetraCount" />
 
     <TextView
-        android:id="@+id/textView42"
+        android:id="@+id/textViewLogsBlueprintCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/default_zero"
         android:textColor="@android:color/background_dark"
-        app:layout_constraintEnd_toEndOf="@+id/textView43"
-        app:layout_constraintTop_toBottomOf="@+id/textView43" />
+        app:layout_constraintEnd_toEndOf="@+id/textViewLogsGlassCount"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLogsGlassCount" />
 
     <TextView
-        android:id="@+id/textView43"
+        android:id="@+id/textViewLogsGlassCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/default_zero"
         android:textColor="@android:color/background_dark"
-        app:layout_constraintEnd_toEndOf="@+id/textView41"
-        app:layout_constraintTop_toBottomOf="@+id/textView41" />
+        app:layout_constraintEnd_toEndOf="@+id/textViewLogsPylonCount"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLogsPylonCount" />
 
     <TextView
         android:id="@+id/textView23"
@@ -135,7 +135,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/collection_log_blueprint_label"
         android:textColor="@android:color/background_dark"
-        app:layout_constraintEnd_toEndOf="@+id/textView25"
+        app:layout_constraintEnd_toEndOf="@+id/textView29"
         app:layout_constraintTop_toBottomOf="@+id/textView29" />
 
     <TextView
@@ -145,7 +145,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/collection_log_glass_label"
         android:textColor="@android:color/background_dark"
-        app:layout_constraintEnd_toEndOf="@+id/textView25"
+        app:layout_constraintEnd_toEndOf="@+id/textView27"
         app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
     <TextView
