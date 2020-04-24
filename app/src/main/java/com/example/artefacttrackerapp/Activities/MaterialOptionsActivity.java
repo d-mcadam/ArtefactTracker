@@ -1,11 +1,10 @@
-package com.example.artefacttrackerapp.Activities;
+package com.example.artefacttrackerapp.activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,11 +14,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.artefacttrackerapp.R;
-import com.example.artefacttrackerapp.Utilities.MaterialAdapter;
+import com.example.artefacttrackerapp.utilities.MaterialAdapter;
 
 import java.util.ArrayList;
 
-import static com.example.artefacttrackerapp.Activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.activities.MainActivity.storage;
 
 public class MaterialOptionsActivity extends AppCompatActivity {
 

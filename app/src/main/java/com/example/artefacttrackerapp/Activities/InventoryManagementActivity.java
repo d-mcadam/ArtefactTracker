@@ -1,4 +1,4 @@
-package com.example.artefacttrackerapp.Activities;
+package com.example.artefacttrackerapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,13 +14,13 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.example.artefacttrackerapp.Data.GameArtefact;
+import com.example.artefacttrackerapp.data.GameArtefact;
 import com.example.artefacttrackerapp.R;
-import com.example.artefacttrackerapp.Utilities.ArtefactAdapter;
+import com.example.artefacttrackerapp.utilities.ArtefactAdapter;
 
 import java.util.ArrayList;
 
-import static com.example.artefacttrackerapp.Activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.activities.MainActivity.storage;
 
 public class InventoryManagementActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.artefacttrackerapp.Utilities;
+package com.example.artefacttrackerapp.utilities;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -11,13 +11,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.artefacttrackerapp.Activities.CollectorActivity;
-import com.example.artefacttrackerapp.Data.Collector;
+import com.example.artefacttrackerapp.activities.CollectorActivity;
+import com.example.artefacttrackerapp.data.Collector;
 import com.example.artefacttrackerapp.R;
 
 import java.util.ArrayList;
 
-import static com.example.artefacttrackerapp.Activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.activities.MainActivity.storage;
 
 public class CollectorAdapter extends RecyclerView.Adapter<CollectorAdapter.CollectorViewHolder> {
 

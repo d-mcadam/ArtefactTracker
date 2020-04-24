@@ -1,4 +1,4 @@
-package com.example.artefacttrackerapp.Utilities;
+package com.example.artefacttrackerapp.utilities;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -11,8 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.artefacttrackerapp.Activities.AddArtefactActivity;
-import com.example.artefacttrackerapp.Data.MaterialRequirement;
+import com.example.artefacttrackerapp.activities.AddArtefactActivity;
+import com.example.artefacttrackerapp.data.MaterialRequirement;
 import com.example.artefacttrackerapp.R;
 
 import java.util.ArrayList;

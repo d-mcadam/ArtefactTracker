@@ -1,4 +1,4 @@
-package com.example.artefacttrackerapp.Activities;
+package com.example.artefacttrackerapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,9 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.artefacttrackerapp.Data.GameArtefact;
-import com.example.artefacttrackerapp.Data.MaterialRequirement;
-import com.example.artefacttrackerapp.Data.Storage;
+import com.example.artefacttrackerapp.data.GameArtefact;
+import com.example.artefacttrackerapp.data.MaterialRequirement;
+import com.example.artefacttrackerapp.data.Storage;
 import com.example.artefacttrackerapp.R;
 
 public class MainActivity extends AppCompatActivity {

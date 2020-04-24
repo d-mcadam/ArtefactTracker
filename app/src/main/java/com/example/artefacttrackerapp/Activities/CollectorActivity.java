@@ -1,4 +1,4 @@
-package com.example.artefacttrackerapp.Activities;
+package com.example.artefacttrackerapp.activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,13 +13,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.artefacttrackerapp.Data.Collector;
+import com.example.artefacttrackerapp.data.Collector;
 import com.example.artefacttrackerapp.R;
-import com.example.artefacttrackerapp.Utilities.CollectorAdapter;
+import com.example.artefacttrackerapp.utilities.CollectorAdapter;
 
 import java.util.ArrayList;
 
-import static com.example.artefacttrackerapp.Activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.activities.MainActivity.storage;
 
 public class CollectorActivity extends AppCompatActivity {
 

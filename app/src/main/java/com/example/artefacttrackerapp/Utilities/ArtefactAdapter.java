@@ -1,4 +1,4 @@
-package com.example.artefacttrackerapp.Utilities;
+package com.example.artefacttrackerapp.utilities;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -12,13 +12,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.artefacttrackerapp.Activities.InventoryManagementActivity;
-import com.example.artefacttrackerapp.Data.GameArtefact;
+import com.example.artefacttrackerapp.activities.InventoryManagementActivity;
+import com.example.artefacttrackerapp.data.GameArtefact;
 import com.example.artefacttrackerapp.R;
 
 import java.util.ArrayList;
 
-import static com.example.artefacttrackerapp.Activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.activities.MainActivity.storage;
 
 public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.ArtefactViewHolder> {
 

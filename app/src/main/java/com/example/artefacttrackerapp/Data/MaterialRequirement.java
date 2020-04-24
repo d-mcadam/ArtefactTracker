@@ -1,4 +1,4 @@
-package com.example.artefacttrackerapp.Data;
+package com.example.artefacttrackerapp.data;
 
 public class MaterialRequirement {
 
