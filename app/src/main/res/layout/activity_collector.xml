@@ -7,17 +7,6 @@
     tools:context=".Activities.CollectorActivity">
 
     <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/inventory_menu_category_label"
-        android:textColor="@android:color/background_dark"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSearchCollectors" />
-
-    <TextView
         android:id="@+id/textView15"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -58,18 +47,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView15"
         app:srcCompat="@android:drawable/ic_input_add" />
 
-    <Spinner
-        android:id="@+id/spinnerCollectorArtefactCategory"
-        android:layout_width="0dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="42dp"
-        android:background="#e6e6e6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView16"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSearchCollectors" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewCollectorList"
         android:layout_width="0dp"
@@ -81,5 +58,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCollectorArtefactCategory" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextSearchCollectors" />
 </androidx.constraintlayout.widget.ConstraintLayout>
