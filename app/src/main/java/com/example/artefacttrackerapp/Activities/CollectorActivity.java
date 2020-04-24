@@ -2,6 +2,7 @@ package com.example.artefacttrackerapp.Activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.artefacttrackerapp.Data.Collector;
 import com.example.artefacttrackerapp.R;
+import com.example.artefacttrackerapp.Utilities.CollectorAdapter;
 
 import java.util.ArrayList;
 
@@ -26,7 +28,6 @@ import static com.example.artefacttrackerapp.Activities.MainActivity.storage;
 public class CollectorActivity extends AppCompatActivity {
 
     private EditText collectorSearchField;
-    private Spinner categorySpinner;
 
     private RecyclerView collectorRecyclerView;
     private RecyclerView.Adapter collectorAdapter;
@@ -55,21 +56,14 @@ public class CollectorActivity extends AppCompatActivity {
         });
         //</editor-fold>
 
-        //<editor-fold defaultstate="collapsed" desc="Category Spinner">
-        ArrayAdapter<CharSequence> categoryAdapter = ArrayAdapter.createFromResource(this, R.array.artefact_categories, android.R.layout.simple_spinner_item);
-        categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        categorySpinner = findViewById(R.id.spinnerCollectorArtefactCategory);
-        categorySpinner.setAdapter(categoryAdapter);
-        categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) { RefreshList(); }
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) { RefreshList(); }
-        });
-        //</editor-fold>
-
         //<editor-fold defaultstate="collapsed" desc="Recycler view components">
+        collectorRecyclerView = findViewById(R.id.recyclerViewCollectorList);
 
+        layoutManager = new LinearLayoutManager(this);
+        collectorRecyclerView.setLayoutManager(layoutManager);
+
+        collectorAdapter = new CollectorAdapter(this, displayList);
+        collectorRecyclerView.setAdapter(collectorAdapter);
         //</editor-fold>
 
         RefreshList();
@@ -79,6 +73,16 @@ public class CollectorActivity extends AppCompatActivity {
     public void RefreshList(){
 
         displayList.clear();
+
+        if (collectorSearchField.getText().toString().trim().length() > 0){
+            storage.Collectors().stream()
+                    .filter(c ->
+                            c.name.contains(collectorSearchField.getText().toString().trim()) ||
+                            c.location.contains(collectorSearchField.getText().toString().trim())
+                    );
+        }else{
+            displayList.addAll(storage.Collectors());
+        }
 
     }
 
