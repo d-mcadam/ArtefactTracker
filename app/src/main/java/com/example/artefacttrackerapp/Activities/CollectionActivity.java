@@ -2,6 +2,7 @@ package com.example.artefacttrackerapp.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -21,7 +22,8 @@ public class CollectionActivity extends AppCompatActivity {
     }
 
     public void OpenCollectors(View v){
-
+        Intent intent = new Intent(getBaseContext(), CollectorActivity.class);
+        startActivity(intent);
     }
 
     public void OpenCollections(View v){
