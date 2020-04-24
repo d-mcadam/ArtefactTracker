@@ -25,9 +25,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
 
     private EditText materialSearchField;
 
-    private RecyclerView materialRecyclerView;
     private RecyclerView.Adapter materialAdapter;
-    private RecyclerView.LayoutManager layoutManager;
 
     private final ArrayList<String> displayList = new ArrayList<>();
 
@@ -53,10 +51,9 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         //</editor-fold>
 
         //<editor-fold defaultstate="collapsed" desc="Recycler view components">
-        materialRecyclerView = findViewById(R.id.recyclerViewMaterialList);
+        RecyclerView materialRecyclerView = findViewById(R.id.recyclerViewMaterialList);
 
-        layoutManager = new LinearLayoutManager(this);
-        materialRecyclerView.setLayoutManager(layoutManager);
+        materialRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         materialAdapter = new MaterialAdapter(this, displayList);
         materialRecyclerView.setAdapter(materialAdapter);

@@ -29,9 +29,7 @@ public class CollectorActivity extends AppCompatActivity {
 
     private EditText collectorSearchField;
 
-    private RecyclerView collectorRecyclerView;
     private RecyclerView.Adapter collectorAdapter;
-    private RecyclerView.LayoutManager layoutManager;
 
     private final ArrayList<Collector> displayList = new ArrayList<>();
 
@@ -57,10 +55,9 @@ public class CollectorActivity extends AppCompatActivity {
         //</editor-fold>
 
         //<editor-fold defaultstate="collapsed" desc="Recycler view components">
-        collectorRecyclerView = findViewById(R.id.recyclerViewCollectorList);
+        RecyclerView collectorRecyclerView = findViewById(R.id.recyclerViewCollectorList);
 
-        layoutManager = new LinearLayoutManager(this);
-        collectorRecyclerView.setLayoutManager(layoutManager);
+        collectorRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         collectorAdapter = new CollectorAdapter(this, displayList);
         collectorRecyclerView.setAdapter(collectorAdapter);

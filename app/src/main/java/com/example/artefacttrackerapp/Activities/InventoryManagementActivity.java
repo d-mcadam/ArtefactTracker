@@ -27,9 +27,7 @@ public class InventoryManagementActivity extends AppCompatActivity {
     private EditText artefactSearchField;
     private Spinner categorySpinner;
 
-    private RecyclerView artefactRecyclerView;
     private RecyclerView.Adapter artefactAdapter;
-    private RecyclerView.LayoutManager layoutManager;
 
     private final ArrayList<GameArtefact> displayList = new ArrayList<>();
 
@@ -55,10 +53,9 @@ public class InventoryManagementActivity extends AppCompatActivity {
         //</editor-fold>
 
         //<editor-fold defaultstate="collapsed" desc="Recycler view components">
-        artefactRecyclerView = findViewById(R.id.recyclerViewInventoryList);
+        RecyclerView artefactRecyclerView = findViewById(R.id.recyclerViewInventoryList);
 
-        layoutManager = new LinearLayoutManager(this);
-        artefactRecyclerView.setLayoutManager(layoutManager);
+        artefactRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         artefactAdapter = new ArtefactAdapter(this, displayList);
         artefactRecyclerView.setAdapter(artefactAdapter);

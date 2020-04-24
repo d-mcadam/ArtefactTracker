@@ -37,9 +37,7 @@ public class AddArtefactActivity extends AppCompatActivity {
     private Spinner categorySpinner;
     private EditText artefactNameField;
 
-    private RecyclerView matReqRecyclerView;
     private RecyclerView.Adapter matReqAdapter;
-    private RecyclerView.LayoutManager layoutManager;
 
     public final ArrayList<MaterialRequirement> requirementArrayList = new ArrayList<>();
 
@@ -99,10 +97,9 @@ public class AddArtefactActivity extends AppCompatActivity {
         //</editor-fold>
 
         //<editor-fold defaultstate="collapsed" desc="Recycler view components">
-        matReqRecyclerView = findViewById(R.id.recyclerViewRequirementList);
+        RecyclerView matReqRecyclerView = findViewById(R.id.recyclerViewRequirementList);
 
-        layoutManager = new LinearLayoutManager(this);
-        matReqRecyclerView.setLayoutManager(layoutManager);
+        matReqRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         matReqAdapter = new MaterialRequirementAdapter(this, requirementArrayList);
         matReqRecyclerView.setAdapter(matReqAdapter);
