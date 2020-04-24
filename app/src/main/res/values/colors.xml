@@ -5,4 +5,6 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="colourRecyclerViewSelected">#BEBEBE</color>
+    <color name="colourBlackText">#000000</color>
+    <color name="colourButtonDisabledText">#969696</color>
 </resources>
