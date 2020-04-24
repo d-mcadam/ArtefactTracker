@@ -27,7 +27,8 @@ public class CollectionActivity extends AppCompatActivity {
     }
 
     public void OpenCollections(View v){
-
+        Intent intent = new Intent(getBaseContext(), CollectionLogActivity.class);
+        startActivity(intent);
     }
 
     public void OpenRewards(View v){
