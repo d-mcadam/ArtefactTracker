@@ -103,7 +103,8 @@ public class UtilityMethods {
         ArrayAdapter<String> collectorAdapter = new ArrayAdapter<>(context, R.layout.support_simple_spinner_dropdown_item, collectorValues);
         collectorAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         inputCollectorSpinner.setAdapter(collectorAdapter);
-        inputCollectorSpinner.setSelection(collectorAdapter.getPosition(collector.name));
+        if (collector != null)
+            inputCollectorSpinner.setSelection(collectorAdapter.getPosition(collector.name));
         //</editor-fold>
 
         //<editor-fold defaultstate="collapsed" desc="Populate category and reward spinners from resource">
