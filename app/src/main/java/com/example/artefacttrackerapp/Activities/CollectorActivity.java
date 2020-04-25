@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -83,7 +84,7 @@ public class CollectorActivity extends AppCompatActivity {
 
     public void GenerateViewLogDialog(Collector collector){
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-        dialog.setTitle("Collections on this Collector");
+        dialog.setTitle("Collections for " + collector.name);
 
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_show_collector_logs, null);
         final TextView textView = dialogView.findViewById(R.id.textViewHolderCollectorDisplayMultiline);
@@ -97,6 +98,13 @@ public class CollectorActivity extends AppCompatActivity {
                     .forEach(c1 -> {
                         if (c1.isCompleted())
                             sb.append(" \u2713");
+
+                        storage.Artefacts().stream()
+                                .filter(a -> c1.artefacts.contains(a.title))
+                                .forEach(a -> {
+                                    if (a.quantity < 0)
+                                        textView.setTextColor(Color.BLACK);
+                                });
                     });
 
             sb.append("\n");
