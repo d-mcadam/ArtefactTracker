@@ -56,9 +56,7 @@ public class CollectorAdapter extends RecyclerView.Adapter<CollectorAdapter.Coll
             notifyDataSetChanged();
         });
 
-        holder.viewLogButton.setOnClickListener(view -> {
-            ((CollectorActivity)context).GenerateViewLogDialog();
-        });
+        holder.viewLogButton.setOnClickListener(view -> ((CollectorActivity)context).GenerateViewLogDialog(collector));
 
         holder.deleteButton.setOnClickListener(view -> {
             storage.DeleteCollector(collector);
@@ -69,7 +67,7 @@ public class CollectorAdapter extends RecyclerView.Adapter<CollectorAdapter.Coll
 
         holder.itemView.setBackgroundColor(holder.viewIsSelected ? context.getColor(R.color.colourRecyclerViewSelected) : Color.TRANSPARENT);
 
-        holder.detailView.setText(context.getString(R.string.place_holder_title, new StringBuilder().append(collector.name).append(", ").append(collector.location).toString()));
+        holder.detailView.setText(context.getString(R.string.place_holder_title, collector.name + ", " + collector.location));
         holder.logQtyView.setText(context.getString(R.string.place_holder_quantity, collector.collections.size()));
 
         holder.viewLogButton.setVisibility(holder.viewIsSelected ? View.VISIBLE : View.INVISIBLE);
@@ -81,16 +79,16 @@ public class CollectorAdapter extends RecyclerView.Adapter<CollectorAdapter.Coll
     @Override
     public int getItemCount() { return this.collectorDataSet.size(); }
 
-    public class CollectorViewHolder extends RecyclerView.ViewHolder{
+    class CollectorViewHolder extends RecyclerView.ViewHolder{
 
-        public boolean viewIsSelected = false;
+        private boolean viewIsSelected = false;
 
-        public final TextView detailView;
-        public final TextView logQtyView;
-        public final ImageButton viewLogButton;
-        public final ImageButton deleteButton;
+        private final TextView detailView;
+        private final TextView logQtyView;
+        private final ImageButton viewLogButton;
+        private final ImageButton deleteButton;
 
-        public CollectorViewHolder(@NonNull View itemView) {
+        private CollectorViewHolder(@NonNull View itemView) {
             super(itemView);
             detailView = itemView.findViewById(R.id.textViewHolderCollectorNameLocation);
             detailView.setHeight(viewHolderHeight);

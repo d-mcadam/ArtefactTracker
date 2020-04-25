@@ -57,6 +57,32 @@ public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.Artefa
             notifyDataSetChanged();
         });
 
+        holder.itemView.setOnLongClickListener(view -> {
+            AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+            dialog.setTitle("Materials for " + artefact.title);
+
+            View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_material_requirement_display, null, false);
+            final TextView textView = dialogView.findViewById(R.id.textViewHolderMatReqDisplayMultiline);
+
+            StringBuilder sb = new StringBuilder();
+            artefact.requirements.forEach(mr -> {
+                sb.append(mr.title).append(", x").append(mr.quantity);
+
+                storage.Materials().stream()
+                        .filter(m -> m.title.equals(mr.title))
+                        .forEach(m -> {
+                            if (m.quantity >= mr.quantity)
+                                sb.append(" \u2713");
+                        });
+
+                sb.append("\n");
+            });
+            textView.setText(sb.toString().trim());
+
+            dialog.setView(dialogView).setPositiveButton("OK", null).create().show();
+            return true;
+        });
+
         holder.addQuantityButton.setOnClickListener(view -> {
             artefact.quantity++;
             notifyDataSetChanged();
@@ -96,16 +122,16 @@ public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.Artefa
     @Override
     public int getItemCount() { return this.artefactDataSet.size(); }
 
-    public class ArtefactViewHolder extends RecyclerView.ViewHolder {
+    class ArtefactViewHolder extends RecyclerView.ViewHolder {
 
-        public boolean viewIsSelected = false;
+        private boolean viewIsSelected = false;
 
-        public final TextView detailView;
-        public final TextView qtyView;
-        public final ImageButton addQuantityButton;
-        public final ImageButton minusQuantityButton;
+        private final TextView detailView;
+        private final TextView qtyView;
+        private final ImageButton addQuantityButton;
+        private final ImageButton minusQuantityButton;
 
-        public ArtefactViewHolder(@NonNull View itemView) {
+        private ArtefactViewHolder(@NonNull View itemView) {
             super(itemView);
             detailView = itemView.findViewById(R.id.textViewHolderArtefactName);
             detailView.setHeight(viewHolderHeight);

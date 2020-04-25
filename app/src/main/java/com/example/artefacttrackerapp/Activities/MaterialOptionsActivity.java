@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.artefacttrackerapp.R;
+import com.example.artefacttrackerapp.data.Material;
 import com.example.artefacttrackerapp.utilities.MaterialAdapter;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
 
     private RecyclerView.Adapter materialAdapter;
 
-    private final ArrayList<String> displayList = new ArrayList<>();
+    private final ArrayList<Material> displayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +69,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         String searchText = materialSearchField.getText().toString().trim();
 
         storage.Materials().stream().filter(m ->
-                searchText.length() < 1 || m.contains(searchText)
+                searchText.length() < 1 || m.title.contains(searchText)
         ).forEach(displayList::add);
 
         ((MaterialAdapter)materialAdapter).selectedPosition = -1;
@@ -91,12 +92,12 @@ public class MaterialOptionsActivity extends AppCompatActivity {
 
                 final String inputText = inputField.getText().toString().trim();
 
-                if (storage.Materials().stream().anyMatch(m -> m.equals(inputText))){
+                if (storage.Materials().stream().anyMatch(m -> m.title.equals(inputText))){
                     Toast.makeText(getBaseContext(), "Duplicate names detected.", Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                storage.AddMaterial(inputText);
+                storage.AddMaterial(new Material(inputText));
                 ((MaterialAdapter)materialAdapter).selectedPosition = -1;
                 materialAdapter.notifyDataSetChanged();
                 Toast.makeText(getBaseContext(), "Added material: " + inputText, Toast.LENGTH_LONG).show();

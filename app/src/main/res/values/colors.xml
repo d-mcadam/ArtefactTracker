@@ -7,4 +7,5 @@
     <color name="colourRecyclerViewSelected">#BEBEBE</color>
     <color name="colourBlackText">#000000</color>
     <color name="colourButtonDisabledText">#969696</color>
+    <color name="colourGreenHighlight">#00FF00</color>
 </resources>

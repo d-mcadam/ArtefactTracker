@@ -41,11 +41,19 @@ public class MainActivity extends AppCompatActivity {
         ownedArtefactCountField = findViewById(R.id.textViewArtefactCount);
         requiredMaterialCountField = findViewById(R.id.textViewMaterialRequirementCount);
 
+        RefreshData();
+
     }
 
     @Override
     public void onResume(){
         super.onResume();
+
+        RefreshData();
+
+    }
+
+    private void RefreshData(){
 
         materialTypeCountField.setText(String.valueOf(storage.Materials().size()));
         ownedArtefactCountField.setText(String.valueOf(storage.Artefacts().stream().map(a -> a.quantity).reduce(0, Integer::sum)));

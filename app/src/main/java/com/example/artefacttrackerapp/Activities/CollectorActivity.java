@@ -11,6 +11,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.artefacttrackerapp.data.Collector;
@@ -20,6 +21,7 @@ import com.example.artefacttrackerapp.utilities.CollectorAdapter;
 import java.util.ArrayList;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.CreateCollectionDialogGenerator;
 
 public class CollectorActivity extends AppCompatActivity {
 
@@ -78,19 +80,41 @@ public class CollectorActivity extends AppCompatActivity {
 
     }
 
-    public void GenerateViewLogDialog(){
+    public void GenerateViewLogDialog(Collector collector){
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-        dialog.setTitle("Collections on this Collector");
+        dialog.setTitle("Collections for " + collector.name);
 
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_show_collector_logs, null);
+        final TextView textView = dialogView.findViewById(R.id.textViewHolderCollectorDisplayMultiline);
+
+        StringBuilder sb = new StringBuilder();
+        collector.collections.forEach(c -> {
+//            StringBuilder item = new StringBuilder();
+
+            storage.Collections().stream()
+                    .filter(c1 -> c1.title.equals(c))
+                    .forEach(c1 -> {
+                        if (c1.artefacts.size() > 0 && c1.artefacts.stream().noneMatch(artefactTitle -> storage.findGameArtefactByTitle(artefactTitle).quantity < 1))
+                            sb.append("\u2605 ");
+
+                        sb.append(c);
+
+                        if (c1.isCompleted())
+                            sb.append(" \u2713");
+                    });
+
+            sb.append("\n");
+        });
+        textView.setText(sb.toString().trim());
 
         dialog.setView(dialogView)
                 .setPositiveButton("OK", null)
-                .setNeutralButton("Create Collection", (dialogInterface, i) -> {
-
-
-
-                }).create().show();
+                .setNeutralButton("Create Collection", (dialogInterface, i) ->
+                        CreateCollectionDialogGenerator(
+                            this,
+                            collectorSearchField,
+                            (CollectorAdapter) collectorAdapter,
+                            collector)).create().show();
     }
 
     public void AddCollector(View v){

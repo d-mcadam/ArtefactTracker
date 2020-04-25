@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.artefacttrackerapp.activities.MaterialOptionsActivity;
 import com.example.artefacttrackerapp.R;
+import com.example.artefacttrackerapp.data.Material;
 
 import java.util.ArrayList;
 
@@ -21,12 +22,12 @@ import static com.example.artefacttrackerapp.activities.MainActivity.storage;
 public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MaterialViewHolder> {
 
     private final Context context;
-    private final ArrayList<String> materialDataSet;
+    private final ArrayList<Material> materialDataSet;
 
     public int selectedPosition = -1;
     private static final int viewHolderHeight = 129;
 
-    public MaterialAdapter(Context context, ArrayList<String> materialDataSet){
+    public MaterialAdapter(Context context, ArrayList<Material> materialDataSet){
         this.context = context;
         this.materialDataSet = materialDataSet;
     }
@@ -42,7 +43,7 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.Materi
     @Override
     public void onBindViewHolder(@NonNull MaterialViewHolder holder, int thisViewsPosition) {
 
-        final String material = materialDataSet.get(thisViewsPosition);
+        final Material material = materialDataSet.get(thisViewsPosition);
 
         holder.itemView.setOnClickListener(view -> {
             notifyDataSetChanged();
@@ -64,7 +65,8 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.Materi
         holder.viewIsSelected = selectedPosition == thisViewsPosition;
 
         holder.itemView.setBackgroundColor(holder.viewIsSelected ? context.getResources().getColor(R.color.colourRecyclerViewSelected, null) : Color.TRANSPARENT);
-        holder.detailView.setText(materialDataSet.get(thisViewsPosition));
+        holder.detailView.setText(context.getString(R.string.place_holder_title, material.title));
+        holder.qtyView.setText(context.getString(R.string.place_holder_quantity, material.quantity));
         holder.deleteButton.setVisibility(holder.viewIsSelected ? View.VISIBLE : View.INVISIBLE);
         holder.deleteButton.setClickable(holder.viewIsSelected);
 
@@ -73,17 +75,20 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.Materi
     @Override
     public int getItemCount() { return materialDataSet.size(); }
 
-    public static class MaterialViewHolder extends RecyclerView.ViewHolder {
+    static class MaterialViewHolder extends RecyclerView.ViewHolder {
 
-        public boolean viewIsSelected = false;
+        private boolean viewIsSelected = false;
 
-        public final TextView detailView;
-        public final ImageButton deleteButton;
+        private final TextView detailView;
+        private final TextView qtyView;
+        private final ImageButton deleteButton;
 
-        public MaterialViewHolder(@NonNull View itemView) {
+        private MaterialViewHolder(@NonNull View itemView) {
             super(itemView);
             detailView = itemView.findViewById(R.id.textViewHolderMaterial);
             detailView.setHeight(viewHolderHeight);
+            qtyView = itemView.findViewById(R.id.textViewHolderMaterialDisplayQuantity);
+            qtyView.setHeight(viewHolderHeight);
             deleteButton = itemView.findViewById(R.id.imageButtonHolderDeleteMaterial);
         }
 

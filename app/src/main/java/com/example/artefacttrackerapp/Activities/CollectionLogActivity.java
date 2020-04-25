@@ -1,11 +1,9 @@
 package com.example.artefacttrackerapp.activities;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,16 +12,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.artefacttrackerapp.R;
 import com.example.artefacttrackerapp.data.Collection;
 import com.example.artefacttrackerapp.utilities.CollectionAdapter;
-import com.example.artefacttrackerapp.utilities.SelectArtefactAdapter;
 
 import java.util.ArrayList;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.CreateCollectionDialogGenerator;
 
 public class CollectionLogActivity extends AppCompatActivity {
 
@@ -116,80 +113,12 @@ public class CollectionLogActivity extends AppCompatActivity {
 
     public void AddCollectionLog(View v){
 
-        final Context thisContext = this;
+        CreateCollectionDialogGenerator(
+                this,
+                collectionSearchField,
+                (CollectionAdapter) collectionAdapter,
+                categorySpinner.getSelectedItemPosition(),
+                rewardSpinner.getSelectedItemPosition());
 
-        if (storage.Collectors().size() < 1){
-            Toast.makeText(this, "No collectors in storage", Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        AlertDialog.Builder collectionDialog = new AlertDialog.Builder(this);
-        collectionDialog.setTitle("Create a Collection");
-
-        View collectionDialogView = getLayoutInflater().inflate(R.layout.dialog_create_collection, null);
-        final Spinner inputCollectorSpinner = collectionDialogView.findViewById(R.id.spinnerHolderCreateCollectionCollector);
-        final EditText inputNameField = collectionDialogView.findViewById(R.id.editTextHolderCreateCollectionName);
-        final Spinner inputCategorySpinner = collectionDialogView.findViewById(R.id.spinnerHolderCreateCollectionArtefactCategory);
-        final Spinner inputRewardSpinner = collectionDialogView.findViewById(R.id.spinnerHolderCreateCollectionReward);
-        final EditText inputQtyField = collectionDialogView.findViewById(R.id.editTextHolderCreateCollectionRewardQuantity);
-
-        inputNameField.setText(collectionSearchField.getText().toString().trim());
-
-        ArrayList<String> collectorValues = new ArrayList<>();
-        storage.Collectors().forEach(c -> collectorValues.add(c.name));
-        ArrayAdapter<String> collectorAdapter = new ArrayAdapter<>(thisContext, R.layout.support_simple_spinner_dropdown_item, collectorValues);
-        collectorAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        inputCollectorSpinner.setAdapter(collectorAdapter);
-
-        ArrayAdapter<CharSequence> categoryAdapter = ArrayAdapter.createFromResource(this, R.array.artefact_categories, android.R.layout.simple_spinner_item);
-        categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        inputCategorySpinner.setAdapter(categoryAdapter);
-
-        ArrayAdapter<CharSequence> rewardAdapter = ArrayAdapter.createFromResource(this, R.array.collection_rewards, android.R.layout.simple_spinner_item);
-        rewardAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        inputRewardSpinner.setAdapter(rewardAdapter);
-
-        collectionDialog.setView(collectionDialogView)
-            .setPositiveButton("Add", (dialogInterface, i) -> {
-
-                if (inputNameField.getText().toString().trim().equals("") || inputQtyField.getText().toString().trim().equals("")){
-                    Toast.makeText(thisContext, "Fill in all the fields", Toast.LENGTH_LONG).show();
-                    return;
-                }
-
-                final String inputCollector = inputCollectorSpinner.getSelectedItem().toString();
-                final String inputName = inputNameField.getText().toString().trim();
-                final String inputCategory = inputCategorySpinner.getSelectedItem().toString();
-                final String inputRewardType = inputRewardSpinner.getSelectedItem().toString();
-                final int inputRewardQty = Integer.parseInt(inputQtyField.getText().toString().trim());
-
-                Collection collection = new Collection(inputName, inputCollector, inputCategory, inputRewardType, inputRewardQty);
-
-                AlertDialog.Builder listDialog = new AlertDialog.Builder(thisContext);
-                listDialog.setTitle("Select the Artefacts");
-
-                View listDialogView = getLayoutInflater().inflate(R.layout.dialog_collection_list, null);
-                final EditText inputSearchField = listDialogView.findViewById(R.id.editTextHolderCollectionListSearch);
-
-                final RecyclerView inputRecyclerView = listDialogView.findViewById(R.id.recyclerViewHolderCollectionLogList);
-                inputRecyclerView.setLayoutManager(new LinearLayoutManager(thisContext));
-
-                RecyclerView.Adapter inputRecyclerViewAdapter = new SelectArtefactAdapter(thisContext, storage.Artefacts());
-                inputRecyclerView.setAdapter(inputRecyclerViewAdapter);
-
-                listDialog.setView(listDialogView)
-                    .setPositiveButton("Save", (dialogInterface1, i1) -> {
-
-                        ((SelectArtefactAdapter)inputRecyclerViewAdapter).selectedData.forEach(a -> collection.artefacts.add(a.title));
-
-                        storage.AddCollection(collection);
-                        ((CollectionAdapter)collectionAdapter).selectedPosition = -1;
-                        collectionAdapter.notifyDataSetChanged();
-                        Toast.makeText(getBaseContext(), "Added Collection: " + inputName, Toast.LENGTH_LONG).show();
-                        collectionSearchField.setText("");
-
-                }).setNegativeButton("Cancel", (dialogInterface1, i1) -> Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG).show()).create().show();
-
-        }).setNegativeButton("Cancel", (dialogInterface, i) -> Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG).show()).create().show();
     }
 }

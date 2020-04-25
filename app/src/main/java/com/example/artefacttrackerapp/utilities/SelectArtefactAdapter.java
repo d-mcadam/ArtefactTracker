@@ -19,7 +19,7 @@ public class SelectArtefactAdapter extends RecyclerView.Adapter<SelectArtefactAd
 
     private final Context context;
     private final ArrayList<GameArtefact> selectorDataSet;
-    public final ArrayList<GameArtefact> selectedData = new ArrayList<>();
+    protected final ArrayList<GameArtefact> selectedData = new ArrayList<>();
 
     public int selectedPosition = -1;
     private static final int viewHolderHeight = 129;
@@ -61,11 +61,11 @@ public class SelectArtefactAdapter extends RecyclerView.Adapter<SelectArtefactAd
     @Override
     public int getItemCount() { return this.selectorDataSet.size(); }
 
-    public class SelectorViewHolder extends RecyclerView.ViewHolder{
+    class SelectorViewHolder extends RecyclerView.ViewHolder{
 
-        public final CheckBox checkBox;
+        private final CheckBox checkBox;
 
-        public SelectorViewHolder(@NonNull View itemView) {
+        private SelectorViewHolder(@NonNull View itemView) {
             super(itemView);
             checkBox = itemView.findViewById(R.id.checkBoxSelectArtefactDetails);
             checkBox.setHeight(viewHolderHeight);
