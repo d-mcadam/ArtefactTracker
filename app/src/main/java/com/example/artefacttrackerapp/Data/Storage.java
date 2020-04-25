@@ -5,6 +5,7 @@ import com.example.artefacttrackerapp.R;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Optional;
 
 public class Storage {
 
@@ -85,6 +86,13 @@ public class Storage {
         for (int i = 1; i < 51; i++)
             this.AddCollection(new Collection("Collection " + i, "Collector " + i, "All", "Any", 2));
 
+        for (Collection collection : collections)
+            collection.Completed();
+    }
+
+    public GameArtefact findGameArtefactByTitle(String title){
+        Optional<GameArtefact> artefact = artefacts.stream().filter(a -> a.title.equals(title)).findFirst();
+        return artefact.isPresent() ? artefact.get() : null;
     }
 
 }
