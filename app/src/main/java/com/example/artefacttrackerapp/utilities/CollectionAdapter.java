@@ -1,5 +1,6 @@
 package com.example.artefacttrackerapp.utilities;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -57,7 +58,27 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Co
         });
 
         holder.viewButton.setOnClickListener(view -> {
+            AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+            dialog.setTitle("Artefact List");
 
+            View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_collection_display, null, false);
+            final TextView textView = dialogView.findViewById(R.id.textViewHolderCollectionDisplayMultiline);
+
+            StringBuilder sb = new StringBuilder();
+            collection.artefacts.forEach(a -> {
+
+                sb.append(a).append(", x");
+
+                storage.Artefacts().stream()
+                        .filter(ga -> ga.title.equals(a))
+                        .forEach(ga -> sb.append(ga.quantity));
+
+                sb.append("\n");
+            });
+
+            textView.setText(sb.toString().trim());
+
+            dialog.setView(dialogView).setPositiveButton("OK", null).create().show();
         });
 
         holder.deleteButton.setOnClickListener(view -> {
