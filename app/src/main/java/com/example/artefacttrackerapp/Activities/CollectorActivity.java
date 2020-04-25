@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -21,6 +22,7 @@ import com.example.artefacttrackerapp.utilities.CollectorAdapter;
 import java.util.ArrayList;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.CreateCollectionDialogGenerator;
 
 public class CollectorActivity extends AppCompatActivity {
 
@@ -105,7 +107,11 @@ public class CollectorActivity extends AppCompatActivity {
                 .setPositiveButton("OK", null)
                 .setNeutralButton("Create Collection", (dialogInterface, i) -> {
 
-
+                    CreateCollectionDialogGenerator(
+                            this,
+                            collectorSearchField.getText().toString().trim(),
+                            (CollectorAdapter) collectorAdapter,
+                            collector);
 
                 }).create().show();
     }
