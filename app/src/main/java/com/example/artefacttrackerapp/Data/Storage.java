@@ -40,6 +40,9 @@ public class Storage {
     public boolean AddCollection(Collection collection){
         if (this.collections.add(collection)){
             Collections.sort(this.collections, Comparator.comparing(Collection::Title));
+            collectors.stream()
+                    .filter(c -> c.name.equals(collection.collector))
+                    .forEach(c -> c.collections.add(collection.title));
             return true;
         }
         return false;
@@ -80,12 +83,7 @@ public class Storage {
             this.collectors.add(new Collector("Collector " + i, "Location " + i));
 
         for (int i = 1; i < 51; i++)
-            this.collections.add(new Collection("Collection " + i, "Collector " + i, "All", "Any", 2));
-
-        for (Collector c1 : collectors)
-            for (Collection c2 : collections)
-                if (c2.collector.equals(c1.name))
-                    c1.collections.add(c2.title);
+            this.AddCollection(new Collection("Collection " + i, "Collector " + i, "All", "Any", 2));
 
     }
 

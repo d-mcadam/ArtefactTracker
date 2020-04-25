@@ -184,11 +184,6 @@ public class CollectionLogActivity extends AppCompatActivity {
                         ((SelectArtefactAdapter)inputRecyclerViewAdapter).selectedData.forEach(a -> collection.artefacts.add(a.title));
 
                         storage.AddCollection(collection);
-                        for (Collector c : storage.Collectors())
-                            if (c.name.equals(collection.collector)){
-                                c.collections.add(collection.title);
-                                break;
-                            }
                         ((CollectionAdapter)collectionAdapter).selectedPosition = -1;
                         collectionAdapter.notifyDataSetChanged();
                         Toast.makeText(getBaseContext(), "Added Collection: " + inputName, Toast.LENGTH_LONG).show();
