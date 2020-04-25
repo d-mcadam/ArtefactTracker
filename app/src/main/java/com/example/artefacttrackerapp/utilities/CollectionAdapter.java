@@ -102,16 +102,16 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Co
     @Override
     public int getItemCount() { return this.collectionDataSet.size(); }
 
-    public class CollectionViewHolder extends RecyclerView.ViewHolder {
+    class CollectionViewHolder extends RecyclerView.ViewHolder {
 
-        public boolean viewIsSelected = false;
+        private boolean viewIsSelected = false;
 
-        public final TextView detailView;
-        public final TextView qtyView;
-        public final ImageButton viewButton;
-        public final ImageButton deleteButton;
+        private final TextView detailView;
+        private final TextView qtyView;
+        private final ImageButton viewButton;
+        private final ImageButton deleteButton;
 
-        public CollectionViewHolder(@NonNull View itemView) {
+        private CollectionViewHolder(@NonNull View itemView) {
             super(itemView);
             detailView = itemView.findViewById(R.id.textViewHolderCollectionName);
             detailView.setHeight(viewHolderHeight);

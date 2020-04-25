@@ -73,15 +73,15 @@ public class MaterialRequirementAdapter extends RecyclerView.Adapter<MaterialReq
     @Override
     public int getItemCount() { return this.matReqDataSet.size(); }
 
-    public static class MaterialRequirementViewHolder extends RecyclerView.ViewHolder {
+    static class MaterialRequirementViewHolder extends RecyclerView.ViewHolder {
 
-        public boolean viewIsSelected = false;
+        private boolean viewIsSelected = false;
 
-        public final TextView detailView;
-        public final TextView qtyView;
-        public final ImageButton deleteButton;
+        private final TextView detailView;
+        private final TextView qtyView;
+        private final ImageButton deleteButton;
 
-        public MaterialRequirementViewHolder(@NonNull View itemView) {
+        private MaterialRequirementViewHolder(@NonNull View itemView) {
             super(itemView);
             detailView = itemView.findViewById(R.id.textViewHolderMaterialRequirement);
             detailView.setHeight(viewHolderHeight);

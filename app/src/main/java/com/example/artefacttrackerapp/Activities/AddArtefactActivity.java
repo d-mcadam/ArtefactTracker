@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -20,6 +19,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.artefacttrackerapp.data.GameArtefact;
+import com.example.artefacttrackerapp.data.Material;
 import com.example.artefacttrackerapp.data.MaterialRequirement;
 import com.example.artefacttrackerapp.R;
 import com.example.artefacttrackerapp.utilities.MaterialRequirementAdapter;
@@ -54,12 +54,7 @@ public class AddArtefactActivity extends AppCompatActivity {
             dialog.setCancelable(true);
             dialog.setTitle("Unsaved data");
             dialog.setMessage("You'll lose any unsaved data");
-            dialog.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    goBack();
-                }
-            });
+            dialog.setPositiveButton("Continue", (dialogInterface, i) -> goBack());
             dialog.setNegativeButton("Cancel", null);
             dialog.create().show();
         }else{
@@ -131,8 +126,8 @@ public class AddArtefactActivity extends AppCompatActivity {
 
         ArrayList<String> spinnerValues = new ArrayList<>();
         storage.Materials().stream()
-                .filter(m -> requirementArrayList.stream().noneMatch(i -> i.title.equals(m)))
-                .forEach(spinnerValues::add);
+                .filter(m -> requirementArrayList.stream().noneMatch(i -> i.title.equals(m.title)))
+                .forEach(m -> spinnerValues.add(m.title));
 
         final Spinner nameDialogSpinner = nameDialogView.findViewById(R.id.spinnerMaterialNames);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(thisContext, R.layout.support_simple_spinner_dropdown_item, spinnerValues);
@@ -165,7 +160,7 @@ public class AddArtefactActivity extends AppCompatActivity {
 
                         Toast.makeText(thisContext, "Saved requirement", Toast.LENGTH_LONG).show();
 
-                    }).setNegativeButton("Cancel", (dialogInterface1, i1) -> Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG)).create().show();
+                    }).setNegativeButton("Cancel", (dialogInterface1, i1) -> Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG).show()).create().show();
 
             }).setNeutralButton("Add Material", (dialogInterface, i) -> {
 
@@ -180,18 +175,18 @@ public class AddArtefactActivity extends AppCompatActivity {
 
                         String inputText = addMaterialDialogField.getText().toString().trim();
 
-                        if (storage.Materials().stream().anyMatch(m -> m.equals(inputText))){
+                        if (storage.Materials().stream().anyMatch(m -> m.title.equals(inputText))){
                             Toast.makeText(getBaseContext(), "Duplicate names detected.", Toast.LENGTH_LONG).show();
                             return;
                         }
 
-                        storage.AddMaterial(inputText);
+                        storage.AddMaterial(new Material(inputText));
 
                         AddMaterialRequirement(null);
 
-                    }).setNegativeButton("Cancel", (dialogInterface1, i1) -> Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG)).create().show();
+                    }).setNegativeButton("Cancel", (dialogInterface1, i1) -> Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG).show()).create().show();
 
-            }).setNegativeButton("Cancel", (dialogInterface, i) -> Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG)).create().show();
+            }).setNegativeButton("Cancel", (dialogInterface, i) -> Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG).show()).create().show();
     }
 
     public void SaveArtefact(View v){

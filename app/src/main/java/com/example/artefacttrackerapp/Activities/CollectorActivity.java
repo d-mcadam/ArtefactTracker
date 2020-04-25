@@ -89,35 +89,32 @@ public class CollectorActivity extends AppCompatActivity {
 
         StringBuilder sb = new StringBuilder();
         collector.collections.forEach(c -> {
-            StringBuilder item = new StringBuilder();
+//            StringBuilder item = new StringBuilder();
 
             storage.Collections().stream()
                     .filter(c1 -> c1.title.equals(c))
                     .forEach(c1 -> {
                         if (c1.artefacts.size() > 0 && c1.artefacts.stream().noneMatch(artefactTitle -> storage.findGameArtefactByTitle(artefactTitle).quantity < 1))
-                            item.append("\u2605 ");
+                            sb.append("\u2605 ");
 
-                        item.append(c);
+                        sb.append(c);
 
                         if (c1.isCompleted())
-                            item.append(" \u2713");
+                            sb.append(" \u2713");
                     });
 
-            sb.append(item.toString().trim()).append("\n");
+            sb.append("\n");
         });
         textView.setText(sb.toString().trim());
 
         dialog.setView(dialogView)
                 .setPositiveButton("OK", null)
-                .setNeutralButton("Create Collection", (dialogInterface, i) -> {
-
-                    CreateCollectionDialogGenerator(
+                .setNeutralButton("Create Collection", (dialogInterface, i) ->
+                        CreateCollectionDialogGenerator(
                             this,
                             collectorSearchField,
                             (CollectorAdapter) collectorAdapter,
-                            collector);
-
-                }).create().show();
+                            collector)).create().show();
     }
 
     public void AddCollector(View v){
