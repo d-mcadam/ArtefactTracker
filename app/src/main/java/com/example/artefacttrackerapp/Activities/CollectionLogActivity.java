@@ -152,10 +152,12 @@ public class CollectionLogActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> categoryAdapter = ArrayAdapter.createFromResource(this, R.array.artefact_categories, android.R.layout.simple_spinner_item);
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         inputCategorySpinner.setAdapter(categoryAdapter);
+        inputCategorySpinner.setSelection(categorySpinner.getSelectedItemPosition());
 
         ArrayAdapter<CharSequence> rewardAdapter = ArrayAdapter.createFromResource(this, R.array.collection_rewards, android.R.layout.simple_spinner_item);
         rewardAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         inputRewardSpinner.setAdapter(rewardAdapter);
+        inputRewardSpinner.setSelection(rewardSpinner.getSelectedItemPosition());
         //</editor-fold>
 
         collectionDialog.setView(collectionDialogView)
