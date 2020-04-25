@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import com.example.artefacttrackerapp.data.Collector;
 import com.example.artefacttrackerapp.R;
-import com.example.artefacttrackerapp.data.GameArtefact;
 import com.example.artefacttrackerapp.utilities.CollectorAdapter;
 
 import java.util.ArrayList;
