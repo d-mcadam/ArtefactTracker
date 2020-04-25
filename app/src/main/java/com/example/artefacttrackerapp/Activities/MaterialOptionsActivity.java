@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.artefacttrackerapp.R;
@@ -75,6 +77,43 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         ((MaterialAdapter)materialAdapter).selectedPosition = -1;
         materialAdapter.notifyDataSetChanged();
 
+    }
+
+    public boolean GenerateLocationInputDialog(Material material){
+        final Context thisContext = this;
+
+        android.app.AlertDialog.Builder dialog = new android.app.AlertDialog.Builder(thisContext);
+        dialog.setTitle("Locations for " + material.title);
+
+        View dialogView = LayoutInflater.from(thisContext).inflate(R.layout.dialog_material_location_display, null, false);
+        final TextView textView = dialogView.findViewById(R.id.textViewHolderMaterialLocationDisplayMultiline);
+
+        StringBuilder sb = new StringBuilder();
+        material.locations.forEach(location -> sb.append(location).append("\n"));
+        textView.setText(sb.toString().trim());
+
+        dialog.setView(dialogView)
+                .setPositiveButton("OK", null)
+                .setNeutralButton("Add Location", (dialogInterface, i) -> {
+
+                    android.app.AlertDialog.Builder locationDialog = new android.app.AlertDialog.Builder(thisContext);
+                    locationDialog.setTitle("Add a location");
+
+                    View locationDialogView = LayoutInflater.from(thisContext).inflate(R.layout.dialog_input_material_location, null, false);
+                    final EditText editText = locationDialogView.findViewById(R.id.editTextInputMaterialLocation);
+
+                    locationDialog.setView(locationDialogView)
+                            .setPositiveButton("Add", (dialogInterface1, i1) -> {
+
+                                final String inputLocation = editText.getText().toString().trim();
+                                material.locations.add(inputLocation);
+                                GenerateLocationInputDialog(material);
+
+                            }).setNegativeButton("Cancel", (dialogInterface1, i1) ->
+                            Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG).show()).create().show();
+
+                }).create().show();
+        return true;
     }
 
     public void AddMaterial(View v){
