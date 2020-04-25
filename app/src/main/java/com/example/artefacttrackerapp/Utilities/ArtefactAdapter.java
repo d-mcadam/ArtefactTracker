@@ -57,6 +57,32 @@ public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.Artefa
             notifyDataSetChanged();
         });
 
+        holder.itemView.setOnLongClickListener(view -> {
+            AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+            dialog.setTitle("Material Requirements for " + artefact.title);
+
+            View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_material_requirement_display, null, false);
+            final TextView textView = dialogView.findViewById(R.id.textViewHolderMatReqDisplayMultiline);
+
+            StringBuilder sb = new StringBuilder();
+            artefact.requirements.forEach(mr -> {
+                sb.append(mr.title).append(", x").append(mr.quantity);
+
+                //dont currently have a materials database, need to add one
+//                storage.Materials().stream()
+//                        .filter(m -> m.equals(mr.title))
+//                        .forEach(m -> {
+//                            if (mr)
+//                        });
+
+                sb.append("\n");
+            });
+            textView.setText(sb.toString().trim());
+
+            dialog.setView(dialogView).setPositiveButton("OK", null).create().show();
+            return true;
+        });
+
         holder.addQuantityButton.setOnClickListener(view -> {
             artefact.quantity++;
             notifyDataSetChanged();
