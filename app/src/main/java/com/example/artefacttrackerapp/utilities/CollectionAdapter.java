@@ -59,7 +59,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Co
 
         holder.viewButton.setOnClickListener(view -> {
             AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-            dialog.setTitle("Artefact List");
+            dialog.setTitle(("Artefact list for " + collection.title + " " + (collection.isCompleted() ? "\u2713" : "")).trim());
 
             View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_collection_display, null, false);
             final TextView textView = dialogView.findViewById(R.id.textViewHolderCollectionDisplayMultiline);
