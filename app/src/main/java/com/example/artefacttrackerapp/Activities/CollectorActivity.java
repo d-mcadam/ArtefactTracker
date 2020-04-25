@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.artefacttrackerapp.data.Collector;
 import com.example.artefacttrackerapp.R;
+import com.example.artefacttrackerapp.data.GameArtefact;
 import com.example.artefacttrackerapp.utilities.CollectorAdapter;
 
 import java.util.ArrayList;
@@ -91,23 +90,21 @@ public class CollectorActivity extends AppCompatActivity {
 
         StringBuilder sb = new StringBuilder();
         collector.collections.forEach(c -> {
-            sb.append(c);
+            StringBuilder item = new StringBuilder();
 
             storage.Collections().stream()
                     .filter(c1 -> c1.title.equals(c))
                     .forEach(c1 -> {
-                        if (c1.isCompleted())
-                            sb.append(" \u2713");
+                        if (c1.artefacts.size() > 0 && c1.artefacts.stream().noneMatch(artefactTitle -> storage.findGameArtefactByTitle(artefactTitle).quantity < 1))
+                            item.append("\u2605 ");
 
-                        storage.Artefacts().stream()
-                                .filter(a -> c1.artefacts.contains(a.title))
-                                .forEach(a -> {
-                                    if (a.quantity < 0)
-                                        textView.setTextColor(Color.BLACK);
-                                });
+                        item.append(c);
+
+                        if (c1.isCompleted())
+                            item.append(" \u2713");
                     });
 
-            sb.append("\n");
+            sb.append(item.toString().trim()).append("\n");
         });
         textView.setText(sb.toString().trim());
 
