@@ -56,7 +56,7 @@ public class CollectorAdapter extends RecyclerView.Adapter<CollectorAdapter.Coll
             notifyDataSetChanged();
         });
 
-        holder.viewLogButton.setOnClickListener(view -> ((CollectorActivity)context).GenerateViewLogDialog());
+        holder.viewLogButton.setOnClickListener(view -> ((CollectorActivity)context).GenerateViewLogDialog(collector));
 
         holder.deleteButton.setOnClickListener(view -> {
             storage.DeleteCollector(collector);

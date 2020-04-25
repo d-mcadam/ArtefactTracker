@@ -11,6 +11,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.artefacttrackerapp.data.Collector;
@@ -78,11 +79,27 @@ public class CollectorActivity extends AppCompatActivity {
 
     }
 
-    public void GenerateViewLogDialog(){
+    public void GenerateViewLogDialog(Collector collector){
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle("Collections on this Collector");
 
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_show_collector_logs, null);
+        final TextView textView = dialogView.findViewById(R.id.textViewHolderCollectorDisplayMultiline);
+
+        StringBuilder sb = new StringBuilder();
+        collector.collections.forEach(c -> {
+            sb.append(c);
+
+            storage.Collections().stream()
+                    .filter(c1 -> c1.title.equals(c))
+                    .forEach(c1 -> {
+                        if (c1.isCompleted())
+                            sb.append(" \u2713");
+                    });
+
+            sb.append("\n");
+        });
+        textView.setText(sb.toString().trim());
 
         dialog.setView(dialogView)
                 .setPositiveButton("OK", null)
