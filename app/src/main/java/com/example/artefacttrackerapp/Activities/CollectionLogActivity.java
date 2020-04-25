@@ -115,7 +115,7 @@ public class CollectionLogActivity extends AppCompatActivity {
 
         CreateCollectionDialogGenerator(
                 this,
-                collectionSearchField.getText().toString().trim(),
+                collectionSearchField,
                 (CollectionAdapter) collectionAdapter,
                 categorySpinner.getSelectedItemPosition(),
                 rewardSpinner.getSelectedItemPosition());

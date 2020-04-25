@@ -28,52 +28,52 @@ public class UtilityMethods {
     /**
      * for collector adapter with NO initial spinner selection
      * @param context               the parent context
-     * @param initialEntry          the initial string entry from the search box to default the title to
+     * @param searchField          the initial string entry from the search box to default the title to
      * @param collectorViewAdapter  the collector adapter for the recycler view
      */
-    public static void CreateCollectionDialogGenerator(final Context context, String initialEntry, CollectorAdapter collectorViewAdapter){
-        CreateCollectionDialogGenerator(context, initialEntry, 0, 0, null, collectorViewAdapter, null);
+    public static void CreateCollectionDialogGenerator(final Context context, EditText searchField, CollectorAdapter collectorViewAdapter){
+        CreateCollectionDialogGenerator(context, searchField, 0, 0, null, collectorViewAdapter, null);
     }
 
-    public static void CreateCollectionDialogGenerator(final Context context, String initialEntry, CollectorAdapter collectorViewAdapter, Collector collector){
-        CreateCollectionDialogGenerator(context, initialEntry, 0, 0, null, collectorViewAdapter, collector);
+    public static void CreateCollectionDialogGenerator(final Context context, EditText searchField, CollectorAdapter collectorViewAdapter, Collector collector){
+        CreateCollectionDialogGenerator(context, searchField, 0, 0, null, collectorViewAdapter, collector);
     }
 
     /**
      * for collector adapter with initial spinner selection
      * @param context               the parent context
-     * @param initialEntry          the initial string entry from the search box to default the title to
+     * @param searchField          the initial string entry from the search box to default the title to
      * @param collectorViewAdapter  the collector adapter for the recycler view
      * @param categoryPos           the position of the category spinner
      * @param rewardPos             the position of the reward spinner
      */
-    public static void CreateCollectionDialogGenerator(final Context context, String initialEntry, CollectorAdapter collectorViewAdapter, int categoryPos, int rewardPos){
-        CreateCollectionDialogGenerator(context, initialEntry, categoryPos, rewardPos, null, collectorViewAdapter, null);
+    public static void CreateCollectionDialogGenerator(final Context context, EditText searchField, CollectorAdapter collectorViewAdapter, int categoryPos, int rewardPos){
+        CreateCollectionDialogGenerator(context, searchField, categoryPos, rewardPos, null, collectorViewAdapter, null);
     }
 
     /**
      * for collection adapter with NO initial spinner selection
      * @param context               the parent context
-     * @param initialEntry          the initial string entry from the search box to default the title to
+     * @param searchField          the initial string entry from the search box to default the title to
      * @param collectionViewAdapter the collection adapter for the recycler view
      */
-    public static void CreateCollectionDialogGenerator(final Context context, String initialEntry, CollectionAdapter collectionViewAdapter){
-        CreateCollectionDialogGenerator(context, initialEntry, 0, 0, collectionViewAdapter, null, null);
+    public static void CreateCollectionDialogGenerator(final Context context, EditText searchField, CollectionAdapter collectionViewAdapter){
+        CreateCollectionDialogGenerator(context, searchField, 0, 0, collectionViewAdapter, null, null);
     }
 
     /**
      * for collection adapter with initial spinner selection
      * @param context               the parent context
-     * @param initialEntry          the initial string entry from the search box to default the title to
+     * @param searchField          the initial string entry from the search box to default the title to
      * @param collectionViewAdapter the collection adapter for the recycler view
      * @param categoryPos           the position of the category spinner
      * @param rewardPos             the position of the reward spinner
      */
-    public static void CreateCollectionDialogGenerator(final Context context, String initialEntry, CollectionAdapter collectionViewAdapter, int categoryPos, int rewardPos){
-        CreateCollectionDialogGenerator(context, initialEntry, categoryPos, rewardPos, collectionViewAdapter, null, null);
+    public static void CreateCollectionDialogGenerator(final Context context, EditText searchField, CollectionAdapter collectionViewAdapter, int categoryPos, int rewardPos){
+        CreateCollectionDialogGenerator(context, searchField, categoryPos, rewardPos, collectionViewAdapter, null, null);
     }
 
-    private static void CreateCollectionDialogGenerator(final Context context, String initialEntry, int categoryPos, int rewardPos,
+    private static void CreateCollectionDialogGenerator(final Context context, EditText searchField, int categoryPos, int rewardPos,
                                                         CollectionAdapter collectionViewAdapter, CollectorAdapter collectorViewAdapter, Collector collector){
 
         //<editor-fold defaultstate="collapsed" desc="check collector count">
@@ -95,7 +95,7 @@ public class UtilityMethods {
         final EditText inputQtyField = collectionDialogView.findViewById(R.id.editTextHolderCreateCollectionRewardQuantity);
         //</editor-fold>
 
-        inputNameField.setText(initialEntry/*collectionSearchField.getText().toString().trim()*/);
+        inputNameField.setText(searchField.getText().toString().trim());
 
         //<editor-fold defaultstate="collapsed" desc="Populate collector list">
         ArrayList<String> collectorValues = new ArrayList<>();
@@ -185,9 +185,15 @@ public class UtilityMethods {
                                 ((SelectArtefactAdapter)inputRecyclerViewAdapter).selectedData.forEach(a -> collection.artefacts.add(a.title));
 
                                 storage.AddCollection(collection);
-                                collectionViewAdapter.selectedPosition = -1;
-                                collectionViewAdapter.notifyDataSetChanged();
+                                if (collectionViewAdapter != null) {
+                                    collectionViewAdapter.selectedPosition = -1;
+                                    collectionViewAdapter.notifyDataSetChanged();
+                                }else{
+                                    collectorViewAdapter.selectedPosition = -1;
+                                    collectorViewAdapter.notifyDataSetChanged();
+                                }
                                 Toast.makeText(context, "Added Collection: " + inputName, Toast.LENGTH_LONG).show();
+                                searchField.setText("");
 
                             }).setNegativeButton("Cancel", (dialogInterface1, i1) -> Toast.makeText(context, "Cancelled", Toast.LENGTH_LONG).show()).create().show();
 

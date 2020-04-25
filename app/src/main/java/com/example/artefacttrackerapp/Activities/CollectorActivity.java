@@ -109,7 +109,7 @@ public class CollectorActivity extends AppCompatActivity {
 
                     CreateCollectionDialogGenerator(
                             this,
-                            collectorSearchField.getText().toString().trim(),
+                            collectorSearchField,
                             (CollectorAdapter) collectorAdapter,
                             collector);
 
