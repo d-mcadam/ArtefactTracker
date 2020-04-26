@@ -113,7 +113,7 @@ public class AddArtefactActivity extends AppCompatActivity {
         saveButton.setTooltipText(tooltipText);
     }
 
-    public void AddMaterialRequirement(View v){
+    public void AddMaterialRequirement(View originalView){
 
         final Context thisContext = this;
 
@@ -148,7 +148,13 @@ public class AddArtefactActivity extends AppCompatActivity {
                 qtyDialog.setView(qtyDialogView)
                     .setPositiveButton("Save", (dialogInterface12, i1) -> {
 
-                        int quantity = Integer.parseInt(qtyDialogField.getText().toString().trim());
+                        int quantity = 0;
+                        try {
+                            quantity = Integer.parseInt(qtyDialogField.getText().toString().trim());
+                        } catch (NumberFormatException ex){
+                            Toast.makeText(this, "Need to enter a quantity", Toast.LENGTH_LONG).show();
+                            return;
+                        }
 
                         MaterialRequirement materialRequirement = new MaterialRequirement(name, quantity);
 
@@ -182,7 +188,7 @@ public class AddArtefactActivity extends AppCompatActivity {
 
                         storage.AddMaterial(new Material(inputText));
 
-                        AddMaterialRequirement(null);
+                        AddMaterialRequirement(originalView);
 
                     }).setNegativeButton("Cancel", (dialogInterface1, i1) -> Toast.makeText(thisContext, "Cancelled", Toast.LENGTH_LONG).show()).create().show();
 

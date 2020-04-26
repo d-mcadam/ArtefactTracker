@@ -88,11 +88,11 @@ public class CollectorActivity extends AppCompatActivity {
         final TextView textView = dialogView.findViewById(R.id.textViewHolderCollectorDisplayMultiline);
 
         StringBuilder sb = new StringBuilder();
-        collector.collections.forEach(c -> {
+        collector.getCollections().forEach(c -> {
             storage.Collections().stream()
                     .filter(c1 -> c1.title.equals(c))
                     .forEach(c1 -> {
-                        if (c1.artefacts.size() > 0 && c1.artefacts.stream().noneMatch(artefactTitle -> storage.findGameArtefactByTitle(artefactTitle).quantity < 1))
+                        if (c1.getArtefacts().size() > 0 && c1.getArtefacts().stream().noneMatch(artefactTitle -> storage.findGameArtefactByTitle(artefactTitle).quantity < 1))
                             sb.append("\u2605 ");
 
                         sb.append(c);

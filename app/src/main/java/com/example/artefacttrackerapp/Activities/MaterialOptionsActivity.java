@@ -170,31 +170,31 @@ public class MaterialOptionsActivity extends AppCompatActivity {
     public boolean GenerateLocationInputDialog(Material material){
         final Context thisContext = this;
 
-        android.app.AlertDialog.Builder dialog = new android.app.AlertDialog.Builder(thisContext);
+        AlertDialog.Builder dialog = new AlertDialog.Builder(thisContext);
         dialog.setTitle("Locations for " + material.title);
 
         View dialogView = LayoutInflater.from(thisContext).inflate(R.layout.dialog_material_location_display, null, false);
         final TextView textView = dialogView.findViewById(R.id.textViewHolderMaterialLocationDisplayMultiline);
 
         StringBuilder sb = new StringBuilder();
-        material.locations.forEach(location -> sb.append(location).append("\n"));
+        material.getLocations().forEach(location -> sb.append(location).append("\n"));
         textView.setText(sb.toString().trim());
 
         dialog.setView(dialogView)
                 .setPositiveButton("OK", null)
                 .setNeutralButton("Add Location", (dialogInterface, i) -> {
 
-                    android.app.AlertDialog.Builder locationDialog = new android.app.AlertDialog.Builder(thisContext);
-                    locationDialog.setTitle("Add a location");
+                    android.app.AlertDialog.Builder locationInputDialog = new android.app.AlertDialog.Builder(thisContext);
+                    locationInputDialog.setTitle("Add a location");
 
                     View locationDialogView = LayoutInflater.from(thisContext).inflate(R.layout.dialog_input_material_location, null, false);
                     final EditText editText = locationDialogView.findViewById(R.id.editTextInputMaterialLocation);
 
-                    locationDialog.setView(locationDialogView)
+                    locationInputDialog.setView(locationDialogView)
                             .setPositiveButton("Add", (dialogInterface1, i1) -> {
 
                                 final String inputLocation = editText.getText().toString().trim();
-                                material.locations.add(inputLocation);
+                                boolean r = material.addLocation(inputLocation);
                                 GenerateLocationInputDialog(material);
 
                             }).setNegativeButton("Cancel", (dialogInterface1, i1) ->

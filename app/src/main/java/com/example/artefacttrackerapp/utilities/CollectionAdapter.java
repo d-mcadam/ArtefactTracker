@@ -15,8 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.artefacttrackerapp.R;
 import com.example.artefacttrackerapp.activities.CollectionLogActivity;
 import com.example.artefacttrackerapp.data.Collection;
+import com.example.artefacttrackerapp.data.GameArtefact;
 
 import java.util.ArrayList;
+import java.util.OptionalInt;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
 
@@ -59,25 +61,33 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Co
 
         holder.viewButton.setOnClickListener(view -> {
             AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-            dialog.setTitle(("Artefact list for " + collection.title + " " + (collection.isCompleted() ? "\u2713" : "")).trim());
+            StringBuilder titleSb = new StringBuilder();
+            titleSb.append("Artefact list for ").append(collection.title).append(collection.isCompleted() ? " \u2713" : "");
 
             View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_collection_display, null, false);
             final TextView textView = dialogView.findViewById(R.id.textViewHolderCollectionDisplayMultiline);
 
+            ArrayList<GameArtefact> identifiedArtefacts = new ArrayList<>();
             StringBuilder sb = new StringBuilder();
-            collection.artefacts.forEach(a -> {
+            collection.getArtefacts().forEach(a -> {
 
                 sb.append(a).append(", x");
 
                 storage.Artefacts().stream()
                         .filter(ga -> ga.title.equals(a))
-                        .forEach(ga -> sb.append(ga.quantity));
+                        .forEach(ga -> {
+                            sb.append(ga.quantity);
+                            identifiedArtefacts.add(ga);
+                        });
 
                 sb.append("\n");
             });
 
             textView.setText(sb.toString().trim());
 
+            OptionalInt maxCollectCount = identifiedArtefacts.stream().mapToInt(artefact -> artefact.quantity).min();
+            titleSb.append(" (").append(maxCollectCount.isPresent() ? maxCollectCount.getAsInt() : 0).append(")");
+            dialog.setTitle(titleSb.toString().trim());
             dialog.setView(dialogView).setPositiveButton("OK", null).create().show();
         });
 
@@ -91,7 +101,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Co
         holder.itemView.setBackgroundColor(holder.viewIsSelected ? context.getColor(R.color.colourRecyclerViewSelectedGrey) : Color.TRANSPARENT);
 
         holder.detailView.setText(context.getString(R.string.place_holder_title, collection.title));
-        holder.qtyView.setText(context.getString(R.string.place_holder_quantity, collection.artefacts.size()));
+        holder.qtyView.setText(context.getString(R.string.place_holder_quantity, collection.getArtefacts().size()));
 
         holder.viewButton.setVisibility(holder.viewIsSelected ? View.VISIBLE : View.INVISIBLE);
         holder.viewButton.setClickable(holder.viewIsSelected);
