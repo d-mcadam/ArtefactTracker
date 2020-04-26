@@ -202,11 +202,11 @@ public class AddArtefactActivity extends AppCompatActivity {
 
         GameArtefact artefact = new GameArtefact(title, category);
 
-        artefact.requirements.addAll(requirementArrayList);
+        requirementArrayList.forEach(artefact::addRequirement);
 
         storage.AddArtefact(artefact);
 
-        int reqSize = artefact.requirements.size();
+        int reqSize = artefact.getRequirements().size();
         Toast.makeText(this, "Added Artefact with " + reqSize + " requirement" + (reqSize == 1 ? "" : "s"), Toast.LENGTH_LONG).show();
         goBack();
 

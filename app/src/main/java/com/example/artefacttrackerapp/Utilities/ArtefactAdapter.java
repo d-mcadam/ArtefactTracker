@@ -66,7 +66,7 @@ public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.Artefa
             final TextView textView = dialogView.findViewById(R.id.textViewHolderMatReqDisplayMultiline);
 
             StringBuilder sb = new StringBuilder();
-            artefact.requirements.forEach(mr -> {
+            artefact.getRequirements().forEach(mr -> {
                 sb.append(mr.title).append(", x").append(mr.quantity);
 
                 storage.Materials().stream()
