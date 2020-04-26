@@ -184,13 +184,13 @@ public class MaterialOptionsActivity extends AppCompatActivity {
                 .setPositiveButton("OK", null)
                 .setNeutralButton("Add Location", (dialogInterface, i) -> {
 
-                    android.app.AlertDialog.Builder locationDialog = new android.app.AlertDialog.Builder(thisContext);
-                    locationDialog.setTitle("Add a location");
+                    android.app.AlertDialog.Builder locationInputDialog = new android.app.AlertDialog.Builder(thisContext);
+                    locationInputDialog.setTitle("Add a location");
 
                     View locationDialogView = LayoutInflater.from(thisContext).inflate(R.layout.dialog_input_material_location, null, false);
                     final EditText editText = locationDialogView.findViewById(R.id.editTextInputMaterialLocation);
 
-                    locationDialog.setView(locationDialogView)
+                    locationInputDialog.setView(locationDialogView)
                             .setPositiveButton("Add", (dialogInterface1, i1) -> {
 
                                 final String inputLocation = editText.getText().toString().trim();
