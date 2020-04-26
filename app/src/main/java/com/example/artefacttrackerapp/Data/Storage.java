@@ -43,7 +43,9 @@ public class Storage {
             Collections.sort(this.collections, Comparator.comparing(Collection::Title));
             collectors.stream()
                     .filter(c -> c.name.equals(collection.collector))
-                    .forEach(c -> c.collections.add(collection.title));
+                    .forEach(c -> {
+                        boolean r = c.addCollection(collection.title);
+                    });
             return true;
         }
         return false;

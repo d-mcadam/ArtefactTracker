@@ -88,7 +88,7 @@ public class CollectorActivity extends AppCompatActivity {
         final TextView textView = dialogView.findViewById(R.id.textViewHolderCollectorDisplayMultiline);
 
         StringBuilder sb = new StringBuilder();
-        collector.collections.forEach(c -> {
+        collector.getCollections().forEach(c -> {
             storage.Collections().stream()
                     .filter(c1 -> c1.title.equals(c))
                     .forEach(c1 -> {
