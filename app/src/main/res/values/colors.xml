@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
-    <color name="colourRecyclerViewSelected">#BEBEBE</color>
+    <color name="colourRecyclerViewSelectedGrey">#BEBEBE</color>
     <color name="colourBlackText">#000000</color>
     <color name="colourButtonDisabledText">#969696</color>
     <color name="colourGreenHighlight">#00FF00</color>

@@ -52,7 +52,7 @@ public class SelectArtefactAdapter extends RecyclerView.Adapter<SelectArtefactAd
         });
 
         boolean contained = selectedData.contains(artefact);
-        holder.checkBox.setBackgroundColor(contained ? context.getColor(R.color.colourRecyclerViewSelected) : Color.TRANSPARENT);
+        holder.checkBox.setBackgroundColor(contained ? context.getColor(R.color.colourRecyclerViewSelectedGrey) : Color.TRANSPARENT);
         holder.checkBox.setChecked(contained);
         holder.checkBox.setText(artefact.title);
 

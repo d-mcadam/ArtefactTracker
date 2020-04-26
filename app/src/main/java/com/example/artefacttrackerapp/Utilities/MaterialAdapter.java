@@ -1,11 +1,11 @@
 package com.example.artefacttrackerapp.utilities;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,8 +16,6 @@ import com.example.artefacttrackerapp.R;
 import com.example.artefacttrackerapp.data.Material;
 
 import java.util.ArrayList;
-
-import static com.example.artefacttrackerapp.activities.MainActivity.storage;
 
 public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MaterialViewHolder> {
 
@@ -56,19 +54,20 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.Materi
             notifyDataSetChanged();
         });
 
-        holder.deleteButton.setOnClickListener(view -> {
-            this.selectedPosition = -1;
-            storage.DeleteMaterial(material);
-            ((MaterialOptionsActivity)context).RefreshList();
-        });
+        holder.itemView.setOnLongClickListener(view -> ((MaterialOptionsActivity)context).GenerateLocationInputDialog(material));
 
         holder.viewIsSelected = selectedPosition == thisViewsPosition;
+        if (holder.viewIsSelected)
+            ((MaterialOptionsActivity)context).SetSelectedMaterialDetails(material);
+        else if (selectedPosition == -1)
+            ((MaterialOptionsActivity)context).SetSelectedMaterialDetails(null);
 
-        holder.itemView.setBackgroundColor(holder.viewIsSelected ? context.getResources().getColor(R.color.colourRecyclerViewSelected, null) : Color.TRANSPARENT);
+        holder.itemView.setBackgroundColor(holder.viewIsSelected ? context.getResources().getColor(R.color.colourRecyclerViewSelectedGrey, null) : Color.TRANSPARENT);
         holder.detailView.setText(context.getString(R.string.place_holder_title, material.title));
         holder.qtyView.setText(context.getString(R.string.place_holder_quantity, material.quantity));
-        holder.deleteButton.setVisibility(holder.viewIsSelected ? View.VISIBLE : View.INVISIBLE);
-        holder.deleteButton.setClickable(holder.viewIsSelected);
+
+        ((MaterialOptionsActivity)context).plusMaterialButton.setEnabled(selectedPosition > -1);
+        ((MaterialOptionsActivity)context).minusMaterialButton.setEnabled(selectedPosition > -1);
 
     }
 
@@ -81,15 +80,14 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.Materi
 
         private final TextView detailView;
         private final TextView qtyView;
-        private final ImageButton deleteButton;
 
         private MaterialViewHolder(@NonNull View itemView) {
             super(itemView);
             detailView = itemView.findViewById(R.id.textViewHolderMaterial);
             detailView.setHeight(viewHolderHeight);
+
             qtyView = itemView.findViewById(R.id.textViewHolderMaterialDisplayQuantity);
             qtyView.setHeight(viewHolderHeight);
-            deleteButton = itemView.findViewById(R.id.imageButtonHolderDeleteMaterial);
         }
 
     }

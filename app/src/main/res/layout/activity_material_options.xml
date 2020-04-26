@@ -22,6 +22,48 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textViewSelectedMaterialTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/material_opt_label_placeholder"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonAddMaterial" />
+
+    <TextView
+        android:id="@+id/textViewSelectedMaterialArtefactOccuranceCount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/material_opt_label_placeholder"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/background_dark"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSelectedMaterialTitle" />
+
+    <TextView
+        android:id="@+id/textViewSelectedMaterialDemandCount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/material_opt_label_placeholder"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/background_dark"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSelectedMaterialArtefactOccuranceCount" />
+
     <EditText
         android:id="@+id/editTextSearchMaterials"
         android:layout_width="0dp"
@@ -52,11 +94,41 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButtonAddMaterial" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewSelectedMaterialDemandCount" />
+
+    <ImageButton
+        android:id="@+id/imageButtonDecrementMaterialCount"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/material_minus_button"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewMaterialList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageButtonIncrementMaterialCount"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonAddMaterial"
+        app:srcCompat="@android:drawable/arrow_down_float" />
+
+    <ImageButton
+        android:id="@+id/imageButtonIncrementMaterialCount"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="250dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/material_plus_button"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewMaterialList"
+        app:layout_constraintEnd_toStartOf="@+id/imageButtonDecrementMaterialCount"
+        app:layout_constraintStart_toStartOf="@+id/editTextSearchMaterials"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonAddMaterial"
+        app:srcCompat="@android:drawable/arrow_up_float" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -89,8 +89,6 @@ public class CollectorActivity extends AppCompatActivity {
 
         StringBuilder sb = new StringBuilder();
         collector.collections.forEach(c -> {
-//            StringBuilder item = new StringBuilder();
-
             storage.Collections().stream()
                     .filter(c1 -> c1.title.equals(c))
                     .forEach(c1 -> {

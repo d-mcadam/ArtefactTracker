@@ -1,6 +1,7 @@
 package com.example.artefacttrackerapp.utilities;
 
 import android.content.Context;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -15,15 +16,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.artefacttrackerapp.R;
+import com.example.artefacttrackerapp.activities.MaterialOptionsActivity;
 import com.example.artefacttrackerapp.data.Collection;
 import com.example.artefacttrackerapp.data.Collector;
 import com.example.artefacttrackerapp.data.GameArtefact;
+import com.example.artefacttrackerapp.data.Material;
 
 import java.util.ArrayList;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
 
 public class UtilityMethods {
+
+    //<editor-fold defaultstate="collapsed" desc="Collection Dialog Generator">
 
     /**
      * for collector adapter with NO initial spinner selection
@@ -201,5 +206,52 @@ public class UtilityMethods {
                 }).setNegativeButton("Cancel", (dialogInterface, i) -> Toast.makeText(context, "Cancelled", Toast.LENGTH_LONG).show()).create().show();
 
     }
+
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Material quantity modification">
+
+    public static Handler HANDLER = new Handler();
+
+    public static boolean AUTO_INCREMENTING = false;
+    public static boolean AUTO_DECREMENTING = false;
+
+    private final static int INITIAL_REPEAT_DELAY = 150;
+    private static int PRESS_STEP_COUNT = 0;
+    public static void resetModifyDelay(){
+        PRESS_STEP_COUNT = 0;
+    }
+    public static int getRepeatDelay(){
+        PRESS_STEP_COUNT++;
+        return PRESS_STEP_COUNT > 50 ? 0 : PRESS_STEP_COUNT > 25 ? 75 : PRESS_STEP_COUNT > 10 ? 125 : INITIAL_REPEAT_DELAY;
+    }
+
+    public static boolean incrementMaterialQuantity(Material material, MaterialAdapter adapter){
+        material.quantity++;
+        adapter.notifyDataSetChanged();
+        return false;
+    }
+
+    public static boolean decrementMaterialQuantity(Context context, Material material, MaterialAdapter adapter){
+        if (material.quantity < 1){
+
+            AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+            dialog.setTitle("Warning");
+            dialog.setMessage("You are about to delete the Material entry entirely");
+
+            dialog.setPositiveButton("Continue", (dialogInterface, i) -> {
+                storage.DeleteMaterial(material);
+                ((MaterialOptionsActivity)context).RefreshList();
+            }).setNegativeButton("Cancel", null).create().show();
+
+        }else{
+            material.quantity--;
+        }
+
+        adapter.notifyDataSetChanged();//RefreshList();
+        return false;
+    }
+
+    //</editor-fold>
 
 }

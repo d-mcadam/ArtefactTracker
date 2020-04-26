@@ -59,7 +59,6 @@ public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.Artefa
 
         holder.itemView.setOnLongClickListener(view -> {
             AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-            dialog.setTitle("Materials for " + artefact.title);
 
             View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_material_requirement_display, null, false);
             final TextView textView = dialogView.findViewById(R.id.textViewHolderMatReqDisplayMultiline);
@@ -73,6 +72,9 @@ public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.Artefa
                         .forEach(m -> {
                             if (m.quantity >= mr.quantity)
                                 sb.append(" \u2713");
+
+                            dialog.setTitle("Materials for " + artefact.title + " (" + (m.quantity / mr.quantity) + ")");
+
                         });
 
                 sb.append("\n");
@@ -108,7 +110,7 @@ public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.Artefa
 
         holder.viewIsSelected = selectedPosition == thisViewsPosition;
 
-        holder.itemView.setBackgroundColor(holder.viewIsSelected ? context.getColor(R.color.colourRecyclerViewSelected) : Color.TRANSPARENT);
+        holder.itemView.setBackgroundColor(holder.viewIsSelected ? context.getColor(R.color.colourRecyclerViewSelectedGrey) : Color.TRANSPARENT);
 
         holder.detailView.setText(context.getString(R.string.place_holder_title, artefact.title));
         holder.qtyView.setText(context.getString(R.string.place_holder_quantity, artefact.quantity));

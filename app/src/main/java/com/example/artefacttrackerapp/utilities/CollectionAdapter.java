@@ -88,7 +88,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Co
 
         holder.viewIsSelected = selectedPosition == thisViewsPosition;
 
-        holder.itemView.setBackgroundColor(holder.viewIsSelected ? context.getColor(R.color.colourRecyclerViewSelected) : Color.TRANSPARENT);
+        holder.itemView.setBackgroundColor(holder.viewIsSelected ? context.getColor(R.color.colourRecyclerViewSelectedGrey) : Color.TRANSPARENT);
 
         holder.detailView.setText(context.getString(R.string.place_holder_title, collection.title));
         holder.qtyView.setText(context.getString(R.string.place_holder_quantity, collection.artefacts.size()));
