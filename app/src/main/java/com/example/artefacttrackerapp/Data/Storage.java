@@ -161,139 +161,583 @@ public class Storage {
     //<editor-fold defaultstate="collapsed" desc="Live Data Reset">
 
     private void createLiveData(){
-        //only need the material names for now, will add quantities and locations on the fly
+        //<editor-fold defaultstate="collapsed" desc="Materials">
+        Material m1 = new Material("Aetherium alloy");
+        m1.addLocation("Stormguard Citadel, Research & Development");
+        m1.addLocation("Empyrean Citadel");
+
+        Material m2 = new Material("Ancient vis");
+        m2.addLocation("Kharid-et, Culinarum");
+        m2.addLocation("Slayer Tower, Top Floor");
+
+        Material m3 = new Material("Animal furs");
+        m3.addLocation("Feldip");
+
+        Material m4 = new Material("Armadylean yellow");
+        m4.addLocation("Empyrean Citadel");
+
+        Material m5 = new Material("Blood of Orcus");
+        m5.addLocation("Kharid-et, Chapel");
+        m5.addLocation("Slayer Tower, Top Floor");
+
+        Material m6 = new Material("Cadmium red");
+        m6.addLocation("Infernal Source");
+        m6.addLocation("First Wizards Tower");
+
+        Material m7 = new Material("Chaotic brimstone");
+        m7.addLocation("Infernal Source, Vestibule of Futility");
+        m7.addLocation("Daemonheim");
+
+        Material m8 = new Material("Cobalt blue");
+        m8.addLocation("Everlight, Amphitheatre");
+        m8.addLocation("GWD, Saradomin");
+
+        Material m9 = new Material("Demonhide");
+        m9.addLocation("Infernal Source, The Harrowing");
+        m9.addLocation("GWD, Zamorak");
+
+        Material m10 = new Material("Everlight silvthril");
+        m10.addLocation("Everlight, Dominion Stadium");
+        m10.addLocation("Barrows");
+
+        Material m11 = new Material("Eye of Dagon");
+        m11.addLocation("Infernal Source, Dungeon of Disorder");
+        m11.addLocation("Daemonheim");
+
+        Material m12 = new Material("Fossilised bone");
+        m12.addLocation("Ancient Cavern");
+        m12.addLocation("Odd Old Man");
+
+        Material m13 = new Material("Goldrune");
+        m13.addLocation("Camdozaal");
+
+        Material m14 = new Material("Hellfire metal");
+        m14.addLocation("GWD, Zamorak");
+        m14.addLocation("Infernal source");
+
+        Material m15 = new Material("Imperial steel");
+        m15.addLocation("Empty Throne Room");
+        m15.addLocation("Kharid-et, Barracks");
+
+        Material m16 = new Material("Keramos");
+        m16.addLocation("GWD, Saradomin");
+        m16.addLocation("Everlight");
+
+        Material m17 = new Material("Leather scraps");
+        m17.addLocation("Morytania");
+
+        Material m18 = new Material("Malachite green");
+        m18.addLocation("GWD, Bandos");
+        m18.addLocation("Warforge");
+
+        Material m19 = new Material("Mark of the Kyzaj");
+        m19.addLocation("GWD, bandos");
+        m19.addLocation("Warforge");
+
+        Material m20 = new Material("Orthenglass");
+        m20.addLocation("Anachronia");
+
+        Material m21 = new Material("Quintessence");
+        m21.addLocation("Empyrean Citadel");
+        m21.addLocation("Stormguard Citadel");
+
+        Material m22 = new Material("Samite silk");
+        m22.addLocation("Al Kharid");
+        m22.addLocation("Kharid-et, Exterior");
+
+        Material m23 = new Material("Soapstone");
+        m23.addLocation("Waiko");
+
+        Material m24 = new Material("Star of Saradomin");
+        m24.addLocation("Barrows");
+        m24.addLocation("Everlight");
+
+        Material m25 = new Material("Stormguard steel");
+        m25.addLocation("GWD, Armadyl");
+        m25.addLocation("Stormguard Citadel, Research & Development");
+
+        Material m26 = new Material("Third Age iron");
+        m26.addLocation("Arch Guild");
+
+        Material m27 = new Material("Tyrian purple");
+        m27.addLocation("Empty Throne Room");
+        m27.addLocation("Kharid-et, Barracks");
+
+        Material m28 = new Material("Vellum");
+        m28.addLocation("First Wizards Tower");
+
+        Material m29 = new Material("Vulcanised rubber");
+        m29.addLocation("Feldip");
+        m29.addLocation("Warforge");
+
+        Material m30 = new Material("Warforged bronze");
+        m30.addLocation("GWD, Bandos");
+        m30.addLocation("Warforge");
+
+        Material m31 = new Material("White marble");
+        m31.addLocation("Everlight");
+        m31.addLocation("First Wizards Tower");
+
+        Material m32 = new Material("White oak");
+        m32.addLocation("Ice Mountain");
+
+        Material m33 = new Material("Wings of War");
+        m33.addLocation("GWD, Armadyl");
+
+        Material m34 = new Material("Yu'biusk clay");
+        m34.addLocation("Feldip");
+        m34.addLocation("Warforge");
+
+        Material m35 = new Material("Zarosian insignia");
+        m35.addLocation("Empyt Throne Room");
+        m35.addLocation("Kharid-et Barracks");
+        //</editor-fold>
         ArrayList<Material> liveMaterialArray = new ArrayList<Material>(){{
-            add(new Material("Aetherium alloy"));
-            add(new Material("Ancient fis"));
-            add(new Material("Animal furs"));
-            add(new Material("Armadylean yellow"));
-            add(new Material("Blood of Orcus"));
-            add(new Material("Cadmium red"));
-            add(new Material("Chaotic brimstone"));
-            add(new Material("Cobalt blue"));
-            add(new Material("Demonhide"));
-            add(new Material("Everlight silvthril"));
-            add(new Material("Eye of Dagon"));
-            add(new Material("Fossilised bone"));
-            add(new Material("Goldrune"));
-            add(new Material("Hellfire metal"));
-            add(new Material("Imperial steel"));
-            add(new Material("Keramos"));
-            add(new Material("Leather scraps"));
-            add(new Material("Malachite green"));
-            add(new Material("Mark of the Kyzaj"));
-            add(new Material("Orthenglass"));
-            add(new Material("Quintessence"));
-            add(new Material("Samite silk"));
-            add(new Material("Soapstone"));
-            add(new Material("Star of Saradomin"));
-            add(new Material("Stormguard steel"));
-            add(new Material("Third Age iron"));
-            add(new Material("Tyrian purple"));
-            add(new Material("Vellum"));
-            add(new Material("Vulcanised rubber"));
-            add(new Material("Warforged bronze"));
-            add(new Material("White marble"));
-            add(new Material("White oak"));
-            add(new Material("Wings of War"));
-            add(new Material("Yu'biusk clay"));
-            add(new Material("Zarosian insignia"));
+            add(m1);add(m2);add(m3);add(m4);add(m5);add(m6);add(m7);add(m8);add(m9);add(m10);
+            add(m11);add(m12);add(m13);add(m14);add(m15);add(m16);add(m17);add(m18);add(m19);add(m20);
+            add(m21);add(m22);add(m23);add(m24);add(m25);add(m26);add(m27);add(m28);add(m29);add(m30);
+            add(m31);add(m32);add(m33);add(m34);add(m35);
         }};
         liveMaterialArray.forEach(this::AddMaterial);
 
         //<editor-fold defaultstate="collapsed" desc="Game Artefact objects">
         GameArtefact ga1 = new GameArtefact("'Animate dead' spell scroll", "Zaros");
+        ga1.addRequirement(new MaterialRequirement("Vellum", 40));
+        ga1.addRequirement(new MaterialRequirement("Ancient vis", 24));
+        ga1.addRequirement(new MaterialRequirement("Blood or Orcus", 40));
+
         GameArtefact ga2 = new GameArtefact("'Consensus ad Idem' painting", "Zaros");
+        ga2.addRequirement(new MaterialRequirement("White oak", 10));
+        ga2.addRequirement(new MaterialRequirement("Samite silk", 10));
+        ga2.addRequirement(new MaterialRequirement("Tyrian purple", 50));
+
         GameArtefact ga3 = new GameArtefact("'Da Boss Man' sculpture", "Bandos");
+        ga3.addRequirement(new MaterialRequirement("Yu'biusk clay", 50));
+        ga3.addRequirement(new MaterialRequirement("Malachite green", 44));
+        ga3.addRequirement(new MaterialRequirement("Soapstone", 44));
+
         GameArtefact ga4 = new GameArtefact("'Disorder' painting", "Zamorak");
+        ga4.addRequirement(new MaterialRequirement("Samite silk", 6));
+        ga4.addRequirement(new MaterialRequirement("White oak", 6));
+        ga4.addRequirement(new MaterialRequirement("Vellum", 6));
+        ga4.addRequirement(new MaterialRequirement("Cadmium red", 14));
+
         GameArtefact ga5 = new GameArtefact("'Exsanguinate' spell scroll", "Zaros");
+        ga5.addRequirement(new MaterialRequirement("Vellum", 40));
+        ga5.addRequirement(new MaterialRequirement("Blood or Orcus", 36));
+
         GameArtefact ga6 = new GameArtefact("'Forged in War' sculpture", "Bandos");
+        ga6.addRequirement(new MaterialRequirement("Warforged bronze", 50));
+        ga6.addRequirement(new MaterialRequirement("Yu'biusk clay", 42));
+
         GameArtefact ga7 = new GameArtefact("'Frying pan'", "Saradomin");
+        ga7.addRequirement(new MaterialRequirement("Third Age iron", 20));
+        ga7.addRequirement(new MaterialRequirement("White marble", 24));
+
         GameArtefact ga8 = new GameArtefact("'Hallowed Be the Everlight' painting", "Saradomin");
+        ga8.addRequirement(new MaterialRequirement("Cobalt blue", 52));
+        ga8.addRequirement(new MaterialRequirement("White oak", 16));
+        ga8.addRequirement(new MaterialRequirement("Samite silk", 16));
+        ga8.addRequirement(new MaterialRequirement("Vellum", 16));
+
         GameArtefact ga9 = new GameArtefact("'Incite fear' spell scroll", "Zaros");
+        ga9.addRequirement(new MaterialRequirement("Vellum", 20));
+        ga9.addRequirement(new MaterialRequirement("Ancient vis", 18));
+        ga9.addRequirement(new MaterialRequirement("Blood of Orcus", 18));
+
         GameArtefact ga10 = new GameArtefact("'Lust' metal sculpture", "Zamorak");
+        ga10.addRequirement(new MaterialRequirement("Third Age iron", 16));
+        ga10.addRequirement(new MaterialRequirement("Eye of Dagon", 24));
+        ga10.addRequirement(new MaterialRequirement("Goldrune", 24));
+
         GameArtefact ga11 = new GameArtefact("'Nosorog!' sculpture", "Bandos");
+        ga11.addRequirement(new MaterialRequirement("Yu'biusk clay", 30 ));
+        ga11.addRequirement(new MaterialRequirement("Malachite green", 24 ));
+        ga11.addRequirement(new MaterialRequirement("Warforged bronze", 30 ));
+
         GameArtefact ga12 = new GameArtefact("'Pandemonium' tapestry", "Zamorak");
+        ga12.addRequirement(new MaterialRequirement("White oak", 12 ));
+        ga12.addRequirement(new MaterialRequirement("Samite silk", 12 ));
+        ga12.addRequirement(new MaterialRequirement("Vellum", 12 ));
+        ga12.addRequirement(new MaterialRequirement("Cadmium red", 42 ));
+
         GameArtefact ga13 = new GameArtefact("'Possession' metal sculpture", "Zamorak");
+        ga13.addRequirement(new MaterialRequirement("Third Age iron", 44));
+        ga13.addRequirement(new MaterialRequirement("Eye of Dagon", 24));
+        ga13.addRequirement(new MaterialRequirement("Chaotic brimstone", 30 ));
+
         GameArtefact ga14 = new GameArtefact("'Prima legio' painting", "Zaros");
+        ga14.addRequirement(new MaterialRequirement("White oak", 20  ));
+        ga14.addRequirement(new MaterialRequirement("Samite silk", 20  ));
+        ga14.addRequirement(new MaterialRequirement("Tyrian purple", 74 ));
+        ga14.addRequirement(new MaterialRequirement("Zarosian insignia", 20 ));
+
         GameArtefact ga15 = new GameArtefact("'Smoke cloud' spell scroll", "Zaros");
+        ga15.addRequirement(new MaterialRequirement("Vellum", 40));
+        ga15.addRequirement(new MaterialRequirement("Ancient vis", 20));
+        ga15.addRequirement(new MaterialRequirement("Blood of Orcus", 32));
+
         GameArtefact ga16 = new GameArtefact("'Solem in Umbra' painting", "Zaros");
+        ga16.addRequirement(new MaterialRequirement("White oak", 10 ));
+        ga16.addRequirement(new MaterialRequirement("Samite silk", 8 ));
+        ga16.addRequirement(new MaterialRequirement("Tyrian purple", 14 ));
+
         GameArtefact ga17 = new GameArtefact("'The Enlightened Soul' scroll", "Saradomin");
+        ga17.addRequirement(new MaterialRequirement("Vellum", 60 ));
+        ga17.addRequirement(new MaterialRequirement("Star of Saradomin", 50 ));
+
         GameArtefact ga18 = new GameArtefact("'The Eudoxian Elements' tablet", "Saradomin");
+        ga18.addRequirement(new MaterialRequirement("White marble", 60 ));
+        ga18.addRequirement(new MaterialRequirement("Gold rune", 50 ));
+
         GameArtefact ga19 = new GameArtefact("'The Lake of Fire' painting", "Zamorak");
+        ga19.addRequirement(new MaterialRequirement("White oak", 10 ));
+        ga19.addRequirement(new MaterialRequirement("Samite silk", 10 ));
+        ga19.addRequirement(new MaterialRequirement("Vellum", 10 ));
+        ga19.addRequirement(new MaterialRequirement("Cadmium red", 34 ));
+
         GameArtefact ga20 = new GameArtefact("'The Lord of Light' painting", "Saradomin");
+        ga20.addRequirement(new MaterialRequirement("White oak", 16 ));
+        ga20.addRequirement(new MaterialRequirement("Samite silk", 16 ));
+        ga20.addRequirement(new MaterialRequirement("Vellum", 16 ));
+        ga20.addRequirement(new MaterialRequirement("Cobalt blue", 52 ));
+
         GameArtefact ga21 = new GameArtefact("'The Pride of Padosan' painting", "Saradomin");
+        ga21.addRequirement(new MaterialRequirement("White oak", 16 ));
+        ga21.addRequirement(new MaterialRequirement("Samite silk", 16 ));
+        ga21.addRequirement(new MaterialRequirement("Vellum", 16 ));
+        ga21.addRequirement(new MaterialRequirement("Cobalt blue", 52 ));
+
         GameArtefact ga22 = new GameArtefact("'Torment' metal sculpture", "Zamorak");
+        ga22.addRequirement(new MaterialRequirement("Third Age iron", 20));
+        ga22.addRequirement(new MaterialRequirement("Eye of Dagon", 20));
+        ga22.addRequirement(new MaterialRequirement("Hellfire metal", 38 ));
+
         GameArtefact ga23 = new GameArtefact("Amphora", "Saradomin");
+        ga23.addRequirement(new MaterialRequirement("Everlight silvthril", 34));
+        ga23.addRequirement(new MaterialRequirement("Keramos", 46 ));
+
         GameArtefact ga24 = new GameArtefact("Ancient globe", "Zaros");
+        ga24.addRequirement(new MaterialRequirement("White oak", 20 ));
+        ga24.addRequirement(new MaterialRequirement("Ancient vis", 60 ));
+        ga24.addRequirement(new MaterialRequirement("Tyrian purple", 54 ));
+
         GameArtefact ga25 = new GameArtefact("Ancient magic tablet", "Zaros");
+        ga25.addRequirement(new MaterialRequirement("Ancient vis", 40 ));
+        ga25.addRequirement(new MaterialRequirement("Blood of Orcus", 64 ));
+
         GameArtefact ga26 = new GameArtefact("Ancient timepiece", "Zaros");
+        ga26.addRequirement(new MaterialRequirement("Goldrune", 12 ));
+        ga26.addRequirement(new MaterialRequirement("Imperial steel", 16 ));
+        ga26.addRequirement(new MaterialRequirement("Ancient vis", 18 ));
+
         GameArtefact ga27 = new GameArtefact("Avian song-egg player", "Armadyl");
+        ga27.addRequirement(new MaterialRequirement("Stormguard steel", 36 ));
+        ga27.addRequirement(new MaterialRequirement("Armadylean yellow", 32 ));
+
         GameArtefact ga28 = new GameArtefact("Aviansie dreamcoat", "Armadyl");
+        ga28.addRequirement(new MaterialRequirement("Armadylean yellow", 20 ));
+        ga28.addRequirement(new MaterialRequirement("Samite silk", 30 ));
+        ga28.addRequirement(new MaterialRequirement("Animal furs", 22 ));
+
         GameArtefact ga29 = new GameArtefact("Battle plans", "Zaros");
+        ga29.addRequirement(new MaterialRequirement("Vellum", 40 ));
+        ga29.addRequirement(new MaterialRequirement("Ancient vis", 34 ));
+        ga29.addRequirement(new MaterialRequirement("Tyrian purple", 60 ));
+
         GameArtefact ga30 = new GameArtefact("Beastkeeper helm", "Bandos");
+        ga30.addRequirement(new MaterialRequirement("Warforged bronze", 16 ));
+        ga30.addRequirement(new MaterialRequirement("Vulcanised rubber", 24 ));
+        ga30.addRequirement(new MaterialRequirement("Animal furs", 20 ));
+        ga30.addRequirement(new MaterialRequirement("Fossilised bone", 24 ));
+
         GameArtefact ga31 = new GameArtefact("Blackfire lance", "Armadyl");
+        ga31.addRequirement(new MaterialRequirement("Aetherium alloy", 50 ));
+        ga31.addRequirement(new MaterialRequirement("Quintessence", 46 ));
+
         GameArtefact ga32 = new GameArtefact("Branding iron", "Zamorak");
+        ga32.addRequirement(new MaterialRequirement("Third Age iron", 14 ));
+        ga32.addRequirement(new MaterialRequirement("Eye of Dagon", 12 ));
+        ga32.addRequirement(new MaterialRequirement("Hellfire metal", 20 ));
+
         GameArtefact ga33 = new GameArtefact("Bronze Dominion medal", "Saradomin");
+        ga33.addRequirement(new MaterialRequirement("Everlight silvthril", 36 ));
+        ga33.addRequirement(new MaterialRequirement("Star of Saradomin", 26 ));
+
         GameArtefact ga34 = new GameArtefact("Ceremonial mace", "Zaros");
+        ga34.addRequirement(new MaterialRequirement("Third Age iron", 20 ));
+        ga34.addRequirement(new MaterialRequirement("Imperial steel", 20 ));
+        ga34.addRequirement(new MaterialRequirement("Goldrune", 28 ));
+
         GameArtefact ga35 = new GameArtefact("Ceremonial plume", "Armadyl");
+        ga35.addRequirement(new MaterialRequirement("Armadylean yellow", 38 ));
+        ga35.addRequirement(new MaterialRequirement("Goldrune", 34 ));
+
         GameArtefact ga36 = new GameArtefact("Ceremonial unicorn ornament", "Saradomin");
+        ga36.addRequirement(new MaterialRequirement("Keramos", 26 ));
+        ga36.addRequirement(new MaterialRequirement("Cobalt blue", 20 ));
+
         GameArtefact ga37 = new GameArtefact("Ceremonial unicorn saddle", "Saradomin");
+        ga37.addRequirement(new MaterialRequirement("Leather scraps", 24 ));
+        ga37.addRequirement(new MaterialRequirement("Cobalt blue", 22 ));
+
         GameArtefact ga38 = new GameArtefact("Chaos elemental trophy", "Zamorak");
+        ga38.addRequirement(new MaterialRequirement("Chaotic brimstone", 52 ));
+        ga38.addRequirement(new MaterialRequirement("White oak", 30 ));
+        ga38.addRequirement(new MaterialRequirement("Hellfire metal", 30 ));
+
         GameArtefact ga39 = new GameArtefact("Chaos star", "Zamorak");
+        ga39.addRequirement(new MaterialRequirement("Chaotic brimstone", 28 ));
+        ga39.addRequirement(new MaterialRequirement("Hellfire metal", 36 ));
+
         GameArtefact ga40 = new GameArtefact("Chuluu stone", "Armadyl");
+        ga40.addRequirement(new MaterialRequirement("Aetherium alloy", 40 ));
+        ga40.addRequirement(new MaterialRequirement("Quintessence", 30 ));
+        ga40.addRequirement(new MaterialRequirement("Soapstone", 40 ));
+        ga40.addRequirement(new MaterialRequirement("Goldrune", 24 ));
+
         GameArtefact ga41 = new GameArtefact("Crest of Dagon", "Zamorak");
+        ga41.addRequirement(new MaterialRequirement("Orthenglass", 18 ));
+        ga41.addRequirement(new MaterialRequirement("Goldrune", 14 ));
+
         GameArtefact ga42 = new GameArtefact("Dayguard shield", "Armadyl");
+        ga42.addRequirement(new MaterialRequirement("Stormguard steel", 36 ));
+        ga42.addRequirement(new MaterialRequirement("White oak", 20 ));
+        ga42.addRequirement(new MaterialRequirement("Wings of War", 28 ));
+
         GameArtefact ga43 = new GameArtefact("Decorate vase", "Saradomin");
+        ga43.addRequirement(new MaterialRequirement("White marble", 36 ));
+        ga43.addRequirement(new MaterialRequirement("Cobalt blue", 30 ));
+
         GameArtefact ga44 = new GameArtefact("Dominarian device", "Saradomin");
+        ga44.addRequirement(new MaterialRequirement("Everlight silvthril", 30 ));
+        ga44.addRequirement(new MaterialRequirement("Keramos", 22 ));
+        ga44.addRequirement(new MaterialRequirement("Third Age iron", 22 ));
+
         GameArtefact ga45 = new GameArtefact("Dominion discus", "Saradomin");
+        ga45.addRequirement(new MaterialRequirement("Star of Saradomin", 28 ));
+        ga45.addRequirement(new MaterialRequirement("Keramos", 34 ));
+
         GameArtefact ga46 = new GameArtefact("Dominion javelin", "Saradomin");
+        ga46.addRequirement(new MaterialRequirement("Third Age iron", 30 ));
+        ga46.addRequirement(new MaterialRequirement("Keramos", 32 ));
+
         GameArtefact ga47 = new GameArtefact("Dominion pelte shield", "Saradomin");
+        ga47.addRequirement(new MaterialRequirement("Star of Saradomin", 34 ));
+        ga47.addRequirement(new MaterialRequirement("Samite silk", 28 ));
+
         GameArtefact ga48 = new GameArtefact("Dominion torch", "Saradomin");
+        ga48.addRequirement(new MaterialRequirement("Goldrune", 12 ));
+        ga48.addRequirement(new MaterialRequirement("Orthenglass", 12 ));
+        ga48.addRequirement(new MaterialRequirement("Everlight silvthril", 28 ));
+        ga48.addRequirement(new MaterialRequirement("Star of Saradomin", 18 ));
+
         GameArtefact ga49 = new GameArtefact("Dorgeshuun spear", "Bandos");
+        ga49.addRequirement(new MaterialRequirement("Warforged bronze", 50 ));
+        ga49.addRequirement(new MaterialRequirement("White oak", 42 ));
+
         GameArtefact ga50 = new GameArtefact("Doru spear", "Saradomin");
+        ga50.addRequirement(new MaterialRequirement("Everlight silvthril", 70 ));
+        ga50.addRequirement(new MaterialRequirement("White oak", 62 ));
+
         GameArtefact ga51 = new GameArtefact("Drogokishuun hook swords", "Bandos");
+        ga51.addRequirement(new MaterialRequirement("Warforged bronze", 44 ));
+        ga51.addRequirement(new MaterialRequirement("Malachite green", 36 ));
+        ga51.addRequirement(new MaterialRequirement("Fossilised bone", 32 ));
+
         GameArtefact ga52 = new GameArtefact("Ekeleshuun blinder mask", "Bandos");
+        ga52.addRequirement(new MaterialRequirement("Vulcanised rubber", 24 ));
+        ga52.addRequirement(new MaterialRequirement("Malachite green", 20 ));
+        ga52.addRequirement(new MaterialRequirement("Vellum", 24 ));
+
         GameArtefact ga53 = new GameArtefact("Everlight harp", "Saradomin");
+        ga53.addRequirement(new MaterialRequirement("Everlight silvthril", 30 ));
+        ga53.addRequirement(new MaterialRequirement("White oak", 22 ));
+
         GameArtefact ga54 = new GameArtefact("Everlight trumpet", "Saradomin");
+        ga54.addRequirement(new MaterialRequirement("Everlight silvthril", 28 ));
+        ga54.addRequirement(new MaterialRequirement("Goldrune", 24 ));
+
         GameArtefact ga55 = new GameArtefact("Everlight violin", "Saradomin");
+        ga55.addRequirement(new MaterialRequirement("Star of Saradomin", 16 ));
+        ga55.addRequirement(new MaterialRequirement("White oak", 20 ));
+        ga55.addRequirement(new MaterialRequirement("Samite silk", 16 ));
+
         GameArtefact ga56 = new GameArtefact("Fishing trident", "Saradomin");
+        ga56.addRequirement(new MaterialRequirement("Star of Saradomin", 22 ));
+        ga56.addRequirement(new MaterialRequirement("Third Age iron", 30 ));
+        ga56.addRequirement(new MaterialRequirement("Goldrune", 22 ));
+
         GameArtefact ga57 = new GameArtefact("Flat cap", "Armadyl");
+        ga57.addRequirement(new MaterialRequirement("Armadylean yellow", 60 ));
+        ga57.addRequirement(new MaterialRequirement("Samite silk", 54 ));
+
         GameArtefact ga58 = new GameArtefact("Folded-arm figurine (female)", "Saradomin");
+        ga58.addRequirement(new MaterialRequirement("White marble", 30 ));
+        ga58.addRequirement(new MaterialRequirement("Goldrune", 24 ));
+
         GameArtefact ga59 = new GameArtefact("Folded-arm figurine (male)", "Saradomin");
+        ga59.addRequirement(new MaterialRequirement("White marble", 30 ));
+        ga59.addRequirement(new MaterialRequirement("Goldrune", 24 ));
+
         GameArtefact ga60 = new GameArtefact("Garagorshuun anchor", "Bandos");
+        ga60.addRequirement(new MaterialRequirement("Warforged bronze", 32 ));
+        ga60.addRequirement(new MaterialRequirement("Mark of the Kyzaj", 26 ));
+        ga60.addRequirement(new MaterialRequirement("Third Age iron", 30 ));
+
         GameArtefact ga61 = new GameArtefact("Golem heart", "Armadyl");
+        ga61.addRequirement(new MaterialRequirement("Aetherium alloy", 34 ));
+        ga61.addRequirement(new MaterialRequirement("Quintessence", 24 ));
+        ga61.addRequirement(new MaterialRequirement("Soapstone", 16 ));
+        ga61.addRequirement(new MaterialRequirement("Orthenglass", 16 ));
+
         GameArtefact ga62 = new GameArtefact("Golem instruction", "Armadyl");
+        ga62.addRequirement(new MaterialRequirement("Vellum", 44 ));
+        ga62.addRequirement(new MaterialRequirement("Quintessence", 46 ));
+
         GameArtefact ga63 = new GameArtefact("Greater demon mask", "Zamorak");
+        ga63.addRequirement(new MaterialRequirement("Third Age iron", 6 ));
+        ga63.addRequirement(new MaterialRequirement("Leather scraps", 6 ));
+        ga63.addRequirement(new MaterialRequirement("Chaotic brimstone", 8 ));
+        ga63.addRequirement(new MaterialRequirement("Demonhide", 12 ));
+
         GameArtefact ga64 = new GameArtefact("Hallowed lantern", "Saradomin");
+        ga64.addRequirement(new MaterialRequirement("Third Age iron", 20 ));
+        ga64.addRequirement(new MaterialRequirement("Keramos", 24 ));
+
         GameArtefact ga65 = new GameArtefact("Hawkeye lens multi-vision scope", "Armadyl");
+        ga65.addRequirement(new MaterialRequirement("Stormguard steel", 40 ));
+        ga65.addRequirement(new MaterialRequirement("Orthenglass", 34 ));
+
         GameArtefact ga66 = new GameArtefact("Hellfire haladie", "Zamorak");
+        ga66.addRequirement(new MaterialRequirement("Third Age iron", 26 ));
+        ga66.addRequirement(new MaterialRequirement("Leather scraps", 20 ));
+        ga66.addRequirement(new MaterialRequirement("Hellfire metal", 44 ));
+
         GameArtefact ga67 = new GameArtefact("Hellfire katar", "Zamorak");
+        ga67.addRequirement(new MaterialRequirement("Leather scraps", 40 ));
+        ga67.addRequirement(new MaterialRequirement("Hellfire metal", 50 ));
+
         GameArtefact ga68 = new GameArtefact("Hellfire zaghnal", "Zamorak");
+        ga68.addRequirement(new MaterialRequirement("White oak", 26 ));
+        ga68.addRequirement(new MaterialRequirement("Orthenglass", 26));
+        ga68.addRequirement(new MaterialRequirement("Hellfire metal", 38 ));
+
         GameArtefact ga69 = new GameArtefact("High priest crozier", "Bandos");
+        ga69.addRequirement(new MaterialRequirement("Mark of the Kyzaj", 26 ));
+        ga69.addRequirement(new MaterialRequirement("Malachite green", 24));
+        ga69.addRequirement(new MaterialRequirement("Goldrune", 28 ));
+
         GameArtefact ga70 = new GameArtefact("High priest mitre", "Bandos");
+        ga70.addRequirement(new MaterialRequirement("Mark of the Kyzaj", 26 ));
+        ga70.addRequirement(new MaterialRequirement("Malachite green", 24));
+        ga70.addRequirement(new MaterialRequirement("Samite silk", 28 ));
+
         GameArtefact ga71 = new GameArtefact("High priest orb", "Bandos");
+        ga71.addRequirement(new MaterialRequirement("Mark of the Kyzaj", 26 ));
+        ga71.addRequirement(new MaterialRequirement("Malachite green", 24));
+        ga71.addRequirement(new MaterialRequirement("Goldrune", 28 ));
+
         GameArtefact ga72 = new GameArtefact("Hobgoblin mansticker", "Bandos");
+        ga72.addRequirement(new MaterialRequirement("Warforged bronze", 66));
+        ga72.addRequirement(new MaterialRequirement("Fossilised bone", 46 ));
+
         GameArtefact ga73 = new GameArtefact("Hookah pipe", "Zamorak");
+        ga73.addRequirement(new MaterialRequirement("Third Age iron", 10 ));
+        ga73.addRequirement(new MaterialRequirement("Orthenglass", 8));
+        ga73.addRequirement(new MaterialRequirement("Goldrune", 12 ));
+
         GameArtefact ga74 = new GameArtefact("Horogothgar cooking pot", "Bandos");
+        ga74.addRequirement(new MaterialRequirement("Yu'biusk clay", 60 ));
+        ga74.addRequirement(new MaterialRequirement("Malachite green", 38));
+        ga74.addRequirement(new MaterialRequirement("Soapstone", 40 ));
+
         GameArtefact ga75 = new GameArtefact("Huzamogaarb chaos crown", "Bandos");
+        ga75.addRequirement(new MaterialRequirement("Warforged bronze", 44));
+        ga75.addRequirement(new MaterialRequirement("Third Age iron", 34));
+        ga75.addRequirement(new MaterialRequirement("Eye of Dagon", 20));
+
         GameArtefact ga76 = new GameArtefact("Idithuun horn rings", "Bandos");
+        ga76.addRequirement(new MaterialRequirement("Yu'biusk clay", 40 ));
+        ga76.addRequirement(new MaterialRequirement("Vulcanised rubber", 44));
+
         GameArtefact ga77 = new GameArtefact("Ikovian gerege", "Armadyl");
+        ga77.addRequirement(new MaterialRequirement("Third Age iron", 36 ));
+        ga77.addRequirement(new MaterialRequirement("Wings of War", 30));
+
         GameArtefact ga78 = new GameArtefact("Imp mask", "Zamorak");
+        ga78.addRequirement(new MaterialRequirement("Leather scraps", 10));
+        ga78.addRequirement(new MaterialRequirement("Chaotic brimstone", 10));
+        ga78.addRequirement(new MaterialRequirement("Demonhide", 12));
+
         GameArtefact ga79 = new GameArtefact("Kal-i-kran chieftain crown", "Bandos");
+        ga79.addRequirement(new MaterialRequirement("Yu'biusk clay", 66 ));
+        ga76.addRequirement(new MaterialRequirement("Animal furs", 60));
+
         GameArtefact ga80 = new GameArtefact("Kal-i-kran mace", "Bandos");
+        ga80.addRequirement(new MaterialRequirement("Vulcanised rubber", 42));
+        ga80.addRequirement(new MaterialRequirement("Third Age iron", 44));
+        ga80.addRequirement(new MaterialRequirement("Fossilised bone", 40));
+
         GameArtefact ga81 = new GameArtefact("Kal-i-kran warhorn", "Bandos");
+        ga81.addRequirement(new MaterialRequirement("Vulcanised rubber", 44));
+        ga81.addRequirement(new MaterialRequirement("Animal furs", 40));
+        ga81.addRequirement(new MaterialRequirement("Fossilised bone", 42));
+
         GameArtefact ga82 = new GameArtefact("Kantharos cup", "Saradomin");
+        ga82.addRequirement(new MaterialRequirement("Everlight silvthril", 30 ));
+        ga82.addRequirement(new MaterialRequirement("Orthenglass", 36));
+
         GameArtefact ga83 = new GameArtefact("Keshik drum", "Armadyl");
+        ga83.addRequirement(new MaterialRequirement("Wings of War", 16));
+        ga83.addRequirement(new MaterialRequirement("Animal furs", 16));
+        ga83.addRequirement(new MaterialRequirement("White oak", 20));
+        ga83.addRequirement(new MaterialRequirement("Leather scraps", 16));
+
         GameArtefact ga84 = new GameArtefact("Kontos lance", "Saradomin");
+        ga84.addRequirement(new MaterialRequirement("Everlight silvthril", 70 ));
+        ga84.addRequirement(new MaterialRequirement("Samite silk", 62));
+
         GameArtefact ga85 = new GameArtefact("Kopis dagger", "Saradomin");
+        ga85.addRequirement(new MaterialRequirement("Everlight silvthril", 50 ));
+        ga85.addRequirement(new MaterialRequirement("Leather scraps", 42));
+
         GameArtefact ga86 = new GameArtefact("Larupia trophy", "Zamorak");
+        ga86.addRequirement(new MaterialRequirement("Cadmium red", 18));
+        ga86.addRequirement(new MaterialRequirement("Animal furs", 28 ));
+        ga86.addRequirement(new MaterialRequirement("Orthenglass", 26 ));
+
         GameArtefact ga87 = new GameArtefact("Legatus maximus figurine", "Zaros");
+        ga87.addRequirement(new MaterialRequirement("Goldrune", 8 ));
+        ga87.addRequirement(new MaterialRequirement("Zarosian insignia", 14  ));
+        ga87.addRequirement(new MaterialRequirement("Ancient vis", 10  ));
+
         GameArtefact ga88 = new GameArtefact("Legatus pendant", "Zaros");
+        ga88.addRequirement(new MaterialRequirement("Goldrune", 18  ));
+        ga88.addRequirement(new MaterialRequirement("Third Age iron",   16 ));
+        ga88.addRequirement(new MaterialRequirement("Ancient vis", 12   ));
+
         GameArtefact ga89 = new GameArtefact("Legionary gladius", "Zaros");
+        ga89.addRequirement(new MaterialRequirement("Zarosian insignia",  6  ));
+        ga89.addRequirement(new MaterialRequirement("Third Age iron",   10  ));
+        ga89.addRequirement(new MaterialRequirement("Imperial steel", 12    ));
+
         GameArtefact ga90 = new GameArtefact("Legionary square shield", "Zaros");
+        ga89.addRequirement(new MaterialRequirement("Zarosian insignia",  8  ));
+        ga89.addRequirement(new MaterialRequirement("Third Age iron",   8  ));
+        ga89.addRequirement(new MaterialRequirement("Imperial steel", 12    ));
+
         GameArtefact ga91 = new GameArtefact("Lesser demon mask", "Zamorak");
+        ga90.addRequirement(new MaterialRequirement("Cadmium red", 6));
+        ga90.addRequirement(new MaterialRequirement("Demonhide", 12));
+        ga90.addRequirement(new MaterialRequirement("Chaotic brimstone", 8));
+        ga90.addRequirement(new MaterialRequirement("Leather scraps", 6));
+
         GameArtefact ga92 = new GameArtefact("Lion trophy", "Zamorak");
+        ga92.addRequirement(new MaterialRequirement("Cadmium red", 18));
+        ga92.addRequirement(new MaterialRequirement("Animal furs", 28 ));
+        ga92.addRequirement(new MaterialRequirement("White oak", 26 ));
+
         GameArtefact ga93 = new GameArtefact("Manacles", "Zamorak");
         GameArtefact ga94 = new GameArtefact("Morin khuur", "Armadyl");
         GameArtefact ga95 = new GameArtefact("Narogoshuun 'Hob-da-Gob' ball", "Bandos");
