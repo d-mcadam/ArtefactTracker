@@ -59,6 +59,8 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.Materi
         holder.viewIsSelected = selectedPosition == thisViewsPosition;
         if (holder.viewIsSelected)
             ((MaterialOptionsActivity)context).SetSelectedMaterialDetails(material);
+        else if (selectedPosition == -1)
+            ((MaterialOptionsActivity)context).SetSelectedMaterialDetails(null);
 
         holder.itemView.setBackgroundColor(holder.viewIsSelected ? context.getResources().getColor(R.color.colourRecyclerViewSelectedGrey, null) : Color.TRANSPARENT);
         holder.detailView.setText(context.getString(R.string.place_holder_title, material.title));
