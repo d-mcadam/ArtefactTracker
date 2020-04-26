@@ -49,7 +49,6 @@
     //arrays
     <string-array name="artefact_categories">
         <item>All</item>
-        <item>Agnostic</item>
         <item>Armadyl</item>
         <item>Bandos</item>
         <item>Saradomin</item>
@@ -60,7 +59,7 @@
         <item>Any</item>
         <item>Cronotes</item>
         <item>Pylon batteries</item>
-        <item>Robust class</item>
+        <item>Robust glass</item>
         <item>Tetra pieces</item>
         <item>Stormguard blueprint fragments</item>
     </string-array>
