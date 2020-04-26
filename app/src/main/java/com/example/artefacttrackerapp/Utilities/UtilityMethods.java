@@ -216,7 +216,21 @@ public class UtilityMethods {
     public static boolean AUTO_INCREMENTING = false;
     public static boolean AUTO_DECREMENTING = false;
 
-    public static int REPEAT_DELAY = 500;
+    private final static int INITIAL_REPEAT_DELAY = 300;
+    private static int PRESS_STEP_COUNT = 0;
+    public static void resetModifyDelay(){
+        PRESS_STEP_COUNT = 0;
+    }
+    public static int getRepeatDelay(){
+        PRESS_STEP_COUNT++;
+        if (PRESS_STEP_COUNT > 50)
+            return 0;
+        else if (PRESS_STEP_COUNT > 25)
+            return (50);
+        else if (PRESS_STEP_COUNT > 5)
+            return (100);
+        return INITIAL_REPEAT_DELAY;
+    }
 
     public static boolean incrementMaterialQuantity(Material material, MaterialAdapter adapter){
         material.quantity++;
