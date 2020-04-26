@@ -177,7 +177,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         final TextView textView = dialogView.findViewById(R.id.textViewHolderMaterialLocationDisplayMultiline);
 
         StringBuilder sb = new StringBuilder();
-        material.locations.forEach(location -> sb.append(location).append("\n"));
+        material.getLocations().forEach(location -> sb.append(location).append("\n"));
         textView.setText(sb.toString().trim());
 
         dialog.setView(dialogView)
@@ -194,7 +194,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
                             .setPositiveButton("Add", (dialogInterface1, i1) -> {
 
                                 final String inputLocation = editText.getText().toString().trim();
-                                material.locations.add(inputLocation);
+                                boolean r = material.addLocation(inputLocation);
                                 GenerateLocationInputDialog(material);
 
                             }).setNegativeButton("Cancel", (dialogInterface1, i1) ->
