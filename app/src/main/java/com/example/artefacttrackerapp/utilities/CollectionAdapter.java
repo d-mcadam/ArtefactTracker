@@ -65,7 +65,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Co
             final TextView textView = dialogView.findViewById(R.id.textViewHolderCollectionDisplayMultiline);
 
             StringBuilder sb = new StringBuilder();
-            collection.artefacts.forEach(a -> {
+            collection.getArtefacts().forEach(a -> {
 
                 sb.append(a).append(", x");
 
@@ -91,7 +91,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Co
         holder.itemView.setBackgroundColor(holder.viewIsSelected ? context.getColor(R.color.colourRecyclerViewSelectedGrey) : Color.TRANSPARENT);
 
         holder.detailView.setText(context.getString(R.string.place_holder_title, collection.title));
-        holder.qtyView.setText(context.getString(R.string.place_holder_quantity, collection.artefacts.size()));
+        holder.qtyView.setText(context.getString(R.string.place_holder_quantity, collection.getArtefacts().size()));
 
         holder.viewButton.setVisibility(holder.viewIsSelected ? View.VISIBLE : View.INVISIBLE);
         holder.viewButton.setClickable(holder.viewIsSelected);

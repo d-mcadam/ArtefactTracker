@@ -188,7 +188,9 @@ public class UtilityMethods {
                     listDialog.setView(listDialogView)
                             .setPositiveButton("Save", (dialogInterface1, i1) -> {
 
-                                ((SelectArtefactAdapter)inputRecyclerViewAdapter).selectedData.forEach(a -> collection.artefacts.add(a.title));
+                                ((SelectArtefactAdapter)inputRecyclerViewAdapter).selectedData.forEach(a -> {
+                                    boolean r = collection.addArtefact(a.title);
+                                });
 
                                 storage.AddCollection(collection);
                                 if (collectionViewAdapter != null) {
