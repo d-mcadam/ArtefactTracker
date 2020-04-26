@@ -45,9 +45,9 @@ public class Storage {
         if (this.collections.add(collection)){
             Collections.sort(this.collections, Comparator.comparing(Collection::Title));
             collectors.stream()
-                    .filter(c -> c.name.equals(collection.collector))
-                    .forEach(c -> {
-                        boolean r = c.addCollection(collection.title);
+                    .filter(collector -> collector.name.equals(collection.collector))
+                    .forEach(collector -> {
+                        boolean r = collector.addCollection(collection.title);
                     });
             return true;
         }
@@ -93,11 +93,18 @@ public class Storage {
     private int rndNum(int min, int max){
         return new Random().nextInt(max - min) + min;
     }
-    private GameArtefact genRndGa(){
+    private String rndCategory(){
         String[] categories = cRes.getStringArray(R.array.artefact_categories);
+        return categories[rndNum(categories.length)];
+    }
+    private String rndReward(){
+        String[] rewards = cRes.getStringArray(R.array.collection_rewards);
+        return rewards[rndNum(rewards.length)];
+    }
+    private GameArtefact genRndGa(){
         GameArtefact ga = new GameArtefact(
                 rndStr(rndNum(4, 10)),
-                categories[new Random().nextInt(rndNum(categories.length))]
+                rndCategory()
         );
         ga.quantity = rndNum(10);
         int r = rndNum(3, 5);
@@ -129,16 +136,30 @@ public class Storage {
         ArrayList<GameArtefact> aa = new ArrayList<GameArtefact>() {{ add(a1); add(a2); add(a3); add(a4); add(a5); }};
         this.artefacts.addAll(aa);
 
+        for (int i = 0; i < 5; i++)
+            this.collectors.add(new Collector(rndStr(rndNum(4, 10)), rndStr(rndNum(4, 10))));
 
+        for (int i = 0; i < 5; i++){
 
-        for (int i = 1; i < 21; i++)
-            this.collectors.add(new Collector("Collector " + i, "Location " + i));
+            Collection collection = new Collection(
+                    rndStr(rndNum(4, 10)),
+                    collectors.get(rndNum(collectors.size())).name,
+                    rndCategory(),
+                    rndReward(),
+                    rndNum(1000)
+            );
 
-        for (int i = 1; i < 51; i++)
-            this.AddCollection(new Collection("Collection " + i, "Collector " + i, "All", "Any", 2));
+            if (new Random().nextBoolean())
+                collection.hasBeenCompleted();
 
-        for (Collection collection : collections)
-            collection.Completed();
+            int r = rndNum(2, 4);
+            for (int j = 0; j < r; j++)
+                collection.addArtefact(artefacts.get(rndNum(artefacts.size())).title);
+
+            AddCollection(collection);
+
+        }
+
     }
 
     public GameArtefact findGameArtefactByTitle(String title){

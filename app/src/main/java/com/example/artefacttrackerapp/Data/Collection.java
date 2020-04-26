@@ -22,7 +22,7 @@ public class Collection {
     }
 
     public boolean isCompleted(){ return this.completedOnce; }
-    public void Completed(){ this.completedOnce = true; }
+    public void hasBeenCompleted(){ this.completedOnce = true; }
 
     public final String Title(){ return this.title; }
 
