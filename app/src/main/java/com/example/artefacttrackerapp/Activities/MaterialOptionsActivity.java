@@ -12,11 +12,14 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.artefacttrackerapp.R;
+import com.example.artefacttrackerapp.data.GameArtefact;
 import com.example.artefacttrackerapp.data.Material;
+import com.example.artefacttrackerapp.data.MaterialRequirement;
 import com.example.artefacttrackerapp.utilities.MaterialAdapter;
 
 import java.util.ArrayList;
@@ -26,6 +29,12 @@ import static com.example.artefacttrackerapp.activities.MainActivity.storage;
 public class MaterialOptionsActivity extends AppCompatActivity {
 
     private EditText materialSearchField;
+    public ImageButton plusMaterialButton;
+    public ImageButton minusMaterialButton;
+
+    private TextView materialLabelField;
+    private TextView materailArtefactOccurenceCount;
+    private TextView materailDemandCount;
 
     private RecyclerView.Adapter materialAdapter;
 
@@ -39,6 +48,10 @@ public class MaterialOptionsActivity extends AppCompatActivity {
     }
 
     private void init(){
+
+        materialLabelField = findViewById(R.id.textViewSelectedMaterialTitle);
+        materailArtefactOccurenceCount = findViewById(R.id.textViewSelectedMaterialArtefactOccuranceCount);
+        materailDemandCount = findViewById(R.id.textViewSelectedMaterialDemandCount);
 
         //<editor-fold defaultstate="collapsed" desc="Search materials field">
         materialSearchField = findViewById(R.id.editTextSearchMaterials);
@@ -61,7 +74,59 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         materialRecyclerView.setAdapter(materialAdapter);
         //</editor-fold>
 
+        plusMaterialButton = findViewById(R.id.imageButtonIncrementMaterialCount);
+        plusMaterialButton.setOnClickListener(view -> {
+            displayList.get(((MaterialAdapter)materialAdapter).selectedPosition).quantity++;
+            materialAdapter.notifyDataSetChanged();//RefreshList();
+        });
+
+        minusMaterialButton = findViewById(R.id.imageButtonDecrementMaterialCount);
+        minusMaterialButton.setOnClickListener(view -> {
+
+            Material material = displayList.get(((MaterialAdapter)materialAdapter).selectedPosition);
+            if (material.quantity < 1){
+
+                AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+                dialog.setTitle("Warning");
+                dialog.setMessage("You are about to delete the Material entry entirely");
+
+                dialog.setPositiveButton("Continue", (dialogInterface, i) -> {
+                    storage.DeleteMaterial(material);
+                    RefreshList();
+                }).setNegativeButton("Cancel", null).create().show();
+
+            }else{
+                material.quantity--;
+            }
+
+            materialAdapter.notifyDataSetChanged();//RefreshList();
+        });
+
         RefreshList();
+    }
+
+    public void SetSelectedMaterialDetails(Material material){
+        if (material == null){
+            String s = getString(R.string.material_opt_label_placeholder);
+            materialLabelField.setText(s);
+            materailArtefactOccurenceCount.setText(s);
+            materailDemandCount.setText(s);
+        }else{
+            materialLabelField.setText(material.title);
+
+            int artefactOccurenceCount = storage.Artefacts().stream()//for each artefact
+                    .map(gameArtefact -> gameArtefact.requirements.stream()//for each requirement on each artefact
+                            .filter(mr -> mr.title.equals(material.title))//filter requirements for the selected material
+                        .map(mr -> 1).reduce(0, Integer::sum))//map each mr = to 1 and sum up total mr's
+                    .reduce(0, Integer::sum);//add up all the mr's on al the artefacts for the selected material
+            materailArtefactOccurenceCount.setText(String.valueOf(artefactOccurenceCount));
+
+            int demand = storage.Artefacts().stream().filter(artefact -> artefact.quantity > 0)//for each artefact, filter for artefacts with a quantity greater than zero
+                    .map(artefact -> artefact.requirements.stream().filter(mr -> mr.title.equals(material.title))//for each mr, filter for mr's with matching title to selected material
+                            .map(mr -> mr.quantity * artefact.quantity).reduce(0, Integer::sum))//map each mr = to the mr quantity multiplied by the quantity of artefacts and sum up this total
+                    .reduce(0, Integer::sum);//sum up all mr quantities for all the artefact quantities
+            materailDemandCount.setText(String.valueOf(demand));
+        }
     }
 
     public void RefreshList(){
