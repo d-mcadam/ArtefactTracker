@@ -8,6 +8,7 @@ import static com.example.artefacttrackerapp.utilities.UtilityMethods.AUTO_DECRE
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.AUTO_INCREMENTING;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.decrementMaterialQuantity;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.HANDLER;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.getRepeatDelay;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.incrementMaterialQuantity;
 
 public class RptUpdater implements Runnable {
@@ -26,10 +27,10 @@ public class RptUpdater implements Runnable {
     public void run() {
         if (AUTO_INCREMENTING){
             incrementMaterialQuantity(material, materialAdapter);
-            HANDLER.post(new RptUpdater(context, material, materialAdapter));
+            HANDLER.postDelayed(new RptUpdater(context, material, materialAdapter), getRepeatDelay());
         }else if (AUTO_DECREMENTING){
             decrementMaterialQuantity(context, material, materialAdapter);
-            HANDLER.post(new RptUpdater(context, material, materialAdapter));
+            HANDLER.postDelayed(new RptUpdater(context, material, materialAdapter), getRepeatDelay());
         }
     }
 }
