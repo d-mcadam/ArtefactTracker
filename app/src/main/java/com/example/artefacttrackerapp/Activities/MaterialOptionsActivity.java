@@ -170,7 +170,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
     public boolean GenerateLocationInputDialog(Material material){
         final Context thisContext = this;
 
-        android.app.AlertDialog.Builder dialog = new android.app.AlertDialog.Builder(thisContext);
+        AlertDialog.Builder dialog = new AlertDialog.Builder(thisContext);
         dialog.setTitle("Locations for " + material.title);
 
         View dialogView = LayoutInflater.from(thisContext).inflate(R.layout.dialog_material_location_display, null, false);
