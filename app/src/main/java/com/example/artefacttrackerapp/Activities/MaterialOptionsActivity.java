@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -21,10 +23,17 @@ import com.example.artefacttrackerapp.data.GameArtefact;
 import com.example.artefacttrackerapp.data.Material;
 import com.example.artefacttrackerapp.data.MaterialRequirement;
 import com.example.artefacttrackerapp.utilities.MaterialAdapter;
+import com.example.artefacttrackerapp.utilities.RptUpdater;
+import com.example.artefacttrackerapp.utilities.UtilityMethods;
 
 import java.util.ArrayList;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.autoDecrementing;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.autoIncrementing;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.decrementMaterialQuantity;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.handler;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.incrementMaterialQuantity;
 
 public class MaterialOptionsActivity extends AppCompatActivity {
 
@@ -75,31 +84,46 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         //</editor-fold>
 
         plusMaterialButton = findViewById(R.id.imageButtonIncrementMaterialCount);
-        plusMaterialButton.setOnClickListener(view -> {
-            displayList.get(((MaterialAdapter)materialAdapter).selectedPosition).quantity++;
-            materialAdapter.notifyDataSetChanged();//RefreshList();
+        plusMaterialButton.setOnClickListener(view ->
+                incrementMaterialQuantity(
+                        displayList.get(((MaterialAdapter)materialAdapter).selectedPosition),   //material
+                        (MaterialAdapter)materialAdapter));                                     //adapter
+        plusMaterialButton.setOnLongClickListener(view -> {
+            autoIncrementing = true;
+            handler.post(new RptUpdater(
+                            this,
+                            displayList.get(((MaterialAdapter)materialAdapter).selectedPosition),
+                            (MaterialAdapter)materialAdapter));
+            return false;
+        });
+        plusMaterialButton.setOnTouchListener((view, motionEvent) -> {
+            if ((motionEvent.getAction() == MotionEvent.ACTION_UP ||
+                    motionEvent.getAction() == MotionEvent.ACTION_CANCEL) &&
+                    autoIncrementing)
+                autoIncrementing = false;
+            return false;
         });
 
         minusMaterialButton = findViewById(R.id.imageButtonDecrementMaterialCount);
-        minusMaterialButton.setOnClickListener(view -> {
-
-            Material material = displayList.get(((MaterialAdapter)materialAdapter).selectedPosition);
-            if (material.quantity < 1){
-
-                AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-                dialog.setTitle("Warning");
-                dialog.setMessage("You are about to delete the Material entry entirely");
-
-                dialog.setPositiveButton("Continue", (dialogInterface, i) -> {
-                    storage.DeleteMaterial(material);
-                    RefreshList();
-                }).setNegativeButton("Cancel", null).create().show();
-
-            }else{
-                material.quantity--;
-            }
-
-            materialAdapter.notifyDataSetChanged();//RefreshList();
+        minusMaterialButton.setOnClickListener(view ->
+                decrementMaterialQuantity(
+                    this,
+                    displayList.get(((MaterialAdapter)materialAdapter).selectedPosition),
+                    (MaterialAdapter)materialAdapter));
+        minusMaterialButton.setOnLongClickListener(view -> {
+            autoDecrementing = true;
+            handler.post(new RptUpdater(
+                            this,
+                            displayList.get(((MaterialAdapter)materialAdapter).selectedPosition),
+                            (MaterialAdapter)materialAdapter));
+            return false;
+        });
+        minusMaterialButton.setOnTouchListener((view, motionEvent) -> {
+            if ((motionEvent.getAction() == MotionEvent.ACTION_UP ||
+                    motionEvent.getAction() == MotionEvent.ACTION_CANCEL) &&
+                    autoDecrementing)
+                autoDecrementing = false;
+            return false;
         });
 
         RefreshList();
