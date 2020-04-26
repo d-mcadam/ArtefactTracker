@@ -12,6 +12,7 @@ public class Collection {
     public final String reward;
     public final int rewardQuantity;
     private Boolean completedOnce = false;
+    public final String oneTimeOnlyReward;
 
     public Collection(String title, String collector, String category, String reward, int qty){
         this.title = title;
@@ -19,6 +20,16 @@ public class Collection {
         this.category = category;
         this.reward = reward;
         this.rewardQuantity = qty;
+        oneTimeOnlyReward = "N/A";
+    }
+
+    public Collection(String title, String collector, String category, String reward, int qty, String oneTimeOnlyReward){
+        this.title = title;
+        this.collector = collector;
+        this.category = category;
+        this.reward = reward;
+        this.rewardQuantity = qty;
+        this.oneTimeOnlyReward = oneTimeOnlyReward;
     }
 
     public boolean isCompleted(){ return this.completedOnce; }
