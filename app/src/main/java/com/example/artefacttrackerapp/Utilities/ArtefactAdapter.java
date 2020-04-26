@@ -59,7 +59,8 @@ public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.Artefa
 
         holder.itemView.setOnLongClickListener(view -> {
             AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-            dialog.setTitle("Materials for " + artefact.title);
+            StringBuilder titleSb = new StringBuilder();
+            titleSb.append("Materials for ").append(artefact.title);
 
             View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_material_requirement_display, null, false);
             final TextView textView = dialogView.findViewById(R.id.textViewHolderMatReqDisplayMultiline);
@@ -74,7 +75,7 @@ public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.Artefa
                             if (m.quantity >= mr.quantity)
                                 sb.append(" \u2713");
 
-                            dialog.setTitle("Materials for " + artefact.title + " (" + (m.quantity / mr.quantity) + ")");
+                            titleSb.append(" (").append(m.quantity / mr.quantity).append(")");
 
                         });
 
@@ -82,6 +83,7 @@ public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.Artefa
             });
             textView.setText(sb.toString().trim());
 
+            dialog.setTitle(titleSb.toString().trim());
             dialog.setView(dialogView).setPositiveButton("OK", null).create().show();
             return true;
         });
