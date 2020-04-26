@@ -59,6 +59,7 @@ public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.Artefa
 
         holder.itemView.setOnLongClickListener(view -> {
             AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+            dialog.setTitle("Materials for " + artefact.title);
 
             View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_material_requirement_display, null, false);
             final TextView textView = dialogView.findViewById(R.id.textViewHolderMatReqDisplayMultiline);
