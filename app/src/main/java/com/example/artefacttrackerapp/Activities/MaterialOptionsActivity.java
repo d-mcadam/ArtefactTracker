@@ -30,6 +30,7 @@ import static com.example.artefacttrackerapp.utilities.UtilityMethods.AUTO_INCRE
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.decrementMaterialQuantity;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.HANDLER;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.incrementMaterialQuantity;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.resetModifyDelay;
 
 public class MaterialOptionsActivity extends AppCompatActivity {
 
@@ -97,6 +98,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
                     motionEvent.getAction() == MotionEvent.ACTION_CANCEL) &&
                     AUTO_INCREMENTING)
                 AUTO_INCREMENTING = false;
+            resetModifyDelay();
             return false;
         });
 
@@ -119,6 +121,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
                     motionEvent.getAction() == MotionEvent.ACTION_CANCEL) &&
                     AUTO_DECREMENTING)
                 AUTO_DECREMENTING = false;
+            resetModifyDelay();
             return false;
         });
 
