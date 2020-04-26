@@ -4,13 +4,10 @@ import android.content.Context;
 
 import com.example.artefacttrackerapp.data.Material;
 
-import java.util.logging.Handler;
-import java.util.logging.LogRecord;
-
-import static com.example.artefacttrackerapp.utilities.UtilityMethods.autoDecrementing;
-import static com.example.artefacttrackerapp.utilities.UtilityMethods.autoIncrementing;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.AUTO_DECREMENTING;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.AUTO_INCREMENTING;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.decrementMaterialQuantity;
-import static com.example.artefacttrackerapp.utilities.UtilityMethods.handler;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.HANDLER;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.incrementMaterialQuantity;
 
 public class RptUpdater implements Runnable {
@@ -27,12 +24,12 @@ public class RptUpdater implements Runnable {
 
     @Override
     public void run() {
-        if (autoIncrementing){
+        if (AUTO_INCREMENTING){
             incrementMaterialQuantity(material, materialAdapter);
-            handler.post(new RptUpdater(context, material, materialAdapter));
-        }else if (autoDecrementing){
+            HANDLER.post(new RptUpdater(context, material, materialAdapter));
+        }else if (AUTO_DECREMENTING){
             decrementMaterialQuantity(context, material, materialAdapter);
-            handler.post(new RptUpdater(context, material, materialAdapter));
+            HANDLER.post(new RptUpdater(context, material, materialAdapter));
         }
     }
 }

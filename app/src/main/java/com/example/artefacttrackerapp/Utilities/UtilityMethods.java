@@ -211,10 +211,12 @@ public class UtilityMethods {
 
     //<editor-fold defaultstate="collapsed" desc="Material quantity modification">
 
-    public static Handler handler = new Handler();
+    public static Handler HANDLER = new Handler();
 
-    public static boolean autoIncrementing = false;
-    public static boolean autoDecrementing = false;
+    public static boolean AUTO_INCREMENTING = false;
+    public static boolean AUTO_DECREMENTING = false;
+
+    public static int REPEAT_DELAY = 500;
 
     public static boolean incrementMaterialQuantity(Material material, MaterialAdapter adapter){
         material.quantity++;

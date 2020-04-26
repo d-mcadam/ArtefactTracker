@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -19,20 +18,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.artefacttrackerapp.R;
-import com.example.artefacttrackerapp.data.GameArtefact;
 import com.example.artefacttrackerapp.data.Material;
-import com.example.artefacttrackerapp.data.MaterialRequirement;
 import com.example.artefacttrackerapp.utilities.MaterialAdapter;
 import com.example.artefacttrackerapp.utilities.RptUpdater;
-import com.example.artefacttrackerapp.utilities.UtilityMethods;
 
 import java.util.ArrayList;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
-import static com.example.artefacttrackerapp.utilities.UtilityMethods.autoDecrementing;
-import static com.example.artefacttrackerapp.utilities.UtilityMethods.autoIncrementing;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.AUTO_DECREMENTING;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.AUTO_INCREMENTING;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.decrementMaterialQuantity;
-import static com.example.artefacttrackerapp.utilities.UtilityMethods.handler;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.HANDLER;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.incrementMaterialQuantity;
 
 public class MaterialOptionsActivity extends AppCompatActivity {
@@ -89,8 +85,8 @@ public class MaterialOptionsActivity extends AppCompatActivity {
                         displayList.get(((MaterialAdapter)materialAdapter).selectedPosition),   //material
                         (MaterialAdapter)materialAdapter));                                     //adapter
         plusMaterialButton.setOnLongClickListener(view -> {
-            autoIncrementing = true;
-            handler.post(new RptUpdater(
+            AUTO_INCREMENTING = true;
+            HANDLER.post(new RptUpdater(
                             this,
                             displayList.get(((MaterialAdapter)materialAdapter).selectedPosition),
                             (MaterialAdapter)materialAdapter));
@@ -99,8 +95,8 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         plusMaterialButton.setOnTouchListener((view, motionEvent) -> {
             if ((motionEvent.getAction() == MotionEvent.ACTION_UP ||
                     motionEvent.getAction() == MotionEvent.ACTION_CANCEL) &&
-                    autoIncrementing)
-                autoIncrementing = false;
+                    AUTO_INCREMENTING)
+                AUTO_INCREMENTING = false;
             return false;
         });
 
@@ -111,8 +107,8 @@ public class MaterialOptionsActivity extends AppCompatActivity {
                     displayList.get(((MaterialAdapter)materialAdapter).selectedPosition),
                     (MaterialAdapter)materialAdapter));
         minusMaterialButton.setOnLongClickListener(view -> {
-            autoDecrementing = true;
-            handler.post(new RptUpdater(
+            AUTO_DECREMENTING = true;
+            HANDLER.post(new RptUpdater(
                             this,
                             displayList.get(((MaterialAdapter)materialAdapter).selectedPosition),
                             (MaterialAdapter)materialAdapter));
@@ -121,8 +117,8 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         minusMaterialButton.setOnTouchListener((view, motionEvent) -> {
             if ((motionEvent.getAction() == MotionEvent.ACTION_UP ||
                     motionEvent.getAction() == MotionEvent.ACTION_CANCEL) &&
-                    autoDecrementing)
-                autoDecrementing = false;
+                    AUTO_DECREMENTING)
+                AUTO_DECREMENTING = false;
             return false;
         });
 
