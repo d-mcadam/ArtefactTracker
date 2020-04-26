@@ -188,6 +188,11 @@ public class UtilityMethods {
                     listDialog.setView(listDialogView)
                             .setPositiveButton("Save", (dialogInterface1, i1) -> {
 
+                                if (((SelectArtefactAdapter)inputRecyclerViewAdapter).selectedData.size() < 1){
+                                    Toast.makeText(context, "Need to select some artefacts", Toast.LENGTH_LONG).show();
+                                    return;
+                                }
+
                                 ((SelectArtefactAdapter)inputRecyclerViewAdapter).selectedData.forEach(a -> {
                                     boolean r = collection.addArtefact(a.title);
                                 });
