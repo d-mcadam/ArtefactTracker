@@ -16,7 +16,7 @@
         android:textColor="@android:color/background_dark"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/imageButtonHolderPlusMaterial"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,27 +29,8 @@
         android:textColor="@color/colourBlackText"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/imageButtonHolderPlusMaterial"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewHolderMaterial"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/imageButtonHolderMinusMaterial"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_red_dark"
-        android:clickable="false"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/arrow_down_float" />
-
-    <ImageButton
-        android:id="@+id/imageButtonHolderPlusMaterial"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_green_light"
-        app:layout_constraintEnd_toStartOf="@+id/imageButtonHolderMinusMaterial"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/arrow_up_float" />
 </androidx.constraintlayout.widget.ConstraintLayout>
