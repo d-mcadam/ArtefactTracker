@@ -79,6 +79,7 @@ public class Storage {
         createTestData();
     }
 
+    //<editor-fold defaultstate="collapsed" desc="Test data">
     private String rndStr(int l){
         String alphaStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
                 "abcdefghijklmnopqrstuvxyz";
@@ -126,7 +127,7 @@ public class Storage {
             for (int i = 0; i < 5; i++)
                 material.addLocation(rndStr(rndNum(8, 10)));
         });
-        this.materials.addAll(ma);
+        ma.forEach(this::AddMaterial);
 
         GameArtefact a1 = genRndGa();
         GameArtefact a2 = genRndGa();
@@ -134,10 +135,10 @@ public class Storage {
         GameArtefact a4 = genRndGa();
         GameArtefact a5 = genRndGa();
         ArrayList<GameArtefact> aa = new ArrayList<GameArtefact>() {{ add(a1); add(a2); add(a3); add(a4); add(a5); }};
-        this.artefacts.addAll(aa);
+        aa.forEach(this::AddArtefact);
 
         for (int i = 0; i < 5; i++)
-            this.collectors.add(new Collector(rndStr(rndNum(4, 10)), rndStr(rndNum(4, 10))));
+            AddCollector(new Collector(rndStr(rndNum(4, 10)), rndStr(rndNum(4, 10))));
 
         for (int i = 0; i < 5; i++){
 
@@ -161,10 +162,11 @@ public class Storage {
         }
 
     }
+    //</editor-fold>
 
     public GameArtefact findGameArtefactByTitle(String title){
         Optional<GameArtefact> artefact = artefacts.stream().filter(a -> a.title.equals(title)).findFirst();
-        return artefact.isPresent() ? artefact.get() : null;
+        return artefact.orElse(null);
     }
 
 }
