@@ -14,7 +14,7 @@ import com.example.artefacttrackerapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static Storage storage = new Storage();
+    public static Storage storage;
 
     private TextView uniqueRemainingCollectionsField;
     private TextView availableCollectibleField;
@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        storage = new Storage(getResources());
         init();
     }
 
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         int total = 0;
         for (GameArtefact artefact : storage.Artefacts())
-            for (MaterialRequirement req : artefact.requirements)
+            for (MaterialRequirement req : artefact.getRequirements())
                 total += req.quantity * artefact.quantity;
         requiredMaterialCountField.setText(String.valueOf(total));
 

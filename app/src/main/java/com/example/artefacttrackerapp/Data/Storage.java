@@ -1,11 +1,14 @@
 package com.example.artefacttrackerapp.data;
 
+import android.content.res.Resources;
+
 import com.example.artefacttrackerapp.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Optional;
+import java.util.Random;
 
 public class Storage {
 
@@ -66,21 +69,67 @@ public class Storage {
     public boolean DeleteMaterial(Material material){ return this.materials.remove(material); }
     //</editor-fold>
 
-    public Storage(){
+    private final Resources cRes;
+    public Storage(Resources resources){
+        cRes = resources;
         this.artefacts = new ArrayList<>();
         this.collectors = new ArrayList<>();
         this.collections = new ArrayList<>();
         this.materials = new ArrayList<>();
-        createData();
+        createTestData();
     }
 
-    private void createData(){
+    private String rndStr(int l){
+        String alphaStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+                "abcdefghijklmnopqrstuvxyz";
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < l; i++)
+            sb.append(alphaStr.charAt(new Random().nextInt(alphaStr.length())));
+        return sb.toString();
+    }
+    private int rndNum(int max){
+        return rndNum(0, max);
+    }
+    private int rndNum(int min, int max){
+        return new Random().nextInt(max - min) + min;
+    }
+    private GameArtefact genRndGa(){
+        String[] categories = cRes.getStringArray(R.array.artefact_categories);
+        GameArtefact ga = new GameArtefact(
+                rndStr(rndNum(4, 10)),
+                categories[new Random().nextInt(rndNum(categories.length))]
+        );
+        ga.quantity = rndNum(10);
+        int r = rndNum(3, 5);
+        for (int i = 0; i < r; i++)
+            ga.addRequirement(new MaterialRequirement(this.materials.get(rndNum(this.materials.size())).title, rndNum(5, 15)));
 
-        for (int i = 1; i < 36; i++)
-            this.materials.add(new Material("Material " + i));
+        return ga;
+    }
+    private void createTestData(){
 
-        for (int i = 1; i < 101; i++)
-            this.artefacts.add(new GameArtefact("Artefact " + i, "All"));
+        Material m1 = new Material(rndStr(rndNum(4, 10)));
+        Material m2 = new Material(rndStr(rndNum(4, 10)));
+        Material m3 = new Material(rndStr(rndNum(4, 10)));
+        Material m4 = new Material(rndStr(rndNum(4, 10)));
+        Material m5 = new Material(rndStr(rndNum(4, 10)));
+        ArrayList<Material> ma = new ArrayList<Material>() {{ add(m1); add(m2); add(m3); add(m4); add(m5); }};
+        ma.forEach(material -> {
+            material.quantity = rndNum(5, 200);
+            for (int i = 0; i < 5; i++)
+                material.addLocation(rndStr(rndNum(8, 10)));
+        });
+        this.materials.addAll(ma);
+
+        GameArtefact a1 = genRndGa();
+        GameArtefact a2 = genRndGa();
+        GameArtefact a3 = genRndGa();
+        GameArtefact a4 = genRndGa();
+        GameArtefact a5 = genRndGa();
+        ArrayList<GameArtefact> aa = new ArrayList<GameArtefact>() {{ add(a1); add(a2); add(a3); add(a4); add(a5); }};
+        this.artefacts.addAll(aa);
+
+
 
         for (int i = 1; i < 21; i++)
             this.collectors.add(new Collector("Collector " + i, "Location " + i));
