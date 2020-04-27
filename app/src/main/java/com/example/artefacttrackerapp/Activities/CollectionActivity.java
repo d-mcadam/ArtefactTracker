@@ -8,6 +8,9 @@ import android.view.View;
 
 import com.example.artefacttrackerapp.R;
 
+import static com.example.artefacttrackerapp.activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.utilities.AppData.saveAppData;
+
 public class CollectionActivity extends AppCompatActivity {
 
     @Override
@@ -19,6 +22,12 @@ public class CollectionActivity extends AppCompatActivity {
 
     private void init(){
 
+    }
+
+    @Override
+    public void onPause(){
+        saveAppData(this, storage);
+        super.onPause();
     }
 
     public void OpenCollectors(View v){

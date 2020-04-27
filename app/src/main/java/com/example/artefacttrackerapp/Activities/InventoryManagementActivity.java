@@ -21,6 +21,7 @@ import com.example.artefacttrackerapp.utilities.ArtefactAdapter;
 import java.util.ArrayList;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.utilities.AppData.saveAppData;
 
 public class InventoryManagementActivity extends AppCompatActivity {
 
@@ -83,6 +84,12 @@ public class InventoryManagementActivity extends AppCompatActivity {
         super.onResume();
         artefactSearchField.setText("");
         RefreshList();
+    }
+
+    @Override
+    public void onPause(){
+        saveAppData(this, storage);
+        super.onPause();
     }
 
     public void RefreshList(){

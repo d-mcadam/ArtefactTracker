@@ -25,6 +25,7 @@ import com.example.artefacttrackerapp.utilities.RptUpdater;
 import java.util.ArrayList;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.utilities.AppData.saveAppData;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.AUTO_DECREMENTING;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.AUTO_INCREMENTING;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.decrementMaterialQuantity;
@@ -126,6 +127,12 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         });
 
         RefreshList();
+    }
+
+    @Override
+    public void onPause(){
+        saveAppData(this, storage);
+        super.onPause();
     }
 
     public void SetSelectedMaterialDetails(Material material){

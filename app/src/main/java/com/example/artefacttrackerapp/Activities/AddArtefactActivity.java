@@ -29,6 +29,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.utilities.AppData.saveAppData;
 
 public class AddArtefactActivity extends AppCompatActivity {
 
@@ -99,6 +100,12 @@ public class AddArtefactActivity extends AppCompatActivity {
         matReqRecyclerView.setAdapter(matReqAdapter);
         //</editor-fold>
 
+    }
+
+    @Override
+    public void onPause(){
+        saveAppData(this, storage);
+        super.onPause();
     }
 
     public void CheckSaveEligibility(){

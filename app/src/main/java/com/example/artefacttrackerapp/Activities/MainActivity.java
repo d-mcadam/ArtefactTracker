@@ -12,6 +12,9 @@ import com.example.artefacttrackerapp.data.MaterialRequirement;
 import com.example.artefacttrackerapp.data.Storage;
 import com.example.artefacttrackerapp.R;
 
+import static com.example.artefacttrackerapp.utilities.AppData.loadAppData;
+import static com.example.artefacttrackerapp.utilities.AppData.saveAppData;
+
 public class MainActivity extends AppCompatActivity {
 
     public static Storage storage;
@@ -28,11 +31,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        storage = new Storage(getResources());
         init();
     }
 
     private void init(){
+
+        storage = loadAppData(this);
 
 //        uniqueRemainingCollectionsField = findViewById(R.id.textViewUniqueRemaining);
 //        availableCollectibleField = findViewById(R.id.textViewAvailableCount);
@@ -49,9 +53,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onResume(){
         super.onResume();
-
         RefreshData();
+    }
 
+    @Override
+    public void onPause(){
+        saveAppData(this, storage);
+        super.onPause();
     }
 
     private void RefreshData(){
@@ -81,4 +89,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getBaseContext(), CollectionActivity.class);
         startActivity(intent);
     }
+
 }
