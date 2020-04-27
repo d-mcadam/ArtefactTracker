@@ -301,7 +301,7 @@ public class Storage {
         liveMaterialArray.forEach(this::AddMaterial);
 
         //<editor-fold defaultstate="collapsed" desc="Game Artefact objects">
-        GameArtefact ga1 = new GameArtefact("'Animate dead' spell scroll", "Zaros");
+        GameArtefact ga1 = new GameArtefact("'Animate Dead' spell scroll", "Zaros");
         ga1.addRequirement(new MaterialRequirement("Vellum", 40));
         ga1.addRequirement(new MaterialRequirement("Ancient vis", 24));
         ga1.addRequirement(new MaterialRequirement("Blood or Orcus", 40));
@@ -366,7 +366,7 @@ public class Storage {
         ga13.addRequirement(new MaterialRequirement("Eye of Dagon", 24));
         ga13.addRequirement(new MaterialRequirement("Chaotic brimstone", 30 ));
 
-        GameArtefact ga14 = new GameArtefact("'Prima legio' painting", "Zaros");
+        GameArtefact ga14 = new GameArtefact("'Prima Legio' painting", "Zaros");
         ga14.addRequirement(new MaterialRequirement("White oak", 20  ));
         ga14.addRequirement(new MaterialRequirement("Samite silk", 20  ));
         ga14.addRequirement(new MaterialRequirement("Tyrian purple", 74 ));
@@ -1170,15 +1170,15 @@ public class Storage {
 
         //<editor-fold defaultstate="collapsed" desc="Lowse">
         Collection c18 = new Collection("Armadylean I", "Lowse", "Armadyl", "Stormguard blueprint fragments", 50, "King Oberon's moonshroom spores");
-        c17.addArtefact("Ikovian gerege");
-        c17.addArtefact("Toy glider");
-        c17.addArtefact("Toy war golem");
-        c17.addArtefact("Avian song-egg player");
-        c17.addArtefact("Keshik drum");
-        c17.addArtefact("Morin khuur");
-        c17.addArtefact("Aviansie dreamcoat");
-        c17.addArtefact("Ceremonial plume");
-        c17.addArtefact("Peacocking parasol");
+        c18.addArtefact("Ikovian gerege");
+        c18.addArtefact("Toy glider");
+        c18.addArtefact("Toy war golem");
+        c18.addArtefact("Avian song-egg player");
+        c18.addArtefact("Keshik drum");
+        c18.addArtefact("Morin khuur");
+        c18.addArtefact("Aviansie dreamcoat");
+        c18.addArtefact("Ceremonial plume");
+        c18.addArtefact("Peacocking parasol");
         Collection c19 = new Collection("Armadylean II", "Lowse", "Armadyl", "Stormguard blueprint fragments", 75, "75 Stormguard blueprint fragments");
         c19.addArtefact("Hawkeye lens multi-vision scope");
         c19.addArtefact("Talon-3 razor wing");
@@ -1508,6 +1508,7 @@ public class Storage {
         //</editor-fold>
 
         //</editor-fold>
+
         ArrayList<Collection> liveCollectionArray = new ArrayList<Collection>(){{
             add(c1); add(c2); add(c3); add(c4); add(c5); add(c6); add(c7); add(c8); add(c9); add(c10);
             add(c11); add(c12); add(c13); add(c14); add(c15); add(c16); add(c17); add(c18); add(c19); add(c20);
