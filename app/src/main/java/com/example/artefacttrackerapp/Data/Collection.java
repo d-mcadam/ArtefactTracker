@@ -1,9 +1,10 @@
 package com.example.artefacttrackerapp.data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Collection {
+public class Collection implements Serializable {
 
     public final String title;
     public final String collector;

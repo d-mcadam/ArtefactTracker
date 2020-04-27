@@ -1,10 +1,11 @@
 package com.example.artefacttrackerapp.data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class GameArtefact {
+public class GameArtefact implements Serializable {
 
     public final String title;
     public int quantity = 0;
