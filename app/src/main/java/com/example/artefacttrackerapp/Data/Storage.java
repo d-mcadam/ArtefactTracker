@@ -739,64 +739,278 @@ public class Storage {
         ga92.addRequirement(new MaterialRequirement("White oak", 26 ));
 
         GameArtefact ga93 = new GameArtefact("Manacles", "Zamorak");
-        
+        ga93.addRequirement(new MaterialRequirement("Third Age iron",   14  ));
+        ga93.addRequirement(new MaterialRequirement("Chaotic brimstone", 18));
+        ga93.addRequirement(new MaterialRequirement("Eye of Dagon",   14  ));
+
         GameArtefact ga94 = new GameArtefact("Morin khuur", "Armadyl");
+        ga94.addRequirement(new MaterialRequirement("Armadylean yellow", 36 ));
+        ga94.addRequirement(new MaterialRequirement("White oak",   32   ));
+
         GameArtefact ga95 = new GameArtefact("Narogoshuun 'Hob-da-Gob' ball", "Bandos");
+        ga95.addRequirement(new MaterialRequirement("Vulcanised rubber", 36 ));
+        ga95.addRequirement(new MaterialRequirement("Mark of the Kyzaj",   32   ));
+
         GameArtefact ga96 = new GameArtefact("Necromantic focus", "Zaros");
+        ga96.addRequirement(new MaterialRequirement("Imperial steel", 20 ));
+        ga96.addRequirement(new MaterialRequirement("Blood of Orcus", 26  ));
+        ga96.addRequirement(new MaterialRequirement("Ancient vis", 30  ));
+
         GameArtefact ga97 = new GameArtefact("Night owl flying goggles", "Armadyl");
+        ga97.addRequirement(new MaterialRequirement("Armadylean yellow", 44 ));
+        ga97.addRequirement(new MaterialRequirement("Leather scraps", 40  ));
+        ga97.addRequirement(new MaterialRequirement("Orthenglass", 30  ));
+
         GameArtefact ga98 = new GameArtefact("Nightguard shield", "Armadyl");
+        ga98.addRequirement(new MaterialRequirement("Stormguard steel", 30 ));
+        ga98.addRequirement(new MaterialRequirement("Wings of War", 36  ));
+        ga98.addRequirement(new MaterialRequirement("White oak", 30  ));
+
         GameArtefact ga99 = new GameArtefact("Ogre kyzaj axe", "Bandos");
+        ga99.addRequirement(new MaterialRequirement("Warforged bronze", 28 ));
+        ga99.addRequirement(new MaterialRequirement("Mark of the Kyzaj", 20  ));
+        ga99.addRequirement(new MaterialRequirement("Fossilised bone", 24  ));
+
         GameArtefact ga100 = new GameArtefact("Opulent wine goblet", "Zamorak");
-        GameArtefact ga101 = new GameArtefact("Orc cleaver sword", "Bandos");
+        ga100.addRequirement(new MaterialRequirement("Third Age iron", 14  ));
+        ga100.addRequirement(new MaterialRequirement("Goldrune", 16  ));
+
+        GameArtefact ga101 = new GameArtefact("Ork cleaver sword", "Bandos");
+        ga101.addRequirement(new MaterialRequirement("Warforged bronze", 36 ));
+        ga101.addRequirement(new MaterialRequirement("Fossilised bone", 36  ));
+
         GameArtefact ga102 = new GameArtefact("Order of Dis robes", "Zamorak");
+        ga102.addRequirement(new MaterialRequirement("Samite silk", 16 ));
+        ga102.addRequirement(new MaterialRequirement("Cadmium red", 10  ));
+        ga102.addRequirement(new MaterialRequirement("Eye of Dagon", 14  ));
+
         GameArtefact ga103 = new GameArtefact("Ourg megahitter", "Bandos");
+        ga103.addRequirement(new MaterialRequirement("White oak", 20  ));
+        ga103.addRequirement(new MaterialRequirement("Leather scraps", 20  ));
+        ga103.addRequirement(new MaterialRequirement("Orthenglass", 26  ));
+        ga103.addRequirement(new MaterialRequirement("Malachite green", 22  ));
+
         GameArtefact ga104 = new GameArtefact("Ourg tower/goblin cower shield", "Bandos");
+        ga104.addRequirement(new MaterialRequirement("Mark of the Kyzaj", 20  ));
+        ga104.addRequirement(new MaterialRequirement("Third Age iron", 26  ));
+        ga104.addRequirement(new MaterialRequirement("Leather scraps", 22  ));
+        ga104.addRequirement(new MaterialRequirement("White oak", 20  ));
+
         GameArtefact ga105 = new GameArtefact("Patera bowl", "Saradomin");
+        ga105.addRequirement(new MaterialRequirement("Keramos", 36 ));
+        ga105.addRequirement(new MaterialRequirement("Goldrune", 30  ));
+
         GameArtefact ga106 = new GameArtefact("Peacocking parasol", "Armadyl");
+        ga106.addRequirement(new MaterialRequirement("Armadylean yellow", 22 ));
+        ga106.addRequirement(new MaterialRequirement("Samite silk", 30  ));
+        ga106.addRequirement(new MaterialRequirement("White oak", 20  ));
+
         GameArtefact ga107 = new GameArtefact("Pontifex censer", "Zaros");
+        ga107.addRequirement(new MaterialRequirement("Third Age iron", 20 ));
+        ga107.addRequirement(new MaterialRequirement("Ancient vis", 20  ));
+        ga107.addRequirement(new MaterialRequirement("Goldrune", 32  ));
+
         GameArtefact ga108 = new GameArtefact("Pontifex crozier", "Zaros");
+        ga108.addRequirement(new MaterialRequirement("Imperial steel", 20 ));
+        ga108.addRequirement(new MaterialRequirement("Zarosian insignia", 20  ));
+        ga108.addRequirement(new MaterialRequirement("Goldrune", 32  ));
+
         GameArtefact ga109 = new GameArtefact("Pontifex maximus figurine", "Zaros");
+        ga109.addRequirement(new MaterialRequirement("Ancient vis", 24 ));
+        ga109.addRequirement(new MaterialRequirement("Zarosian insignia", 16  ));
+        ga109.addRequirement(new MaterialRequirement("Goldrune", 28  ));
+
         GameArtefact ga110 = new GameArtefact("Pontifex mitre", "Zaros");
+        ga110.addRequirement(new MaterialRequirement("Ancient vis", 20 ));
+        ga110.addRequirement(new MaterialRequirement("Zarosian insignia", 20  ));
+        ga110.addRequirement(new MaterialRequirement("Samite silk", 32  ));
+
         GameArtefact ga111 = new GameArtefact("Pontifex signet ring", "Zaros");
+        ga111.addRequirement(new MaterialRequirement("Ancient vis", 22 ));
+        ga111.addRequirement(new MaterialRequirement("Goldrune", 18  ));
+        ga111.addRequirement(new MaterialRequirement("Third Age iron", 16  ));
+
         GameArtefact ga112 = new GameArtefact("Portable phylactery", "Zaros");
+        ga112.addRequirement(new MaterialRequirement("Imperial steel", 48 ));
+        ga112.addRequirement(new MaterialRequirement("Blood of Orcus", 36  ));
+        ga112.addRequirement(new MaterialRequirement("Ancient vis", 20  ));
+
         GameArtefact ga113 = new GameArtefact("Praetorian hood", "Zaros");
+        ga113.addRequirement(new MaterialRequirement("Zarosian insignia", 40 ));
+        ga113.addRequirement(new MaterialRequirement("Samite silk", 48  ));
+        ga113.addRequirement(new MaterialRequirement("Ancient vis", 36  ));
+
         GameArtefact ga114 = new GameArtefact("Praetorian robes", "Zaros");
+        ga114.addRequirement(new MaterialRequirement("Zarosian insignia", 40 ));
+        ga114.addRequirement(new MaterialRequirement("Samite silk", 54  ));
+        ga114.addRequirement(new MaterialRequirement("Ancient vis", 30  ));
+
         GameArtefact ga115 = new GameArtefact("Praetorian staff", "Zaros");
+        ga115.addRequirement(new MaterialRequirement("Zarosian insignia", 30 ));
+        ga115.addRequirement(new MaterialRequirement("Imperial steel", 36  ));
+        ga115.addRequirement(new MaterialRequirement("Ancient vis", 58  ));
+
         GameArtefact ga116 = new GameArtefact("Primis Elementis standard", "Zaros");
+        ga116.addRequirement(new MaterialRequirement("Samite silk", 16  ));
+        ga116.addRequirement(new MaterialRequirement("Third Age iron", 12  ));
+
         GameArtefact ga117 = new GameArtefact("Prototype godbow", "Armadyl");
+        ga117.addRequirement(new MaterialRequirement("Aetherium alloy", 50 ));
+        ga117.addRequirement(new MaterialRequirement("Quintessence", 34  ));
+        ga117.addRequirement(new MaterialRequirement("Wings of War", 34  ));
+
         GameArtefact ga118 = new GameArtefact("Prototype godstaff", "Armadyl");
+        ga118.addRequirement(new MaterialRequirement("Aetherium alloy", 50 ));
+        ga118.addRequirement(new MaterialRequirement("Quintessence", 34  ));
+        ga118.addRequirement(new MaterialRequirement("Wings of War", 34  ));
+
         GameArtefact ga119 = new GameArtefact("Prototype godsword", "Armadyl");
+        ga119.addRequirement(new MaterialRequirement("Aetherium alloy", 50 ));
+        ga119.addRequirement(new MaterialRequirement("Goldrune", 34  ));
+        ga119.addRequirement(new MaterialRequirement("Wings of War", 34  ));
+
         GameArtefact ga120 = new GameArtefact("Prototype gravimeter", "Armadyl");
+        ga120.addRequirement(new MaterialRequirement("Quintessence", 34 ));
+        ga120.addRequirement(new MaterialRequirement("Leather scraps", 20  ));
+        ga120.addRequirement(new MaterialRequirement("Third Age iron", 26  ));
+
         GameArtefact ga121 = new GameArtefact("Quintessence counter", "Armadyl");
+        ga121.addRequirement(new MaterialRequirement("Quintessence", 54 ));
+        ga121.addRequirement(new MaterialRequirement("Stormguard steel", 40  ));
+        ga121.addRequirement(new MaterialRequirement("White oak", 40  ));
+
         GameArtefact ga122 = new GameArtefact("Rekeshuun war tether", "Bandos");
+        ga122.addRequirement(new MaterialRequirement("Warforged bronze", 20 ));
+        ga122.addRequirement(new MaterialRequirement("Vulcanised rubber", 22  ));
+        ga122.addRequirement(new MaterialRequirement("Leather scraps", 26  ));
+
         GameArtefact ga123 = new GameArtefact("Ritual dagger", "Zamorak");
+        ga123.addRequirement(new MaterialRequirement("Goldrune", 16  ));
+        ga123.addRequirement(new MaterialRequirement("Hellfire metal", 24  ));
+
         GameArtefact ga124 = new GameArtefact("Rod of Asclepius", "Saradomin");
+        ga124.addRequirement(new MaterialRequirement("White marble", 30 ));
+        ga124.addRequirement(new MaterialRequirement("Star of Saradomin", 24  ));
+        ga124.addRequirement(new MaterialRequirement("Goldrune", 26  ));
+
         GameArtefact ga125 = new GameArtefact("Saragorgak star crowns", "Bandos");
+        ga125.addRequirement(new MaterialRequirement("Warforged bronze", 44 ));
+        ga125.addRequirement(new MaterialRequirement("Third Age iron", 34  ));
+        ga125.addRequirement(new MaterialRequirement("Star of Saradomin", 20  ));
+
         GameArtefact ga126 = new GameArtefact("She-wolf trophy", "Zamorak");
+        ga126.addRequirement(new MaterialRequirement("Chaotic brimstone", 26 ));
+        ga126.addRequirement(new MaterialRequirement("Cadmium red", 18  ));
+        ga126.addRequirement(new MaterialRequirement("Animal furs", 28  ));
+
         GameArtefact ga127 = new GameArtefact("Silver Dominion medal", "Saradomin");
+        ga127.addRequirement(new MaterialRequirement("Everlight silvthril", 36  ));
+        ga127.addRequirement(new MaterialRequirement("Star of Saradomin", 26  ));
+
         GameArtefact ga128 = new GameArtefact("Songbird recorder", "Armadyl");
+        ga128.addRequirement(new MaterialRequirement("Stormguard steel", 44  ));
+        ga128.addRequirement(new MaterialRequirement("Orthenglass", 36  ));
+
         GameArtefact ga129 = new GameArtefact("Spherical astrolabe", "Armadyl");
+        ga129.addRequirement(new MaterialRequirement("Aetherium alloy", 46 ));
+        ga129.addRequirement(new MaterialRequirement("Armadylean yellow", 40  ));
+        ga129.addRequirement(new MaterialRequirement("Orthenglass", 48  ));
+
         GameArtefact ga130 = new GameArtefact("Spiked dog collar", "Zamorak");
+        ga130.addRequirement(new MaterialRequirement("Third Age iron", 24 ));
+        ga130.addRequirement(new MaterialRequirement("Leather scraps", 24  ));
+        ga130.addRequirement(new MaterialRequirement("Chaotic brimstone", 16  ));
+
         GameArtefact ga131 = new GameArtefact("Stormguard gerege", "Armadyl");
+        ga131.addRequirement(new MaterialRequirement("Stormguard steel", 36 ));
+        ga131.addRequirement(new MaterialRequirement("Wings of War", 28  ));
+        ga131.addRequirement(new MaterialRequirement("Goldrune", 20  ));
+
         GameArtefact ga132 = new GameArtefact("Talon-3 razor wing", "Armadyl");
+        ga132.addRequirement(new MaterialRequirement("Aetherium alloy", 40  ));
+        ga132.addRequirement(new MaterialRequirement("Wings of War", 34  ));
+
         GameArtefact ga133 = new GameArtefact("Thorobshuun battle standard", "Bandos");
+        ga133.addRequirement(new MaterialRequirement("Mark of the Kyzaj", 16  ));
+        ga133.addRequirement(new MaterialRequirement("Malachite green", 22  ));
+        ga133.addRequirement(new MaterialRequirement("White oak", 16  ));
+        ga133.addRequirement(new MaterialRequirement("Samite silk", 20  ));
+
         GameArtefact ga134 = new GameArtefact("Toy glider", "Armadyl");
+        ga134.addRequirement(new MaterialRequirement("Stormguard steel", 36  ));
+        ga134.addRequirement(new MaterialRequirement("White oak", 30  ));
+
         GameArtefact ga135 = new GameArtefact("Toy war golem", "Armadyl");
+        ga135.addRequirement(new MaterialRequirement("Third Age iron", 36  ));
+        ga135.addRequirement(new MaterialRequirement("White oak", 30  ));
+
         GameArtefact ga136 = new GameArtefact("Trishula", "Zamorak");
+        ga136.addRequirement(new MaterialRequirement("Hellfire metal", 48 ));
+        ga136.addRequirement(new MaterialRequirement("Eye of Dagon", 30  ));
+        ga136.addRequirement(new MaterialRequirement("Third Age iron", 20  ));
+
         GameArtefact ga137 = new GameArtefact("Tsutsaroth helm", "Zamorak");
+        ga137.addRequirement(new MaterialRequirement("Hellfire metal", 50 ));
+        ga137.addRequirement(new MaterialRequirement("Eye of Dagon", 40  ));
+        ga137.addRequirement(new MaterialRequirement("Goldrune", 40  ));
+
         GameArtefact ga138 = new GameArtefact("Tsutsaroth pauldron", "Zamorak");
+        ga138.addRequirement(new MaterialRequirement("Hellfire metal", 40 ));
+        ga138.addRequirement(new MaterialRequirement("Eye of Dagon", 40  ));
+        ga138.addRequirement(new MaterialRequirement("Goldrune", 50  ));
+
         GameArtefact ga139 = new GameArtefact("Tsutsaroth piercing", "Zamorak");
+        ga139.addRequirement(new MaterialRequirement("Hellfire metal", 44 ));
+        ga139.addRequirement(new MaterialRequirement("Chaotic brimstone", 30  ));
+        ga139.addRequirement(new MaterialRequirement("Cadmium red", 24  ));
+
         GameArtefact ga140 = new GameArtefact("Tsutsaroth urumi", "Zamorak");
+        ga140.addRequirement(new MaterialRequirement("Hellfire metal", 50 ));
+        ga140.addRequirement(new MaterialRequirement("Eye of Dagon", 40  ));
+        ga140.addRequirement(new MaterialRequirement("Third Age iron", 40  ));
+
         GameArtefact ga141 = new GameArtefact("Venator dagger", "Zaros");
+        ga141.addRequirement(new MaterialRequirement("Zarosian insignia", 12  ));
+        ga141.addRequirement(new MaterialRequirement("Third Age iron", 16  ));
+
         GameArtefact ga142 = new GameArtefact("Venator light crossbow", "Zaros");
+        ga142.addRequirement(new MaterialRequirement("Zarosian insignia", 16  ));
+        ga142.addRequirement(new MaterialRequirement("Third Age iron", 12  ));
+
         GameArtefact ga143 = new GameArtefact("Vigorem vial", "Zaros");
+        ga143.addRequirement(new MaterialRequirement("Imperial steel", 54  ));
+        ga143.addRequirement(new MaterialRequirement("Ancient vis", 38  ));
+
         GameArtefact ga144 = new GameArtefact("Virius trophy", "Zamorak");
+        ga144.addRequirement(new MaterialRequirement("Demonhide", 44 ));
+        ga144.addRequirement(new MaterialRequirement("White oak", 34  ));
+        ga144.addRequirement(new MaterialRequirement("Orthenglass", 34  ));
+
         GameArtefact ga145 = new GameArtefact("Xiphos short sword", "Saradomin");
+        ga145.addRequirement(new MaterialRequirement("Everlight silvthril", 46  ));
+        ga145.addRequirement(new MaterialRequirement("Leather scraps", 46  ));
+
         GameArtefact ga146 = new GameArtefact("Yurkolgokh stink grenade", "Bandos");
+        ga146.addRequirement(new MaterialRequirement("Yu'biusk clay", 38  ));
+        ga146.addRequirement(new MaterialRequirement("Vulcanised rubber", 36  ));
+
         GameArtefact ga147 = new GameArtefact("Zarosian effigy", "Zaros");
+        ga147.addRequirement(new MaterialRequirement("Samite silk", 8 ));
+        ga147.addRequirement(new MaterialRequirement("White oak", 10  ));
+        ga147.addRequirement(new MaterialRequirement("Zarosian insignia", 12  ));
+
         GameArtefact ga148 = new GameArtefact("Zarosian ewer", "Zaros");
+        ga148.addRequirement(new MaterialRequirement("Zarosian insignia", 30  ));
+        ga148.addRequirement(new MaterialRequirement("Third Age iron", 52  ));
+
         GameArtefact ga149 = new GameArtefact("Zarosian stein", "Zaros");
+        ga149.addRequirement(new MaterialRequirement("Zarosian insignia", 30  ));
+        ga149.addRequirement(new MaterialRequirement("Third Age iron", 16  ));
+        ga149.addRequirement(new MaterialRequirement("Imperial steel", 36  ));
+
         GameArtefact ga150 = new GameArtefact("Zarosian training dummy", "Zaros");
+        ga150.addRequirement(new MaterialRequirement("White oak", 14  ));
+        ga150.addRequirement(new MaterialRequirement("Third Age iron", 16  ));
         //</editor-fold>
         ArrayList<GameArtefact> liveArtefactArray = new ArrayList<GameArtefact>(){{
             add(ga1); add(ga2); add(ga3); add(ga4); add(ga5); add(ga6); add(ga7); add(ga8); add(ga9); add(ga10);
@@ -832,66 +1046,466 @@ public class Storage {
         liveCollectorArray.forEach(this::AddCollector);
 
         //<editor-fold defaultstate="collapsed" desc="Collection objects">
+
+        //<editor-fold defaultstate="collapsed" desc="Art Critic Jacques ">
         Collection c1 = new Collection("Imperial impressionism", "Art Critic Jacques", "Zaros", "Crontoes", 2086, "Replica zarosian art");
+        c1.addArtefact("'Solem in Umbra' painting");
+        c1.addArtefact("'Consensus ad Idem' painting");
+        c1.addArtefact("'Prima Legio' painting");
         Collection c2 = new Collection("Radiant renaissance", "Art Critic Jacques", "Saradomin", "Crontoes", 2730, "Replica saradominist art");
+        c2.addArtefact("'Hallowed Be the Everlight' painting");
+        c2.addArtefact("'The Lord of Light' painting");
+        c2.addArtefact("'The Pride of Padosan' painting");
         Collection c3 = new Collection("Anarchic abstraction", "Art Critic Jacques", "Zamorak", "Crontoes", 1574, "Replica zamorakian art");
+        c3.addArtefact("'Disorder' painting");
+        c3.addArtefact("'The Lake of Fire' painting");
+        c3.addArtefact("'Pandemonium' tapestry");
+        //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Chief Tess ">
         Collection c4 = new Collection("Smoky fings", "Chief Tess", "All", "Robust glass", 40, "Og'glog wellspring");
+        c4.addArtefact("Hookah pipe");
+        c4.addArtefact("Opulent wine goblet");
+        c4.addArtefact("Everlight trumpet");
+        c4.addArtefact("Dominion torch");
+        c4.addArtefact("Pontifex censer");
         Collection c5 = new Collection("Showy fings", "Chief Tess", "All", "Robust glass", 40);
+        c5.addArtefact("Crest of Dagon");
+        c5.addArtefact("Legatus Maximus figurine");
+        c5.addArtefact("'Lust' metal sculpture");
+        c5.addArtefact("Pontifex Maximus figurine");
+        c5.addArtefact("Ceremonial plume");
+        c5.addArtefact("Rod of Asclepius");
         Collection c6 = new Collection("Blingy fings", "Chief Tess", "All", "Robust glass", 20);
+        c6.addArtefact("Ancient timepiece");
+        c6.addArtefact("Legatus pendant");
+        c6.addArtefact("Pontifex signet ring");
+        c6.addArtefact("Bronze Dominion medal");
+        c6.addArtefact("Silver Dominion medal");
         Collection c7 = new Collection("Hitty fings", "Chief Tess", "All", "Robust glass", 40);
+        c7.addArtefact("Ceremonial mace");
+        c7.addArtefact("Pontifex crozier");
+        c7.addArtefact("Fishing trident");
+        c7.addArtefact("High priest crozier");
+        c7.addArtefact("High priest orb");
+        //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="General Bentnoze ">
         Collection c8 = new Collection("Red rum relics 1", "General Bentnoze", "Bandos", "Tetra pieces", 1);
+        c8.addArtefact("Ork cleaver sword");
+        c8.addArtefact("Ogre Kyzaj axe");
+        c8.addArtefact("Beastkeeper helm");
+        c8.addArtefact("'Nosorog!' sculpture");
         Collection c9 = new Collection("Red rum relics 2", "General Bentnoze", "Bandos", "Tetra pieces", 1);
+        c9.addArtefact("Ourg megahitter");
+        c9.addArtefact("Ourg tower/goblin cower shield");
+        c9.addArtefact("'Forged in War' sculpture");
+        c9.addArtefact("Hobgoblin mansticker");
         Collection c10 = new Collection("Red rum relics 3", "General Bentnoze", "Bandos", "Tetra pieces", 1, "Helm of terror inside");
+        c10.addArtefact("Kal-i-kran chieftain crown");
+        c10.addArtefact("Kal-i-kran mace");
+        c10.addArtefact("Kal-i-kran warhorn");
+        c10.addArtefact("'Da Boss Man' sculpture");
+        //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="General Wartface ">
         Collection c11 = new Collection("Green gobbo goodies 1", "General Wartface", "Bandos", "Tetra pieces", 1);
+        c11.addArtefact("Ekeleshuun blinder mask");
+        c11.addArtefact("Narogoshuun 'Hob-da-Gob' ball");
+        c11.addArtefact("Rekeshuun war tether");
+        c11.addArtefact("Thorobshuun battle standard");
+        c11.addArtefact("Yurkolgokh stink grenade");
         Collection c12 = new Collection("Green gobbo goodies 2", "General Wartface", "Bandos", "Tetra pieces", 1);
+        c12.addArtefact("High priest crozier");
+        c12.addArtefact("High priest mitre");
+        c12.addArtefact("High priest orb");
+        c12.addArtefact("Idithuun horn ring");
+        c12.addArtefact("Garagorshuun anchor");
         Collection c13 = new Collection("Green gobbo goodies 3", "General Wartface", "Bandos", "Tetra pieces", 1, "Helm of terror outside");
+        c13.addArtefact("Dorgeshuun spear");
+        c13.addArtefact("Huzamogaarb chaos crown");
+        c13.addArtefact("Saragorgak star crown");
+        c13.addArtefact("Drogokishuun hook sword");
+        c13.addArtefact("Horogothgar cooking pot");
+        c13.addArtefact("'Da Boss Man' sculpture");
+        //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Isaura">
         Collection c14 = new Collection("Zamorakian I", "Isaura", "Zamorak", "Crontoes", 2594, "Abyssal Thread");
+        c14.addArtefact("Hookah pipe");
+        c14.addArtefact("Opulent wine goblet");
+        c14.addArtefact("Crest of Dagon");
+        c14.addArtefact("'Disorder' painting");
+        c14.addArtefact("Imp mask");
+        c14.addArtefact("Lesser demon mask");
+        c14.addArtefact("Greater demon mask");
+        c14.addArtefact("Order of Dis robes");
+        c14.addArtefact("Ritual dagger");
         Collection c15 = new Collection("Zamorakian II", "Isaura", "Zamorak", "Tetra pieces", 1, "Tetra piece");
+        c15.addArtefact("Branding iron");
+        c15.addArtefact("Manacles");
+        c15.addArtefact("'The Lake of Fire' painting");
+        c15.addArtefact("'Lust' metal sculpture");
+        c15.addArtefact("Chaos star");
+        c15.addArtefact("Spiked dog collar");
+        c15.addArtefact("Larupia trophy");
+        c15.addArtefact("Lion trophy");
+        c15.addArtefact("She-wolf trophy");
         Collection c16 = new Collection("Zamorakian III", "Isaura", "Zamorak", "Tetra pieces", 1, "Tetra piece");
+        c16.addArtefact("'Torment' metal sculpture");
+        c16.addArtefact("'Pandemonium' tapestry");
+        c16.addArtefact("Hellfire haladie");
+        c16.addArtefact("Hellfire katar");
+        c16.addArtefact("Hellfire zaghnal");
+        c16.addArtefact("Chaos Elemental trophy");
+        c16.addArtefact("Virius trophy");
         Collection c17 = new Collection("Zamorakian IV", "Isaura", "Zamorak", "Tetra pieces", 1, "Ariadne's Diadem");
+        c17.addArtefact("'Possession' metal sculpture");
+        c17.addArtefact("Trishula");
+        c17.addArtefact("Tsutsaroth piercing");
+        c17.addArtefact("Tsutsaroth helm");
+        c17.addArtefact("Tsutsaroth pauldron");
+        c17.addArtefact("Tsutsaroth urumi");
+        //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Lowse">
         Collection c18 = new Collection("Armadylean I", "Lowse", "Armadyl", "Stormguard blueprint fragments", 50, "King Oberon's moonshroom spores");
+        c17.addArtefact("Ikovian gerege");
+        c17.addArtefact("Toy glider");
+        c17.addArtefact("Toy war golem");
+        c17.addArtefact("Avian song-egg player");
+        c17.addArtefact("Keshik drum");
+        c17.addArtefact("Morin khuur");
+        c17.addArtefact("Aviansie dreamcoat");
+        c17.addArtefact("Ceremonial plume");
+        c17.addArtefact("Peacocking parasol");
         Collection c19 = new Collection("Armadylean II", "Lowse", "Armadyl", "Stormguard blueprint fragments", 75, "75 Stormguard blueprint fragments");
+        c19.addArtefact("Hawkeye lens multi-vision scope");
+        c19.addArtefact("Talon-3 razor wing");
+        c19.addArtefact("Prototype gravimeter");
+        c19.addArtefact("Songbird recorder");
+        c19.addArtefact("Dayguard shield");
+        c19.addArtefact("Stormguard gerege");
+        c19.addArtefact("Golem heart");
+        c19.addArtefact("Golem instruction");
         Collection c20 = new Collection("Armadylean III", "Lowse", "Armadyl", "Stormguard blueprint fragments", 150, "Howl's Thinking Cap");
+        c20.addArtefact("Blackfire lance");
+        c20.addArtefact("Nightguard shield");
+        c20.addArtefact("Flat cap");
+        c20.addArtefact("Night owl flight goggles");
+        c20.addArtefact("Prototype godbow");
+        c20.addArtefact("Prototype godstaff");
+        c20.addArtefact("Prototype godsword");
+        c20.addArtefact("Chuluu stone");
+        c20.addArtefact("Quintessence counter");
+        c20.addArtefact("Spherical astrolabe");
+        //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Sir Atcha">
         Collection c21 = new Collection("Saradominist I", "Sir Atcha", "Saradomin", "Crontoes", 3998, "Lock of hair");
+        c21.addArtefact("'Frying pan'");
+        c21.addArtefact("Hallowed lantern");
+        c21.addArtefact("Ceremonial unicorn ornament");
+        c21.addArtefact("Ceremonial unicorn saddle");
+        c21.addArtefact("Everlight harp");
+        c21.addArtefact("Everlight trumpet");
+        c21.addArtefact("Everlight violin");
+        c21.addArtefact("Folded-arm figurine (female)");
+        c21.addArtefact("Folded-arm figurine (male)");
         Collection c22 = new Collection("Saradominist II", "Sir Atcha", "Saradomin", "Tetra pieces", 1, "Tetracompass piece");
+        c22.addArtefact("Dominion discus");
+        c22.addArtefact("Dominion javelin");
+        c22.addArtefact("Dominion pelte shield");
+        c22.addArtefact("Bronze Dominion medal");
+        c22.addArtefact("Silver Dominion medal");
+        c22.addArtefact("Dominion torch");
+        c22.addArtefact("Decorative vase");
+        c22.addArtefact("Kantharos cup");
+        c22.addArtefact("Patera bowl");
         Collection c23 = new Collection("Saradominist III", "Sir Atcha", "Saradomin", "Tetra pieces", 1, "Tetracompass piece");
+        c23.addArtefact("Dominarian device");
+        c23.addArtefact("Fishing trident");
+        c23.addArtefact("Amphora");
+        c23.addArtefact("Rod of Asclepius");
+        c23.addArtefact("Kopis dagger");
+        c23.addArtefact("Xiphos short sword");
         Collection c24 = new Collection("Saradominist IV", "Sir Atcha", "Saradomin", "Tetra pieces", 1, "Petasos");
+        c24.addArtefact("'The Pride of Padosan' painting");
+        c24.addArtefact("'Hallowed Be the Everlight' painting");
+        c24.addArtefact("'The Lord of Light' painting");
+        c24.addArtefact("'The Enlightened Soul' scroll");
+        c24.addArtefact("'The Eudoxian Elements' tablet");
+        c24.addArtefact("Doru spear");
+        c24.addArtefact("Kontos lance");
+        //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Soran, Emissary of Zaros">
         Collection c25 = new Collection("Zarosian I", "Soran, Emissary of Zaros", "Zaros", "Pylon batteries", 20, "Seal of the Praefectus Praetorio");
+        c25.addArtefact("Venator dagger");
+        c25.addArtefact("Venator light crossbow");
+        c25.addArtefact("Legionary gladius");
+        c25.addArtefact("Legionary square shield");
+        c25.addArtefact("Primis Elementis standard");
+        c25.addArtefact("Zaros effigy");
+        c25.addArtefact("Zarosian training dummy");
+        c25.addArtefact("Legatus Maximus figurine");
+        c25.addArtefact("'Solem in Umbra' painting");
         Collection c26 = new Collection("Zarosian II", "Soran, Emissary of Zaros", "Zaros", "Pylon batteries", 50, "50 Kharid-et pylon batteries");
+        c26.addArtefact("Ancient timepiece");
+        c26.addArtefact("Legatus pendant");
+        c26.addArtefact("'Incite Fear' spell scroll");
+        c26.addArtefact("Pontifex signet ring");
+        c26.addArtefact("Ceremonial mace");
+        c26.addArtefact("Pontifex Maximus figurine");
+        c26.addArtefact("'Consensus ad Idem' painting");
+        c26.addArtefact("Pontifex censer");
+        c26.addArtefact("Pontifex crozier");
+        c26.addArtefact("Pontifex mitre");
         Collection c27 = new Collection("Zarosian III", "Soran, Emissary of Zaros", "Zaros", "Pylon batteries", 100, "100 Kharid-et pylon batteries");
+        c27.addArtefact("'Exsanguinate' spell scroll");
+        c27.addArtefact("Necromantic focus");
+        c27.addArtefact("Zarosian ewer");
+        c27.addArtefact("Zarosian stein");
+        c27.addArtefact("'Smoke Cloud' spell scroll");
+        c27.addArtefact("Vigorem vial");
+        c27.addArtefact("Ancient magic tablet");
+        c27.addArtefact("'Animate Dead' spell scroll");
+        c27.addArtefact("Portable phylactery");
         Collection c28 = new Collection("Zarosian IV", "Soran, Emissary of Zaros", "Zaros", "Pylon batteries", 100, "Inquisitor staff piece");
+        c28.addArtefact("Praetorian hood");
+        c28.addArtefact("Praetorian robes");
+        c28.addArtefact("Praetorian staff");
+        c28.addArtefact("Ancient globe");
+        c28.addArtefact("Battle plans");
+        c28.addArtefact("'Prima Legio' painting");
+        //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Wise Old Man">
         Collection c29 = new Collection("Wise Am the Music Man", "Wise Old Man", "All", "Crontoes", 4024, "Koschei's needle");
+        c29.addArtefact("Everlight harp");
+        c29.addArtefact("Everlight trumpet");
+        c29.addArtefact("Everlight violin");
+        c29.addArtefact("Avian song-egg player");
+        c29.addArtefact("Keshik drum");
+        c29.addArtefact("Morin khuur");
+        c29.addArtefact("Songbird recorder");
         Collection c30 = new Collection("Hat Hoarder", "Wise Old Man", "All", "Crontoes", 5995);
+        c30.addArtefact("Lesser demon mask");
+        c30.addArtefact("Greater demon mask");
+        c30.addArtefact("Ceremonial unicorn ornament");
+        c30.addArtefact("Pontifex mitre");
+        c30.addArtefact("Saragorgak star crown");
+        c30.addArtefact("Kal-i-kran chieftain crown");
+        c30.addArtefact("Tsutsaroth helm");
         Collection c31 = new Collection("Hat Problem", "Wise Old Man", "All", "Crontoes", 6775);
+        c31.addArtefact("Imp mask");
+        c31.addArtefact("Ekeleshuun blinder mask");
+        c31.addArtefact("High priest mitre");
+        c31.addArtefact("Beastkeeper helm");
+        c31.addArtefact("Huzamogaarb chaos crown");
+        c31.addArtefact("Flat cap");
+        c31.addArtefact("Praetorian hood");
         Collection c32 = new Collection("Magic Man", "Wise Old Man", "All", "Crontoes", 8600);
+        c32.addArtefact("Legatus Maximus figurine");
+        c32.addArtefact("Ritual dagger");
+        c32.addArtefact("Ancient timepiece");
+        c32.addArtefact("'Incite Fear' spell scroll");
+        c32.addArtefact("'Exsanguinate' spell scroll");
+        c32.addArtefact("High priest mitre");
+        c32.addArtefact("'Smoke Cloud' spell scroll");
+        c32.addArtefact("'Animate Dead' spell scroll");
+        c32.addArtefact("Portable phylactery");
+        c32.addArtefact("Chuluu stone");
         Collection c33 = new Collection("Knowledge is Power", "Wise Old Man", "All", "Crontoes", 5584, "Amascut's Enchanted Gem");
+        c33.addArtefact("Crest of Dagon");
+        c33.addArtefact("Ikovian gerege");
+        c33.addArtefact("Necromantic focus");
+        c33.addArtefact("Golem instruction");
+        c33.addArtefact("'The Enlightened Soul' scroll");
+        c33.addArtefact("'The Eudoxian Elements' tablet");
+        c33.addArtefact("'Da Boss Man' sculpture");
+        //</editor-fold>
 
-        Collection c34 = new Collection("Museum - Armadylean I", "Armadyl", "category", "Cronotes", 7110);
-        Collection c35 = new Collection("Museum - Armadylean II", "Armadyl", "category", "Cronotes", 7585);
-        Collection c36 = new Collection("Museum - Armadylean III", "Armadyl", "category", "Cronotes", 13085);
+        //<editor-fold defaultstate="collapsed" desc="Velucia">
+        //<editor-fold defaultstate="collapsed" desc="Armadylean">
+        Collection c34 = new Collection("Museum - Armadylean I", "Velucia", "Armadyl", "Cronotes", 7110);
+        c34.addArtefact("Ikovian gerege");
+        c34.addArtefact("Toy glider");
+        c34.addArtefact("Toy war golem");
+        c34.addArtefact("Avian song-egg player");
+        c34.addArtefact("Keshik drum");
+        c34.addArtefact("Morin khuur");
+        c34.addArtefact("Aviansie dreamcoat");
+        c34.addArtefact("Ceremonial plume");
+        c34.addArtefact("Peacocking parasol");
+        Collection c35 = new Collection("Museum - Armadylean II", "Velucia", "Armadyl", "Cronotes", 7585);
+        c35.addArtefact("Hawkeye lens multi-vision scope");
+        c35.addArtefact("Talon-3 razor wing");
+        c35.addArtefact("Prototype gravimeter");
+        c35.addArtefact("Songbird recorder");
+        c35.addArtefact("Dayguard shield");
+        c35.addArtefact("Stormguard gerege");
+        c35.addArtefact("Golem heart");
+        c35.addArtefact("Golem instruction");
+        Collection c36 = new Collection("Museum - Armadylean III", "Velucia", "Armadyl", "Cronotes", 13085);
+        c36.addArtefact("Blackfire lance");
+        c36.addArtefact("Nightguard shield");
+        c36.addArtefact("Flat cap");
+        c36.addArtefact("Night owl flight goggles");
+        c36.addArtefact("Prototype godbow");
+        c36.addArtefact("Prototype godstaff");
+        c36.addArtefact("Prototype godsword");
+        c36.addArtefact("Chuluu stone");
+        c36.addArtefact("Quintessence counter");
+        c36.addArtefact("Spherical astrolabe");
+        //</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc="Bandosian">
         Collection c37 = new Collection("Museum - Bandosian I", "Velucia", "Bandos", "Cronotes", 8445);
+        c37.addArtefact("Ekeleshuun blinder mask");
+        c37.addArtefact("Narogoshuun 'Hob-da-Gob' ball");
+        c37.addArtefact("Rekeshuun war tether");
+        c37.addArtefact("Ogre Kyzaj axe");
+        c37.addArtefact("Ork cleaver sword");
+        c37.addArtefact("Thorobshuun battle standard");
+        c37.addArtefact("Yurkolgokh stink grenade");
+        c37.addArtefact("High priest crozier");
+        c37.addArtefact("High priest mitre");
+        c37.addArtefact("High priest orb");
         Collection c38 = new Collection("Museum - Bandosian II", "Velucia", "Bandos", "Cronotes", 8257);
+        c38.addArtefact("Beastkeeper helm");
+        c38.addArtefact("Idithuun horn ring");
+        c38.addArtefact("'Nosorog!' sculpture");
+        c38.addArtefact("Ourg megahitter");
+        c38.addArtefact("Ourg tower/goblin cower shield");
+        c38.addArtefact("Garagorshuun anchor");
+        c38.addArtefact("'Forged in War' sculpture");
+        c38.addArtefact("Dorgeshuun spear");
         Collection c39 = new Collection("Museum - Bandosian III", "Velucia", "Bandos", "Cronotes", 11725);
+        c39.addArtefact("Saragorgak star crown");
+        c39.addArtefact("Huzamogaarb chaos crown");
+        c39.addArtefact("Hobgoblin mansticker");
+        c39.addArtefact("Drogokishuun hook sword");
+        c39.addArtefact("Kal-i-kran chieftain crown");
+        c39.addArtefact("Kal-i-kran mace");
+        c39.addArtefact("Kal-i-kran warhorn");
+        c39.addArtefact("Horogothgar cooking pot");
+        c39.addArtefact("'Da Boss Man' sculpture");
+        //</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc="Saradominist">
         Collection c40 = new Collection("Museum - Saradominist I", "Velucia", "Saradomin", "Cronotes", 4997);
+        c40.addArtefact("'Frying pan'");
+        c40.addArtefact("Hallowed lantern");
+        c40.addArtefact("Ceremonial unicorn ornament");
+        c40.addArtefact("Ceremonial unicorn saddle");
+        c40.addArtefact("Everlight harp");
+        c40.addArtefact("Everlight trumpet");
+        c40.addArtefact("Everlight violin");
+        c40.addArtefact("Folded-arm figurine (female)");
+        c40.addArtefact("Folded-arm figurine (male)");
         Collection c41 = new Collection("Museum - Saradominist II", "Velucia", "Saradomin", "Cronotes", 6052);
+        c41.addArtefact("Dominion discus");
+        c41.addArtefact("Dominion javelin");
+        c41.addArtefact("Dominion pelte shield");
+        c41.addArtefact("Bronze Dominion medal");
+        c41.addArtefact("Silver Dominion medal");
+        c41.addArtefact("Dominion torch");
+        c41.addArtefact("Decorative vase");
+        c41.addArtefact("Kantharos cup");
+        c41.addArtefact("Patera bowl");
         Collection c42 = new Collection("Museum - Saradominist III", "Velucia", "Saradomin", "Cronotes", 5685);
+        c42.addArtefact("Dominarian device");
+        c42.addArtefact("Fishing trident");
+        c42.addArtefact("Amphora");
+        c42.addArtefact("Rod of Asclepius");
+        c42.addArtefact("Kopis dagger");
+        c42.addArtefact("Xiphos short sword");
         Collection c43 = new Collection("Museum - Saradominist IV", "Velucia", "Saradomin", "Cronotes", 8778);
+        c43.addArtefact("'The Pride of Padosan' painting");
+        c43.addArtefact("'Hallowed Be the Everlight' painting");
+        c43.addArtefact("'The Lord of Light' painting");
+        c43.addArtefact("'The Enlightened Soul' scroll");
+        c43.addArtefact("'The Eudoxian Elements' tablet");
+        c43.addArtefact("Doru spear");
+        c43.addArtefact("Kontos lance");
+        //</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc="Zamorakian">
         Collection c44 = new Collection("Museum - Zamorakian I", "Velucia", "Zamorak", "Cronotes", 3242);
+        c44.addArtefact("Hookah pipe");
+        c44.addArtefact("Opulent wine goblet");
+        c44.addArtefact("Crest of Dagon");
+        c44.addArtefact("'Disorder' painting");
+        c44.addArtefact("Imp mask");
+        c44.addArtefact("Lesser demon mask");
+        c44.addArtefact("Greater demon mask");
+        c44.addArtefact("Order of Dis robes");
+        c44.addArtefact("Ritual dagger");
         Collection c45 = new Collection("Museum - Zamorakian II", "Velucia", "Zamorak", "Cronotes", 6432);
+        c45.addArtefact("Branding iron");
+        c45.addArtefact("Manacles");
+        c45.addArtefact("'The Lake of Fire' painting");
+        c45.addArtefact("'Lust' metal sculpture");
+        c45.addArtefact("Chaos star");
+        c45.addArtefact("Spiked dog collar");
+        c45.addArtefact("Larupia trophy");
+        c45.addArtefact("Lion trophy");
+        c45.addArtefact("She-wolf trophy");
         Collection c46 = new Collection("Museum - Zamorakian III", "Velucia", "Zamorak", "Cronotes", 7417);
+        c46.addArtefact("'Torment' metal sculpture");
+        c46.addArtefact("'Pandemonium' tapestry");
+        c46.addArtefact("Hellfire haladie");
+        c46.addArtefact("Hellfire katar");
+        c46.addArtefact("Hellfire zaghnal");
+        c46.addArtefact("Chaos Elemental trophy");
+        c46.addArtefact("Virius trophy");
         Collection c47 = new Collection("Museum - Zamorakian IV", "Velucia", "Zamorak", "Cronotes", 7635);
+        c47.addArtefact("'Possession' metal sculpture");
+        c47.addArtefact("Trishula");
+        c47.addArtefact("Tsutsaroth piercing");
+        c47.addArtefact("Tsutsaroth helm");
+        c47.addArtefact("Tsutsaroth pauldron");
+        c47.addArtefact("Tsutsaroth urumi");
+        //</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc="Zarosian">
         Collection c48 = new Collection("Museum - Zarosian I", "Velucia", "Zaros", "Cronotes", 2635);
+        c48.addArtefact("Venator dagger");
+        c48.addArtefact("Venator light crossbow");
+        c48.addArtefact("Legionary gladius");
+        c48.addArtefact("Legionary square shield");
+        c48.addArtefact("Primis Elementis standard");
+        c48.addArtefact("Zaros effigy");
+        c48.addArtefact("Zarosian training dummy");
+        c48.addArtefact("Legatus Maximus figurine");
+        c48.addArtefact("'Solem in Umbra' painting");
         Collection c49 = new Collection("Museum - Zarosian II", "Velucia", "Zaros", "Cronotes", 7165);
+        c49.addArtefact("Ancient timepiece");
+        c49.addArtefact("Legatus pendant");
+        c49.addArtefact("'Incite Fear' spell scroll");
+        c49.addArtefact("Pontifex signet ring");
+        c49.addArtefact("Ceremonial mace");
+        c49.addArtefact("Pontifex Maximus figurine");
+        c49.addArtefact("'Consensus ad Idem' painting");
+        c49.addArtefact("Pontifex censer");
+        c49.addArtefact("Pontifex crozier");
+        c49.addArtefact("Pontifex mitre");
         Collection c50 = new Collection("Museum - Zarosian III", "Velucia", "Zaros", "Cronotes", 9302);
+        c50.addArtefact("'Exsanguinate' spell scroll");
+        c50.addArtefact("Necromantic focus");
+        c50.addArtefact("Zarosian ewer");
+        c50.addArtefact("Zarosian stein");
+        c50.addArtefact("'Smoke Cloud' spell scroll");
+        c50.addArtefact("Vigorem vial");
+        c50.addArtefact("Ancient magic tablet");
+        c50.addArtefact("'Animate Dead' spell scroll");
+        c50.addArtefact("Portable phylactery");
         Collection c51 = new Collection("Museum - Zarosian IV", "Velucia", "Zaros", "Cronotes", 8512);
+        c51.addArtefact("Praetorian hood");
+        c51.addArtefact("Praetorian robes");
+        c51.addArtefact("Praetorian staff");
+        c51.addArtefact("Ancient globe");
+        c51.addArtefact("Battle plans");
+        c51.addArtefact("'Prima Legio' painting");
+        //</editor-fold>
+        //</editor-fold>
 
         //</editor-fold>
         ArrayList<Collection> liveCollectionArray = new ArrayList<Collection>(){{
