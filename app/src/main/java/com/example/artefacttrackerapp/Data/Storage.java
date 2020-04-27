@@ -529,7 +529,7 @@ public class Storage {
         GameArtefact ga48 = new GameArtefact("Dominion torch", "Saradomin");
         ga48.addRequirement(new MaterialRequirement("Goldrune", 12 ));
         ga48.addRequirement(new MaterialRequirement("Orthenglass", 12 ));
-        ga48.addRequirement(new MaterialRequirement("Everlight silvthril", 28 ));
+        ga48.addRequirement(new MaterialRequirement("Everlight silvthril", 20 ));
         ga48.addRequirement(new MaterialRequirement("Star of Saradomin", 18 ));
 
         GameArtefact ga49 = new GameArtefact("Dorgeshuun spear", "Bandos");
@@ -739,6 +739,7 @@ public class Storage {
         ga92.addRequirement(new MaterialRequirement("White oak", 26 ));
 
         GameArtefact ga93 = new GameArtefact("Manacles", "Zamorak");
+        
         GameArtefact ga94 = new GameArtefact("Morin khuur", "Armadyl");
         GameArtefact ga95 = new GameArtefact("Narogoshuun 'Hob-da-Gob' ball", "Bandos");
         GameArtefact ga96 = new GameArtefact("Necromantic focus", "Zaros");
