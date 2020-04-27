@@ -1,16 +1,41 @@
 package com.example.artefacttrackerapp.data;
 
+import android.content.Context;
 import android.content.res.Resources;
+import android.widget.Toast;
 
 import com.example.artefacttrackerapp.R;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Optional;
 import java.util.Random;
 
-public class Storage {
+public class Storage implements Serializable {
+
+    private transient Context context;
+    private transient Resources cRes;
+
+    public Storage(Context context){
+        this.context = context;
+        this.cRes = this.context.getResources();
+
+        this.artefacts = new ArrayList<>();
+        this.collectors = new ArrayList<>();
+        this.collections = new ArrayList<>();
+        this.materials = new ArrayList<>();
+
+//        createTestData();
+        createLiveData();
+
+    }
 
     //<editor-fold defaultstate="collapsed" desc="Game Artefacts">
     private final ArrayList<GameArtefact> artefacts;
@@ -22,7 +47,9 @@ public class Storage {
         }
         return false;
     }
-    public boolean DeleteArtefact(GameArtefact artefact){ return this.artefacts.remove(artefact); }
+    public boolean DeleteArtefact(GameArtefact artefact){
+        return this.artefacts.remove(artefact);
+    }
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Collectors">
@@ -35,7 +62,9 @@ public class Storage {
         }
         return false;
     }
-    public boolean DeleteCollector(Collector collector){ return this.collectors.remove(collector); }
+    public boolean DeleteCollector(Collector collector){
+        return this.collectors.remove(collector);
+    }
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Collections">
@@ -53,7 +82,9 @@ public class Storage {
         }
         return false;
     }
-    public boolean DeleteCollection(Collection collection){ return this.collections.remove(collection); }
+    public boolean DeleteCollection(Collection collection){
+        return this.collections.remove(collection);
+    }
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Materials">
@@ -66,19 +97,10 @@ public class Storage {
         }
         return false;
     }
-    public boolean DeleteMaterial(Material material){ return this.materials.remove(material); }
-    //</editor-fold>
-
-    private final Resources cRes;
-    public Storage(Resources resources){
-        cRes = resources;
-        this.artefacts = new ArrayList<>();
-        this.collectors = new ArrayList<>();
-        this.collections = new ArrayList<>();
-        this.materials = new ArrayList<>();
-//        createTestData();
-        createLiveData();
+    public boolean DeleteMaterial(Material material){
+        return this.materials.remove(material);
     }
+    //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Test data">
     private String rndStr(int l){
@@ -1508,7 +1530,6 @@ public class Storage {
         //</editor-fold>
 
         //</editor-fold>
-
         ArrayList<Collection> liveCollectionArray = new ArrayList<Collection>(){{
             add(c1); add(c2); add(c3); add(c4); add(c5); add(c6); add(c7); add(c8); add(c9); add(c10);
             add(c11); add(c12); add(c13); add(c14); add(c15); add(c16); add(c17); add(c18); add(c19); add(c20);
