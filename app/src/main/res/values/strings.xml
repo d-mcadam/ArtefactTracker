@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Artefact Tracker App</string>
     //main menu
+    <string name="main_menu_database_button">Database Options</string>
     <string name="main_menu_materail_names_button">Material Options</string>
     <string name="main_menu_inventory_button">Inventory Management</string>
     <string name="main_menu_collection_button">Collection Logs</string>
@@ -64,4 +65,5 @@
         <item>Stormguard blueprint fragments</item>
     </string-array>
     <string name="runescape_artefact_tracker_mobile_app_data">RUNESCAPE_ARTEFACT_TRACKER_MOBILE_APP_DATA</string>
+    <string name="runescape_artefact_tracker_database_option_data">RUNESCAPE_ARTEFACT_TRACKER_DATABASE_OPTION_DATA</string>
 </resources>
