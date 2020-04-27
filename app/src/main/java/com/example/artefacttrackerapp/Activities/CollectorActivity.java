@@ -21,6 +21,7 @@ import com.example.artefacttrackerapp.utilities.CollectorAdapter;
 import java.util.ArrayList;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.saveAppData;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.CreateCollectionDialogGenerator;
 
 public class CollectorActivity extends AppCompatActivity {
@@ -63,6 +64,12 @@ public class CollectorActivity extends AppCompatActivity {
 
         RefreshList();
 
+    }
+
+    @Override
+    public void onPause(){
+        saveAppData(this, storage);
+        super.onPause();
     }
 
     public void RefreshList(){

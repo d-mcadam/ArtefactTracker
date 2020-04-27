@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.CollectionLogActivity"></activity>
+        <activity android:name=".activities.DatabaseOptionsActivity"></activity>
+        <activity android:name=".activities.CollectionLogActivity" />
         <activity android:name=".activities.CollectorActivity" />
         <activity android:name=".activities.CollectionActivity" />
         <activity android:name=".activities.MaterialOptionsActivity" />

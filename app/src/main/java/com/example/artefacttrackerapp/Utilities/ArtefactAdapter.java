@@ -15,8 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.artefacttrackerapp.activities.InventoryManagementActivity;
 import com.example.artefacttrackerapp.data.GameArtefact;
 import com.example.artefacttrackerapp.R;
+import com.example.artefacttrackerapp.data.Material;
 
 import java.util.ArrayList;
+import java.util.OptionalInt;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
 
@@ -65,8 +67,9 @@ public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.Artefa
             View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_material_requirement_display, null, false);
             final TextView textView = dialogView.findViewById(R.id.textViewHolderMatReqDisplayMultiline);
 
+            ArrayList<Integer> identifiedMaterials = new ArrayList<>();
             StringBuilder sb = new StringBuilder();
-            artefact.requirements.forEach(mr -> {
+            artefact.getRequirements().forEach(mr -> {
                 sb.append(mr.title).append(", x").append(mr.quantity);
 
                 storage.Materials().stream()
@@ -74,15 +77,15 @@ public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.Artefa
                         .forEach(m -> {
                             if (m.quantity >= mr.quantity)
                                 sb.append(" \u2713");
-
-                            titleSb.append(" (").append(m.quantity / mr.quantity).append(")");
-
+                            identifiedMaterials.add(m.quantity / mr.quantity);
                         });
 
                 sb.append("\n");
             });
             textView.setText(sb.toString().trim());
 
+            OptionalInt maxCollectCount = identifiedMaterials.stream().mapToInt(i -> i).min();
+            titleSb.append(" (").append(maxCollectCount.isPresent() ? maxCollectCount.getAsInt() : 0).append(")");
             dialog.setTitle(titleSb.toString().trim());
             dialog.setView(dialogView).setPositiveButton("OK", null).create().show();
             return true;

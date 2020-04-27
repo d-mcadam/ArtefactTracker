@@ -1,9 +1,10 @@
 package com.example.artefacttrackerapp.data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Collection {
+public class Collection implements Serializable {
 
     public final String title;
     public final String collector;
@@ -12,6 +13,7 @@ public class Collection {
     public final String reward;
     public final int rewardQuantity;
     private Boolean completedOnce = false;
+    public final String oneTimeOnlyReward;
 
     public Collection(String title, String collector, String category, String reward, int qty){
         this.title = title;
@@ -19,10 +21,20 @@ public class Collection {
         this.category = category;
         this.reward = reward;
         this.rewardQuantity = qty;
+        oneTimeOnlyReward = "N/A";
+    }
+
+    public Collection(String title, String collector, String category, String reward, int qty, String oneTimeOnlyReward){
+        this.title = title;
+        this.collector = collector;
+        this.category = category;
+        this.reward = reward;
+        this.rewardQuantity = qty;
+        this.oneTimeOnlyReward = oneTimeOnlyReward;
     }
 
     public boolean isCompleted(){ return this.completedOnce; }
-    public void Completed(){ this.completedOnce = true; }
+    public void hasBeenCompleted(){ this.completedOnce = true; }
 
     public final String Title(){ return this.title; }
 

@@ -1,6 +1,8 @@
 package com.example.artefacttrackerapp.data;
 
-public class MaterialRequirement {
+import java.io.Serializable;
+
+public class MaterialRequirement implements Serializable {
 
     public final String title;
     public final int quantity;

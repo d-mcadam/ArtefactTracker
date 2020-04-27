@@ -12,9 +12,14 @@ import com.example.artefacttrackerapp.data.MaterialRequirement;
 import com.example.artefacttrackerapp.data.Storage;
 import com.example.artefacttrackerapp.R;
 
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.USING_LIVE_DATA;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.loadAppData;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.loadDatabaseOptions;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.saveAppData;
+
 public class MainActivity extends AppCompatActivity {
 
-    public static Storage storage = new Storage();
+    public static Storage storage;
 
     private TextView uniqueRemainingCollectionsField;
     private TextView availableCollectibleField;
@@ -33,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void init(){
 
+        USING_LIVE_DATA = loadDatabaseOptions(getBaseContext());
+        storage = loadAppData(getBaseContext());
+
 //        uniqueRemainingCollectionsField = findViewById(R.id.textViewUniqueRemaining);
 //        availableCollectibleField = findViewById(R.id.textViewAvailableCount);
 //        availableCronotesField = findViewById(R.id.textViewCronotesCount);
@@ -48,9 +56,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onResume(){
         super.onResume();
-
         RefreshData();
+    }
 
+    @Override
+    public void onPause(){
+        saveAppData(this, storage);
+        super.onPause();
     }
 
     private void RefreshData(){
@@ -60,10 +72,15 @@ public class MainActivity extends AppCompatActivity {
 
         int total = 0;
         for (GameArtefact artefact : storage.Artefacts())
-            for (MaterialRequirement req : artefact.requirements)
+            for (MaterialRequirement req : artefact.getRequirements())
                 total += req.quantity * artefact.quantity;
         requiredMaterialCountField.setText(String.valueOf(total));
 
+    }
+
+    public void OpenDatabaseOptions(View v){
+        Intent intent = new Intent(getBaseContext(), DatabaseOptionsActivity.class);
+        startActivity(intent);
     }
 
     public void OpenMaterialOptions(View v){
@@ -80,4 +97,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getBaseContext(), CollectionActivity.class);
         startActivity(intent);
     }
+
 }

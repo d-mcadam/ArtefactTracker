@@ -29,6 +29,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.saveAppData;
 
 public class AddArtefactActivity extends AppCompatActivity {
 
@@ -99,6 +100,12 @@ public class AddArtefactActivity extends AppCompatActivity {
         matReqRecyclerView.setAdapter(matReqAdapter);
         //</editor-fold>
 
+    }
+
+    @Override
+    public void onPause(){
+        saveAppData(this, storage);
+        super.onPause();
     }
 
     public void CheckSaveEligibility(){
@@ -202,11 +209,11 @@ public class AddArtefactActivity extends AppCompatActivity {
 
         GameArtefact artefact = new GameArtefact(title, category);
 
-        artefact.requirements.addAll(requirementArrayList);
+        requirementArrayList.forEach(artefact::addRequirement);
 
         storage.AddArtefact(artefact);
 
-        int reqSize = artefact.requirements.size();
+        int reqSize = artefact.getRequirements().size();
         Toast.makeText(this, "Added Artefact with " + reqSize + " requirement" + (reqSize == 1 ? "" : "s"), Toast.LENGTH_LONG).show();
         goBack();
 
