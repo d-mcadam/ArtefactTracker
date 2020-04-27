@@ -279,7 +279,7 @@ public class UtilityMethods {
             @Override
             protected Void doInBackground(Void... voids) {
                 try (FileOutputStream fileOutputStream = context.openFileOutput(context.getResources().getString(R.string.runescape_artefact_tracker_database_option_data),Context.MODE_PRIVATE)){
-                    fileOutputStream.write(USING_LIVE_DATA ? "true".getBytes() : "false".getBytes());
+                    fileOutputStream.write(String.valueOf(USING_LIVE_DATA).getBytes());
                 } catch (Exception e) { e.printStackTrace(); }
         return null; }} new SaveDatabaseOption().execute();
     }
