@@ -63,4 +63,5 @@
         <item>Tetra pieces</item>
         <item>Stormguard blueprint fragments</item>
     </string-array>
+    <string name="runescape_artefact_tracker_mobile_app_data">RUNESCAPE_ARTEFACT_TRACKER_MOBILE_APP_DATA</string>
 </resources>
