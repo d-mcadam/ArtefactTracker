@@ -12,8 +12,10 @@ import com.example.artefacttrackerapp.data.MaterialRequirement;
 import com.example.artefacttrackerapp.data.Storage;
 import com.example.artefacttrackerapp.R;
 
-import static com.example.artefacttrackerapp.utilities.AppData.loadAppData;
-import static com.example.artefacttrackerapp.utilities.AppData.saveAppData;
+import static com.example.artefacttrackerapp.data.DataOptStorage.USING_LIVE_DATA;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.loadAppData;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.loadDatabaseOptions;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.saveAppData;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void init(){
 
-        storage = loadAppData(this);
+        USING_LIVE_DATA = loadDatabaseOptions(getBaseContext());
+        storage = loadAppData(getBaseContext());
 
 //        uniqueRemainingCollectionsField = findViewById(R.id.textViewUniqueRemaining);
 //        availableCollectibleField = findViewById(R.id.textViewAvailableCount);
@@ -73,6 +76,11 @@ public class MainActivity extends AppCompatActivity {
                 total += req.quantity * artefact.quantity;
         requiredMaterialCountField.setText(String.valueOf(total));
 
+    }
+
+    public void OpenDatabaseOptions(View v){
+        Intent intent = new Intent(getBaseContext(), DatabaseOptionsActivity.class);
+        startActivity(intent);
     }
 
     public void OpenMaterialOptions(View v){
