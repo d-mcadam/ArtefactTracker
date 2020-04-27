@@ -1,6 +1,7 @@
 package com.example.artefacttrackerapp.utilities;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -21,10 +22,21 @@ import com.example.artefacttrackerapp.data.Collection;
 import com.example.artefacttrackerapp.data.Collector;
 import com.example.artefacttrackerapp.data.GameArtefact;
 import com.example.artefacttrackerapp.data.Material;
+import com.example.artefacttrackerapp.data.Storage;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.data.DataOptStorage.USING_LIVE_DATA;
 
 public class UtilityMethods {
 
@@ -260,5 +272,49 @@ public class UtilityMethods {
     }
 
     //</editor-fold>
+
+    public static void saveDatabaseOption(Context context){
+        class SaveDatabaseOption extends AsyncTask<Void, Void, Void>{
+            @Override
+            protected Void doInBackground(Void... voids) {
+                try (FileOutputStream fileOutputStream = context.openFileOutput(context.getResources().getString(R.string.runescape_artefact_tracker_database_option_data),Context.MODE_PRIVATE)){
+                    fileOutputStream.write(USING_LIVE_DATA ? "true".getBytes() : "false".getBytes());
+                } catch (Exception e) { e.printStackTrace(); }
+        return null; }} new SaveDatabaseOption().execute();
+    }
+
+    public static boolean loadDatabaseOptions(Context context){
+        try {
+            FileInputStream fileInputStream = context.openFileInput(context.getResources().getString(R.string.runescape_artefact_tracker_database_option_data));
+            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, StandardCharsets.UTF_8);
+            try (BufferedReader reader = new BufferedReader(inputStreamReader)){
+                String line = reader.readLine();
+                if (line != null)
+                    return Boolean.valueOf(line.trim());
+            } catch (IOException e) { e.printStackTrace(); }
+        } catch (FileNotFoundException e) { e.printStackTrace(); }
+        return false;
+    }
+
+    public static void saveAppData(Context context, Storage storage){
+        if (!USING_LIVE_DATA) return;
+        class SaveAppData extends AsyncTask<Void, Void, Void> {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(context.openFileOutput(context.getResources().getString(R.string.runescape_artefact_tracker_mobile_app_data),Context.MODE_PRIVATE))){
+                    objectOutputStream.writeObject(storage);
+                } catch (Exception e) { e.printStackTrace(); }
+        return null; }} new SaveAppData().execute();
+    }
+
+    public static Storage loadAppData(Context context){
+        if (USING_LIVE_DATA) {
+            try (ObjectInputStream ois = new ObjectInputStream(context.openFileInput(context.getResources().getString(R.string.runescape_artefact_tracker_mobile_app_data)))) {
+                Storage s = (Storage) ois.readObject();
+                Toast.makeText(context, "Loaded Saved Data", Toast.LENGTH_SHORT).show();
+                return s;
+            } catch (Exception e) { e.printStackTrace(); }}//planned to throw exceptions under certain circumstances
+        return new Storage(context);
+    }
 
 }
