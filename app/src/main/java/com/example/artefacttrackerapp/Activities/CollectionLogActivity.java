@@ -20,7 +20,7 @@ import com.example.artefacttrackerapp.utilities.CollectionAdapter;
 import java.util.ArrayList;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
-import static com.example.artefacttrackerapp.utilities.AppData.saveAppData;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.saveAppData;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.CreateCollectionDialogGenerator;
 
 public class CollectionLogActivity extends AppCompatActivity {

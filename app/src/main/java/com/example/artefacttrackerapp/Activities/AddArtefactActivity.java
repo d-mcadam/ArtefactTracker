@@ -29,7 +29,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
-import static com.example.artefacttrackerapp.utilities.AppData.saveAppData;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.saveAppData;
 
 public class AddArtefactActivity extends AppCompatActivity {
 

@@ -6,17 +6,14 @@ import android.widget.Toast;
 
 import com.example.artefacttrackerapp.R;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Optional;
 import java.util.Random;
+
+import static com.example.artefacttrackerapp.data.DataOptStorage.USING_LIVE_DATA;
 
 public class Storage implements Serializable {
 
@@ -32,9 +29,13 @@ public class Storage implements Serializable {
         this.collections = new ArrayList<>();
         this.materials = new ArrayList<>();
 
-//        createTestData();
-        createLiveData();
-
+        if (!USING_LIVE_DATA) {
+            Toast.makeText(context, "Creating test data", Toast.LENGTH_SHORT).show();
+            createTestData();
+        } else {
+            Toast.makeText(context, "Initialising storage", Toast.LENGTH_SHORT).show();
+            createLiveData();
+        }
     }
 
     //<editor-fold defaultstate="collapsed" desc="Game Artefacts">

@@ -9,7 +9,7 @@ import android.view.View;
 import com.example.artefacttrackerapp.R;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
-import static com.example.artefacttrackerapp.utilities.AppData.saveAppData;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.saveAppData;
 
 public class CollectionActivity extends AppCompatActivity {
 

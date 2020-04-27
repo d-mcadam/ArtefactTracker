@@ -21,7 +21,7 @@ import com.example.artefacttrackerapp.utilities.ArtefactAdapter;
 import java.util.ArrayList;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
-import static com.example.artefacttrackerapp.utilities.AppData.saveAppData;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.saveAppData;
 
 public class InventoryManagementActivity extends AppCompatActivity {
 
