@@ -36,7 +36,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
-import static com.example.artefacttrackerapp.data.DataOptStorage.USING_LIVE_DATA;
 
 public class UtilityMethods {
 
@@ -272,6 +271,8 @@ public class UtilityMethods {
     }
 
     //</editor-fold>
+
+    public static boolean USING_LIVE_DATA = true;
 
     public static void saveDatabaseOption(Context context){
         class SaveDatabaseOption extends AsyncTask<Void, Void, Void>{

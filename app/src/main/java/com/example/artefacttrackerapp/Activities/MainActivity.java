@@ -12,7 +12,7 @@ import com.example.artefacttrackerapp.data.MaterialRequirement;
 import com.example.artefacttrackerapp.data.Storage;
 import com.example.artefacttrackerapp.R;
 
-import static com.example.artefacttrackerapp.data.DataOptStorage.USING_LIVE_DATA;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.USING_LIVE_DATA;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.loadAppData;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.loadDatabaseOptions;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.saveAppData;

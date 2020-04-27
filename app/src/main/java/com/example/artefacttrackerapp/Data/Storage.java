@@ -13,7 +13,7 @@ import java.util.Comparator;
 import java.util.Optional;
 import java.util.Random;
 
-import static com.example.artefacttrackerapp.data.DataOptStorage.USING_LIVE_DATA;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.USING_LIVE_DATA;
 
 public class Storage implements Serializable {
 
