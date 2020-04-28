@@ -14,6 +14,10 @@ import com.example.artefacttrackerapp.data.Storage;
 import com.example.artefacttrackerapp.R;
 
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.USING_LIVE_DATA;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.getMaterialRequirementsAsIfArtefactsAllBroken;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.getOwnedArtefactCountValue;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.getUniqueCollectibleCount;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.getUniqueCollectionRemainingCount;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.loadAppData;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.loadDatabaseOptions;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.saveAppData;
@@ -43,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         storage = loadAppData(getBaseContext());
 
         uniqueRemainingCollectionsField = findViewById(R.id.textViewUniqueRemaining);
-//        availableCollectibleField = findViewById(R.id.textViewAvailableCount);
+        availableCollectibleField = findViewById(R.id.textViewAvailableCount);
 //        availableCronotesField = findViewById(R.id.textViewCronotesCount);
 //        availableTetraField = findViewById(R.id.textViewTetraCount);
         materialTypeCountField = findViewById(R.id.textViewMaterialTypeCount);
@@ -68,16 +72,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void RefreshData(){
 
-        uniqueRemainingCollectionsField.setText(String.valueOf(
-                storage.Collections().stream().filter(c -> !c.isCompleted()).count()));
+        uniqueRemainingCollectionsField.setText(String.valueOf(getUniqueCollectionRemainingCount()));
+        availableCollectibleField.setText(String.valueOf(getUniqueCollectibleCount()));
 
         materialTypeCountField.setText(String.valueOf(storage.Materials().size()));
-        ownedArtefactCountField.setText(String.valueOf(
-                storage.Artefacts().stream().map(a -> a.quantity).reduce(0, Integer::sum)));
-        requiredMaterialCountField.setText(String.valueOf(
-                storage.Artefacts().stream().map(artefact -> artefact.getRequirements().stream().map(
-                        materialRequirement -> artefact.quantity * materialRequirement.quantity)
-                        .reduce(0, Integer::sum)).reduce(0, Integer::sum)));
+        ownedArtefactCountField.setText(String.valueOf(getOwnedArtefactCountValue()));
+        requiredMaterialCountField.setText(String.valueOf(getMaterialRequirementsAsIfArtefactsAllBroken()));
 
     }
 
