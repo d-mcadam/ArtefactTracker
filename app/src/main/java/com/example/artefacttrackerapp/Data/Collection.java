@@ -37,11 +37,10 @@ public class Collection implements Serializable {
 
     public boolean isCompleted(){ return this.completedOnce; }
     public void completeSubmission(){
-        this.artefacts.forEach(a -> {
-            storage.Artefacts().stream()
-                    .filter(ga -> ga.title.equals(a))
-                    .forEach(ga -> ga.quantity--);
-        });
+        this.artefacts.forEach(
+            a -> storage.Artefacts().stream()
+                .filter(ga -> ga.title.equals(a))
+                .forEach(ga -> ga.quantity--));
         this.completedOnce = true;
     }
 
