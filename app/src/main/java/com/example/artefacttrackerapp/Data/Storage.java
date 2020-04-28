@@ -1544,9 +1544,8 @@ public class Storage implements Serializable {
 
     //</editor-fold>
 
-    public GameArtefact findGameArtefactByTitle(String title){
+    public GameArtefact findGameArtefactByTitle(String title) {
         Optional<GameArtefact> artefact = artefacts.stream().filter(a -> a.title.equals(title)).findFirst();
         return artefact.orElse(null);
     }
-
 }

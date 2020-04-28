@@ -34,6 +34,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Optional;
+import java.util.Random;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
 
@@ -324,30 +326,113 @@ public class UtilityMethods {
 
     //<editor-fold defaultstate="collapsed" desc="Calculate activity display values">
 
+    private static Collection findCollectionByTitle(String title){
+        Optional<Collection> collection = storage.Collections().stream().filter(c -> c.title.equals(title)).findFirst();
+        return collection.orElse(null);
+    }
+
+    /**
+     * checking that the number of artefacts above 0
+     * is equal to the size of the collection
+     * @param c
+     * @return
+     */
+    private static boolean collectionCanBeCompleted(Collection c){
+        return collectionCanBeCompletedXTimes(c, 0);
+    }
+    /**
+     * checking that the number of artefacts above x
+     * is equal to the size of the collection
+     * @param collection
+     * @param x
+     * @return
+     */
+    private static boolean collectionCanBeCompletedXTimes(Collection collection, int x){
+        return collectionCanBeCompletedXTimes(storage, collection, x);
+    }
+    /**
+     * checking that the number of artefacts above x
+     * is equal to the size of the collection IN THE DEFINED STORAGE MEDIUM
+     * @param s
+     * @param c
+     * @param x
+     * @return
+     */
+    private static boolean collectionCanBeCompletedXTimes(Storage s, Collection c, int x){
+        return s.Artefacts().stream().filter(a -> c.getArtefacts().contains(a.title))
+                .mapToInt(a -> a.quantity > x ? 1 : 0).reduce(0, Integer::sum)
+                == c.getArtefacts().size();
+    }
+
+    private static boolean collectionCanBeCompletedXTimesAndModifyDataMethod
+            (Storage s, CombinationItem cmb){
+        if (collectionCanBeCompletedXTimes(s, findCollectionByTitle(cmb.collection), cmb.x)) {
+            modifyTemporaryDataSet(s, cmb);
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean comboListCanBeCompleted(Context p, ArrayList<CombinationItem> comboList){
+        Storage copy = loadAppData(p.getApplicationContext());
+        return comboList.stream().allMatch(cmb ->
+                collectionCanBeCompletedXTimesAndModifyDataMethod(copy, cmb));
+    }
+
+    private static void modifyTemporaryDataSet(Storage dataSet, CombinationItem combo){
+        Collection c = findCollectionByTitle(combo.collection);
+        dataSet.Artefacts().stream().filter(a -> c.getArtefacts().contains(a.title))
+                .forEach(a -> a.quantity -= combo.x);
+    }
+
+    private static ArrayList<ArrayList<CombinationItem>> getAllAvailableCombinations(){
+
+        ArrayList<ArrayList<CombinationItem>> masterList = new ArrayList<>();
+
+        for (Collection col1 : storage.Collections()){
+
+            int a = 0;
+            do a++; while (collectionCanBeCompletedXTimes(col1, a));
+            a--;
+
+            for (int i = a; i > 0; i--){
+
+                ArrayList<CombinationItem> combination = new ArrayList<>();
+                CombinationItem combo1 = new CombinationItem(col1.title, a);
+                combination.add(combo1);
+            }
+        }
+
+        return masterList;
+    }
+
+    /**
+     * getting the count of collections that have not been marked as completed once before
+     * @return
+     */
     public static long getUniqueCollectionRemainingCount(){
         return storage.Collections().stream().filter(c -> !c.isCompleted()).count();
     }
-
     /**
      * returns 1 for each collection that we have enough artefacts to complete.
      * sums up the count of each collection that we have enough artefacts for.
      * @return
      */
     public static int getUniqueCollectibleCount(){
-        return storage.Collections().stream().mapToInt(         //mapping c int value
-                c -> storage.Artefacts().stream().filter(       //streaming all the artefacts
-                        a -> c.getArtefacts().contains(a.title) //collecting a list of matching artefacts on this collection
-                ).mapToInt(                                     //mapping a int value
-                        a -> a.quantity > 0 ? 1 : 0             //if a.quantity > 0 ? map this a = 1 : map this a = 0
-                ).reduce(0, Integer::sum)                    //sum each matching a value, mapped a values
-                == c.getArtefacts().size() ? 1 : 0              //if (the sum of matching a's) is equal to (the (collections artefact list) count) ? map this c = 1 : map this c = 0;
-        ).reduce(0, Integer::sum);                           //sum up matching c values, mapped c values
+        return storage.Collections().stream().mapToInt(c -> collectionCanBeCompleted(c) ? 1 : 0).reduce(0, Integer::sum);
     }
-
+    /**
+     * summing the quantity owned of each artefact
+     * @return
+     */
     public static int getOwnedArtefactCountValue(){
         return storage.Artefacts().stream().map(a -> a.quantity).reduce(0, Integer::sum);
     }
-
+    /**
+     * count the material qty required for each artefacts multiplied by how many of
+     * that artefact is owned
+     * @return
+     */
     public static int getMaterialRequirementsAsIfArtefactsAllBroken(){
         return storage.Artefacts().stream().mapToInt(                                           //mapping a int value
                 artefact -> artefact.getRequirements().stream().mapToInt(                       //streaming all requirements on the artefact
@@ -356,7 +441,7 @@ public class UtilityMethods {
         ).reduce(0, Integer::sum);
     }
 
-    public static int 
+
 
     //</editor-fold>
 
