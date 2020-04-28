@@ -13,7 +13,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
-        android:text="@string/main_menu_materail_names_button"
+        android:text="@string/main_menu_material_names_button"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
         android:textSize="24sp"
