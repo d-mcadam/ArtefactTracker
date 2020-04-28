@@ -172,7 +172,7 @@ public class Storage implements Serializable {
                     rndNum(1000)
             );
             if (new Random().nextBoolean())
-                collection.hasBeenCompleted();
+                collection.completeSubmission();
             int r = rndNum(2, 4);
             for (int j = 0; j < r; j++)
                 collection.addArtefact(artefacts.get(rndNum(artefacts.size())).title);
