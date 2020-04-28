@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -88,6 +89,22 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Co
             OptionalInt maxCollectCount = identifiedArtefacts.stream().mapToInt(artefact -> artefact.quantity).min();
             titleSb.append(" (").append(maxCollectCount.isPresent() ? maxCollectCount.getAsInt() : 0).append(")");
             dialog.setTitle(titleSb.toString().trim());
+
+            if (maxCollectCount.isPresent() && maxCollectCount.getAsInt() > 0)
+                dialog.setNeutralButton("Collect", (dialogInterface, i) -> {
+                    AlertDialog.Builder submitDialog = new AlertDialog.Builder(context);
+                    submitDialog.setTitle("Submit " + collection.title + "?");
+                    submitDialog.setMessage(sb.toString().trim());
+
+                    submitDialog.setPositiveButton("YES", (dialogInterface1, i1) -> {
+
+                        collection.completeSubmission();
+                        Toast.makeText(context, "Collected Reward", Toast.LENGTH_SHORT).show();
+
+                    }).setNegativeButton("NO", null).create().show();
+                });
+
+
             dialog.setView(dialogView).setPositiveButton("OK", null).create().show();
         });
 
