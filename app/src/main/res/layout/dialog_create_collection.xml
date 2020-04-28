@@ -27,7 +27,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/add_artefact_category_label"
-        android:textColor="@color/colourBlackText"
+        android:textColor="@color/colour_black_text"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextHolderCreateCollectionName" />
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/create_collection_holder_reward_label"
-        android:textColor="@color/colourBlackText"
+        android:textColor="@color/colour_black_text"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/textView19"
         app:layout_constraintTop_toBottomOf="@+id/spinnerHolderCreateCollectionArtefactCategory" />
@@ -50,7 +50,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/create_collection_holder_collector_label"
-        android:textColor="@color/colourBlackText"
+        android:textColor="@color/colour_black_text"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -4,8 +4,8 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
-    <color name="colourRecyclerViewSelectedGrey">#BEBEBE</color>
-    <color name="colourBlackText">#000000</color>
-    <color name="colourButtonDisabledText">#969696</color>
-    <color name="colourGreenHighlight">#00FF00</color>
+    <color name="colour_recycler_view_selected_grey">#BEBEBE</color>
+    <color name="colour_black_text">#000000</color>
+    <color name="colour_button_disabled_text">#969696</color>
+    <color name="colour_green_highlight">#00FF00</color>
 </resources>

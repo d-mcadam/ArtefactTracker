@@ -1,7 +1,6 @@
 package com.example.artefacttrackerapp.utilities;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,7 +61,7 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.Materi
         else if (selectedPosition == -1)
             ((MaterialOptionsActivity)context).SetSelectedMaterialDetails(null);
 
-        holder.itemView.setBackgroundColor(holder.viewIsSelected ? context.getResources().getColor(R.color.colourRecyclerViewSelectedGrey, null) : Color.TRANSPARENT);
+        holder.itemView.setBackgroundColor(holder.viewIsSelected ? context.getResources().getColor(R.color.colour_recycler_view_selected_grey, null) : Color.TRANSPARENT);
         holder.detailView.setText(context.getString(R.string.place_holder_title, material.title));
         holder.qtyView.setText(context.getString(R.string.place_holder_quantity, material.quantity));
 
