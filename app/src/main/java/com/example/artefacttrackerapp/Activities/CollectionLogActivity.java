@@ -108,9 +108,9 @@ public class CollectionLogActivity extends AppCompatActivity {
         String rewardSearch = rewardSpinner.getSelectedItem().toString();
 
         storage.Collections().stream().filter(c ->
-            (searchText.length() < 1 || c.title.contains(searchText)) &&
-            (categorySpinner.getSelectedItemPosition() < 1 || c.category.equals(categorySearch)) &&
-            (rewardSpinner.getSelectedItemPosition() < 1 || c.reward.equals(rewardSearch))
+            (searchText.length() < 1 || c.title.toLowerCase().contains(searchText.toLowerCase())) &&
+            (categorySpinner.getSelectedItemPosition() < 1 || c.category.toLowerCase().equals(categorySearch.toLowerCase())) &&
+            (rewardSpinner.getSelectedItemPosition() < 1 || c.reward.toLowerCase().equals(rewardSearch.toLowerCase()))
         ).forEach(displayList::add);
 
         ((CollectionAdapter)collectionAdapter).selectedPosition = -1;

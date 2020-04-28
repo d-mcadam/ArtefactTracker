@@ -79,7 +79,7 @@ public class CollectorActivity extends AppCompatActivity {
         String searchText = collectorSearchField.getText().toString().trim();
 
         storage.Collectors().stream().filter(c ->
-                searchText.length() < 1 || c.name.contains(searchText) || c.location.contains(searchText)
+                searchText.length() < 1 || c.name.toLowerCase().contains(searchText.toLowerCase()) || c.location.toLowerCase().contains(searchText.toLowerCase())
         ).forEach(displayList::add);
 
         ((CollectorAdapter)collectorAdapter).selectedPosition = -1;
