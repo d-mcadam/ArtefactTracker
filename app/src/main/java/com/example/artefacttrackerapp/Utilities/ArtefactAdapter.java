@@ -66,7 +66,7 @@ public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.Artefa
             View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_material_requirement_display, null, false);
             final TextView textView = dialogView.findViewById(R.id.textViewHolderMatReqDisplayMultiline);
 
-            ArrayList<Integer> identifiedMaterials = new ArrayList<>();
+            ArrayList<Integer> identifiedMaterialCounts = new ArrayList<>();
             StringBuilder sb = new StringBuilder();
             artefact.getRequirements().forEach(mr -> {
                 sb.append(mr.title).append(", x").append(mr.quantity);
@@ -76,14 +76,14 @@ public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.Artefa
                         .forEach(m -> {
                             if (m.quantity >= mr.quantity)
                                 sb.append(" \u2713");
-                            identifiedMaterials.add(m.quantity / mr.quantity);
+                            identifiedMaterialCounts.add(m.quantity / mr.quantity);
                         });
 
                 sb.append("\n");
             });
             textView.setText(sb.toString().trim());
 
-            OptionalInt maxCollectCount = identifiedMaterials.stream().mapToInt(i -> i).min();
+            OptionalInt maxCollectCount = identifiedMaterialCounts.stream().mapToInt(i -> i).min();
             titleSb.append(" (").append(maxCollectCount.isPresent() ? maxCollectCount.getAsInt() : 0).append(")");
             dialog.setTitle(titleSb.toString().trim());
             dialog.setView(dialogView).setPositiveButton("OK", null).create().show();
