@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.artefacttrackerapp.activities.InventoryManagementActivity;
 import com.example.artefacttrackerapp.data.GameArtefact;
 import com.example.artefacttrackerapp.R;
-import com.example.artefacttrackerapp.data.Material;
 
 import java.util.ArrayList;
 import java.util.OptionalInt;
@@ -116,7 +115,7 @@ public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.Artefa
 
         holder.viewIsSelected = selectedPosition == thisViewsPosition;
 
-        holder.itemView.setBackgroundColor(holder.viewIsSelected ? context.getColor(R.color.colourRecyclerViewSelectedGrey) : Color.TRANSPARENT);
+        holder.itemView.setBackgroundColor(holder.viewIsSelected ? context.getColor(R.color.colour_recycler_view_selected_grey) : Color.TRANSPARENT);
 
         holder.detailView.setText(context.getString(R.string.place_holder_title, artefact.title));
         holder.qtyView.setText(context.getString(R.string.place_holder_quantity, artefact.quantity));

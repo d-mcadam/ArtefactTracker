@@ -166,7 +166,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         String searchText = materialSearchField.getText().toString().trim();
 
         storage.Materials().stream().filter(m ->
-                searchText.length() < 1 || m.title.contains(searchText)
+                searchText.length() < 1 || m.title.toLowerCase().contains(searchText.toLowerCase())
         ).forEach(displayList::add);
 
         ((MaterialAdapter)materialAdapter).selectedPosition = -1;

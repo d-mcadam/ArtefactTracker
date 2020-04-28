@@ -100,8 +100,8 @@ public class InventoryManagementActivity extends AppCompatActivity {
         String categorySearch = categorySpinner.getSelectedItem().toString();
 
         storage.Artefacts().stream().filter(a ->
-            (textSearch.length() < 1 || a.title.contains(textSearch)) &&
-            (categorySpinner.getSelectedItemPosition() < 1 || a.category.equals(categorySearch))
+            (textSearch.length() < 1 || a.title.toLowerCase().contains(textSearch.toLowerCase())) &&
+            (categorySpinner.getSelectedItemPosition() < 1 || a.category.toLowerCase().equals(categorySearch.toLowerCase()))
         ).forEach(displayList::add);
 
         ((ArtefactAdapter)artefactAdapter).selectedPosition = -1;

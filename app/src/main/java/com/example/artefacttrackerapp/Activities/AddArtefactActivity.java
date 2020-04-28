@@ -114,7 +114,7 @@ public class AddArtefactActivity extends AppCompatActivity {
         boolean uniqueTitle = storage.Artefacts().stream().noneMatch(a -> a.title.equals(artefactNameField.getText().toString().trim()));
 
         saveButton.setClickable(nameFilledIn && requirementEntered && uniqueTitle);
-        saveButton.setTextColor(getColor(saveButton.isClickable() ? R.color.colourBlackText : R.color.colourButtonDisabledText));
+        saveButton.setTextColor(getColor(saveButton.isClickable() ? R.color.colour_black_text : R.color.colour_button_disabled_text));
 
         String tooltipText = !nameFilledIn ? "Name needs to be entered" : !requirementEntered ? "Needs at least one requirement entry." : !uniqueTitle ? "Title must be unique" : "Save artefact";
         saveButton.setTooltipText(tooltipText);
