@@ -363,7 +363,7 @@ public class Storage implements Serializable {
         ga8.addRequirement(new MaterialRequirement("Samite silk", 16));
         ga8.addRequirement(new MaterialRequirement("Vellum", 16));
 
-        GameArtefact ga9 = new GameArtefact("'Incite fear' spell scroll", "Zaros");
+        GameArtefact ga9 = new GameArtefact("'Incite Fear' spell scroll", "Zaros");
         ga9.addRequirement(new MaterialRequirement("Vellum", 20));
         ga9.addRequirement(new MaterialRequirement("Ancient vis", 18));
         ga9.addRequirement(new MaterialRequirement("Blood of Orcus", 18));
@@ -395,7 +395,7 @@ public class Storage implements Serializable {
         ga14.addRequirement(new MaterialRequirement("Tyrian purple", 74 ));
         ga14.addRequirement(new MaterialRequirement("Zarosian insignia", 20 ));
 
-        GameArtefact ga15 = new GameArtefact("'Smoke cloud' spell scroll", "Zaros");
+        GameArtefact ga15 = new GameArtefact("'Smoke Cloud' spell scroll", "Zaros");
         ga15.addRequirement(new MaterialRequirement("Vellum", 40));
         ga15.addRequirement(new MaterialRequirement("Ancient vis", 20));
         ga15.addRequirement(new MaterialRequirement("Blood of Orcus", 32));
@@ -504,7 +504,7 @@ public class Storage implements Serializable {
         ga37.addRequirement(new MaterialRequirement("Leather scraps", 24 ));
         ga37.addRequirement(new MaterialRequirement("Cobalt blue", 22 ));
 
-        GameArtefact ga38 = new GameArtefact("Chaos elemental trophy", "Zamorak");
+        GameArtefact ga38 = new GameArtefact("Chaos Elemental trophy", "Zamorak");
         ga38.addRequirement(new MaterialRequirement("Chaotic brimstone", 52 ));
         ga38.addRequirement(new MaterialRequirement("White oak", 30 ));
         ga38.addRequirement(new MaterialRequirement("Hellfire metal", 30 ));
@@ -528,7 +528,7 @@ public class Storage implements Serializable {
         ga42.addRequirement(new MaterialRequirement("White oak", 20 ));
         ga42.addRequirement(new MaterialRequirement("Wings of War", 28 ));
 
-        GameArtefact ga43 = new GameArtefact("Decorate vase", "Saradomin");
+        GameArtefact ga43 = new GameArtefact("Decorative vase", "Saradomin");
         ga43.addRequirement(new MaterialRequirement("White marble", 36 ));
         ga43.addRequirement(new MaterialRequirement("Cobalt blue", 30 ));
 
@@ -563,7 +563,7 @@ public class Storage implements Serializable {
         ga50.addRequirement(new MaterialRequirement("Everlight silvthril", 70 ));
         ga50.addRequirement(new MaterialRequirement("White oak", 62 ));
 
-        GameArtefact ga51 = new GameArtefact("Drogokishuun hook swords", "Bandos");
+        GameArtefact ga51 = new GameArtefact("Drogokishuun hook sword", "Bandos");
         ga51.addRequirement(new MaterialRequirement("Warforged bronze", 44 ));
         ga51.addRequirement(new MaterialRequirement("Malachite green", 36 ));
         ga51.addRequirement(new MaterialRequirement("Fossilised bone", 32 ));
@@ -680,7 +680,7 @@ public class Storage implements Serializable {
         ga75.addRequirement(new MaterialRequirement("Third Age iron", 34));
         ga75.addRequirement(new MaterialRequirement("Eye of Dagon", 20));
 
-        GameArtefact ga76 = new GameArtefact("Idithuun horn rings", "Bandos");
+        GameArtefact ga76 = new GameArtefact("Idithuun horn ring", "Bandos");
         ga76.addRequirement(new MaterialRequirement("Yu'biusk clay", 40 ));
         ga76.addRequirement(new MaterialRequirement("Vulcanised rubber", 44));
 
@@ -730,7 +730,7 @@ public class Storage implements Serializable {
         ga86.addRequirement(new MaterialRequirement("Animal furs", 28 ));
         ga86.addRequirement(new MaterialRequirement("Orthenglass", 26 ));
 
-        GameArtefact ga87 = new GameArtefact("Legatus maximus figurine", "Zaros");
+        GameArtefact ga87 = new GameArtefact("Legatus Maximus figurine", "Zaros");
         ga87.addRequirement(new MaterialRequirement("Goldrune", 8 ));
         ga87.addRequirement(new MaterialRequirement("Zarosian insignia", 14  ));
         ga87.addRequirement(new MaterialRequirement("Ancient vis", 10  ));
@@ -779,7 +779,7 @@ public class Storage implements Serializable {
         ga96.addRequirement(new MaterialRequirement("Blood of Orcus", 26  ));
         ga96.addRequirement(new MaterialRequirement("Ancient vis", 30  ));
 
-        GameArtefact ga97 = new GameArtefact("Night owl flying goggles", "Armadyl");
+        GameArtefact ga97 = new GameArtefact("Night owl flight goggles", "Armadyl");
         ga97.addRequirement(new MaterialRequirement("Armadylean yellow", 44 ));
         ga97.addRequirement(new MaterialRequirement("Leather scraps", 40  ));
         ga97.addRequirement(new MaterialRequirement("Orthenglass", 30  ));
@@ -789,7 +789,7 @@ public class Storage implements Serializable {
         ga98.addRequirement(new MaterialRequirement("Wings of War", 36  ));
         ga98.addRequirement(new MaterialRequirement("White oak", 30  ));
 
-        GameArtefact ga99 = new GameArtefact("Ogre kyzaj axe", "Bandos");
+        GameArtefact ga99 = new GameArtefact("Ogre Kyzaj axe", "Bandos");
         ga99.addRequirement(new MaterialRequirement("Warforged bronze", 28 ));
         ga99.addRequirement(new MaterialRequirement("Mark of the Kyzaj", 20  ));
         ga99.addRequirement(new MaterialRequirement("Fossilised bone", 24  ));
@@ -838,7 +838,7 @@ public class Storage implements Serializable {
         ga108.addRequirement(new MaterialRequirement("Zarosian insignia", 20  ));
         ga108.addRequirement(new MaterialRequirement("Goldrune", 32  ));
 
-        GameArtefact ga109 = new GameArtefact("Pontifex maximus figurine", "Zaros");
+        GameArtefact ga109 = new GameArtefact("Pontifex Maximus figurine", "Zaros");
         ga109.addRequirement(new MaterialRequirement("Ancient vis", 24 ));
         ga109.addRequirement(new MaterialRequirement("Zarosian insignia", 16  ));
         ga109.addRequirement(new MaterialRequirement("Goldrune", 28  ));
@@ -916,7 +916,7 @@ public class Storage implements Serializable {
         ga124.addRequirement(new MaterialRequirement("Star of Saradomin", 24  ));
         ga124.addRequirement(new MaterialRequirement("Goldrune", 26  ));
 
-        GameArtefact ga125 = new GameArtefact("Saragorgak star crowns", "Bandos");
+        GameArtefact ga125 = new GameArtefact("Saragorgak star crown", "Bandos");
         ga125.addRequirement(new MaterialRequirement("Warforged bronze", 44 ));
         ga125.addRequirement(new MaterialRequirement("Third Age iron", 34  ));
         ga125.addRequirement(new MaterialRequirement("Star of Saradomin", 20  ));
@@ -1017,7 +1017,7 @@ public class Storage implements Serializable {
         ga146.addRequirement(new MaterialRequirement("Yu'biusk clay", 38  ));
         ga146.addRequirement(new MaterialRequirement("Vulcanised rubber", 36  ));
 
-        GameArtefact ga147 = new GameArtefact("Zarosian effigy", "Zaros");
+        GameArtefact ga147 = new GameArtefact("Zaros effigy", "Zaros");
         ga147.addRequirement(new MaterialRequirement("Samite silk", 8 ));
         ga147.addRequirement(new MaterialRequirement("White oak", 10  ));
         ga147.addRequirement(new MaterialRequirement("Zarosian insignia", 12  ));
