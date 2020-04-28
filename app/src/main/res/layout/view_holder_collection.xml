@@ -16,7 +16,7 @@
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/imageButtonHolderViewCollection"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageButtonSubmitCollection"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
@@ -47,4 +47,12 @@
         app:layout_constraintEnd_toStartOf="@+id/imageButtonHolderViewCollection"
         app:layout_constraintStart_toEndOf="@+id/textViewHolderCollectionName"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButtonSubmitCollection"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/checkbox_on_background" />
 </androidx.constraintlayout.widget.ConstraintLayout>
