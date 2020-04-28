@@ -48,6 +48,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Co
     public void onBindViewHolder(@NonNull CollectionViewHolder holder, int thisViewsPosition) {
 
         final Collection collection = collectionDataSet.get(thisViewsPosition);
+        final String rewardValue = collection.rewardQuantity + " " + collection.reward;
 
         holder.itemView.setOnClickListener(view -> {
             notifyDataSetChanged();
@@ -63,7 +64,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Co
         holder.viewButton.setOnClickListener(view -> {
             AlertDialog.Builder dialog = new AlertDialog.Builder(context);
             StringBuilder titleSb = new StringBuilder();
-            titleSb.append("Artefact list for ").append(collection.title).append(collection.isCompleted() ? " \u2713" : "");
+            titleSb.append(collection.title).append(collection.isCompleted() ? " \u2713" : "");
 
             View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_collection_display, null, false);
             final TextView textView = dialogView.findViewById(R.id.textViewHolderCollectionDisplayMultiline);
@@ -87,7 +88,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Co
             textView.setText(sb.toString().trim());
 
             OptionalInt maxCollectCount = identifiedArtefacts.stream().mapToInt(artefact -> artefact.quantity).min();
-            titleSb.append(" (").append(maxCollectCount.isPresent() ? maxCollectCount.getAsInt() : 0).append(")");
+            titleSb.append(" (").append(maxCollectCount.isPresent() ? maxCollectCount.getAsInt() : 0).append(")").append(" (").append(rewardValue).append(")");
             dialog.setTitle(titleSb.toString().trim());
 
             if (maxCollectCount.isPresent() && maxCollectCount.getAsInt() > 0)
@@ -99,6 +100,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Co
                     submitDialog.setPositiveButton("YES", (dialogInterface1, i1) -> {
 
                         collection.completeSubmission();
+                        notifyDataSetChanged();
                         Toast.makeText(context, "Collected Reward", Toast.LENGTH_SHORT).show();
 
                     }).setNegativeButton("NO", null).create().show();
@@ -117,7 +119,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Co
 
         holder.itemView.setBackgroundColor(holder.viewIsSelected ? context.getColor(R.color.colour_recycler_view_selected_grey) : Color.TRANSPARENT);
 
-        holder.detailView.setText(context.getString(R.string.place_holder_title, collection.title));
+        holder.detailView.setText(context.getString(R.string.place_holder_title, (collection.isCompleted() ? "\u2713 " : "") + collection.title + "\n" + collection.rewardQuantity + " " + collection.reward));
         holder.qtyView.setText(context.getString(R.string.place_holder_quantity, collection.getArtefacts().size()));
 
         holder.viewButton.setVisibility(holder.viewIsSelected ? View.VISIBLE : View.INVISIBLE);
