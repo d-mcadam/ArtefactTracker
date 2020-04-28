@@ -272,6 +272,8 @@ public class UtilityMethods {
 
     //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="App Data">
+
     public static boolean USING_LIVE_DATA = true;
 
     public static void saveDatabaseOption(Context context){
@@ -317,5 +319,45 @@ public class UtilityMethods {
             } catch (Exception e) { e.printStackTrace(); }}//planned to throw exceptions under certain circumstances
         return new Storage(context);
     }
+
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Calculate activity display values">
+
+    public static long getUniqueCollectionRemainingCount(){
+        return storage.Collections().stream().filter(c -> !c.isCompleted()).count();
+    }
+
+    /**
+     * returns 1 for each collection that we have enough artefacts to complete.
+     * sums up the count of each collection that we have enough artefacts for.
+     * @return
+     */
+    public static int getUniqueCollectibleCount(){
+        return storage.Collections().stream().mapToInt(         //mapping c int value
+                c -> storage.Artefacts().stream().filter(       //streaming all the artefacts
+                        a -> c.getArtefacts().contains(a.title) //collecting a list of matching artefacts on this collection
+                ).mapToInt(                                     //mapping a int value
+                        a -> a.quantity > 0 ? 1 : 0             //if a.quantity > 0 ? map this a = 1 : map this a = 0
+                ).reduce(0, Integer::sum)                    //sum each matching a value, mapped a values
+                == c.getArtefacts().size() ? 1 : 0              //if (the sum of matching a's) is equal to (the (collections artefact list) count) ? map this c = 1 : map this c = 0;
+        ).reduce(0, Integer::sum);                           //sum up matching c values, mapped c values
+    }
+
+    public static int getOwnedArtefactCountValue(){
+        return storage.Artefacts().stream().map(a -> a.quantity).reduce(0, Integer::sum);
+    }
+
+    public static int getMaterialRequirementsAsIfArtefactsAllBroken(){
+        return storage.Artefacts().stream().mapToInt(                                           //mapping a int value
+                artefact -> artefact.getRequirements().stream().mapToInt(                       //streaming all requirements on the artefact
+                        materialRequirement -> artefact.quantity * materialRequirement.quantity //mapping matReq = owned artefact quantity * mat req quantity
+                ).reduce(0, Integer::sum)
+        ).reduce(0, Integer::sum);
+    }
+
+    public static int 
+
+    //</editor-fold>
 
 }
