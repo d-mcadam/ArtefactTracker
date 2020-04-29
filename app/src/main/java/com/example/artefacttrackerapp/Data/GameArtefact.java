@@ -29,4 +29,15 @@ public class GameArtefact implements Serializable {
     }
     public boolean deleteRequirement(MaterialRequirement materialRequirement){ return this.requirements.remove(materialRequirement); }
 
+    @Override
+    public Object clone(){
+        GameArtefact clone = null;
+        try {
+            clone = (GameArtefact)super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
+        return clone;
+    }
+
 }

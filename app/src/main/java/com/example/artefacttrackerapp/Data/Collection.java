@@ -56,4 +56,15 @@ public class Collection implements Serializable {
     }
     public boolean deleteArtefact(String artefact){ return this.artefacts.remove(artefact); }
 
+    @Override
+    public Object clone(){
+        Collection clone = null;
+        try{
+            clone = (Collection)super.clone();
+        }catch (CloneNotSupportedException e){
+            throw new RuntimeException(e);
+        }
+        return clone;
+    }
+
 }
