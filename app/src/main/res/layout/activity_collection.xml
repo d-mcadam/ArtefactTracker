@@ -28,56 +28,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewLogsUniqueRemaining" />
 
     <TextView
-        android:id="@+id/textViewLogsCronotesCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/default_zero"
-        android:textColor="@android:color/background_dark"
-        app:layout_constraintEnd_toEndOf="@+id/textViewLogsAvailableCount"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLogsAvailableCount" />
-
-    <TextView
-        android:id="@+id/textViewLogsTetraCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/default_zero"
-        android:textColor="@android:color/background_dark"
-        app:layout_constraintEnd_toEndOf="@+id/textViewLogsCronotesCount"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLogsCronotesCount" />
-
-    <TextView
-        android:id="@+id/textViewLogsPylonCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/default_zero"
-        android:textColor="@android:color/background_dark"
-        app:layout_constraintEnd_toEndOf="@+id/textViewLogsTetraCount"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLogsTetraCount" />
-
-    <TextView
-        android:id="@+id/textViewLogsBlueprintCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/default_zero"
-        android:textColor="@android:color/background_dark"
-        app:layout_constraintEnd_toEndOf="@+id/textViewLogsGlassCount"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLogsGlassCount" />
-
-    <TextView
-        android:id="@+id/textViewLogsGlassCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/default_zero"
-        android:textColor="@android:color/background_dark"
-        app:layout_constraintEnd_toEndOf="@+id/textViewLogsPylonCount"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLogsPylonCount" />
-
-    <TextView
         android:id="@+id/textView23"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -97,56 +47,6 @@
         android:textColor="@android:color/background_dark"
         app:layout_constraintEnd_toEndOf="@+id/textView23"
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
-
-    <TextView
-        android:id="@+id/textView25"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/main_menu_cronotes_label"
-        android:textColor="@android:color/background_dark"
-        app:layout_constraintEnd_toEndOf="@+id/textView24"
-        app:layout_constraintTop_toBottomOf="@+id/textView24" />
-
-    <TextView
-        android:id="@+id/textView26"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/main_menu_tetra_label"
-        android:textColor="@android:color/background_dark"
-        app:layout_constraintEnd_toEndOf="@+id/textView25"
-        app:layout_constraintTop_toBottomOf="@+id/textView25" />
-
-    <TextView
-        android:id="@+id/textView27"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/collection_log_pylon_label"
-        android:textColor="@android:color/background_dark"
-        app:layout_constraintEnd_toEndOf="@+id/textView25"
-        app:layout_constraintTop_toBottomOf="@+id/textView26" />
-
-    <TextView
-        android:id="@+id/textView28"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/collection_log_blueprint_label"
-        android:textColor="@android:color/background_dark"
-        app:layout_constraintEnd_toEndOf="@+id/textView29"
-        app:layout_constraintTop_toBottomOf="@+id/textView29" />
-
-    <TextView
-        android:id="@+id/textView29"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/collection_log_glass_label"
-        android:textColor="@android:color/background_dark"
-        app:layout_constraintEnd_toEndOf="@+id/textView27"
-        app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
     <Button
         android:id="@+id/buttonCollectors"

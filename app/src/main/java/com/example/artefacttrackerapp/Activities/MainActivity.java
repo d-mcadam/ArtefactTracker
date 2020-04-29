@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView uniqueRemainingCollectionsField;
     private TextView availableCollectibleField;
-    private TextView availableCronotesField;
-    private TextView availableTetraField;
     private TextView materialTypeCountField;
     private TextView ownedArtefactCountField;
     private TextView requiredMaterialCountField;
@@ -48,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
         uniqueRemainingCollectionsField = findViewById(R.id.textViewUniqueRemaining);
         availableCollectibleField = findViewById(R.id.textViewAvailableCount);
-//        availableCronotesField = findViewById(R.id.textViewCronotesCount);
-//        availableTetraField = findViewById(R.id.textViewTetraCount);
         materialTypeCountField = findViewById(R.id.textViewMaterialTypeCount);
         ownedArtefactCountField = findViewById(R.id.textViewArtefactCount);
         requiredMaterialCountField = findViewById(R.id.textViewMaterialRequirementCount);
