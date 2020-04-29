@@ -34,6 +34,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Optional;
 import java.util.Random;
 
@@ -324,13 +325,16 @@ public class UtilityMethods {
 
     //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="Calculate activity display values">
-
+    public static GameArtefact findGameArtefactByTitle(String title) {
+        Optional<GameArtefact> artefact = storage.Artefacts().stream().filter(a -> a.title.equals(title)).findFirst();
+        return artefact.orElse(null);
+    }
     private static Collection findCollectionByTitle(String title){
         Optional<Collection> collection = storage.Collections().stream().filter(c -> c.title.equals(title)).findFirst();
         return collection.orElse(null);
     }
 
+    //<editor-fold defaultstate="collapsed" desc="Calculate activity display values">
     /**
      * checking that the number of artefacts above 0
      * is equal to the size of the collection
@@ -373,8 +377,10 @@ public class UtilityMethods {
         return false;
     }
 
-    private static boolean comboListCanBeCompleted(Context p, ArrayList<CombinationItem> comboList){
-        Storage copy = loadAppData(p.getApplicationContext());
+    private static boolean comboListCanBeCompleted(ArrayList<Collection> collections, ArrayList<GameArtefact> artefacts, ArrayList<CombinationItem> comboList){
+        Storage copy = new Storage(null);
+        copy.SET_ARTEFACTS_USE_WITH_CAUTION(artefacts);
+        copy.SET_COLLECTIONS_USE_WITH_CAUTION(collections);
         return comboList.stream().allMatch(cmb ->
                 collectionCanBeCompletedXTimesAndModifyDataMethod(copy, cmb));
     }
@@ -385,24 +391,43 @@ public class UtilityMethods {
                 .forEach(a -> a.quantity -= combo.x);
     }
 
-    private static ArrayList<ArrayList<CombinationItem>> getAllAvailableCombinations(){
+    private static CombinationItem getMaximum(ArrayList<Collection> collections, ArrayList<GameArtefact> artefacts, Collection collection){
+        Storage copy = new Storage(null);
+        copy.SET_ARTEFACTS_USE_WITH_CAUTION(artefacts);
+        copy.SET_COLLECTIONS_USE_WITH_CAUTION(collections);
 
-        ArrayList<ArrayList<CombinationItem>> masterList = new ArrayList<>();
+        int x = 0;
+        while (collectionCanBeCompletedXTimes(copy, collection, x + 1)) x++;
 
-        for (Collection col1 : storage.Collections()){
+        return new CombinationItem(collection.title, x);
+    }
 
-            int a = 0;
-            do a++; while (collectionCanBeCompletedXTimes(col1, a));
-            a--;
+    private static ArrayList<ArrayList<CombinationItem>> getAllAvailableCombinations() {
 
-            for (int i = a; i > 0; i--){
+        //create deep copies of the original data set
+        ArrayList<Collection> collectionsCopy = new ArrayList<>();
+        ArrayList<GameArtefact> artefactsCopy = new ArrayList<>();
+        storage.Collections().stream().filter(UtilityMethods::collectionCanBeCompleted)
+                .forEach(c -> collectionsCopy.add((Collection)c.clone()));
+        collectionsCopy.forEach(c -> c.getArtefacts()
+                .forEach(a -> artefactsCopy.add((GameArtefact)findGameArtefactByTitle(a).clone())));
 
-                ArrayList<CombinationItem> combination = new ArrayList<>();
-                CombinationItem combo1 = new CombinationItem(col1.title, a);
-                combination.add(combo1);
-            }
+        for(int i = 0; i < collectionsCopy.size(); i++){
+            ArrayList<CombinationItem> comboList = new ArrayList<>();
+            Collection c = collectionsCopy.get(i);
+
+            int x = 0;
+            do{
+                x++;
+                int d = 0;
+            }while(comboListCanBeCompleted(collectionsCopy, artefactsCopy, comboList));
+
         }
 
+        //declare a master list of combinations
+        ArrayList<ArrayList<CombinationItem>> masterList = new ArrayList<>();
+
+        //return the master list of combinations that can be completed.
         return masterList;
     }
 

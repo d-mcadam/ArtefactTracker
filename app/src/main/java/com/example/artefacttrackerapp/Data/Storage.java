@@ -22,7 +22,8 @@ public class Storage implements Serializable {
 
     public Storage(Context context){
         this.context = context;
-        this.cRes = this.context.getResources();
+        if (this.context != null)
+            this.cRes = this.context.getResources();
 
         this.artefacts = new ArrayList<>();
         this.collectors = new ArrayList<>();
@@ -37,6 +38,15 @@ public class Storage implements Serializable {
             createLiveData();
         }
     }
+
+//    public void SET_ARTEFACTS_USE_WITH_CAUTION(ArrayList<GameArtefact> artefacts){
+//        this.artefacts = artefacts;
+//    }
+//
+//    public void SET_COLLECTIONS_USE_WITH_CAUTION(ArrayList<Collection> collections){
+//        this.collections = collections;
+//    }
+
 
     //<editor-fold defaultstate="collapsed" desc="Game Artefacts">
     private final ArrayList<GameArtefact> artefacts;
@@ -1544,8 +1554,4 @@ public class Storage implements Serializable {
 
     //</editor-fold>
 
-    public GameArtefact findGameArtefactByTitle(String title) {
-        Optional<GameArtefact> artefact = artefacts.stream().filter(a -> a.title.equals(title)).findFirst();
-        return artefact.orElse(null);
-    }
 }
