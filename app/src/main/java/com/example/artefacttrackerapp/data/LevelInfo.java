@@ -17,6 +17,8 @@ public class LevelInfo {
         this.level = level;
     }
 
+    public String Title(){ return this.rubbleName; }
+
     public ArrayList<String> getArtefacts(){ return this.artefacts; }
     public boolean addArtefact(String artefact){
         if (this.artefacts.add(artefact)){
