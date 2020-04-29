@@ -334,7 +334,7 @@ public class UtilityMethods {
         return collection.orElse(null);
     }
 
-    //<editor-fold defaultstate="collapsed" desc="Calculate activity display values">
+    //<editor-fold defaultstate="collapsed" desc="complex algorithm that doesnt work yet">
     /**
      * checking that the number of artefacts above 0
      * is equal to the size of the collection
@@ -379,8 +379,8 @@ public class UtilityMethods {
 
     private static boolean comboListCanBeCompleted(ArrayList<Collection> collections, ArrayList<GameArtefact> artefacts, ArrayList<CombinationItem> comboList){
         Storage copy = new Storage(null);
-        copy.SET_ARTEFACTS_USE_WITH_CAUTION(artefacts);
-        copy.SET_COLLECTIONS_USE_WITH_CAUTION(collections);
+//        copy.SET_ARTEFACTS_USE_WITH_CAUTION(artefacts);
+//        copy.SET_COLLECTIONS_USE_WITH_CAUTION(collections);
         return comboList.stream().allMatch(cmb ->
                 collectionCanBeCompletedXTimesAndModifyDataMethod(copy, cmb));
     }
@@ -393,8 +393,8 @@ public class UtilityMethods {
 
     private static CombinationItem getMaximum(ArrayList<Collection> collections, ArrayList<GameArtefact> artefacts, Collection collection){
         Storage copy = new Storage(null);
-        copy.SET_ARTEFACTS_USE_WITH_CAUTION(artefacts);
-        copy.SET_COLLECTIONS_USE_WITH_CAUTION(collections);
+//        copy.SET_ARTEFACTS_USE_WITH_CAUTION(artefacts);
+//        copy.SET_COLLECTIONS_USE_WITH_CAUTION(collections);
 
         int x = 0;
         while (collectionCanBeCompletedXTimes(copy, collection, x + 1)) x++;
@@ -430,7 +430,9 @@ public class UtilityMethods {
         //return the master list of combinations that can be completed.
         return masterList;
     }
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Calculate activity display values">
     /**
      * getting the count of collections that have not been marked as completed once before
      * @return
@@ -465,9 +467,6 @@ public class UtilityMethods {
                 ).reduce(0, Integer::sum)
         ).reduce(0, Integer::sum);
     }
-
-
-
     //</editor-fold>
 
 }
