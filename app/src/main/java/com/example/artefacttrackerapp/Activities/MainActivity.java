@@ -97,4 +97,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void OpenLevelData(View v){
+        Intent intent = new Intent(getBaseContext(), LevelActivity.class);
+        startActivity(intent);
+    }
+
 }
