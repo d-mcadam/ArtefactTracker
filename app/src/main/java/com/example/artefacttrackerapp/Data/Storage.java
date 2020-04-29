@@ -29,6 +29,7 @@ public class Storage implements Serializable {
         this.collectors = new ArrayList<>();
         this.collections = new ArrayList<>();
         this.materials = new ArrayList<>();
+        this.levelInfos = new ArrayList<>();
 
         if (!USING_LIVE_DATA) {
             Toast.makeText(context, "Creating test data", Toast.LENGTH_SHORT).show();
@@ -110,6 +111,21 @@ public class Storage implements Serializable {
     }
     public boolean DeleteMaterial(Material material){
         return this.materials.remove(material);
+    }
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Materials">
+    private final ArrayList<LevelInfo> levelInfos;
+    public ArrayList<LevelInfo> LevelInfos(){ return this.levelInfos; }
+    public boolean AddLevelInfo(LevelInfo levelInfo){
+        if (this.levelInfos.add(levelInfo)){
+            Collections.sort(this.levelInfos, Comparator.comparing(LevelInfo::Title));
+            return true;
+        }
+        return false;
+    }
+    public boolean DeleteLevelInfo(LevelInfo levelInfo){
+        return this.levelInfos.remove(levelInfo);
     }
     //</editor-fold>
 
