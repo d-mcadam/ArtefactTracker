@@ -71,8 +71,8 @@ public class LevelDataAdapter extends RecyclerView.Adapter<LevelDataAdapter.Leve
         holder.itemView.setBackgroundColor(holder.viewIsSelected ? context.getColor(R.color.colour_recycler_view_selected_grey) : Color.TRANSPARENT);
 
         holder.nameView.setText(context.getString(R.string.place_holder_title, item.rubbleName));
-        holder.nameView.setText(context.getString(R.string.place_holder_quantity, item.level));
-        holder.nameView.setText(context.getString(R.string.place_holder_title, item.digsite));
+        holder.levelView.setText(context.getString(R.string.place_holder_quantity, item.level));
+        holder.siteView.setText(item.digsite);
 
         holder.deleteButton.setVisibility(holder.viewIsSelected ? View.VISIBLE : View.INVISIBLE);
         holder.deleteButton.setClickable(holder.viewIsSelected);

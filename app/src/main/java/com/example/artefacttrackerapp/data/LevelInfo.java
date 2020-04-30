@@ -18,6 +18,8 @@ public class LevelInfo {
     }
 
     public String Title(){ return this.rubbleName; }
+    public int Level(){ return this.level; }
+    public String Site(){ return this.digsite; }
 
     public ArrayList<String> getArtefacts(){ return this.artefacts; }
     public boolean addArtefact(String artefact){
