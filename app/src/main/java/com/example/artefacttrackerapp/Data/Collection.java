@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import static com.example.artefacttrackerapp.activities.MainActivity.storage;
+
 public class Collection implements Serializable {
 
     public final String title;
@@ -34,7 +36,13 @@ public class Collection implements Serializable {
     }
 
     public boolean isCompleted(){ return this.completedOnce; }
-    public void hasBeenCompleted(){ this.completedOnce = true; }
+    public void completeSubmission(){
+        this.artefacts.forEach(
+            a -> storage.Artefacts().stream()
+                .filter(ga -> ga.title.equals(a))
+                .forEach(ga -> ga.quantity--));
+        this.completedOnce = true;
+    }
 
     public final String Title(){ return this.title; }
 
@@ -47,5 +55,16 @@ public class Collection implements Serializable {
         return false;
     }
     public boolean deleteArtefact(String artefact){ return this.artefacts.remove(artefact); }
+
+    @Override
+    public Object clone(){
+        Collection clone = null;
+        try{
+            clone = (Collection)super.clone();
+        }catch (CloneNotSupportedException e){
+            throw new RuntimeException(e);
+        }
+        return clone;
+    }
 
 }

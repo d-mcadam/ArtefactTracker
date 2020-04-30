@@ -7,12 +7,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.artefacttrackerapp.data.Collection;
 import com.example.artefacttrackerapp.data.GameArtefact;
 import com.example.artefacttrackerapp.data.MaterialRequirement;
 import com.example.artefacttrackerapp.data.Storage;
 import com.example.artefacttrackerapp.R;
 
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.USING_LIVE_DATA;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.getMaterialRequirementsAsIfArtefactsAllBroken;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.getOwnedArtefactCountValue;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.getUniqueCollectibleCount;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.getUniqueCollectionRemainingCount;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.loadAppData;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.loadDatabaseOptions;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.saveAppData;
@@ -23,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView uniqueRemainingCollectionsField;
     private TextView availableCollectibleField;
-    private TextView availableCronotesField;
-    private TextView availableTetraField;
     private TextView materialTypeCountField;
     private TextView ownedArtefactCountField;
     private TextView requiredMaterialCountField;
@@ -41,10 +44,8 @@ public class MainActivity extends AppCompatActivity {
         USING_LIVE_DATA = loadDatabaseOptions(getBaseContext());
         storage = loadAppData(getBaseContext());
 
-//        uniqueRemainingCollectionsField = findViewById(R.id.textViewUniqueRemaining);
-//        availableCollectibleField = findViewById(R.id.textViewAvailableCount);
-//        availableCronotesField = findViewById(R.id.textViewCronotesCount);
-//        availableTetraField = findViewById(R.id.textViewTetraCount);
+        uniqueRemainingCollectionsField = findViewById(R.id.textViewUniqueRemaining);
+        availableCollectibleField = findViewById(R.id.textViewAvailableCount);
         materialTypeCountField = findViewById(R.id.textViewMaterialTypeCount);
         ownedArtefactCountField = findViewById(R.id.textViewArtefactCount);
         requiredMaterialCountField = findViewById(R.id.textViewMaterialRequirementCount);
@@ -67,14 +68,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void RefreshData(){
 
-        materialTypeCountField.setText(String.valueOf(storage.Materials().size()));
-        ownedArtefactCountField.setText(String.valueOf(storage.Artefacts().stream().map(a -> a.quantity).reduce(0, Integer::sum)));
+        uniqueRemainingCollectionsField.setText(String.valueOf(getUniqueCollectionRemainingCount()));
+        availableCollectibleField.setText(String.valueOf(getUniqueCollectibleCount()));
 
-        int total = 0;
-        for (GameArtefact artefact : storage.Artefacts())
-            for (MaterialRequirement req : artefact.getRequirements())
-                total += req.quantity * artefact.quantity;
-        requiredMaterialCountField.setText(String.valueOf(total));
+        materialTypeCountField.setText(String.valueOf(storage.Materials().size()));
+        ownedArtefactCountField.setText(String.valueOf(getOwnedArtefactCountValue()));
+        requiredMaterialCountField.setText(String.valueOf(getMaterialRequirementsAsIfArtefactsAllBroken()));
 
     }
 
@@ -95,6 +94,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void OpenCollectionManagement(View v){
         Intent intent = new Intent(getBaseContext(), CollectionActivity.class);
+        startActivity(intent);
+    }
+
+    public void OpenLevelData(View v){
+        Intent intent = new Intent(getBaseContext(), LevelActivity.class);
         startActivity(intent);
     }
 

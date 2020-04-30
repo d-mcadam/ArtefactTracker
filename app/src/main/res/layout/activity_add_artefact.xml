@@ -40,6 +40,7 @@
         android:layout_marginTop="2dp"
         android:text="@string/add_artefact_category_label"
         android:textColor="@android:color/background_dark"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/spinnerAddArtefactCategory" />
 

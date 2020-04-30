@@ -22,12 +22,14 @@ public class Storage implements Serializable {
 
     public Storage(Context context){
         this.context = context;
-        this.cRes = this.context.getResources();
+        if (this.context != null)
+            this.cRes = this.context.getResources();
 
         this.artefacts = new ArrayList<>();
         this.collectors = new ArrayList<>();
         this.collections = new ArrayList<>();
         this.materials = new ArrayList<>();
+        this.levelInfos = new ArrayList<>();
 
         if (!USING_LIVE_DATA) {
             Toast.makeText(context, "Creating test data", Toast.LENGTH_SHORT).show();
@@ -37,6 +39,15 @@ public class Storage implements Serializable {
             createLiveData();
         }
     }
+
+//    public void SET_ARTEFACTS_USE_WITH_CAUTION(ArrayList<GameArtefact> artefacts){
+//        this.artefacts = artefacts;
+//    }
+//
+//    public void SET_COLLECTIONS_USE_WITH_CAUTION(ArrayList<Collection> collections){
+//        this.collections = collections;
+//    }
+
 
     //<editor-fold defaultstate="collapsed" desc="Game Artefacts">
     private final ArrayList<GameArtefact> artefacts;
@@ -100,6 +111,21 @@ public class Storage implements Serializable {
     }
     public boolean DeleteMaterial(Material material){
         return this.materials.remove(material);
+    }
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Materials">
+    private final ArrayList<LevelInfo> levelInfos;
+    public ArrayList<LevelInfo> LevelInfos(){ return this.levelInfos; }
+    public boolean AddLevelInfo(LevelInfo levelInfo){
+        if (this.levelInfos.add(levelInfo)){
+            Collections.sort(this.levelInfos, Comparator.comparing(LevelInfo::Level));
+            return true;
+        }
+        return false;
+    }
+    public boolean DeleteLevelInfo(LevelInfo levelInfo){
+        return this.levelInfos.remove(levelInfo);
     }
     //</editor-fold>
 
@@ -172,7 +198,7 @@ public class Storage implements Serializable {
                     rndNum(1000)
             );
             if (new Random().nextBoolean())
-                collection.hasBeenCompleted();
+                collection.completeSubmission();
             int r = rndNum(2, 4);
             for (int j = 0; j < r; j++)
                 collection.addArtefact(artefacts.get(rndNum(artefacts.size())).title);
@@ -1540,13 +1566,295 @@ public class Storage implements Serializable {
             add(c51);
         }};
         liveCollectionArray.forEach(this::AddCollection);
+
+        //<editor-fold defaultstate="collapsed" desc="level objects">
+
+        LevelInfo i1 = new LevelInfo("Venator remains", "Kharid-et", 5);
+        i1.addArtefact("Venator light crossbow");
+        i1.addArtefact("Venator dagger");
+
+        LevelInfo i2 = new LevelInfo("Legionary remains", "Kharid-et", 12);
+        i2.addArtefact("Legionary gladius");
+        i2.addArtefact("Primis Elementis standard");
+        i2.addArtefact("Legionary square shield");
+
+        LevelInfo i3 = new LevelInfo("Castra debris", "Kharid-et", 17);
+        i3.addArtefact("Zaros effigy");
+        i3.addArtefact("Zarosian training dummy");
+
+        LevelInfo i4 = new LevelInfo("Lodge bar storage", "Infernal source", 20);
+        i4.addArtefact("Opulent wine goblet");
+        i4.addArtefact("Hookah pipe");
+
+        LevelInfo i5 = new LevelInfo("Lodge art storage", "Infernal source", 24);
+        i5.addArtefact("Crest of Dagon");
+        i5.addArtefact("'Disorder' painting");
+
+        LevelInfo i6 = new LevelInfo("Administratum debris", "Kharid-et", 25);
+        i6.addArtefact("'Solem in Umbra' painting");
+        i6.addArtefact("Legatus Maximus figurine");
+
+        LevelInfo i7 = new LevelInfo("Cultist footlocker", "Infernal source", 29);
+        i7.addArtefact("Greater demon mask");
+        i7.addArtefact("Imp mask");
+        i7.addArtefact("Lesser demon mask");
+
+        LevelInfo i8 = new LevelInfo("Sacrificial altar", "Infernal source", 36);
+        i8.addArtefact("Order of Dis robes");
+        i8.addArtefact("Ritual dagger");
+
+        LevelInfo i9 = new LevelInfo("Prodromoi remains", "Everlight", 42);
+        i9.addArtefact("Hallowed lantern");
+        i9.addArtefact("'Frying pan'");
+
+        LevelInfo i10 = new LevelInfo("Dis dungeon debris", "Infernal source", 45);
+        i10.addArtefact("Branding iron");
+        i10.addArtefact("Manacles");
+
+        LevelInfo i11 = new LevelInfo("Praesidio remains", "Kharid-et", 47);
+        i11.addArtefact("Ancient timepiece");
+        i11.addArtefact("Legatus pendant");
+
+        LevelInfo i12 = new LevelInfo("Monoceros remains", "Everlight", 48);
+        i12.addArtefact("Ceremonial unicorn ornament");
+        i12.addArtefact("Ceremonial unicorn saddle");
+
+        LevelInfo i13 = new LevelInfo("Amphitheatre debris", "Everlight", 51);
+        i13.addArtefact("Everlight harp");
+        i13.addArtefact("Everlight trumpet");
+        i13.addArtefact("Everlight violin");
+
+        LevelInfo i14 = new LevelInfo("Ceramics studio debris", "Everlight", 56);
+        i14.addArtefact("Folded-arm figurine (female)");
+        i14.addArtefact("Folded-arm figurine (male)");
+
+        LevelInfo i15 = new LevelInfo("Carcerem debris", "Kharid-et", 58);
+        i15.addArtefact("Pontifex signet ring");
+        i15.addArtefact("'Incite Fear' spell scroll");
+
+        LevelInfo i16 = new LevelInfo("Stadio debris", "Everlight", 61);
+        i16.addArtefact("Dominion discus");
+        i16.addArtefact("Dominion javelin");
+        i16.addArtefact("Dominion pelte shield");
+
+        LevelInfo i17 = new LevelInfo("Infernal art", "Infernal source", 65);
+        i17.addArtefact("'Lust' metal sculpture");
+        i17.addArtefact("'The Lake of Fire' painting");
+
+        LevelInfo i18 = new LevelInfo("Shakroth remains", "Infernal source", 68);
+        i18.addArtefact("Chaos star");
+        i18.addArtefact("Spiked dog collar");
+
+        LevelInfo i19 = new LevelInfo("Dominion games podium", "Everlight", 69);
+        i19.addArtefact("Silver Dominion medal");
+        i19.addArtefact("Bronze Dominion medal");
+        i19.addArtefact("Dominion torch");
+
+        LevelInfo i20 = new LevelInfo("Ikovian memorial", "Stormguard Citadel", 70);
+        i20.addArtefact("Ikovian gerege");
+        i20.addArtefact("Toy glider");
+        i20.addArtefact("Toy war golem");
+
+        LevelInfo i21 = new LevelInfo("Oikos studio debris", "Everlight", 72);
+        i21.addArtefact("Decorate vase");
+        i21.addArtefact("Patera bowl");
+        i21.addArtefact("Kantharos cup");
+
+        LevelInfo i22 = new LevelInfo("Kharid-et chapel debris", "Kharid-et", 74);
+        i22.addArtefact("Ceremonial mace");
+        i22.addArtefact("'Consensus ad Idem' painting");
+        i22.addArtefact("Pontifex Maximus figurine");
+
+        LevelInfo i23 = new LevelInfo("Keshik ger", "Stormguard Citadel", 76);
+        i23.addArtefact("Avian song-egg player");
+        i23.addArtefact("Keshik drum");
+        i23.addArtefact("Morin khuur");
+
+        LevelInfo i24 = new LevelInfo("Gladiatorial goblin remains", "Warforge", 76);
+        i24.addArtefact("Ekeleshuun blinder mask");
+        i24.addArtefact("Narogoshuun 'Hob-da-Gob' ball");
+        i24.addArtefact("Rekeshuun war tether");
+
+        LevelInfo i25 = new LevelInfo("Animal trophies", "Infernal source", 81);
+        i25.addArtefact("Lion trophy");
+        i25.addArtefact("Larupia trophy");
+        i25.addArtefact("She-wolf trophy");
+
+        LevelInfo i26 = new LevelInfo("Pontifex remains", "Kharid-et", 81);
+        i26.addArtefact("Pontifex censer");
+        i26.addArtefact("Pontifex crozier");
+        i26.addArtefact("Pontifex mitre");
+
+        LevelInfo i27 = new LevelInfo("Tailory debris", "Stormguard Citadel", 81);
+        i27.addArtefact("Aviansie dreamcoat");
+        i27.addArtefact("Ceremonial plume");
+        i27.addArtefact("Peacocking parasol");
+
+        LevelInfo i28 = new LevelInfo("Crucible stands debris", "Warforge", 81);
+        i28.addArtefact("Ork cleaver sword");
+        i28.addArtefact("Ogre kyzaj axe");
+
+        LevelInfo i29 = new LevelInfo("Goblin dorm debris", "Warforge", 83);
+        i29.addArtefact("Thorobshuun battle standard");
+        i29.addArtefact("Yurkolgokh stink grenade");
+
+        LevelInfo i30 = new LevelInfo("Oikos fishing hut remains", "Everlight", 84);
+        i30.addArtefact("Dominarian device");
+        i30.addArtefact("Fishing trident");
+
+        LevelInfo i31 = new LevelInfo("Weapons research debris", "Stormguard Citadel", 85);
+        i31.addArtefact("Hawkeye lens multi-vision scope");
+        i31.addArtefact("Talon-3 razor wing");
+
+        LevelInfo i32 = new LevelInfo("Orcus altar", "Kharid-et", 86);
+        i32.addArtefact("'Exsanguinate' spell scroll");
+        i32.addArtefact("Necromantic focus");
+
+        LevelInfo i33 = new LevelInfo("Dis overspill", "Infernal source", 89);
+        i33.addArtefact("Pandemonium' tapestry");
+        i33.addArtefact("'Torment' metal sculpture");
+
+        LevelInfo i34 = new LevelInfo("Big high war god shrine", "Warforge", 89);
+        i34.addArtefact("High priest crozier");
+        i34.addArtefact("High priest mitre");
+        i34.addArtefact("High priest orb");
+
+        LevelInfo i35 = new LevelInfo("Gravitron research debris", "Stormguard Citadel", 91);
+        i35.addArtefact("Prototype gravimeter");
+        i35.addArtefact("Songbird recorder");
+
+        LevelInfo i36 = new LevelInfo("Acropolis debris", "Everlight", 92);
+        i36.addArtefact("Amphora");
+        i36.addArtefact("Rod of Asclepius");
+
+        LevelInfo i37 = new LevelInfo("Armarium debris", "Kharid-et", 93);
+        i37.addArtefact("Zarosian ewer");
+        i37.addArtefact("Zarosian stein");
+
+        LevelInfo i38 = new LevelInfo("Yubiusk animal pen", "Warforge", 94);
+        i38.addArtefact("Beastkeeper helm");
+        i38.addArtefact("'Nosorog!' sculpture");
+        i38.addArtefact("Idithuun horn rings");
+
+        LevelInfo i39 = new LevelInfo("Keshik tower debris", "Stormguard Citadel", 95);
+        i39.addArtefact("Stormguard gerege");
+        i39.addArtefact("Dayguard shield");
+
+        LevelInfo i40 = new LevelInfo("Goblin trainee remains", "Warforge", 97);
+        i40.addArtefact("Garagorshuun anchor");
+        i40.addArtefact("Ourg megahitter");
+        i40.addArtefact("Ourg tower/goblin cower shield");
+
+        LevelInfo i41 = new LevelInfo("Byzroth remains", "Infernal source", 98);
+        i41.addArtefact("Hellfire haladie");
+        i41.addArtefact("Hellfire katar");
+        i41.addArtefact("Hellfire zaghnal");
+
+        LevelInfo i42 = new LevelInfo("Destroyed golem", "Stormguard Citadel", 98);
+        i42.addArtefact("Golem heart");
+        i42.addArtefact("Golem instruction");
+
+        LevelInfo i43 = new LevelInfo("Icyene weapon rack", "Everlight", 100);
+        i43.addArtefact("Kopis dagger");
+        i43.addArtefact("Xiphos short sword");
+
+        LevelInfo i44 = new LevelInfo("Culinarum debris", "Kharid-et", 100);
+        i44.addArtefact("Vigorem vial");
+        i44.addArtefact("'Smoke Cloud' spell scroll");
+
+        LevelInfo i45 = new LevelInfo("Kyzaj champions boudoir", "Warforge", 100);
+        i45.addArtefact("Dorgeshuun spear");
+        i45.addArtefact("'Forged in War' sculpture");
+
+        LevelInfo i46 = new LevelInfo("Keshik weapon rack", "Stormguard Citadel", 103);
+        i46.addArtefact("Blackfire lance");
+        i46.addArtefact("Nightguard shield");
+
+        LevelInfo i47 = new LevelInfo("Hellfire forge", "Infernal source", 104);
+        i47.addArtefact("'Possession' metal sculpture");
+        i47.addArtefact("Trishula");
+        i47.addArtefact("Tsutsaroth piercing");
+
+        LevelInfo i48 = new LevelInfo("Warforge scrap pile", "Warforge", 104);
+        i48.addArtefact("Huzamogaarb chaos crown");
+        i48.addArtefact("Saragorgak star crowns");
+
+        LevelInfo i49 = new LevelInfo("Stockpiled art", "Everlight", 105);
+        i49.addArtefact("'The Pride of Padosan' painting");
+        i49.addArtefact("'Hallowed Be the Everlight' painting");
+        i49.addArtefact("'The Lord of Light' painting");
+
+        LevelInfo i50 = new LevelInfo("Ancient magick munitions", "Kharid-et", 107);
+        i50.addArtefact("Ancient magic tablet");
+        i50.addArtefact("Portable phylactery");
+        i50.addArtefact("'Animate Dead' spell scroll");
+
+        LevelInfo i51 = new LevelInfo("Bibliotheke debris", "Everlight", 109);
+        i51.addArtefact("'The Enlightened Soul' scroll");
+        i51.addArtefact("'The Eudoxian Elements' tablet");
+
+        LevelInfo i52 = new LevelInfo("Chthonian trophies", "Infernal source", 110);
+        i52.addArtefact("Virius trophy");
+        i52.addArtefact("Chaos elemental trophy");
+
+        LevelInfo i53 = new LevelInfo("Warforge weapon rack", "Warforge", 110);
+        i53.addArtefact("Hobgoblin mansticker");
+        i53.addArtefact("Drogokishuun hook swords");
+
+        LevelInfo i54 = new LevelInfo("Flight research debris", "Stormguard Citadel", 111);
+        i54.addArtefact("Flat cap");
+        i54.addArtefact("Night owl flying goggles");
+
+        LevelInfo i55 = new LevelInfo("Aetherium forge", "Stormguard Citadel", 112);
+        i55.addArtefact("Prototype godbow");
+        i55.addArtefact("Prototype godstaff");
+        i55.addArtefact("Prototype godsword");
+
+        LevelInfo i56 = new LevelInfo("Praetorian remains", "Kharid-et", 114);
+        i56.addArtefact("Praetorian hood");
+        i56.addArtefact("Praetorian robes");
+        i56.addArtefact("Praetorian staff");
+
+        LevelInfo i57 = new LevelInfo("Bandos sanctum debris", "Warforge", 115);
+        i57.addArtefact("Kal-i-kran chieftain crown");
+        i57.addArtefact("Kal-i-kran mace");
+        i57.addArtefact("Kal-i-kran warhorn");
+
+        LevelInfo i58 = new LevelInfo("Tsutsaroth remains", "Infernal source", 116);
+        i58.addArtefact("Tsutsaroth helm");
+        i58.addArtefact("Tsutsaroth pauldron");
+        i58.addArtefact("Tsutsaroth urumi");
+
+        LevelInfo i59 = new LevelInfo("Optimatoi remains", "Everlight", 117);
+        i59.addArtefact("Kontos lance");
+        i59.addArtefact("Doru spear");
+
+        LevelInfo i60 = new LevelInfo("War table debris", "Kharid-et", 118);
+        i60.addArtefact("Ancient globe");
+        i60.addArtefact("Battle plans");
+        i60.addArtefact("'Prima Legio' painting");
+
+        LevelInfo i61 = new LevelInfo("Howl's workshop debris", "Stormguard Citadel", 118);
+        i61.addArtefact("Chuluu stone");
+        i61.addArtefact("Quintessence counter");
+        i61.addArtefact("Spherical astrolabe");
+
+        LevelInfo i62 = new LevelInfo("Makeshift pie oven", "Warforge", 119);
+        i62.addArtefact("Horogothgar cooking pot");
+        i62.addArtefact("'Da Boss Man' sculpture");
+
+        //</editor-fold>
+        ArrayList<LevelInfo> liveLevelArray = new ArrayList<LevelInfo>(){{
+            add(i1); add(i2); add(i3); add(i4); add(i5); add(i6); add(i7); add(i8); add(i9); add(i10);
+            add(i11); add(i12); add(i13); add(i14); add(i15); add(i16); add(i17); add(i18); add(i19); add(i20);
+            add(i21); add(i22); add(i23); add(i24); add(i25); add(i26); add(i27); add(i28); add(i29); add(i30);
+            add(i31); add(i32); add(i33); add(i34); add(i35); add(i36); add(i37); add(i38); add(i39); add(i40);
+            add(i41); add(i42); add(i43); add(i44); add(i45); add(i46); add(i47); add(i48); add(i49); add(i50);
+            add(i51);add(i52);add(i53);add(i54);add(i55);add(i56);add(i57);add(i58);add(i59);add(i60);add(i61);add(i62);
+        }};
+        liveLevelArray.forEach(this::AddLevelInfo);
     }
 
     //</editor-fold>
-
-    public GameArtefact findGameArtefactByTitle(String title){
-        Optional<GameArtefact> artefact = artefacts.stream().filter(a -> a.title.equals(title)).findFirst();
-        return artefact.orElse(null);
-    }
 
 }

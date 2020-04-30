@@ -5,10 +5,9 @@
     <string name="main_menu_material_names_button">Material Options</string>
     <string name="main_menu_inventory_button">Inventory Management</string>
     <string name="main_menu_collection_button">Collection Logs</string>
+    <string name="main_menu_level_data_button">Level Information</string>
     <string name="main_menu_unique_remaining_label">Unique collections remaining:</string>
     <string name="main_menu_available_label">Collections available:</string>
-    <string name="main_menu_cronotes_label">Cronotes available:</string>
-    <string name="main_menu_tetra_label">Tetra Pieces available:</string>
     <string name="main_menu_material_db">Materials in Database:</string>
     <string name="main_menu_artefact_db">Owned Artefacts:</string>
     <string name="main_menu_material_requirement">Materials for owned Artefacts:</string>
@@ -63,6 +62,14 @@
         <item>Robust glass</item>
         <item>Tetra pieces</item>
         <item>Stormguard blueprint fragments</item>
+    </string-array>
+    <string-array name="level_order">
+        <item>Level Asc</item>
+        <item>Level Desc</item>
+        <item>Rubble Asc</item>
+        <item>Rubble Desc</item>
+        <item>Site Asc</item>
+        <item>Site Desc</item>
     </string-array>
     <string name="runescape_artefact_tracker_mobile_app_data">RUNESCAPE_ARTEFACT_TRACKER_MOBILE_APP_DATA</string>
     <string name="runescape_artefact_tracker_database_option_data">RUNESCAPE_ARTEFACT_TRACKER_DATABASE_OPTION_DATA</string>

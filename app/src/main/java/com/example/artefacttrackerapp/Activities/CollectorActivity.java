@@ -21,6 +21,7 @@ import com.example.artefacttrackerapp.utilities.CollectorAdapter;
 import java.util.ArrayList;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.findGameArtefactByTitle;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.saveAppData;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.CreateCollectionDialogGenerator;
 
@@ -99,7 +100,7 @@ public class CollectorActivity extends AppCompatActivity {
             storage.Collections().stream()
                     .filter(c1 -> c1.title.equals(c))
                     .forEach(c1 -> {
-                        if (c1.getArtefacts().size() > 0 && c1.getArtefacts().stream().noneMatch(artefactTitle -> storage.findGameArtefactByTitle(artefactTitle).quantity < 1))
+                        if (c1.getArtefacts().size() > 0 && c1.getArtefacts().stream().noneMatch(artefactTitle -> findGameArtefactByTitle(artefactTitle).quantity < 1))
                             sb.append("\u2605 ");
 
                         sb.append(c);

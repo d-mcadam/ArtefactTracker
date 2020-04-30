@@ -10,26 +10,29 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activities.LevelActivity"
+            android:label="@string/main_menu_level_data_button"></activity>
+        <activity
             android:name=".activities.DatabaseOptionsActivity"
-            android:label="@string/main_menu_database_button"/>
+            android:label="@string/main_menu_database_button" />
         <activity
             android:name=".activities.CollectionLogActivity"
-            android:label="@string/collection_logs_collections_button"/>
+            android:label="@string/collection_logs_collections_button" />
         <activity
             android:name=".activities.CollectorActivity"
-            android:label="@string/collection_logs_collectors_button"/>
+            android:label="@string/collection_logs_collectors_button" />
         <activity
             android:name=".activities.CollectionActivity"
-            android:label="@string/main_menu_collection_button"/>
+            android:label="@string/main_menu_collection_button" />
         <activity
             android:name=".activities.MaterialOptionsActivity"
             android:label="@string/main_menu_material_names_button" />
         <activity
             android:name=".activities.AddArtefactActivity"
-            android:label="@string/add_artefact_title"/>
+            android:label="@string/add_artefact_title" />
         <activity
             android:name=".activities.InventoryManagementActivity"
-            android:label="@string/main_menu_inventory_button"/>
+            android:label="@string/main_menu_inventory_button" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

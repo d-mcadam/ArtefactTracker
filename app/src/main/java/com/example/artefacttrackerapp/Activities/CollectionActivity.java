@@ -5,13 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.artefacttrackerapp.R;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.getUniqueCollectibleCount;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.getUniqueCollectionRemainingCount;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.saveAppData;
 
 public class CollectionActivity extends AppCompatActivity {
+
+    private TextView uniqueRemainingCollectionsField;
+    private TextView availableCollectibleField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,13 +27,26 @@ public class CollectionActivity extends AppCompatActivity {
     }
 
     private void init(){
+        uniqueRemainingCollectionsField = findViewById(R.id.textViewLogsUniqueRemaining);
+        availableCollectibleField = findViewById(R.id.textViewLogsAvailableCount);
+        RefreshData();
+    }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        RefreshData();
     }
 
     @Override
     public void onPause(){
         saveAppData(this, storage);
         super.onPause();
+    }
+
+    private void RefreshData(){
+        uniqueRemainingCollectionsField.setText(String.valueOf(getUniqueCollectionRemainingCount()));
+        availableCollectibleField.setText(String.valueOf(getUniqueCollectibleCount()));
     }
 
     public void OpenCollectors(View v){

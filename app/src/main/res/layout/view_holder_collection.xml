@@ -10,13 +10,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginEnd="50dp"
         android:gravity="center_vertical|end"
         android:textColor="@color/colour_black_text"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/imageButtonHolderViewCollection"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageButtonSubmitCollection"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
@@ -47,4 +47,12 @@
         app:layout_constraintEnd_toStartOf="@+id/imageButtonHolderViewCollection"
         app:layout_constraintStart_toEndOf="@+id/textViewHolderCollectionName"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButtonSubmitCollection"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/checkbox_on_background" />
 </androidx.constraintlayout.widget.ConstraintLayout>
