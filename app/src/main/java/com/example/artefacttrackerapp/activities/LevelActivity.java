@@ -22,6 +22,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.saveAppData;
 
 public class LevelActivity extends AppCompatActivity {
 
@@ -69,6 +70,12 @@ public class LevelActivity extends AppCompatActivity {
 
         RefreshList();
 
+    }
+
+    @Override
+    public void onPause(){
+        saveAppData(this, storage);
+        super.onPause();
     }
 
     private void reorder(){

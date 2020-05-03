@@ -58,7 +58,14 @@ public class LevelDataAdapter extends RecyclerView.Adapter<LevelDataAdapter.Leve
         });
 
         holder.itemView.setOnLongClickListener(view -> {
-            return false;
+            AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+            dialog.setTitle(item.rubbleName + " (" + item.level + ")");
+
+            StringBuilder sb = new StringBuilder();
+            item.getArtefacts().forEach(string -> sb.append(string).append("\n"));
+            dialog.setMessage(sb.toString().trim());
+            dialog.setPositiveButton("OK", null).create().show();
+            return true;
         });
 
         holder.deleteButton.setOnClickListener(view -> {
