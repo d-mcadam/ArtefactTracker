@@ -6,6 +6,7 @@
     <string name="main_menu_inventory_button">Inventory Management</string>
     <string name="main_menu_collection_button">Collection Logs</string>
     <string name="main_menu_level_data_button">Level Information</string>
+    <string name="main_menu_analyse_button">Show Requirements</string>
     <string name="main_menu_unique_remaining_label">Unique collections remaining:</string>
     <string name="main_menu_available_label">Collections available:</string>
     <string name="main_menu_material_db">Materials in Database:</string>
