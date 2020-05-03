@@ -40,11 +40,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="100dp"
         android:text="@string/main_menu_unique_remaining_label"
         android:textColor="@android:color/background_dark"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLevelInformation" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonCollectLogs" />
 
     <TextView
         android:id="@+id/textView2"
@@ -157,12 +157,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
         android:onClick="OpenDatabaseOptions"
         android:text="@string/main_menu_database_button"
         android:textAllCaps="true"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -170,13 +168,11 @@
         android:id="@+id/buttonLevelInformation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:onClick="OpenLevelData"
         android:text="@string/main_menu_level_data_button"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCollectLogs" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
