@@ -341,8 +341,8 @@ public class UtilityMethods {
      * @param c
      * @return
      */
-    private static boolean collectionCanBeCompleted(Collection c){
-        return collectionCanBeCompletedXTimes(c, 0);
+    public static boolean collectionCanBeCompleted(Collection c){
+        return collectionCanBeCompletedXTimes(c, 1);
     }
     /**
      * checking that the number of artefacts above x
@@ -364,7 +364,7 @@ public class UtilityMethods {
      */
     private static boolean collectionCanBeCompletedXTimes(Storage s, Collection c, int x){
         return s.Artefacts().stream().filter(a -> c.getArtefacts().contains(a.title))
-                .mapToInt(a -> a.quantity > x ? 1 : 0).reduce(0, Integer::sum)
+                .mapToInt(a -> a.quantity >= x ? 1 : 0).reduce(0, Integer::sum)
                 == c.getArtefacts().size();
     }
 
