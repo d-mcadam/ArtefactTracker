@@ -102,4 +102,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void OpenRequirements(View v){
+        Intent intent = new Intent(getBaseContext(), AnalysisActivity.class);
+        startActivity(intent);
+    }
+
 }
