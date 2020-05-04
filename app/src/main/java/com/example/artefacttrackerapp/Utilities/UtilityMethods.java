@@ -325,19 +325,19 @@ public class UtilityMethods {
 
     //</editor-fold>
 
-    public static GameArtefact findGameArtefactByTitle(String title) {
-        Optional<GameArtefact> artefact = storage.Artefacts().stream().filter(a -> a.title.equals(title)).findFirst();
-        return artefact.orElse(null);
-    }
-    public static Material findMaterialByTitle(String title){
-        return storage.Materials().stream().filter(m -> m.title.equals(title)).findFirst().orElse(null);
-    }
-    private static Collection findCollectionByTitle(String title){
-        Optional<Collection> collection = storage.Collections().stream().filter(c -> c.title.equals(title)).findFirst();
-        return collection.orElse(null);
+    public static String artefactsLeftForUniqueCollections(String artefact){
+        int i = storage.Collections().stream().filter(c -> !c.isCompleted()).mapToInt(
+                c -> c.getArtefacts().stream().filter(a -> a.equals(artefact)).mapToInt(
+                        a -> 1
+                ).reduce(0, Integer::sum)
+        ).reduce(0, Integer::sum);
+        return i > 0 ? "(" + i + " left for open collections)" : "";
     }
 
-    //<editor-fold defaultstate="collapsed" desc="complex algorithm that doesnt work yet">
+    public static GameArtefact findGameArtefactByTitle(String title) { return storage.Artefacts().stream().filter(a -> a.title.equals(title)).findFirst().orElse(null); }
+    public static Material findMaterialByTitle(String title){ return storage.Materials().stream().filter(m -> m.title.equals(title)).findFirst().orElse(null); }
+    private static Collection findCollectionByTitle(String title){ return storage.Collections().stream().filter(c -> c.title.equals(title)).findFirst().orElse(null); }
+
     /**
      * checking that the number of artefacts above 0
      * is equal to the size of the collection
@@ -370,7 +370,6 @@ public class UtilityMethods {
                 .mapToInt(a -> a.quantity >= x ? 1 : 0).reduce(0, Integer::sum)
                 == c.getArtefacts().size();
     }
-    //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Calculate activity display values">
     /**

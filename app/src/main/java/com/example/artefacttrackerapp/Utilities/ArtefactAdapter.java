@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.OptionalInt;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.artefactsLeftForUniqueCollections;
 
 public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.ArtefactViewHolder> {
 
@@ -61,7 +62,7 @@ public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.Artefa
         holder.itemView.setOnLongClickListener(view -> {
             AlertDialog.Builder dialog = new AlertDialog.Builder(context);
             StringBuilder titleSb = new StringBuilder();
-            titleSb.append("Materials for ").append(artefact.title);
+            titleSb.append(artefact.title);
 
             View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_material_requirement_display, null, false);
             final TextView textView = dialogView.findViewById(R.id.textViewHolderMatReqDisplayMultiline);
@@ -70,7 +71,6 @@ public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.Artefa
             StringBuilder sb = new StringBuilder();
             artefact.getRequirements().forEach(mr -> {
                 sb.append(mr.title).append(", x").append(mr.quantity);
-
                 storage.Materials().stream()
                         .filter(m -> m.title.equals(mr.title))
                         .forEach(m -> {
@@ -78,13 +78,12 @@ public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.Artefa
                                 sb.append(" \u2713");
                             identifiedMaterialCounts.add(m.quantity / mr.quantity);
                         });
-
                 sb.append("\n");
             });
             textView.setText(sb.toString().trim());
 
             OptionalInt maxCollectCount = identifiedMaterialCounts.stream().mapToInt(i -> i).min();
-            titleSb.append(" (").append(maxCollectCount.isPresent() ? maxCollectCount.getAsInt() : 0).append(")");
+            titleSb.append(" (").append(maxCollectCount.isPresent() ? maxCollectCount.getAsInt() : 0).append(")\n").append(artefactsLeftForUniqueCollections(artefact.title));
             dialog.setTitle(titleSb.toString().trim());
             dialog.setView(dialogView).setPositiveButton("OK", null).create().show();
             return true;
