@@ -22,7 +22,7 @@ public class GenReqArtefactAdapter extends RecyclerView.Adapter<GenReqArtefactAd
 
     private final Context context;
     private final ArrayList<GameArtefact> displayList;
-    private final ArrayList<GameArtefact> selectedList = new ArrayList<>();
+    public final ArrayList<GameArtefact> selectedList = new ArrayList<>();
 
     public int selectedPosition = -1;
 

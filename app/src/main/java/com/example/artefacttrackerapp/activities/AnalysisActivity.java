@@ -1,5 +1,7 @@
 package com.example.artefacttrackerapp.activities;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -7,11 +9,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.example.artefacttrackerapp.R;
 import com.example.artefacttrackerapp.data.GameArtefact;
+import com.example.artefacttrackerapp.data.MaterialRequirement;
 import com.example.artefacttrackerapp.utilities.GenReqArtefactAdapter;
+import com.example.artefacttrackerapp.utilities.GenReqListAdapter;
 
 import java.util.ArrayList;
 
@@ -68,4 +75,35 @@ public class AnalysisActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
 
     }
+
+    public void GenerateList(View v){
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle("# Required (# left to get)");
+
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_generate_requirement_list, null);
+
+        final ArrayList<MaterialRequirement> requirements = new ArrayList<>();
+        ((GenReqArtefactAdapter)adapter).selectedList.forEach(a ->  {
+            outerloop:
+            for (MaterialRequirement r : a.getRequirements()) {
+                for (MaterialRequirement mr : requirements) {
+                    if (r.title.equals(mr.title)) {
+                        mr.quantity += r.quantity;
+                        continue outerloop;
+                    }
+                }
+                MaterialRequirement newReq = new MaterialRequirement(r.title, 0);
+                newReq.quantity += r.quantity;
+                requirements.add(newReq);
+            }
+        });
+
+        final RecyclerView recyclerView = dialogView.findViewById(R.id.recyclerViewHolderMaterialRequirementGeneration);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerView.Adapter adapter = new GenReqListAdapter(this, requirements);
+        recyclerView.setAdapter(adapter);
+
+        dialog.setView(dialogView).setPositiveButton("OK", null).create().show();
+    }
+
 }

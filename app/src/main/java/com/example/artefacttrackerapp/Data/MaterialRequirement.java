@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class MaterialRequirement implements Serializable {
 
     public final String title;
-    public final int quantity;
+    public int quantity;
 
     public MaterialRequirement(String title, int quantity){
         this.title = title;
