@@ -45,6 +45,7 @@ public class Collection implements Serializable {
     }
 
     public final String Title(){ return this.title; }
+    public final int Reward(){ return this.rewardQuantity; }
 
     public ArrayList<String> getArtefacts(){ return this.artefacts; }
     public boolean addArtefact(String artefact){

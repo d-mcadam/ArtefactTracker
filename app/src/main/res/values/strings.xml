@@ -72,6 +72,10 @@
         <item>Site Asc</item>
         <item>Site Desc</item>
     </string-array>
+    <string-array name="order">
+        <item>Ascending</item>
+        <item>Descending</item>
+    </string-array>
     <string name="runescape_artefact_tracker_mobile_app_data">RUNESCAPE_ARTEFACT_TRACKER_MOBILE_APP_DATA</string>
     <string name="runescape_artefact_tracker_database_option_data">RUNESCAPE_ARTEFACT_TRACKER_DATABASE_OPTION_DATA</string>
 </resources>

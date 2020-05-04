@@ -18,6 +18,8 @@ import com.example.artefacttrackerapp.data.Collection;
 import com.example.artefacttrackerapp.utilities.CollectionAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.saveAppData;
@@ -28,6 +30,7 @@ public class CollectionLogActivity extends AppCompatActivity {
     private EditText collectionSearchField;
     private Spinner categorySpinner;
     private Spinner rewardSpinner;
+    private Spinner orderSpinner;
 
     private RecyclerView.Adapter collectionAdapter;
 
@@ -80,6 +83,19 @@ public class CollectionLogActivity extends AppCompatActivity {
         });
         //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Reward spinner">
+        ArrayAdapter<CharSequence> orderAdapter = ArrayAdapter.createFromResource(this, R.array.order, android.R.layout.simple_spinner_item);
+        orderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        orderSpinner = findViewById(R.id.spinnerOrder);
+        orderSpinner.setAdapter(orderAdapter);
+        orderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) { reorderList(); }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) { reorderList(); }
+        });
+        //</editor-fold>
+
         //<editor-fold defaultstate="collapsed" desc="Recycler view components">
         RecyclerView collectionRecyclerView = findViewById(R.id.recyclerViewCollectionList);
 
@@ -99,6 +115,29 @@ public class CollectionLogActivity extends AppCompatActivity {
         super.onPause();
     }
 
+    public void reorderList(){
+        boolean asc = orderSpinner.getSelectedItemPosition() == 0;
+
+        switch (rewardSpinner.getSelectedItemPosition()){
+            case 0:
+                if (asc)
+                    Collections.sort(displayList, Comparator.comparing(Collection::Title));
+                else
+                    Collections.sort(displayList, Comparator.comparing(Collection::Title).reversed());
+                break;
+            case 1: case 2: case 3: case 4: case 5:
+                if (asc)
+                    Collections.sort(displayList, Comparator.comparing(Collection::Reward).reversed());
+                else
+                    Collections.sort(displayList, Comparator.comparing(Collection::Reward));
+                break;
+            default:
+                break;
+        }
+
+        collectionAdapter.notifyDataSetChanged();
+    }
+
     public void RefreshList(){
 
         displayList.clear();
@@ -115,6 +154,8 @@ public class CollectionLogActivity extends AppCompatActivity {
 
         ((CollectionAdapter)collectionAdapter).selectedPosition = -1;
         collectionAdapter.notifyDataSetChanged();
+
+        reorderList();
 
     }
 
