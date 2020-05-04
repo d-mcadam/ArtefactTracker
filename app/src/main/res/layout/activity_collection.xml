@@ -11,11 +11,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="42dp"
         android:text="@string/default_zero"
         android:textColor="@android:color/background_dark"
         app:layout_constraintStart_toEndOf="@+id/textView23"
-        app:layout_constraintTop_toBottomOf="@+id/buttonRewards" />
+        app:layout_constraintTop_toTopOf="@+id/textView23" />
 
     <TextView
         android:id="@+id/textViewLogsAvailableCount"
@@ -32,11 +31,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="24dp"
         android:text="@string/main_menu_unique_remaining_label"
         android:textColor="@android:color/background_dark"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonRewards" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonCollections" />
 
     <TextView
         android:id="@+id/textView24"
@@ -79,19 +78,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonCollectors" />
 
-    <Button
-        android:id="@+id/buttonRewards"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:onClick="OpenRewards"
-        android:text="@string/collection_logs_collectible_button"
-        android:textAllCaps="true"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCollections" />
 </androidx.constraintlayout.widget.ConstraintLayout>

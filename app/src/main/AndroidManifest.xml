@@ -10,8 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activities.AnalysisActivity"
+            android:label="@string/main_menu_analyse_button"/>
+        <activity
             android:name=".activities.LevelActivity"
-            android:label="@string/main_menu_level_data_button"></activity>
+            android:label="@string/main_menu_level_data_button" />
         <activity
             android:name=".activities.DatabaseOptionsActivity"
             android:label="@string/main_menu_database_button" />

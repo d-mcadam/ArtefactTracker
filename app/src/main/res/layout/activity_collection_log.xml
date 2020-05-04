@@ -27,6 +27,16 @@
         app:layout_constraintEnd_toEndOf="@+id/textView17"
         app:layout_constraintTop_toBottomOf="@+id/spinnerCollectionsArtefactCategory" />
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Sort Order:"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintEnd_toEndOf="@+id/textView17"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCollectionsRewardType" />
+
     <EditText
         android:id="@+id/editTextSearchCollections"
         android:layout_width="0dp"
@@ -75,7 +85,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCollectionsRewardType" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerOrder" />
 
     <Spinner
         android:id="@+id/spinnerCollectionsRewardType"
@@ -88,4 +98,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView18"
         app:layout_constraintTop_toBottomOf="@+id/spinnerCollectionsArtefactCategory" />
+
+    <Spinner
+        android:id="@+id/spinnerOrder"
+        android:layout_width="0dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="42dp"
+        android:background="#e6e6e6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView18"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCollectionsRewardType" />
 </androidx.constraintlayout.widget.ConstraintLayout>

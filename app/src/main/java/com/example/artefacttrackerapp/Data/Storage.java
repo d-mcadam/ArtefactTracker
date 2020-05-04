@@ -114,7 +114,7 @@ public class Storage implements Serializable {
     }
     //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="Materials">
+    //<editor-fold defaultstate="collapsed" desc="level info">
     private final ArrayList<LevelInfo> levelInfos;
     public ArrayList<LevelInfo> LevelInfos(){ return this.levelInfos; }
     public boolean AddLevelInfo(LevelInfo levelInfo){

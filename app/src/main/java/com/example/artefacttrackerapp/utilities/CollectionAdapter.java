@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.OptionalInt;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.collectionCanBeCompleted;
 
 public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.CollectionViewHolder> {
 
@@ -105,11 +106,15 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Co
 
         holder.itemView.setBackgroundColor(holder.viewIsSelected ? context.getColor(R.color.colour_recycler_view_selected_grey) : Color.TRANSPARENT);
 
+        boolean canComplete = collectionCanBeCompleted(collection);
+        int textColour = canComplete ? context.getColor(R.color.colour_green_highlight) : context.getColor(R.color.colour_black_text);
         holder.detailView.setText(context.getString(R.string.place_holder_title, (collection.isCompleted() ? "\u2713 " : "") + collection.title + "\n" + collection.rewardQuantity + " " + collection.reward));
+        holder.detailView.setTextColor(textColour);
         holder.qtyView.setText(context.getString(R.string.place_holder_quantity, collection.getArtefacts().size()));
+        holder.qtyView.setTextColor(textColour);
 
-        holder.submitButton.setVisibility(holder.viewIsSelected ? View.VISIBLE : View.INVISIBLE);
-        holder.submitButton.setClickable(holder.viewIsSelected);
+        holder.submitButton.setVisibility(holder.viewIsSelected & canComplete ? View.VISIBLE : View.INVISIBLE);
+        holder.submitButton.setClickable(holder.viewIsSelected & canComplete);
         holder.viewButton.setVisibility(holder.viewIsSelected ? View.VISIBLE : View.INVISIBLE);
         holder.viewButton.setClickable(holder.viewIsSelected);
         holder.deleteButton.setVisibility(holder.viewIsSelected ? View.VISIBLE : View.INVISIBLE);

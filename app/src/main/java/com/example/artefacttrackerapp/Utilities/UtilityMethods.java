@@ -325,24 +325,27 @@ public class UtilityMethods {
 
     //</editor-fold>
 
-    public static GameArtefact findGameArtefactByTitle(String title) {
-        Optional<GameArtefact> artefact = storage.Artefacts().stream().filter(a -> a.title.equals(title)).findFirst();
-        return artefact.orElse(null);
-    }
-    private static Collection findCollectionByTitle(String title){
-        Optional<Collection> collection = storage.Collections().stream().filter(c -> c.title.equals(title)).findFirst();
-        return collection.orElse(null);
+    public static String artefactsLeftForUniqueCollections(String artefact){
+        int i = storage.Collections().stream().filter(c -> !c.isCompleted()).mapToInt(
+                c -> c.getArtefacts().stream().filter(a -> a.equals(artefact)).mapToInt(
+                        a -> 1
+                ).reduce(0, Integer::sum)
+        ).reduce(0, Integer::sum);
+        return i > 0 ? "(" + i + " left for open collections)" : "";
     }
 
-    //<editor-fold defaultstate="collapsed" desc="complex algorithm that doesnt work yet">
+    public static GameArtefact findGameArtefactByTitle(String title) { return storage.Artefacts().stream().filter(a -> a.title.equals(title)).findFirst().orElse(null); }
+    public static Material findMaterialByTitle(String title){ return storage.Materials().stream().filter(m -> m.title.equals(title)).findFirst().orElse(null); }
+    private static Collection findCollectionByTitle(String title){ return storage.Collections().stream().filter(c -> c.title.equals(title)).findFirst().orElse(null); }
+
     /**
      * checking that the number of artefacts above 0
      * is equal to the size of the collection
      * @param c
      * @return
      */
-    private static boolean collectionCanBeCompleted(Collection c){
-        return collectionCanBeCompletedXTimes(c, 0);
+    public static boolean collectionCanBeCompleted(Collection c){
+        return collectionCanBeCompletedXTimes(c, 1);
     }
     /**
      * checking that the number of artefacts above x
@@ -364,73 +367,9 @@ public class UtilityMethods {
      */
     private static boolean collectionCanBeCompletedXTimes(Storage s, Collection c, int x){
         return s.Artefacts().stream().filter(a -> c.getArtefacts().contains(a.title))
-                .mapToInt(a -> a.quantity > x ? 1 : 0).reduce(0, Integer::sum)
+                .mapToInt(a -> a.quantity >= x ? 1 : 0).reduce(0, Integer::sum)
                 == c.getArtefacts().size();
     }
-
-    private static boolean collectionCanBeCompletedXTimesAndModifyDataMethod
-            (Storage s, CombinationItem cmb){
-        if (collectionCanBeCompletedXTimes(s, findCollectionByTitle(cmb.collection), cmb.x)) {
-            modifyTemporaryDataSet(s, cmb);
-            return true;
-        }
-        return false;
-    }
-
-    private static boolean comboListCanBeCompleted(ArrayList<Collection> collections, ArrayList<GameArtefact> artefacts, ArrayList<CombinationItem> comboList){
-        Storage copy = new Storage(null);
-//        copy.SET_ARTEFACTS_USE_WITH_CAUTION(artefacts);
-//        copy.SET_COLLECTIONS_USE_WITH_CAUTION(collections);
-        return comboList.stream().allMatch(cmb ->
-                collectionCanBeCompletedXTimesAndModifyDataMethod(copy, cmb));
-    }
-
-    private static void modifyTemporaryDataSet(Storage dataSet, CombinationItem combo){
-        Collection c = findCollectionByTitle(combo.collection);
-        dataSet.Artefacts().stream().filter(a -> c.getArtefacts().contains(a.title))
-                .forEach(a -> a.quantity -= combo.x);
-    }
-
-    private static CombinationItem getMaximum(ArrayList<Collection> collections, ArrayList<GameArtefact> artefacts, Collection collection){
-        Storage copy = new Storage(null);
-//        copy.SET_ARTEFACTS_USE_WITH_CAUTION(artefacts);
-//        copy.SET_COLLECTIONS_USE_WITH_CAUTION(collections);
-
-        int x = 0;
-        while (collectionCanBeCompletedXTimes(copy, collection, x + 1)) x++;
-
-        return new CombinationItem(collection.title, x);
-    }
-
-    private static ArrayList<ArrayList<CombinationItem>> getAllAvailableCombinations() {
-
-        //create deep copies of the original data set
-        ArrayList<Collection> collectionsCopy = new ArrayList<>();
-        ArrayList<GameArtefact> artefactsCopy = new ArrayList<>();
-        storage.Collections().stream().filter(UtilityMethods::collectionCanBeCompleted)
-                .forEach(c -> collectionsCopy.add((Collection)c.clone()));
-        collectionsCopy.forEach(c -> c.getArtefacts()
-                .forEach(a -> artefactsCopy.add((GameArtefact)findGameArtefactByTitle(a).clone())));
-
-        for(int i = 0; i < collectionsCopy.size(); i++){
-            ArrayList<CombinationItem> comboList = new ArrayList<>();
-            Collection c = collectionsCopy.get(i);
-
-            int x = 0;
-            do{
-                x++;
-                int d = 0;
-            }while(comboListCanBeCompleted(collectionsCopy, artefactsCopy, comboList));
-
-        }
-
-        //declare a master list of combinations
-        ArrayList<ArrayList<CombinationItem>> masterList = new ArrayList<>();
-
-        //return the master list of combinations that can be completed.
-        return masterList;
-    }
-    //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Calculate activity display values">
     /**
