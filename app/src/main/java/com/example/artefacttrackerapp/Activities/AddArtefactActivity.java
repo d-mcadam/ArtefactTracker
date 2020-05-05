@@ -155,7 +155,7 @@ public class AddArtefactActivity extends AppCompatActivity {
                 qtyDialog.setView(qtyDialogView)
                     .setPositiveButton("Save", (dialogInterface12, i1) -> {
 
-                        int quantity = 0;
+                        int quantity;
                         try {
                             quantity = Integer.parseInt(qtyDialogField.getText().toString().trim());
                         } catch (NumberFormatException ex){

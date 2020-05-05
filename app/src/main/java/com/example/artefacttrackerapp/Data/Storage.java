@@ -19,11 +19,7 @@ import static com.example.artefacttrackerapp.utilities.UtilityMethods.createTest
 
 public class Storage implements Serializable {
 
-    private transient Context context;
-
-    public Storage(Context context){
-        this.context = context;
-
+    public Storage(){
         this.artefacts = new ArrayList<>();
         this.collectors = new ArrayList<>();
         this.collections = new ArrayList<>();
@@ -31,10 +27,10 @@ public class Storage implements Serializable {
         this.levelInfos = new ArrayList<>();
 
         if (!USING_LIVE_DATA) {
-            Toast.makeText(context, "Creating test data", Toast.LENGTH_SHORT).show();
+            Toast.makeText(null, "Creating test data", Toast.LENGTH_SHORT).show();
             createTestData();
         } else {
-            Toast.makeText(context, "Initialising storage", Toast.LENGTH_SHORT).show();
+            Toast.makeText(null, "Initialising storage", Toast.LENGTH_SHORT).show();
             createLiveData();
         }
     }

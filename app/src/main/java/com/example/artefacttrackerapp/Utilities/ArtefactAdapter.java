@@ -82,8 +82,10 @@ public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.Artefa
             });
             textView.setText(sb.toString().trim());
 
-            OptionalInt maxCollectCount = identifiedMaterialCounts.stream().mapToInt(i -> i).min();
-            titleSb.append(" (").append(maxCollectCount.isPresent() ? maxCollectCount.getAsInt() : 0).append(")\n").append(artefactsLeftForUniqueCollections(artefact.title));
+            titleSb.append(" (").append(
+                    identifiedMaterialCounts.stream().mapToInt(i -> i).min().orElse(0)
+            ).append(")\n").append(artefactsLeftForUniqueCollections(artefact.title));
+            
             dialog.setTitle(titleSb.toString().trim());
             dialog.setView(dialogView).setPositiveButton("OK", null).create().show();
             return true;

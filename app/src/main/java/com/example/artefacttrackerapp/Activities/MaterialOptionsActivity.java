@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
@@ -54,6 +55,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         init();
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void init(){
 
         materialLabelField = findViewById(R.id.textViewSelectedMaterialTitle);
@@ -205,7 +207,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
                             .setPositiveButton("Add", (dialogInterface1, i1) -> {
 
                                 final String inputLocation = editText.getText().toString().trim();
-                                boolean r = material.addLocation(inputLocation);
+                                boolean r = material.addLocation(inputLocation);                    //add to logging system
                                 GenerateLocationInputDialog(material);
 
                             }).setNegativeButton("Cancel", (dialogInterface1, i1) ->

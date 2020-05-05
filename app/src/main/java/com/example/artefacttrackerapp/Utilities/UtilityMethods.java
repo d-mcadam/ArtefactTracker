@@ -323,7 +323,7 @@ public class UtilityMethods {
                 Toast.makeText(context, "Loaded Saved Data", Toast.LENGTH_SHORT).show();
                 return s;
             } catch (Exception e) { e.printStackTrace(); }}//planned to throw exceptions under certain circumstances
-        return new Storage(context);
+        return new Storage();
     }
 
     //</editor-fold>
