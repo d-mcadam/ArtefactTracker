@@ -38,7 +38,7 @@ public class DatabaseOptionsActivity extends AppCompatActivity {
 
     public void RadioButtonSwitch(View v) {
         USING_LIVE_DATA = v.getId() != R.id.radioButtonTestData;
-        storage = loadAppData(getBaseContext());
+        loadAppData(getBaseContext());
     }
 
     public void ResetLiveData(View v){
@@ -48,7 +48,7 @@ public class DatabaseOptionsActivity extends AppCompatActivity {
                 "This will overwrite what is saved in the Internal Storage.");
         dialog.setPositiveButton("Continue", (dialogInterface, i) -> {
             boolean r = new File(getFilesDir(), getString(R.string.runescape_artefact_tracker_mobile_app_data)).delete();       //add to logging system
-            storage = loadAppData(getBaseContext());
+            loadAppData(getBaseContext());
         }).setNegativeButton("Cancel", null).create().show();
     }
 

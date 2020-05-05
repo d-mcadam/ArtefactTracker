@@ -11,6 +11,8 @@ import com.example.artefacttrackerapp.data.Storage;
 import com.example.artefacttrackerapp.R;
 
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.USING_LIVE_DATA;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.createLiveData;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.createTestData;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.getMaterialRequirementsAsIfArtefactsAllBroken;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.getOwnedArtefactCountValue;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.getUniqueCollectibleCount;
@@ -42,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         localContext = this.getResources();
 
         USING_LIVE_DATA = loadDatabaseOptions(getBaseContext());
-        storage = loadAppData(getBaseContext());
+        loadAppData(getBaseContext());
 
         uniqueRemainingCollectionsField = findViewById(R.id.textViewUniqueRemaining);
         availableCollectibleField = findViewById(R.id.textViewAvailableCount);

@@ -25,14 +25,6 @@ public class Storage implements Serializable {
         this.collections = new ArrayList<>();
         this.materials = new ArrayList<>();
         this.levelInfos = new ArrayList<>();
-
-        if (!USING_LIVE_DATA) {
-            Toast.makeText(null, "Creating test data", Toast.LENGTH_SHORT).show();
-            createTestData();
-        } else {
-            Toast.makeText(null, "Initialising storage", Toast.LENGTH_SHORT).show();
-            createLiveData();
-        }
     }
 
     //<editor-fold defaultstate="collapsed" desc="Game Artefacts">

@@ -316,14 +316,22 @@ public class UtilityMethods {
         return null; }} new SaveAppData().execute();
     }
 
-    public static Storage loadAppData(Context context){
+    public static void loadAppData(Context context){
         if (USING_LIVE_DATA) {
             try (ObjectInputStream ois = new ObjectInputStream(context.openFileInput(context.getResources().getString(R.string.runescape_artefact_tracker_mobile_app_data)))) {
-                Storage s = (Storage) ois.readObject();
+                storage = (Storage) ois.readObject();
                 Toast.makeText(context, "Loaded Saved Data", Toast.LENGTH_SHORT).show();
-                return s;
-            } catch (Exception e) { e.printStackTrace(); }}//planned to throw exceptions under certain circumstances
-        return new Storage();
+                return;
+            } catch (Exception e) { e.printStackTrace(); }
+        }
+
+        Toast.makeText(context, USING_LIVE_DATA ? "Initialising storage" : "Creating test data", Toast.LENGTH_SHORT).show();
+        storage = new Storage();
+        create();
+    }
+
+    private static void create(){
+        if (!USING_LIVE_DATA) createTestData(); else createLiveData();
     }
 
     //</editor-fold>
