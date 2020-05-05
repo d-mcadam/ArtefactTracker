@@ -42,6 +42,7 @@ import java.util.Random;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
 
+@SuppressWarnings("SameParameterValue")
 public class UtilityMethods {
 
     public static Resources localContext;
@@ -237,7 +238,7 @@ public class UtilityMethods {
 
     //<editor-fold defaultstate="collapsed" desc="Material quantity modification">
 
-    public static Handler HANDLER = new Handler();
+    public static final Handler HANDLER = new Handler();
 
     public static boolean AUTO_INCREMENTING = false;
     public static boolean AUTO_DECREMENTING = false;
@@ -466,7 +467,7 @@ public class UtilityMethods {
 
         return ga;
     }
-    public static void createTestData(){
+    private static void createTestData(){
         Material m1 = new Material(rndStr(rndNum(4, 10)));
         Material m2 = new Material(rndStr(rndNum(4, 10)));
         Material m3 = new Material(rndStr(rndNum(4, 10)));
@@ -511,7 +512,7 @@ public class UtilityMethods {
 
     //<editor-fold defaultstate="collapsed" desc="Live Data Reset">
 
-    public static void createLiveData(){
+    private static void createLiveData(){
         //<editor-fold defaultstate="collapsed" desc="Materials">
         Material m1 = new Material("Aetherium alloy");
         m1.addLocation("Stormguard Citadel, Research & Development");

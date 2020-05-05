@@ -60,7 +60,8 @@
         android:inputType="textPersonName|textCapSentences|textAutoComplete"
         app:layout_constraintEnd_toStartOf="@+id/imageButtonAddMaterial"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageButtonAddMaterial" />
+        app:layout_constraintTop_toTopOf="@+id/imageButtonAddMaterial"
+        android:importantForAutofill="no" />
 
     <ImageButton
         android:id="@+id/imageButtonAddMaterial"

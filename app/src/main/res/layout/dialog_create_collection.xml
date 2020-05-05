@@ -18,7 +18,8 @@
         android:inputType="textPersonName|textCapSentences|textAutoComplete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerHolderCreateCollectionCollector" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerHolderCreateCollectionCollector"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/textView19"
@@ -103,5 +104,6 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerHolderCreateCollectionReward" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerHolderCreateCollectionReward"
+        android:importantForAutofill="no" />
 </androidx.constraintlayout.widget.ConstraintLayout>

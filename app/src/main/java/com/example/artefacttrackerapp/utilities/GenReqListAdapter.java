@@ -20,13 +20,11 @@ import static com.example.artefacttrackerapp.utilities.UtilityMethods.findMateri
 
 public class GenReqListAdapter extends RecyclerView.Adapter<GenReqListAdapter.GenReqViewHolder> {
 
-    private final Context context;
     private final ArrayList<MaterialRequirement> dataSet;
 
     private final int viewHolderHeight = 70;
 
-    public GenReqListAdapter(Context context, ArrayList<MaterialRequirement> dataSet){
-        this.context = context;
+    public GenReqListAdapter(ArrayList<MaterialRequirement> dataSet){
         this.dataSet = dataSet;
     }
 
@@ -53,7 +51,7 @@ public class GenReqListAdapter extends RecyclerView.Adapter<GenReqListAdapter.Ge
 
     public class GenReqViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView textView;
+        private final TextView textView;
 
         public GenReqViewHolder(@NonNull View itemView) {
             super(itemView);

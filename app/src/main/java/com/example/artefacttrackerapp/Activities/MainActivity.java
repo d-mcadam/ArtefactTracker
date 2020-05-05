@@ -13,8 +13,6 @@ import com.example.artefacttrackerapp.R;
 import java.text.DecimalFormat;
 
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.USING_LIVE_DATA;
-import static com.example.artefacttrackerapp.utilities.UtilityMethods.createLiveData;
-import static com.example.artefacttrackerapp.utilities.UtilityMethods.createTestData;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.getMaterialRequirementsAsIfArtefactsAllBroken;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.getOwnedArtefactCountValue;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.getUniqueCollectibleCount;

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Artefact Tracker App</string>
     //main menu
     <string name="main_menu_database_button">Database Options</string>
@@ -15,7 +15,7 @@
     //material options
     <string name="material_opt_search_hint">Search Materials</string>
     <string name="material_opt_name_hint">Enter a name</string>
-    <string name="material_opt_label_placeholder">Select a Material...</string>
+    <string name="material_opt_label_placeholder">Select a Material…</string>
     //inventory management
     <string name="inventory_menu_search_hint">Search Artefacts</string>
     <string name="inventory_menu_category_label">Filter Category:</string>

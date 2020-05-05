@@ -15,8 +15,6 @@ import java.util.Optional;
 import java.util.Random;
 
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.USING_LIVE_DATA;
-import static com.example.artefacttrackerapp.utilities.UtilityMethods.createLiveData;
-import static com.example.artefacttrackerapp.utilities.UtilityMethods.createTestData;
 
 public class Storage implements Serializable {
 
