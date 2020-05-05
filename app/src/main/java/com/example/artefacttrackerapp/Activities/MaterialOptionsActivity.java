@@ -59,7 +59,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
     private void init(){
 
         materialLabelField = findViewById(R.id.textViewSelectedMaterialTitle);
-        materialArtefactOccurrenceCount = findViewById(R.id.textViewSelectedMaterialArtefactOccuranceCount);
+        materialArtefactOccurrenceCount = findViewById(R.id.textViewSelectedMaterialArtefactOccurrenceCount);
         materialDemandCount = findViewById(R.id.textViewSelectedMaterialDemandCount);
 
         //<editor-fold defaultstate="collapsed" desc="Search materials field">
