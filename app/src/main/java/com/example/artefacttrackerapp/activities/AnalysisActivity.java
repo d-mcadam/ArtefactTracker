@@ -99,7 +99,7 @@ public class AnalysisActivity extends AppCompatActivity {
 
         final RecyclerView recyclerView = dialogView.findViewById(R.id.recyclerViewHolderMaterialRequirementGeneration);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        RecyclerView.Adapter adapter = new GenReqListAdapter(this, requirements);
+        RecyclerView.Adapter adapter = new GenReqListAdapter(requirements);
         recyclerView.setAdapter(adapter);
 
         dialog.setView(dialogView).setPositiveButton("OK", null).create().show();
