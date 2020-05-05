@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.Optional;
 import java.util.Random;
 
@@ -38,7 +39,11 @@ public class Storage implements Serializable {
         return false;
     }
     public boolean DeleteArtefact(GameArtefact artefact){
-        return this.artefacts.remove(artefact);
+        if (this.artefacts.remove(artefact)){
+            this.collections.forEach(collection -> collection.deleteArtefact(artefact.title));
+            return true;
+        }
+        return false;
     }
     //</editor-fold>
 
@@ -53,7 +58,14 @@ public class Storage implements Serializable {
         return false;
     }
     public boolean DeleteCollector(Collector collector){
-        return this.collectors.remove(collector);
+        if (this.collectors.remove(collector)){
+            ArrayList<Collection> removing = new ArrayList<>();
+            this.collections.stream().filter(collection ->
+                    collection.collector.equals(collector.name)).forEach(removing::add);
+            removing.forEach(this.collections::remove);
+            return true;
+        }
+        return false;
     }
     //</editor-fold>
 
@@ -73,7 +85,11 @@ public class Storage implements Serializable {
         return false;
     }
     public boolean DeleteCollection(Collection collection){
-        return this.collections.remove(collection);
+        if (this.collections.remove(collection)){
+            this.collectors.forEach(collector -> collector.deleteCollection(collection.title));
+            return true;
+        }
+        return false;
     }
     //</editor-fold>
 
@@ -87,12 +103,21 @@ public class Storage implements Serializable {
         }
         return false;
     }
-    public boolean DeleteMaterial(Material material){
-        return this.materials.remove(material);
+    public boolean DeleteMaterial(final Material material){
+        if (this.materials.remove(material)){
+            this.artefacts.forEach(artefact -> {
+                ArrayList<MaterialRequirement> removing = new ArrayList<>();
+                artefact.getRequirements().stream().filter(materialRequirement ->
+                        materialRequirement.title.equals(material.title)).forEach(removing::add);
+                removing.forEach(artefact::deleteRequirement);
+            });
+            return true;
+        }
+        return false;
     }
     //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="level info">
+    //<editor-fold defaultstate="collapsed" desc="Level info">
     private final ArrayList<LevelInfo> levelInfos;
     public ArrayList<LevelInfo> LevelInfos(){ return this.levelInfos; }
     public boolean AddLevelInfo(LevelInfo levelInfo){
