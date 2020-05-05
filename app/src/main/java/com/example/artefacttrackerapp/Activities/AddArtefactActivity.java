@@ -55,8 +55,8 @@ public class AddArtefactActivity extends AppCompatActivity {
             dialog.setCancelable(true);
             dialog.setTitle("Unsaved data");
             dialog.setMessage("You'll lose any unsaved data");
-            dialog.setPositiveButton("Continue", (dialogInterface, i) -> goBack());
-            dialog.setNegativeButton("Cancel", null);
+            dialog.setPositiveButton("Continue", (dialogInterface, i) -> goBack())
+                .setNegativeButton("Cancel", null);
             dialog.create().show();
         }else{
             goBack();

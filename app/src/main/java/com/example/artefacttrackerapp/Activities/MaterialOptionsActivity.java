@@ -81,6 +81,8 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         materialRecyclerView.setAdapter(materialAdapter);
         //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="plus and minus buttons">
+
         plusMaterialButton = findViewById(R.id.imageButtonIncrementMaterialCount);
         plusMaterialButton.setOnClickListener(view ->
                 incrementMaterialQuantity(
@@ -126,6 +128,8 @@ public class MaterialOptionsActivity extends AppCompatActivity {
             return false;
         });
 
+        //</editor-fold>
+
         RefreshList();
     }
 
@@ -144,17 +148,17 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         }else{
             materialLabelField.setText(material.title);
 
-            int artefactOccurenceCount = storage.Artefacts().stream()//for each artefact
-                    .map(gameArtefact -> gameArtefact.getRequirements().stream()//for each requirement on each artefact
-                            .filter(mr -> mr.title.equals(material.title))//filter requirements for the selected material
-                        .map(mr -> 1).reduce(0, Integer::sum))//map each mr = to 1 and sum up total mr's
-                    .reduce(0, Integer::sum);//add up all the mr's on al the artefacts for the selected material
+            int artefactOccurenceCount = storage.Artefacts().stream()                   //for each artefact
+                    .map(gameArtefact -> gameArtefact.getRequirements().stream()        //for each requirement on each artefact
+                            .filter(mr -> mr.title.equals(material.title))              //filter requirements for the selected material
+                        .map(mr -> 1).reduce(0, Integer::sum))                       //map each mr = to 1 and sum up total mr's
+                    .reduce(0, Integer::sum);                                        //add up all the mr's on al the artefacts for the selected material
             materailArtefactOccurenceCount.setText(String.valueOf(artefactOccurenceCount));
 
-            int demand = storage.Artefacts().stream().filter(artefact -> artefact.quantity > 0)//for each artefact, filter for artefacts with a quantity greater than zero
-                    .map(artefact -> artefact.getRequirements().stream().filter(mr -> mr.title.equals(material.title))//for each mr, filter for mr's with matching title to selected material
-                            .map(mr -> mr.quantity * artefact.quantity).reduce(0, Integer::sum))//map each mr = to the mr quantity multiplied by the quantity of artefacts and sum up this total
-                    .reduce(0, Integer::sum);//sum up all mr quantities for all the artefact quantities
+            int demand = storage.Artefacts().stream().filter(artefact -> artefact.quantity > 0)                             //for each artefact, filter for artefacts with a quantity greater than zero
+                    .map(artefact -> artefact.getRequirements().stream().filter(mr -> mr.title.equals(material.title))      //for each mr, filter for mr's with matching title to selected material
+                            .map(mr -> mr.quantity * artefact.quantity).reduce(0, Integer::sum))                         //map each mr = to the mr quantity multiplied by the quantity of artefacts and sum up this total
+                    .reduce(0, Integer::sum);                                                                            //sum up all mr quantities for all the artefact quantities
             materailDemandCount.setText(String.valueOf(demand));
         }
     }

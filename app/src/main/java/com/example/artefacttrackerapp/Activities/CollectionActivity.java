@@ -59,7 +59,4 @@ public class CollectionActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void OpenRewards(View v){
-
-    }
 }

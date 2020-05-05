@@ -49,7 +49,7 @@ public class DatabaseOptionsActivity extends AppCompatActivity {
         dialog.setMessage("You're about to reset all information you've modified in the database.\n\n" +
                 "This will overwrite what is saved in the Internal Storage.");
         dialog.setPositiveButton("Continue", (dialogInterface, i) -> {
-            new File(getFilesDir(), getString(R.string.runescape_artefact_tracker_mobile_app_data)).delete();
+            boolean r = new File(getFilesDir(), getString(R.string.runescape_artefact_tracker_mobile_app_data)).delete();
             storage = loadAppData(getBaseContext());
         }).setNegativeButton("Cancel", null).create().show();
     }
