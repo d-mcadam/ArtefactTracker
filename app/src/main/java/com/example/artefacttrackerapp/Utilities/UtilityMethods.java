@@ -42,7 +42,7 @@ import java.util.Random;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
 
-@SuppressWarnings("SameParameterValue")
+@SuppressWarnings({"SameParameterValue", "JavaDoc"})
 public class UtilityMethods {
 
     public static Resources localContext;
