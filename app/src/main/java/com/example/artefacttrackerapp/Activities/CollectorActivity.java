@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -92,7 +93,7 @@ public class CollectorActivity extends AppCompatActivity {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle("Collections for " + collector.name);
 
-        View dialogView = getLayoutInflater().inflate(R.layout.dialog_show_collector_logs, null);
+        @SuppressLint("InflateParams") View dialogView = getLayoutInflater().inflate(R.layout.dialog_show_collector_logs, null);
         final TextView textView = dialogView.findViewById(R.id.textViewHolderCollectorDisplayMultiline);
 
         StringBuilder sb = new StringBuilder();
@@ -129,7 +130,7 @@ public class CollectorActivity extends AppCompatActivity {
 
         LayoutInflater inflater = getLayoutInflater();
 
-        View dialogView = inflater.inflate(R.layout.dialog_create_collector, null);
+        @SuppressLint("InflateParams") View dialogView = inflater.inflate(R.layout.dialog_create_collector, null);
         final EditText inputFieldName = dialogView.findViewById(R.id.editTextCreateCollectorName);
         final EditText inputFieldLocation = dialogView.findViewById(R.id.editTextCreateCollectorLocation);
 

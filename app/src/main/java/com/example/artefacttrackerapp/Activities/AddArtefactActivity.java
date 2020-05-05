@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -120,6 +121,7 @@ public class AddArtefactActivity extends AppCompatActivity {
         saveButton.setTooltipText(tooltipText);
     }
 
+    @SuppressLint("InflateParams")
     public void AddMaterialRequirement(View originalView){
 
         final Context thisContext = this;

@@ -1,5 +1,6 @@
 package com.example.artefacttrackerapp.utilities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.AsyncTask;
@@ -95,6 +96,7 @@ public class UtilityMethods {
         CreateCollectionDialogGenerator(context, searchField, categoryPos, rewardPos, collectionViewAdapter, null, null);
     }
 
+    @SuppressLint("InflateParams")
     private static void CreateCollectionDialogGenerator(final Context context, EditText searchField, int categoryPos, int rewardPos,
                                                         CollectionAdapter collectionViewAdapter, CollectorAdapter collectorViewAdapter, Collector collector){
 

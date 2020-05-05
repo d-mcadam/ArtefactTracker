@@ -180,6 +180,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("InflateParams")
     public boolean GenerateLocationInputDialog(Material material){
         final Context thisContext = this;
 
@@ -223,7 +224,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
 
         LayoutInflater inflater = getLayoutInflater();
 
-        View dialogView = inflater.inflate(R.layout.dialog_create_material, null);
+        @SuppressLint("InflateParams") View dialogView = inflater.inflate(R.layout.dialog_create_material, null);
         final EditText inputField = dialogView.findViewById(R.id.editTextInputMaterialName);
         inputField.setText(materialSearchField.getText().toString().trim());
 

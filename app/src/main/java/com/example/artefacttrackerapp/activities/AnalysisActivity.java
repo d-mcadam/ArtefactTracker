@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -78,7 +79,7 @@ public class AnalysisActivity extends AppCompatActivity {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle("# Required (# left to get)");
 
-        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_generate_requirement_list, null);
+        @SuppressLint("InflateParams") View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_generate_requirement_list, null);
 
         final ArrayList<MaterialRequirement> requirements = new ArrayList<>();
         ((GenReqArtefactAdapter)adapter).selectedList.forEach(a ->  {
