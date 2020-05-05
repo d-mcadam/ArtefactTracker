@@ -1,7 +1,5 @@
 package com.example.artefacttrackerapp.utilities;
 
-import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,9 +39,7 @@ public class GenReqListAdapter extends RecyclerView.Adapter<GenReqListAdapter.Ge
         DecimalFormat df = new DecimalFormat("#,###");
         final MaterialRequirement mr = dataSet.get(thisViewsPosition);
         int matsLeft = mr.quantity - findMaterialByTitle(mr.title).quantity;
-        StringBuilder sb = new StringBuilder();
-        sb.append(mr.title).append(", x").append(df.format(mr.quantity)).append(" (").append(matsLeft < 0 ? 0 : df.format(matsLeft)).append(")");
-        holder.textView.setText(sb.toString().trim());
+        holder.textView.setText((mr.title + ", x" + df.format(mr.quantity) + " (" + (matsLeft < 0 ? 0 : df.format(matsLeft)) + ")").trim());
     }
 
     @Override

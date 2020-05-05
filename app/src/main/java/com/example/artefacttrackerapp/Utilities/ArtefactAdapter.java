@@ -18,7 +18,6 @@ import com.example.artefacttrackerapp.data.GameArtefact;
 import com.example.artefacttrackerapp.R;
 
 import java.util.ArrayList;
-import java.util.OptionalInt;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.artefactsLeftForUniqueCollections;

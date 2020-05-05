@@ -16,7 +16,6 @@ import com.example.artefacttrackerapp.data.GameArtefact;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.stream.Collectors;
 
 public class GenReqArtefactAdapter extends RecyclerView.Adapter<GenReqArtefactAdapter.GenReqViewHolder> {
 

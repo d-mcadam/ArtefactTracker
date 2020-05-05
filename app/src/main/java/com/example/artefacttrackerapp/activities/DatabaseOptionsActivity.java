@@ -11,7 +11,6 @@ import com.example.artefacttrackerapp.R;
 
 import java.io.File;
 
-import static com.example.artefacttrackerapp.activities.MainActivity.storage;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.USING_LIVE_DATA;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.loadAppData;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.saveDatabaseOption;

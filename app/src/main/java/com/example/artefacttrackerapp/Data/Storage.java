@@ -1,20 +1,9 @@
 package com.example.artefacttrackerapp.data;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.Toast;
-
-import com.example.artefacttrackerapp.R;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
-import java.util.Optional;
-import java.util.Random;
-
-import static com.example.artefacttrackerapp.utilities.UtilityMethods.USING_LIVE_DATA;
 
 public class Storage implements Serializable {
 
