@@ -21,6 +21,7 @@ import static com.example.artefacttrackerapp.utilities.UtilityMethods.getUniqueC
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.loadAppData;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.loadDatabaseOptions;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.saveAppData;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.localContext;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init(){
+
+        localContext = this.getResources();
 
         USING_LIVE_DATA = loadDatabaseOptions(getBaseContext());
         storage = loadAppData(getBaseContext());
