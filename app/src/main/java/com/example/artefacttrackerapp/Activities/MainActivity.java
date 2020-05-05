@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.example.artefacttrackerapp.data.Storage;
 import com.example.artefacttrackerapp.R;
 
+import java.text.DecimalFormat;
+
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.USING_LIVE_DATA;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.createLiveData;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.createTestData;
@@ -70,12 +72,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void RefreshData(){
 
-        uniqueRemainingCollectionsField.setText(String.valueOf(getUniqueCollectionRemainingCount()));
-        availableCollectibleField.setText(String.valueOf(getUniqueCollectibleCount()));
+        DecimalFormat df = new DecimalFormat("#,###");
 
-        materialTypeCountField.setText(String.valueOf(storage.Materials().size()));
-        ownedArtefactCountField.setText(String.valueOf(getOwnedArtefactCountValue()));
-        requiredMaterialCountField.setText(String.valueOf(getMaterialRequirementsAsIfArtefactsAllBroken()));
+        uniqueRemainingCollectionsField.setText(df.format(getUniqueCollectionRemainingCount()));
+        availableCollectibleField.setText(df.format(getUniqueCollectibleCount()));
+
+        materialTypeCountField.setText(df.format(storage.Materials().size()));
+        ownedArtefactCountField.setText(df.format(getOwnedArtefactCountValue()));
+        requiredMaterialCountField.setText(df.format(getMaterialRequirementsAsIfArtefactsAllBroken()));
 
     }
 

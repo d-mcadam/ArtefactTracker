@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.artefacttrackerapp.R;
 import com.example.artefacttrackerapp.data.MaterialRequirement;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.findMaterialByTitle;
@@ -39,10 +40,11 @@ public class GenReqListAdapter extends RecyclerView.Adapter<GenReqListAdapter.Ge
 
     @Override
     public void onBindViewHolder(@NonNull GenReqViewHolder holder, int thisViewsPosition) {
+        DecimalFormat df = new DecimalFormat("#,###");
         final MaterialRequirement mr = dataSet.get(thisViewsPosition);
         int matsLeft = mr.quantity - findMaterialByTitle(mr.title).quantity;
         StringBuilder sb = new StringBuilder();
-        sb.append(mr.title).append(", x").append(mr.quantity).append(" (").append(matsLeft < 0 ? 0 : matsLeft).append(")");
+        sb.append(mr.title).append(", x").append(df.format(mr.quantity)).append(" (").append(matsLeft < 0 ? 0 : df.format(matsLeft)).append(")");
         holder.textView.setText(sb.toString().trim());
     }
 
