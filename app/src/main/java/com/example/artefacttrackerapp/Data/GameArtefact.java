@@ -29,6 +29,7 @@ public class GameArtefact implements Serializable {
     }
     public boolean deleteRequirement(MaterialRequirement materialRequirement){ return this.requirements.remove(materialRequirement); }
 
+    @SuppressWarnings({"UnusedAssignment", "NullableProblems"})
     @Override
     public Object clone(){
         GameArtefact clone = null;

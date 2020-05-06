@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -55,8 +56,8 @@ public class AddArtefactActivity extends AppCompatActivity {
             dialog.setCancelable(true);
             dialog.setTitle("Unsaved data");
             dialog.setMessage("You'll lose any unsaved data");
-            dialog.setPositiveButton("Continue", (dialogInterface, i) -> goBack());
-            dialog.setNegativeButton("Cancel", null);
+            dialog.setPositiveButton("Continue", (dialogInterface, i) -> goBack())
+                .setNegativeButton("Cancel", null);
             dialog.create().show();
         }else{
             goBack();
@@ -120,6 +121,7 @@ public class AddArtefactActivity extends AppCompatActivity {
         saveButton.setTooltipText(tooltipText);
     }
 
+    @SuppressLint("InflateParams")
     public void AddMaterialRequirement(View originalView){
 
         final Context thisContext = this;
@@ -155,7 +157,7 @@ public class AddArtefactActivity extends AppCompatActivity {
                 qtyDialog.setView(qtyDialogView)
                     .setPositiveButton("Save", (dialogInterface12, i1) -> {
 
-                        int quantity = 0;
+                        int quantity;
                         try {
                             quantity = Integer.parseInt(qtyDialogField.getText().toString().trim());
                         } catch (NumberFormatException ex){

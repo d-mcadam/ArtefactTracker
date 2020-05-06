@@ -7,11 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.artefacttrackerapp.data.Collection;
-import com.example.artefacttrackerapp.data.GameArtefact;
-import com.example.artefacttrackerapp.data.MaterialRequirement;
 import com.example.artefacttrackerapp.data.Storage;
 import com.example.artefacttrackerapp.R;
+
+import java.text.DecimalFormat;
 
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.USING_LIVE_DATA;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.getMaterialRequirementsAsIfArtefactsAllBroken;
@@ -21,6 +20,7 @@ import static com.example.artefacttrackerapp.utilities.UtilityMethods.getUniqueC
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.loadAppData;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.loadDatabaseOptions;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.saveAppData;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.localContext;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,8 +41,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void init(){
 
+        localContext = this.getResources();
+
         USING_LIVE_DATA = loadDatabaseOptions(getBaseContext());
-        storage = loadAppData(getBaseContext());
+        loadAppData(getBaseContext());
 
         uniqueRemainingCollectionsField = findViewById(R.id.textViewUniqueRemaining);
         availableCollectibleField = findViewById(R.id.textViewAvailableCount);
@@ -68,12 +70,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void RefreshData(){
 
-        uniqueRemainingCollectionsField.setText(String.valueOf(getUniqueCollectionRemainingCount()));
-        availableCollectibleField.setText(String.valueOf(getUniqueCollectibleCount()));
+        DecimalFormat df = new DecimalFormat("#,###");
 
-        materialTypeCountField.setText(String.valueOf(storage.Materials().size()));
-        ownedArtefactCountField.setText(String.valueOf(getOwnedArtefactCountValue()));
-        requiredMaterialCountField.setText(String.valueOf(getMaterialRequirementsAsIfArtefactsAllBroken()));
+        uniqueRemainingCollectionsField.setText(df.format(getUniqueCollectionRemainingCount()));
+        availableCollectibleField.setText(df.format(getUniqueCollectibleCount()));
+
+        materialTypeCountField.setText(df.format(storage.Materials().size()));
+        ownedArtefactCountField.setText(df.format(getOwnedArtefactCountValue()));
+        requiredMaterialCountField.setText(df.format(getMaterialRequirementsAsIfArtefactsAllBroken()));
 
     }
 

@@ -1,5 +1,6 @@
 package com.example.artefacttrackerapp.utilities;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -69,7 +70,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Co
             StringBuilder titleSb = new StringBuilder();
             titleSb.append(collection.title).append(collection.isCompleted() ? " \u2713" : "");
 
-            View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_collection_display, null, false);
+            @SuppressLint("InflateParams") View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_collection_display, null, false);
             final TextView textView = dialogView.findViewById(R.id.textViewHolderCollectionDisplayMultiline);
 
             ArrayList<GameArtefact> identifiedArtefacts = new ArrayList<>();

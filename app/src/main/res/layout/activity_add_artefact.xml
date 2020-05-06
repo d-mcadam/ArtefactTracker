@@ -18,7 +18,8 @@
         android:inputType="textPersonName|textCapSentences|textAutoComplete"
         app:layout_constraintEnd_toStartOf="@+id/buttonSaveArtefact"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no" />
 
     <Spinner
         android:id="@+id/spinnerAddArtefactCategory"

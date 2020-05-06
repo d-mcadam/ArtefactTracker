@@ -1,17 +1,16 @@
 package com.example.artefacttrackerapp.activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.example.artefacttrackerapp.R;
@@ -80,7 +79,7 @@ public class AnalysisActivity extends AppCompatActivity {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle("# Required (# left to get)");
 
-        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_generate_requirement_list, null);
+        @SuppressLint("InflateParams") View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_generate_requirement_list, null);
 
         final ArrayList<MaterialRequirement> requirements = new ArrayList<>();
         ((GenReqArtefactAdapter)adapter).selectedList.forEach(a ->  {
@@ -100,7 +99,7 @@ public class AnalysisActivity extends AppCompatActivity {
 
         final RecyclerView recyclerView = dialogView.findViewById(R.id.recyclerViewHolderMaterialRequirementGeneration);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        RecyclerView.Adapter adapter = new GenReqListAdapter(this, requirements);
+        RecyclerView.Adapter adapter = new GenReqListAdapter(requirements);
         recyclerView.setAdapter(adapter);
 
         dialog.setView(dialogView).setPositiveButton("OK", null).create().show();

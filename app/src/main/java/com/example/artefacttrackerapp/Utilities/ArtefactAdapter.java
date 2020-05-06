@@ -1,5 +1,6 @@
 package com.example.artefacttrackerapp.utilities;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -17,7 +18,6 @@ import com.example.artefacttrackerapp.data.GameArtefact;
 import com.example.artefacttrackerapp.R;
 
 import java.util.ArrayList;
-import java.util.OptionalInt;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.artefactsLeftForUniqueCollections;
@@ -64,7 +64,7 @@ public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.Artefa
             StringBuilder titleSb = new StringBuilder();
             titleSb.append(artefact.title);
 
-            View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_material_requirement_display, null, false);
+            @SuppressLint("InflateParams") View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_material_requirement_display, null, false);
             final TextView textView = dialogView.findViewById(R.id.textViewHolderMatReqDisplayMultiline);
 
             ArrayList<Integer> identifiedMaterialCounts = new ArrayList<>();
@@ -82,8 +82,14 @@ public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.Artefa
             });
             textView.setText(sb.toString().trim());
 
-            OptionalInt maxCollectCount = identifiedMaterialCounts.stream().mapToInt(i -> i).min();
-            titleSb.append(" (").append(maxCollectCount.isPresent() ? maxCollectCount.getAsInt() : 0).append(")\n").append(artefactsLeftForUniqueCollections(artefact.title));
+            titleSb.append(" (").append(
+                    identifiedMaterialCounts.stream().mapToInt(i -> i).min().orElse(0)
+            ).append(")\n");
+
+            int i = artefactsLeftForUniqueCollections(artefact.title);
+            if (i > 0)
+                titleSb.append("(").append(i).append(" left for open collections)");
+
             dialog.setTitle(titleSb.toString().trim());
             dialog.setView(dialogView).setPositiveButton("OK", null).create().show();
             return true;

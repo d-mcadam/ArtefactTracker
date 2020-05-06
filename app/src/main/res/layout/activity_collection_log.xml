@@ -25,7 +25,8 @@
         android:text="Filter Reward:"
         android:textColor="@android:color/background_dark"
         app:layout_constraintEnd_toEndOf="@+id/textView17"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCollectionsArtefactCategory" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCollectionsArtefactCategory"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/textView3"
@@ -35,7 +36,8 @@
         android:text="Sort Order:"
         android:textColor="@android:color/background_dark"
         app:layout_constraintEnd_toEndOf="@+id/textView17"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCollectionsRewardType" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCollectionsRewardType"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/editTextSearchCollections"
@@ -49,7 +51,8 @@
         android:inputType="textPersonName|textCapSentences|textAutoComplete"
         app:layout_constraintEnd_toStartOf="@+id/imageButtonAddCollection"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageButtonAddCollection" />
+        app:layout_constraintTop_toTopOf="@+id/imageButtonAddCollection"
+        android:importantForAutofill="no" />
 
     <ImageButton
         android:id="@+id/imageButtonAddCollection"
@@ -60,7 +63,8 @@
         android:onClick="AddCollectionLog"
         android:src="@android:drawable/ic_input_add"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
     <Spinner
         android:id="@+id/spinnerCollectionsArtefactCategory"

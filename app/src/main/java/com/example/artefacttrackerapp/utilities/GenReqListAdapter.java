@@ -1,7 +1,5 @@
 package com.example.artefacttrackerapp.utilities;
 
-import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,19 +11,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.artefacttrackerapp.R;
 import com.example.artefacttrackerapp.data.MaterialRequirement;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import static com.example.artefacttrackerapp.utilities.UtilityMethods.findMaterialByTitle;
 
 public class GenReqListAdapter extends RecyclerView.Adapter<GenReqListAdapter.GenReqViewHolder> {
 
-    private final Context context;
     private final ArrayList<MaterialRequirement> dataSet;
 
     private final int viewHolderHeight = 70;
 
-    public GenReqListAdapter(Context context, ArrayList<MaterialRequirement> dataSet){
-        this.context = context;
+    public GenReqListAdapter(ArrayList<MaterialRequirement> dataSet){
         this.dataSet = dataSet;
     }
 
@@ -39,11 +36,10 @@ public class GenReqListAdapter extends RecyclerView.Adapter<GenReqListAdapter.Ge
 
     @Override
     public void onBindViewHolder(@NonNull GenReqViewHolder holder, int thisViewsPosition) {
+        DecimalFormat df = new DecimalFormat("#,###");
         final MaterialRequirement mr = dataSet.get(thisViewsPosition);
         int matsLeft = mr.quantity - findMaterialByTitle(mr.title).quantity;
-        StringBuilder sb = new StringBuilder();
-        sb.append(mr.title).append(", x").append(mr.quantity).append(" (").append(matsLeft < 0 ? 0 : matsLeft).append(")");
-        holder.textView.setText(sb.toString().trim());
+        holder.textView.setText((mr.title + ", x" + df.format(mr.quantity) + " (" + (matsLeft < 0 ? 0 : df.format(matsLeft)) + ")").trim());
     }
 
     @Override
@@ -51,7 +47,7 @@ public class GenReqListAdapter extends RecyclerView.Adapter<GenReqListAdapter.Ge
 
     public class GenReqViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView textView;
+        private final TextView textView;
 
         public GenReqViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -16,7 +16,6 @@ import com.example.artefacttrackerapp.data.GameArtefact;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.stream.Collectors;
 
 public class GenReqArtefactAdapter extends RecyclerView.Adapter<GenReqArtefactAdapter.GenReqViewHolder> {
 
@@ -87,10 +86,10 @@ public class GenReqArtefactAdapter extends RecyclerView.Adapter<GenReqArtefactAd
 
         private boolean viewIsSelected = false;
 
-        private TextView detailView;
-        private TextView qtyView;
-        private ImageButton plusButton;
-        private ImageButton minusButton;
+        private final TextView detailView;
+        private final TextView qtyView;
+        private final ImageButton plusButton;
+        private final ImageButton minusButton;
 
         public GenReqViewHolder(@NonNull View itemView) {
             super(itemView);

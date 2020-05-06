@@ -25,7 +25,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_delete" />
+        app:srcCompat="@android:drawable/ic_delete"
+        tools:ignore="ContentDescription" />
 
     <ImageButton
         android:id="@+id/imageButtonHolderViewCollection"
@@ -33,7 +34,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toStartOf="@+id/imageButtonHolderDeleteCollection"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_view" />
+        app:srcCompat="@android:drawable/ic_menu_view"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/textViewHolderCollectionArtefactCount"
@@ -54,5 +56,6 @@
         android:layout_height="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/checkbox_on_background" />
+        app:srcCompat="@android:drawable/checkbox_on_background"
+        tools:ignore="ContentDescription" />
 </androidx.constraintlayout.widget.ConstraintLayout>

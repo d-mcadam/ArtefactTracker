@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
@@ -40,8 +41,8 @@ public class MaterialOptionsActivity extends AppCompatActivity {
     public ImageButton minusMaterialButton;
 
     private TextView materialLabelField;
-    private TextView materailArtefactOccurenceCount;
-    private TextView materailDemandCount;
+    private TextView materialArtefactOccurrenceCount;
+    private TextView materialDemandCount;
 
     private RecyclerView.Adapter materialAdapter;
 
@@ -54,11 +55,12 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         init();
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void init(){
 
         materialLabelField = findViewById(R.id.textViewSelectedMaterialTitle);
-        materailArtefactOccurenceCount = findViewById(R.id.textViewSelectedMaterialArtefactOccuranceCount);
-        materailDemandCount = findViewById(R.id.textViewSelectedMaterialDemandCount);
+        materialArtefactOccurrenceCount = findViewById(R.id.textViewSelectedMaterialArtefactOccurrenceCount);
+        materialDemandCount = findViewById(R.id.textViewSelectedMaterialDemandCount);
 
         //<editor-fold defaultstate="collapsed" desc="Search materials field">
         materialSearchField = findViewById(R.id.editTextSearchMaterials);
@@ -80,6 +82,8 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         materialAdapter = new MaterialAdapter(this, displayList);
         materialRecyclerView.setAdapter(materialAdapter);
         //</editor-fold>
+
+        //<editor-fold defaultstate="collapsed" desc="plus and minus buttons">
 
         plusMaterialButton = findViewById(R.id.imageButtonIncrementMaterialCount);
         plusMaterialButton.setOnClickListener(view ->
@@ -126,6 +130,8 @@ public class MaterialOptionsActivity extends AppCompatActivity {
             return false;
         });
 
+        //</editor-fold>
+
         RefreshList();
     }
 
@@ -139,23 +145,23 @@ public class MaterialOptionsActivity extends AppCompatActivity {
         if (material == null){
             String s = getString(R.string.material_opt_label_placeholder);
             materialLabelField.setText(s);
-            materailArtefactOccurenceCount.setText(s);
-            materailDemandCount.setText(s);
+            materialArtefactOccurrenceCount.setText(s);
+            materialDemandCount.setText(s);
         }else{
             materialLabelField.setText(material.title);
 
-            int artefactOccurenceCount = storage.Artefacts().stream()//for each artefact
-                    .map(gameArtefact -> gameArtefact.getRequirements().stream()//for each requirement on each artefact
-                            .filter(mr -> mr.title.equals(material.title))//filter requirements for the selected material
-                        .map(mr -> 1).reduce(0, Integer::sum))//map each mr = to 1 and sum up total mr's
-                    .reduce(0, Integer::sum);//add up all the mr's on al the artefacts for the selected material
-            materailArtefactOccurenceCount.setText(String.valueOf(artefactOccurenceCount));
+            int artefactOccurrenceCount = storage.Artefacts().stream()                   //for each artefact
+                    .map(gameArtefact -> gameArtefact.getRequirements().stream()        //for each requirement on each artefact
+                            .filter(mr -> mr.title.equals(material.title))              //filter requirements for the selected material
+                        .map(mr -> 1).reduce(0, Integer::sum))                       //map each mr = to 1 and sum up total mr's
+                    .reduce(0, Integer::sum);                                        //add up all the mr's on al the artefacts for the selected material
+            materialArtefactOccurrenceCount.setText(String.valueOf(artefactOccurrenceCount));
 
-            int demand = storage.Artefacts().stream().filter(artefact -> artefact.quantity > 0)//for each artefact, filter for artefacts with a quantity greater than zero
-                    .map(artefact -> artefact.getRequirements().stream().filter(mr -> mr.title.equals(material.title))//for each mr, filter for mr's with matching title to selected material
-                            .map(mr -> mr.quantity * artefact.quantity).reduce(0, Integer::sum))//map each mr = to the mr quantity multiplied by the quantity of artefacts and sum up this total
-                    .reduce(0, Integer::sum);//sum up all mr quantities for all the artefact quantities
-            materailDemandCount.setText(String.valueOf(demand));
+            int demand = storage.Artefacts().stream().filter(artefact -> artefact.quantity > 0)                             //for each artefact, filter for artefacts with a quantity greater than zero
+                    .map(artefact -> artefact.getRequirements().stream().filter(mr -> mr.title.equals(material.title))      //for each mr, filter for mr's with matching title to selected material
+                            .map(mr -> mr.quantity * artefact.quantity).reduce(0, Integer::sum))                         //map each mr = to the mr quantity multiplied by the quantity of artefacts and sum up this total
+                    .reduce(0, Integer::sum);                                                                            //sum up all mr quantities for all the artefact quantities
+            materialDemandCount.setText(String.valueOf(demand));
         }
     }
 
@@ -174,6 +180,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("InflateParams")
     public boolean GenerateLocationInputDialog(Material material){
         final Context thisContext = this;
 
@@ -201,7 +208,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
                             .setPositiveButton("Add", (dialogInterface1, i1) -> {
 
                                 final String inputLocation = editText.getText().toString().trim();
-                                boolean r = material.addLocation(inputLocation);
+                                boolean r = material.addLocation(inputLocation);                    //add to logging system
                                 GenerateLocationInputDialog(material);
 
                             }).setNegativeButton("Cancel", (dialogInterface1, i1) ->
@@ -217,7 +224,7 @@ public class MaterialOptionsActivity extends AppCompatActivity {
 
         LayoutInflater inflater = getLayoutInflater();
 
-        View dialogView = inflater.inflate(R.layout.dialog_create_material, null);
+        @SuppressLint("InflateParams") View dialogView = inflater.inflate(R.layout.dialog_create_material, null);
         final EditText inputField = dialogView.findViewById(R.id.editTextInputMaterialName);
         inputField.setText(materialSearchField.getText().toString().trim());
 

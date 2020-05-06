@@ -18,7 +18,8 @@
         android:inputType="textPersonName|textCapSentences|textAutoComplete"
         app:layout_constraintEnd_toStartOf="@+id/imageButtonAddCollector"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageButtonAddCollector" />
+        app:layout_constraintTop_toTopOf="@+id/imageButtonAddCollector"
+        android:importantForAutofill="no" />
 
     <ImageButton
         android:id="@+id/imageButtonAddCollector"
@@ -29,7 +30,8 @@
         android:onClick="AddCollector"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:srcCompat="@android:drawable/ic_input_add"
+        tools:ignore="ContentDescription" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewCollectorList"

@@ -14,6 +14,7 @@ import com.example.artefacttrackerapp.activities.MaterialOptionsActivity;
 import com.example.artefacttrackerapp.R;
 import com.example.artefacttrackerapp.data.Material;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MaterialViewHolder> {
@@ -63,7 +64,7 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.Materi
 
         holder.itemView.setBackgroundColor(holder.viewIsSelected ? context.getResources().getColor(R.color.colour_recycler_view_selected_grey, null) : Color.TRANSPARENT);
         holder.detailView.setText(context.getString(R.string.place_holder_title, material.title));
-        holder.qtyView.setText(context.getString(R.string.place_holder_quantity, material.quantity));
+        holder.qtyView.setText(context.getString(R.string.place_holder_quantity_as_string, new DecimalFormat("#,###").format(material.quantity)));
 
         ((MaterialOptionsActivity)context).plusMaterialButton.setEnabled(selectedPosition > -1);
         ((MaterialOptionsActivity)context).minusMaterialButton.setEnabled(selectedPosition > -1);
