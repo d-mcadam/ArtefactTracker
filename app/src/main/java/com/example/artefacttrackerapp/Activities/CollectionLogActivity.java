@@ -149,7 +149,8 @@ public class CollectionLogActivity extends AppCompatActivity {
         storage.Collections().stream().filter(c ->
             (searchText.length() < 1 || c.title.toLowerCase().contains(searchText.toLowerCase())) &&
             (categorySpinner.getSelectedItemPosition() < 1 || c.category.toLowerCase().equals(categorySearch.toLowerCase())) &&
-            (rewardSpinner.getSelectedItemPosition() < 1 || c.reward.toLowerCase().equals(rewardSearch.toLowerCase()))
+            (rewardSpinner.getSelectedItemPosition() < 1 || c.reward.toLowerCase().equals(rewardSearch.toLowerCase()) ||
+                    (rewardSearch.toLowerCase().contains("cron") && c.reward.toLowerCase().contains("cron")))
         ).forEach(displayList::add);
 
         ((CollectionAdapter)collectionAdapter).selectedPosition = -1;

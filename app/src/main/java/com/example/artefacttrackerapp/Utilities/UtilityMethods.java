@@ -1748,6 +1748,7 @@ public class UtilityMethods {
         //</editor-fold>
         //<editor-fold defaultstate="collapsed" desc="Saradominist">
         Collection c40 = new Collection("Museum - Saradominist I", "Velucia", "Saradomin", "Cronotes", 4997);
+        c40.completedOnce = true;
         c40.addArtefact("'Frying pan'");
         c40.addArtefact("Hallowed lantern");
         c40.addArtefact("Ceremonial unicorn ornament");
@@ -1785,6 +1786,7 @@ public class UtilityMethods {
         //</editor-fold>
         //<editor-fold defaultstate="collapsed" desc="Zamorakian">
         Collection c44 = new Collection("Museum - Zamorakian I", "Velucia", "Zamorak", "Cronotes", 3242);
+        c44.completedOnce = true;
         c44.addArtefact("Hookah pipe");
         c44.addArtefact("Opulent wine goblet");
         c44.addArtefact("Crest of Dagon");
