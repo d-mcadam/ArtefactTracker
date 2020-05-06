@@ -341,13 +341,13 @@ public class UtilityMethods {
 
     //<editor-fold defaultstate="collapsed" desc="Unique, single use">
 
-    public static String artefactsLeftForUniqueCollections(String artefact){
+    public static int artefactsLeftForUniqueCollections(String artefact){
         int i = storage.Collections().stream().filter(c -> !c.isCompleted()).mapToInt(
                 c -> c.getArtefacts().stream().filter(a -> a.equals(artefact)).mapToInt(
                         a -> 1
                 ).reduce(0, Integer::sum)
         ).reduce(0, Integer::sum);
-        return i > 0 ? "(" + i + " left for open collections)" : "";
+        return i;
     }
 
     //</editor-fold>

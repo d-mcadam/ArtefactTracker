@@ -19,6 +19,7 @@ import com.example.artefacttrackerapp.data.LevelInfo;
 import java.util.ArrayList;
 
 import static com.example.artefacttrackerapp.activities.MainActivity.storage;
+import static com.example.artefacttrackerapp.utilities.UtilityMethods.artefactsLeftForUniqueCollections;
 
 public class LevelDataAdapter extends RecyclerView.Adapter<LevelDataAdapter.LevelDataViewHolder> {
 
@@ -62,7 +63,10 @@ public class LevelDataAdapter extends RecyclerView.Adapter<LevelDataAdapter.Leve
             dialog.setTitle(item.rubbleName + " (" + item.level + ")");
 
             StringBuilder sb = new StringBuilder();
-            item.getArtefacts().forEach(string -> sb.append(string).append("\n"));
+            item.getArtefacts().forEach(artefact -> {
+                int i = artefactsLeftForUniqueCollections(artefact);
+                sb.append(artefact).append(i > 0 ? " (" + i + ")" : "").append("\n");
+            });
             dialog.setMessage(sb.toString().trim());
             dialog.setPositiveButton("OK", null).create().show();
             return true;

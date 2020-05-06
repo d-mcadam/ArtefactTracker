@@ -84,7 +84,11 @@ public class ArtefactAdapter extends RecyclerView.Adapter<ArtefactAdapter.Artefa
 
             titleSb.append(" (").append(
                     identifiedMaterialCounts.stream().mapToInt(i -> i).min().orElse(0)
-            ).append(")\n").append(artefactsLeftForUniqueCollections(artefact.title));
+            ).append(")\n");
+
+            int i = artefactsLeftForUniqueCollections(artefact.title);
+            if (i > 0)
+                titleSb.append("(").append(i).append(" left for open collections)");
 
             dialog.setTitle(titleSb.toString().trim());
             dialog.setView(dialogView).setPositiveButton("OK", null).create().show();
