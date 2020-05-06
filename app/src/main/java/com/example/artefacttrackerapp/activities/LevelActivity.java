@@ -111,11 +111,11 @@ public class LevelActivity extends AppCompatActivity {
         String textSearch = searchDataField.getText().toString().trim();
 
         storage.LevelInfos().stream()
-                .filter(l -> (
-                                textSearch.length() < 1 ||
-                                l.rubbleName.toLowerCase().contains(textSearch.toLowerCase()) ||
-                                l.digsite.toLowerCase().contains(textSearch.toLowerCase())
-                            )
+                .filter(l ->
+                        textSearch.length() < 1 ||
+                        l.rubbleName.toLowerCase().contains(textSearch.toLowerCase()) ||
+                        l.digsite.toLowerCase().contains(textSearch.toLowerCase()) ||
+                        l.getArtefacts().stream().anyMatch(a -> a.toLowerCase().contains(textSearch.toLowerCase()))
                 ).forEach(displayList::add);
 
         ((LevelDataAdapter)dataAdapter).selectedPosition = -1;
