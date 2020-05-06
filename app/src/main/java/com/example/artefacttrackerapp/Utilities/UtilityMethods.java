@@ -1484,6 +1484,7 @@ public class UtilityMethods {
 
         //<editor-fold defaultstate="collapsed" desc="Isaura">
         Collection c14 = new Collection("Zamorakian I", "Isaura", "Zamorak", "Crontoes", 2594, "Abyssal Thread");
+        c14.completedOnce = true;
         c14.addArtefact("Hookah pipe");
         c14.addArtefact("Opulent wine goblet");
         c14.addArtefact("Crest of Dagon");
@@ -1555,6 +1556,7 @@ public class UtilityMethods {
 
         //<editor-fold defaultstate="collapsed" desc="Sir Atcha">
         Collection c21 = new Collection("Saradominist I", "Sir Atcha", "Saradomin", "Crontoes", 3998, "Lock of hair");
+        c21.completedOnce = true;
         c21.addArtefact("'Frying pan'");
         c21.addArtefact("Hallowed lantern");
         c21.addArtefact("Ceremonial unicorn ornament");
@@ -1593,6 +1595,7 @@ public class UtilityMethods {
 
         //<editor-fold defaultstate="collapsed" desc="Soran, Emissary of Zaros">
         Collection c25 = new Collection("Zarosian I", "Soran, Emissary of Zaros", "Zaros", "Pylon batteries", 20, "Seal of the Praefectus Praetorio");
+        c25.completedOnce = true;
         c25.addArtefact("Venator dagger");
         c25.addArtefact("Venator light crossbow");
         c25.addArtefact("Legionary gladius");
@@ -1819,6 +1822,7 @@ public class UtilityMethods {
         //</editor-fold>
         //<editor-fold defaultstate="collapsed" desc="Zarosian">
         Collection c48 = new Collection("Museum - Zarosian I", "Velucia", "Zaros", "Cronotes", 2635);
+        c48.completedOnce = true;
         c48.addArtefact("Venator dagger");
         c48.addArtefact("Venator light crossbow");
         c48.addArtefact("Legionary gladius");

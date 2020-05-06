@@ -14,7 +14,7 @@ public class Collection implements Serializable {
     public final String category;
     public final String reward;
     public final int rewardQuantity;
-    private Boolean completedOnce = false;
+    public Boolean completedOnce = false;
     public final String oneTimeOnlyReward;
 
     public Collection(String title, String collector, String category, String reward, int qty){
